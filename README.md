@@ -14,7 +14,7 @@ We are working on a new gallery app for all of us to enjoy. The app should:
 
 * David Ortinau - Xamarin Mobile SDK Program Manager @ Microsoft
 * James Clancey - Mobile Architect and Program Manager @ Microsoft
-* Maryanne Exemploiarova - Developer Experience Designer @ Microsoft
+* Maryanne Exempliarova - Developer Experience Designer @ Microsoft
 * Craig Dunn - Xamarin Documentation @ Microsoft
 
 ## Where to Participate
