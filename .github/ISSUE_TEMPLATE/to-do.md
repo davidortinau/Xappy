@@ -13,5 +13,5 @@ Describe the task as an outcome and in terms of user experience...if possible.
 
 ## Sub Tasks
 
-[ ] Do This
-[ ] Do That
+- [ ] Do This
+- [ ] Do That
