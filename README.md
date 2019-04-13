@@ -1,6 +1,6 @@
 # Check Out the Prototype
 
-Launch the [Figma Prototype](https://www.figma.com/proto/CmoqgJhUGPkKWTaPbzYrJCNv/Demo-Xamarin-App?node-id=866%3A3908&viewport=277%2C-468%2C0.875473&scaling=scale-down).
+Launch the [Figma Prototype](https://www.figma.com/proto/CmoqgJhUGPkKWTaPbzYrJCNv/Demo-Xamarin-App?node-id=866%3A2037&viewport=524%2C577%2C0.103049&scaling=scale-down).
 
 * If you are able, please add any comments using the Figma comment feature.
 * If you are unable (and I suspect this will be the case), please [open an Issue here](https://github.com/davidortinau/Xappy/issues/new/choose).
