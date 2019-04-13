@@ -1,3 +1,12 @@
+# Check Out the Prototype
+
+Launch the [Figma Prototype](https://www.figma.com/proto/CmoqgJhUGPkKWTaPbzYrJCNv/Demo-Xamarin-App?node-id=866%3A3908&viewport=277%2C-468%2C0.875473&scaling=scale-down).
+
+* If you are able, please add any comments using the Figma comment feature.
+* If you are unable (and I suspect this will be the case), please [open an Issue here](https://github.com/davidortinau/Xappy/issues/new/choose).
+
+Note that this is a clickable prototype. Tap around. This is NOT the design. :)
+
 # Let's Build an App!
 
 We are working on a new gallery app for all of us to enjoy. The app should:
