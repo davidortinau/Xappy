@@ -13,5 +13,11 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.304370-pre8" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="LiveXAML" Version="2.1.70" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.304370-pre8" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Scenarios\" />
   </ItemGroup>
 </Project>

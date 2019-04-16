@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Xappy"
+    xmlns:scenarios="clr-namespace:Xappy.Pages.Scenarios"
+    FlyoutBehavior="Disabled"
+    Route=""
+    RouteHost="microsoft.com"
+    RouteScheme="app"
+    x:Class="Xappy.AppShell">
+    
+     <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.ShellBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ShellForegroundColor" Value="White" />
+                <Setter Property="Shell.ShellTitleColor" Value="Black" />
+                <Setter Property="Shell.ShellDisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.ShellUnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.ShellTabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ShellTabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.ShellTabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.ShellTabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    
+    <!-- TODO the height is bonkers -->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <ContentView HeightRequest="64"/>
+        </DataTemplate>
+        
+    </Shell.FlyoutHeaderTemplate>
+    
+    <FlyoutItem Title="Main" FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="UI Controls">
+            <ShellContent ContentTemplate="{DataTemplate scenarios:MapPage}" />
+        </Tab>
+        <Tab Title="Latest">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Scenarios">
+            <ShellContent />
+        </Tab>
+        <Tab Title="Resource">
+            <ShellContent />
+        </Tab>
+        <Tab Title="About">
+            <ShellContent />
+        </Tab>
+    </FlyoutItem>
+    
+</Shell>

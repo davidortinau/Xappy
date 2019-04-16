@@ -22,8 +22,11 @@ namespace Xappy.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+
+            Xamarin.FormsMaps.Init();
 
             return base.FinishedLaunching(app, options);
         }

@@ -126,12 +126,19 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.304370-pre8" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>4.0.0.304370-pre8</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Xappy\Xappy.csproj">
-      <Project>{B7229E9C-399B-4506-9A0F-D429AC95CC1A}</Project>
+      <Project>{AB03FC9C-B52B-4D35-A442-FBF2EF30F85D}</Project>
       <Name>Xappy</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\3bar%402x.png" />
+    <BundleResource Include="Resources\3bar.png" />
   </ItemGroup>
 </Project>

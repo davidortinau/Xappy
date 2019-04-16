@@ -34,5 +34,11 @@
     <string>Xappy</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Can we use your location at all times?</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Can we use your location when your app is being used?</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Can we use your location at all times?</string>
 </dict>
 </plist>

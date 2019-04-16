@@ -44,3 +44,4 @@ Thumbs.db
 !nuget/**/*
 !/nuget/**/*
 !/nuget/
+ApiConstants.cs
