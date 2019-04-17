@@ -20,6 +20,7 @@
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="Pages\Scenarios\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />

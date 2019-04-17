@@ -4,13 +4,17 @@
              xmlns:local="clr-namespace:Xappy"
              Shell.TabBarIsVisible="true"
              Shell.FlyoutBehavior="Disabled"
-             x:Class="Xappy.MainPage">
+             x:Class="Xappy.Pages.MainPage">
 
-    <StackLayout>
+    <StackLayout HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand">
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Button Text="Flyout" 
+                Clicked="Handle_Clicked"
+            />
+        <Button Text="Bottom Tabs"
+                Clicked="Handle_Clicked_1"
+                />
     </StackLayout>
 
 </ContentPage>

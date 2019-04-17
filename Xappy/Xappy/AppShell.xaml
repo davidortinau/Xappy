@@ -2,7 +2,7 @@
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Xappy"
+    xmlns:pages="clr-namespace:Xappy.Pages"
     xmlns:scenarios="clr-namespace:Xappy.Pages.Scenarios"
     FlyoutBehavior="Disabled"
     Route=""
@@ -40,11 +40,11 @@
     </Shell.FlyoutHeaderTemplate>
     
     <FlyoutItem Title="Main" FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Latest">
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+        </Tab>
         <Tab Title="UI Controls">
             <ShellContent ContentTemplate="{DataTemplate scenarios:MapPage}" />
-        </Tab>
-        <Tab Title="Latest">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
         <Tab Title="Scenarios">
             <ShellContent />
