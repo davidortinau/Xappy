@@ -15,6 +15,12 @@
         <Button Text="Bottom Tabs"
                 Clicked="Handle_Clicked_1"
                 />
+        
+        <Button Text="Default Theme" 
+                Clicked="Handle_Clicked_2"/>
+        
+        <Button Text="Secondary Theme" 
+                Clicked="Handle_Clicked_3"/>
     </StackLayout>
 
 </ContentPage>

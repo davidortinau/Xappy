@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <Style x:Key="BaseStyle" TargetType="Element">
+        <Setter Property="Shell.ShellBackgroundColor" Value="#f2f2f2" />
+        <Setter Property="Shell.ShellForegroundColor" Value="Green" />
+        <Setter Property="Shell.ShellTitleColor" Value="Blue" />
+        <Setter Property="Shell.ShellDisabledColor" Value="#B4FFFFFF" />
+        <Setter Property="Shell.ShellUnselectedColor" Value="#CC0000" />
+    </Style>
+    <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+    <Style x:Key="CurrentTheme" TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}"/>
+    <Style x:Key="SecondaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Shell.ShellBackgroundColor" Value="#AF3800" />
+    </Style>
+    <Style x:Key="TertiaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Shell.ShellBackgroundColor" Value="#FA7921" />
+    </Style>
+    <Style x:Key="QuaternaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Shell.ShellBackgroundColor" Value="#FE9920" />
+    </Style>
+    <Style x:Key="QuinaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Shell.ShellBackgroundColor" Value="#566E3D" />
+    </Style>
+    <Style x:Key="SenaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
+    </Style>
+    
+</ResourceDictionary>

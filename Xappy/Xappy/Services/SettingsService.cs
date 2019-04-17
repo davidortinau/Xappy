@@ -9,6 +9,7 @@ namespace Xappy.Services
         {
             Shell.SetFlyoutBehavior(Shell.Current, Xamarin.Forms.FlyoutBehavior.Disabled);
             Shell.SetTabBarIsVisible(context, true);
+
         }
 
         public static void UseFlyout(BindableObject context)

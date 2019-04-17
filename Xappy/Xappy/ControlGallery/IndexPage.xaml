@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="Xappy.ControlGallery.IndexPage">
+    <ScrollView>
+        <StackLayout Margin="15,30">
+            <Label
+                Text="Layouts" />
+            <CollectionView
+                x:Name="LayoutsCV"
+                ItemsSource="{Binding Layouts}"
+                SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding SelectCommand}"
+                HeightRequest="300">
+                <d:CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Item 1</x:String>
+                        <x:String>Item 2</x:String>
+                        <x:String>Item 3</x:String>
+                        <x:String>Item 4</x:String>
+                        <x:String>Item 5</x:String>
+                        <x:String>Item 1</x:String>
+                        <x:String>Item 2</x:String>
+                        <x:String>Item 3</x:String>
+                        <x:String>Item 4</x:String>
+                        <x:String>Item 5</x:String>
+                    </x:Array>
+                </d:CollectionView.ItemsSource>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Span="2"
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="20">
+                            <Frame>
+                                <Label Text="{Binding Title}" 
+                                       d:Text="Something Else"/>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            
+            
+            
+            
+            <Label
+                Text="Pages" />
+            <Label
+                Text="Views" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

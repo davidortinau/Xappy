@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Xappy.ControlGallery;
 
 namespace Xappy
 {
@@ -10,6 +11,13 @@ namespace Xappy
         public AppShell()
         {
             InitializeComponent();
+
+            RegisterRoutes();
+        }
+
+        private void RegisterRoutes()
+        {
+            Routing.RegisterRoute("control", typeof(ControlPage));
         }
     }
 }

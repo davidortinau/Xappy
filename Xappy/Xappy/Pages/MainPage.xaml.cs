@@ -19,7 +19,6 @@ namespace Xappy.Pages
             InitializeComponent();
         }
 
-
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             SettingsService.UseFlyout(this);
@@ -28,6 +27,16 @@ namespace Xappy.Pages
         void Handle_Clicked_1(object sender, System.EventArgs e)
         {
             SettingsService.UseTabs(this);
+        }
+
+        void Handle_Clicked_2(object sender, System.EventArgs e)
+        {
+            Application.Current.Resources["CurrentTheme"] = Application.Current.Resources["BaseStyle"];
+        }
+
+        void Handle_Clicked_3(object sender, System.EventArgs e)
+        {
+            Application.Current.Resources["CurrentTheme"] = Application.Current.Resources["SecondaryShell"];
         }
     }
 }
