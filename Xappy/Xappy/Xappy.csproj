@@ -18,11 +18,12 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Pages\" />
-    <Folder Include="Pages\Scenarios\" />
     <Folder Include="Services\" />
     <Folder Include="Styles\" />
-    <Folder Include="ControlGallery\" />
+    <Folder Include="Content\" />
+    <Folder Include="Content\ControlGallery\" />
+    <Folder Include="Content\LatestNews\" />
+    <Folder Include="Content\Scenarios\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />

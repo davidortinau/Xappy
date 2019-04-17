@@ -4,7 +4,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
-namespace Xappy.Pages.Scenarios
+namespace Xappy.Scenarios
 {
     public partial class MapPage : ContentPage
     {

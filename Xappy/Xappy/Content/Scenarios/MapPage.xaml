@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     Shell.NavBarIsVisible="False"
-    x:Class="Xappy.Pages.Scenarios.MapPage">
+    x:Class="Xappy.Scenarios.MapPage">
     
     
     <Grid>

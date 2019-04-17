@@ -2,8 +2,8 @@
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:Xappy.Pages"
-    xmlns:scenarios="clr-namespace:Xappy.Pages.Scenarios"
+    xmlns:local="clr-namespace:Xappy"
+    xmlns:scenarios="clr-namespace:Xappy.Scenarios"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     FlyoutBehavior="Disabled"
     Route=""
@@ -11,8 +11,6 @@
     RouteScheme="app"
     x:Class="Xappy.AppShell">
     
-    
-    <!-- TODO the height is bonkers -->
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <ContentView HeightRequest="64"/>
@@ -24,19 +22,19 @@
                 Style="{DynamicResource CurrentTheme}"
                 FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="Latest">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
         <Tab Title="UI Controls">
             <ShellContent ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
         </Tab>
         <Tab Title="Scenarios">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate scenarios:MapPage}" />
         </Tab>
         <Tab Title="Resource">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
         <Tab Title="About">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </FlyoutItem>
     

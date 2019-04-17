@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace Xappy.Pages
+namespace Xappy.LatestNews
 {
-    public partial class LatestPage : ContentPage
+    public partial class IndexPage : ContentPage
     {
-        public LatestPage()
+        public IndexPage()
         {
             InitializeComponent();
         }

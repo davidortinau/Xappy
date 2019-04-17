@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Xappy"
              Shell.TabBarIsVisible="true"
              Shell.FlyoutBehavior="Disabled"
-             x:Class="Xappy.Pages.MainPage">
+             x:Class="Xappy.MainPage">
 
     <StackLayout HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand">
