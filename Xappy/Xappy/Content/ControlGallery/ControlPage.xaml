@@ -2,14 +2,128 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Shell.TabBarIsVisible="false"
+    Shell.TabBarIsVisible="false" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Visual="Material"
     x:Class="Xappy.ControlGallery.ControlPage">
     <ContentPage.Content>
+       
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" /> <!-- Content container -->
+                    <RowDefinition Height="1*" />    <!-- Selection panel -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+            <ScrollView Grid.Row="0" 
+                       Grid.ColumnSpan="2">
+                <Frame  
+                       CornerRadius="4"
+                       Padding="0" 
+                       Margin="60">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <ContentView Grid.Row="0" BackgroundColor="#00BCD4" HeightRequest="176">
+                            <Label Text="Card Title" 
+                            TextColor="White"
+                            VerticalOptions="End" Margin="15"/>
+                            
+                        </ContentView>
+
+                        <Label Margin="15" Grid.Row="1" Text="It is a long established fact that a reader will be distracted by the readable content of a page..."/>
+                        
+                        <StackLayout Orientation="Vertical" 
+                                     Spacing="15"
+                                     Padding="0,0,0,8"
+                                     Grid.Row="2">
+                            <BoxView BackgroundColor="#000000" 
+                                     HeightRequest="1"/>
+                            <Button
+                                Visual="Default"
+                                HorizontalOptions="Start"
+                                Margin="15,0"
+                                Text="BUTTON" 
+                                BackgroundColor="Transparent"
+                                TextColor="#00BCD4"
+                            />
+                            
+                            
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            
+            </ScrollView>
+                <FlexLayout Grid.Row="1" 
+                            Grid.ColumnSpan="2" 
+                            AlignContent="Start"
+                            JustifyContent="SpaceEvenly"
+                            Wrap="Wrap">
+                    <BoxView BackgroundColor="#222222" 
+                             FlexLayout.Basis="100%"
+                             HeightRequest="1" 
+                             />
+                    <Button Text="View" 
+                            Visual="Default" 
+                            HeightRequest="45"
+                            Command="{Binding ViewXAMLCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#00BCD4"
+                    />
+                    <Button Text="Undo" 
+                            Visual="Default" 
+                            HeightRequest="45"
+                            Command="{Binding UndoCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#00BCD4"
+                    />
+                    <Button Text="Redo" 
+                            Visual="Default" 
+                            HeightRequest="45"
+                            Command="{Binding RedoCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#00BCD4"
+                    />
+                    <Button Text="Reset" 
+                            Visual="Default" 
+                            HeightRequest="45"
+                            Command="{Binding ResetCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#00BCD4"
+                    />
+                    <BoxView BackgroundColor="#222222" HeightRequest="1" 
+                             FlexLayout.Basis="100%"
+                             />
+                             
+                    
+                    <CollectionView VerticalOptions="Fill"
+                                    HorizontalOptions="Fill"
+                                    FlexLayout.Basis="100%"
+                                    FlexLayout.Grow="1"
+                                    FlexLayout.Shrink="0"
+                                    FlexLayout.AlignSelf="Start"
+                                    >
+                        <CollectionView.EmptyView>
+                            <StackLayout>
+                                <Label Text="Properties Here" 
+                                       FontSize="18"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </FlexLayout>
+
+            </Grid>
         
-        <Label Text="{Binding ControlTitle}"
-               FontSize="64"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               />
+
     </ContentPage.Content>
 </ContentPage>

@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 
 namespace Xappy
 {
+    // This needs Prism :)
     public partial class App : Application
     {
         public App()

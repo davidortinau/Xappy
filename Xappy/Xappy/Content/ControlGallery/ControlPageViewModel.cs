@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xappy.Content.ControlGallery;
 
 namespace Xappy.ControlGallery
 {
@@ -31,7 +32,13 @@ namespace Xappy.ControlGallery
 
         public ControlType SelectedControl { get; set; }
 
-        public ICommand SelectCommand { get; set; }
+        public ICommand ViewXAMLCommand { get; set; }
+
+        public ICommand UndoCommand { get; set; }
+
+        public ICommand RedoCommand { get; set; }
+
+        public ICommand ResetCommand { get; set; }
 
         private string _controlTitle;
         public string ControlTitle
@@ -51,14 +58,36 @@ namespace Xappy.ControlGallery
         {
 
 
-            //SelectCommand = new Command(ControlSelected);
+            ViewXAMLCommand = new Command(ViewXAML);
+            UndoCommand = new Command(Undo);
+            RedoCommand = new Command(Redo);
+            ResetCommand = new Command(Reset);
         }
 
-        //private async void ControlSelected()
-        //{
-        //    // navigate to the control page
-        //    await Shell.Current.GoToAsync()
-        //}
+        private async void ViewXAML()
+        {
+            var source = XamlUtil.GetXamlForType(typeof(ControlPage));
+            await Shell.Current.Navigation.PushAsync(new ViewSourcePage
+            {
+                Source = source
+            });
+        }
+
+        private void Undo()
+        {
+
+        }
+
+        private void Redo()
+        {
+
+        }
+
+        private void Reset()
+        {
+
+        }
+
     }
 
     //public class ControlType

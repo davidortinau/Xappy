@@ -45,3 +45,4 @@ Thumbs.db
 !/nuget/**/*
 !/nuget/
 ApiConstants.cs
+Xappy/.vscode/settings.json

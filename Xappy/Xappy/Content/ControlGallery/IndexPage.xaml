@@ -11,13 +11,13 @@
             <Label
                 Text="Layouts" />
             <CollectionView
-                x:Name="LayoutsCV"
+                x:Name="LayoutsCV" BackgroundColor="Teal"
                 ItemsSource="{Binding Layouts}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
                 SelectionMode="Single"
                 SelectionChangedCommand="{Binding SelectCommand}"
                 HeightRequest="300">
-                <d:CollectionView.ItemsSource>
+                <!--<d:CollectionView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Item 1</x:String>
                         <x:String>Item 2</x:String>
@@ -30,7 +30,15 @@
                         <x:String>Item 4</x:String>
                         <x:String>Item 5</x:String>
                     </x:Array>
-                </d:CollectionView.ItemsSource>
+                </d:CollectionView.ItemsSource>-->
+                <CollectionView.EmptyView><!-- 11am previewer bug -->
+                    <StackLayout VerticalOptions="Fill" BackgroundColor="Silver">
+                        <Label Text="Empty" BackgroundColor="Red"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="Center"
+                               />
+                    </StackLayout>
+                </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
                         Span="2"
