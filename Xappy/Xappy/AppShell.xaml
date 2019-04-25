@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -28,7 +28,7 @@
             <ShellContent ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
         </Tab>
         <Tab Title="Scenarios">
-            <ShellContent ContentTemplate="{DataTemplate scenarios:MapPage}" />
+            <ShellContent ContentTemplate="{DataTemplate scenarios:IndexPage}" />
         </Tab>
         <Tab Title="Resource">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
