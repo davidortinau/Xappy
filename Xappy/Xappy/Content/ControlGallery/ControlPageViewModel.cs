@@ -90,8 +90,4 @@ namespace Xappy.ControlGallery
 
     }
 
-    //public class ControlType
-    //{
-    //    public string Title = "";
-    //}
 }

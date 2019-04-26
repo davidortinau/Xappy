@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -21,12 +21,13 @@
     <FlyoutItem Title="Main"
                 Style="{DynamicResource CurrentTheme}"
                 FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="UI Controls">
+            <ShellContent ContentTemplate="{DataTemplate controlGallery:ControlPage}" />
+        </Tab>
         <Tab Title="Latest">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="UI Controls">
-            <ShellContent ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
-        </Tab>
+        
         <Tab Title="Scenarios">
             <ShellContent ContentTemplate="{DataTemplate scenarios:IndexPage}" />
         </Tab>

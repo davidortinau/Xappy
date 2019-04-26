@@ -24,6 +24,9 @@
     <Folder Include="Content\ControlGallery\" />
     <Folder Include="Content\LatestNews\" />
     <Folder Include="Content\Scenarios\" />
+    <Folder Include="Content\ControlGallery\ProppyControls\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />
