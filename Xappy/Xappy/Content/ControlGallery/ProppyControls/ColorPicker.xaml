@@ -1,64 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StackLayout
+    BackgroundColor="White"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.ControlGallery.ProppyControls.ColorPicker">
-    
-    <Entry
-        Placeholder="#"
-        BackgroundColor="Transparent"
-        x:Name="HexEntry"
-        Focused="Handle_Focused"
-        Unfocused="Handle_Unfocused"
-        Text="#000000" />
-    <Slider
-        x:Name="R"
-        ValueChanged="OnColorSliderChanged"
-        Minimum="0"
-        Maximum="255"
-        MaximumTrackColor="#cccccc"
-        MinimumTrackColor="#E52E15"
-        ThumbColor="#E52E15" />
-    <Slider
-        x:Name="G"
-        ValueChanged="OnColorSliderChanged"
-        Minimum="0"
-        Maximum="255"
-        MaximumTrackColor="#cccccc"
-        MinimumTrackColor="#88C800"
-        ThumbColor="#88C800" />
-    <Slider
-        x:Name="B"
-        ValueChanged="OnColorSliderChanged"
-        Minimum="0"
-        Maximum="255"
-        MaximumTrackColor="#cccccc"
-        MinimumTrackColor="#006CCF"
-        ThumbColor="#006CCF" />
-    <Slider
-        x:Name="A"
-        ValueChanged="OnColorSliderChanged"
-        Value="255"
-        Minimum="0"
-        Maximum="255"
-        MaximumTrackColor="#cccccc"
-        MinimumTrackColor="#888888"
-        ThumbColor="#888888" />
-    <CollectionView
-        HeightRequest="80"
-        BackgroundColor="#f1f1f1"
-        ItemsSource="{Binding ColorViewModels}"
-        ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <ContentView
-                    Padding="0,0,8,0">
-                    <BoxView 
-                        HeightRequest="45"
-                        WidthRequest="45"
-                        BackgroundColor="{Binding HexColor}" />
-                </ContentView>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <BoxView
+        HeightRequest="1"
+        BackgroundColor="Black" />
+    <StackLayout
+        Padding="15,0"
+        Orientation="Horizontal">
+        <Button
+            Text="&lt;"
+            VerticalOptions="Center"
+            BackgroundColor="Transparent"
+            TextColor="Black"
+            Visual="Default"
+            Clicked="Handle_BackClicked" />
+        <Label
+            x:Name="NameLabel"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"
+            TextColor="Black" />
+    </StackLayout>
+    <BoxView
+        HeightRequest="1"
+        BackgroundColor="Black" />
+    <ScrollView>
+        <StackLayout
+            Padding="15,8">
+            <Entry
+                Placeholder="#"
+                BackgroundColor="Transparent"
+                x:Name="HexEntry"
+                Focused="Handle_Focused"
+                Unfocused="Handle_Unfocused"
+                Text="#000000" />
+            <Slider
+                x:Name="R"
+                ValueChanged="OnColorSliderChanged"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#E52E15"
+                ThumbColor="#E52E15" />
+            <Slider
+                x:Name="G"
+                ValueChanged="OnColorSliderChanged"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#88C800"
+                ThumbColor="#88C800" />
+            <Slider
+                x:Name="B"
+                ValueChanged="OnColorSliderChanged"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#006CCF"
+                ThumbColor="#006CCF" />
+            <Slider
+                x:Name="A"
+                ValueChanged="OnColorSliderChanged"
+                Value="255"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#888888"
+                ThumbColor="#888888" />
+            <CollectionView
+                HeightRequest="45"
+                Margin="-15,0"
+                SelectionMode="Single"
+                SelectionChanged="Handle_SelectionChanged"
+                ItemsSource="{Binding ColorViewModels}"
+                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView
+                            BackgroundColor="White"
+                            Padding="0,0,8,0">
+                            <BoxView
+                                CornerRadius="8"
+                                VerticalOptions="Start"
+                                HeightRequest="45"
+                                WidthRequest="45"
+                                BackgroundColor="{Binding HexColor}" />
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
 </StackLayout>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace Xappy.Content.ControlGallery.ProppyControls
@@ -15,6 +16,12 @@ namespace Xappy.Content.ControlGallery.ProppyControls
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(ColorPicker), "Pick a color:",
             propertyChanged: OnTitleChanged);
 
+        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(ColorPicker), "Color",
+            propertyChanged: OnNameChanged);
+
+        public static readonly BindableProperty ElementProperty = BindableProperty.Create(nameof(Element), typeof(View), typeof(ColorPicker), null,
+            propertyChanged: OnElementChanged);
+
         Slider[] _sliders;
 
         public ColorPicker()
@@ -26,10 +33,27 @@ namespace Xappy.Content.ControlGallery.ProppyControls
 
         }
 
+        void Handle_BackClicked(object sender, System.EventArgs e)
+        {
+            Back?.Invoke(this, EventArgs.Empty);
+        }
+
+        public View Element
+        {
+            get => (View)GetValue(ElementProperty);
+            set => SetValue(ElementProperty, value);
+        }
+
         public string Title
         {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
+        }
+
+        public string Name
+        {
+            get => (string)GetValue(NameProperty);
+            set => SetValue(NameProperty, value);
         }
 
         public bool UseDefault
@@ -46,15 +70,19 @@ namespace Xappy.Content.ControlGallery.ProppyControls
 
         public event EventHandler<ColorPickedEventArgs> ColorPicked;
 
+        public event EventHandler Back;
+
         void OnColorSliderChanged(object sender, ValueChangedEventArgs e)
         {
+
             if (!isEditingHex)
             {
                 var color = Color.FromRgba(
-                    (int)R.Value,
-                    (int)G.Value,
-                    (int)B.Value,
-                    (int)A.Value);
+                (int)R.Value,
+                (int)G.Value,
+                (int)B.Value,
+                (int)A.Value);
+
                 Color = color;
             }
         }
@@ -72,7 +100,7 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             if (bindable is ColorPicker picker)
             {
                 var color = picker.UseDefault ? Color.Default : picker.Color;
-                picker.HexEntry.Text = color.IsDefault ? "<default>" : color.ToHex();
+                picker.HexEntry.Text = color.ToHex();
                 //picker._box.Color = color;
                 picker.ColorPicked?.Invoke(picker, new ColorPickedEventArgs(color));
             }
@@ -102,13 +130,24 @@ namespace Xappy.Content.ControlGallery.ProppyControls
                 {
                     Color = c;
 
+                    isEditingHex = true;
+
                     R.Value = Math.Min((int)(c.R * 256), 255);
                     G.Value = Math.Min((int)(c.G * 256), 255);
                     B.Value = Math.Min((int)(c.B * 256), 255);
                     A.Value = c.A * 255;
 
+                    isEditingHex = false;
+
                 }
             }
+        }
+
+        void Handle_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            var c = e.CurrentSelection[0] as ColorViewModel;
+            Color = Color.FromHex($"{c.HexColor}");
+
         }
 
         static void OnTitleChanged(BindableObject bindable, object oldValue, object newValue)
@@ -117,6 +156,24 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             {
                 picker.HexEntry.Text = picker.Title;
             }
+        }
+
+        static void OnNameChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is ColorPicker picker)
+            {
+                picker.NameLabel.Text = picker.Name;
+            }
+        }
+
+
+
+        static void OnElementChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            //if (bindable is View picker)
+            //{
+            //    picker.HexEntry.Text = picker.Title;
+            //}
         }
     }
 

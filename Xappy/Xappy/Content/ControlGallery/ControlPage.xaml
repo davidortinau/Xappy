@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xappy.Content.ControlGallery.ProppyControls"
     Shell.TabBarIsVisible="false"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,7 +11,7 @@
     Title="Button"
     x:Class="Xappy.ControlGallery.ControlPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid x:Name="ContentGrid">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="2*" />
@@ -120,7 +121,7 @@
                         HeightRequest="1"
                         FlexLayout.Basis="100%" />
                 </FlexLayout>
-                <ScrollView
+                <!--<ScrollView
                     VerticalOptions="Fill"
                     HorizontalOptions="Fill"
                     FlexLayout.Basis="100%"
@@ -131,8 +132,65 @@
                         x:Name="PropertyContainer"
                         Margin="10">
                     </StackLayout>
-                </ScrollView>
+                </ScrollView>-->
+                <CollectionView
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
+                    FlexLayout.Basis="100%"
+                    FlexLayout.Grow="1"
+                    FlexLayout.Shrink="0"
+                    FlexLayout.AlignSelf="Start"
+                    SelectionChanged="Handle_SelectionChanged"
+                    ItemsSource="{Binding Properties}"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding Selected, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectCommand}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Padding="15,4"
+                                RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="40" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                    <ColumnDefinition
+                                        Width="25" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="48" />
+                                    <RowDefinition
+                                        Height="1" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start" />
+                                <Label
+                                    Grid.Column="2"
+                                    Text="&gt;"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="-15,0"
+                                    BackgroundColor="#cccccc" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
+            <!--<controls:ColorPicker
+                ColorPicked="Handle_ColorPicked"
+                IsVisible="true"
+                BackgroundColor="White"
+                Grid.Row="1"
+                Grid.ColumnSpan="2" />-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
