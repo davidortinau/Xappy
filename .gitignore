@@ -46,3 +46,4 @@ Thumbs.db
 !/nuget/
 ApiConstants.cs
 Xappy/.vscode/settings.json
+.idea

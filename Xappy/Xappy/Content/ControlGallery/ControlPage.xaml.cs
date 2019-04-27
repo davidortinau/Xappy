@@ -113,30 +113,24 @@ namespace Xappy.ControlGallery
             ActiveProperty = e.CurrentSelection[0] as PropertyInfo;
             if (ActiveProperty.PropertyType == typeof(Color))
             {
+                PropertyToolbar.SetProperty(ActiveProperty.Name);
+                
                 // show ColorPicker, set property 
                 colorPicker = new ColorPicker
                 {
-                    Name = ActiveProperty.Name,
                     Color = (Color)ActiveProperty.GetValue(_element)
                 };
                 colorPicker.ColorPicked += Handle_ColorPicked;
-                colorPicker.Back += Ctrl_Back;
-                Grid.SetRow(colorPicker, 1);
-                Grid.SetColumnSpan(colorPicker, 2);
                 colorPicker.TranslationX = this.Width;
-                ContentGrid.Children.Add(colorPicker);
+                Grid.SetRow(colorPicker, 1);
+                PropertyContainer.Children.Add(colorPicker);
 
                 colorPicker.TranslateTo(0, 0);
             }
         }
 
-        void Ctrl_Back(object sender, EventArgs e)
-        {
-            colorPicker.TranslateTo(this.Width, 0);
-            colorPicker.ColorPicked -= Handle_ColorPicked;
-            colorPicker.Back -= Ctrl_Back;
-            ContentGrid.Children.Remove(colorPicker);
-        }
+        
+        
 
 
         Dictionary<string, (double min, double max)> _minMaxProperties = new Dictionary<string, (double min, double max)>
@@ -382,6 +376,13 @@ namespace Xappy.ControlGallery
         }
 
 
+        private void PropertyToolbar_OnBack(object sender, EventArgs e)
+        {
+            
+            colorPicker.TranslateTo(this.Width, 0);
+            colorPicker.ColorPicked -= Handle_ColorPicked;
+            PropertyContainer.Children.Remove(colorPicker);
+        }
     }
 
     public static class GridExtension

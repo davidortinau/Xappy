@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xappy;assembly=Xappy"
+             x:Class="Xappy.Content.ControlGallery.ProppyControls.Toolbar">
+   
+    <Grid.RowDefinitions>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="45"/>
+        <RowDefinition Height="1"/>
+    </Grid.RowDefinitions>
+    
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="80"/>
+    </Grid.ColumnDefinitions>
+    
+        <BoxView
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            BackgroundColor="#222222"
+            FlexLayout.Basis="100%"
+            HeightRequest="1" />
+        
+        <FlexLayout
+            Grid.Row="1"
+            Grid.Column="1"
+            Direction="Row"
+            Wrap="NoWrap"
+            AlignContent="End"
+        >
+            <ImageButton
+                x:Name="ViewSourceBtn"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+                Clicked="ImageButton_OnClicked"
+                >
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Color="Black"
+                                     Glyph="{x:Static local:IconFont.FileCode}" />
+                </ImageButton.Source>
+            </ImageButton>
+            <Button
+                x:Name="UndoBtn"
+                Clicked="UndoBtn_OnClicked"
+                Text="Undo"
+                Visual="Default"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+                TextColor="#00BCD4" />
+            <Button
+                x:Name="RedoBtn"
+                Clicked="RedoBtn_OnClicked"
+                Text="Redo"
+                Visual="Default"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+                TextColor="#00BCD4" />
+            <Button
+                x:Name="ResetBtn"
+                Clicked="ResetBtn_OnClicked"
+                Text="Reset"
+                Visual="Default"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+                TextColor="#00BCD4" />
+        </FlexLayout>
+        
+        <StackLayout 
+            x:Name="PropertyInfoContainer"
+            IsVisible="true"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackBtn_OnClicked" />
+            </StackLayout.GestureRecognizers>
+            
+            <ImageButton
+                x:Name="BackBtn"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+            >
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static local:IconFont.CaretLeft}"
+                                     Color="Black"
+                                     />
+                </ImageButton.Source>
+            </ImageButton>
+            
+            <Label x:Name="PropertyNameLbl" 
+                   VerticalOptions="Center"
+                   
+                   Text="Button" />
+        </StackLayout>
+        
+        <ImageButton
+            x:Name="ToggleBtn"
+            Clicked="ToggleBtn_OnClicked"
+            Grid.Row="1"
+            Grid.Column="2"
+            >
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Color="Black"
+                                 Glyph="{x:Static local:IconFont.CaretDown}" />
+            </ImageButton.Source>
+        </ImageButton>
+        
+        <BoxView
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            BackgroundColor="#222222"
+            HeightRequest="1"
+            FlexLayout.Basis="100%" />
+    
+    
+</Grid>

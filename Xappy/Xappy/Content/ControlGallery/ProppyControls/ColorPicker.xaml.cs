@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace Xappy.Content.ControlGallery.ProppyControls
 {
-    public partial class ColorPicker : StackLayout
+    public partial class ColorPicker
     {
         public static readonly BindableProperty UseDefaultProperty = BindableProperty.Create(nameof(UseDefault), typeof(bool), typeof(ColorPicker), false,
             propertyChanged: OnColorChanged);
@@ -15,9 +15,6 @@ namespace Xappy.Content.ControlGallery.ProppyControls
 
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(ColorPicker), "Pick a color:",
             propertyChanged: OnTitleChanged);
-
-        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(ColorPicker), "Color",
-            propertyChanged: OnNameChanged);
 
         public static readonly BindableProperty ElementProperty = BindableProperty.Create(nameof(Element), typeof(View), typeof(ColorPicker), null,
             propertyChanged: OnElementChanged);
@@ -48,12 +45,6 @@ namespace Xappy.Content.ControlGallery.ProppyControls
         {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
-        }
-
-        public string Name
-        {
-            get => (string)GetValue(NameProperty);
-            set => SetValue(NameProperty, value);
         }
 
         public bool UseDefault
@@ -158,16 +149,7 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             }
         }
 
-        static void OnNameChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is ColorPicker picker)
-            {
-                picker.NameLabel.Text = picker.Name;
-            }
-        }
-
-
-
+        
         static void OnElementChanged(BindableObject bindable, object oldValue, object newValue)
         {
             //if (bindable is View picker)

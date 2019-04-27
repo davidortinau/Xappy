@@ -40,5 +40,9 @@
     <string>Can we use your location when your app is being used?</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>Can we use your location at all times?</string>
+    <key>UIAppFonts</key>
+    <array>
+        <string>fa-solid-900.ttf</string>
+    </array>
 </dict>
 </plist>

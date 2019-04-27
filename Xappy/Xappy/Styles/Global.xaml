@@ -29,4 +29,9 @@
         <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
     </Style>
     
+    <OnPlatform x:Key="FontAwesome"
+                x:TypeArguments="x:String"
+                Android="fa-solid-900.ttf#Font Awesome 5 Free"
+                iOS="Font Awesome 5 Free" />
+    
 </ResourceDictionary>

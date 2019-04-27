@@ -146,5 +146,8 @@
     <BundleResource Include="Resources\3bar%402x.png" />
     <BundleResource Include="Resources\3bar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fa-solid-900.ttf" />
+  </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

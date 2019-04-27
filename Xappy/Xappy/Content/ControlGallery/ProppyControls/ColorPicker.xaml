@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StackLayout
+<ScrollView
     BackgroundColor="White"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.ControlGallery.ProppyControls.ColorPicker">
-    <BoxView
-        HeightRequest="1"
-        BackgroundColor="Black" />
-    <StackLayout
-        Padding="15,0"
-        Orientation="Horizontal">
-        <Button
-            Text="&lt;"
-            VerticalOptions="Center"
-            BackgroundColor="Transparent"
-            TextColor="Black"
-            Visual="Default"
-            Clicked="Handle_BackClicked" />
-        <Label
-            x:Name="NameLabel"
-            VerticalOptions="Center"
-            VerticalTextAlignment="Center"
-            TextColor="Black" />
-    </StackLayout>
-    <BoxView
-        HeightRequest="1"
-        BackgroundColor="Black" />
-    <ScrollView>
+    
         <StackLayout
             Padding="15,8">
             <Entry
@@ -92,5 +70,5 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-    </ScrollView>
-</StackLayout>
+    
+</ScrollView>

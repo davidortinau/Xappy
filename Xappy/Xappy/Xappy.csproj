@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -30,6 +30,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Content\ControlGallery\ProppyControls\Toolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

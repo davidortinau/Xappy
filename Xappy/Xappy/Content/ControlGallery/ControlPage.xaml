@@ -76,70 +76,26 @@
                     </Grid>
                 </Frame>
             </ScrollView>
-            <StackLayout
-                Orientation="Vertical"
+            <Grid
+                x:Name="PropertyContainer"
                 Grid.Row="1"
                 Grid.ColumnSpan="2">
-                <FlexLayout
-                    AlignContent="Start"
-                    JustifyContent="SpaceEvenly"
-                    Wrap="Wrap">
-                    <BoxView
-                        BackgroundColor="#222222"
-                        FlexLayout.Basis="100%"
-                        HeightRequest="1" />
-                    <Button
-                        Text="View"
-                        Visual="Default"
-                        HeightRequest="45"
-                        Command="{Binding ViewXAMLCommand}"
-                        BackgroundColor="Transparent"
-                        TextColor="#00BCD4" />
-                    <Button
-                        Text="Undo"
-                        Visual="Default"
-                        HeightRequest="45"
-                        Command="{Binding UndoCommand}"
-                        BackgroundColor="Transparent"
-                        TextColor="#00BCD4" />
-                    <Button
-                        Text="Redo"
-                        Visual="Default"
-                        HeightRequest="45"
-                        Command="{Binding RedoCommand}"
-                        BackgroundColor="Transparent"
-                        TextColor="#00BCD4" />
-                    <Button
-                        Text="Reset"
-                        Visual="Default"
-                        HeightRequest="45"
-                        Command="{Binding ResetCommand}"
-                        BackgroundColor="Transparent"
-                        TextColor="#00BCD4" />
-                    <BoxView
-                        BackgroundColor="#222222"
-                        HeightRequest="1"
-                        FlexLayout.Basis="100%" />
-                </FlexLayout>
-                <!--<ScrollView
-                    VerticalOptions="Fill"
-                    HorizontalOptions="Fill"
-                    FlexLayout.Basis="100%"
-                    FlexLayout.Grow="1"
-                    FlexLayout.Shrink="0"
-                    FlexLayout.AlignSelf="Start">
-                    <StackLayout
-                        x:Name="PropertyContainer"
-                        Margin="10">
-                    </StackLayout>
-                </ScrollView>-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <controls:Toolbar 
+                    Grid.Row="0"
+                    x:Name="PropertyToolbar"   
+                    Back="PropertyToolbar_OnBack"
+                />
+                
                 <CollectionView
+                    x:Name="PropertiesList"
+                    Grid.Row="1"
                     VerticalOptions="Fill"
                     HorizontalOptions="Fill"
-                    FlexLayout.Basis="100%"
-                    FlexLayout.Grow="1"
-                    FlexLayout.Shrink="0"
-                    FlexLayout.AlignSelf="Start"
                     SelectionChanged="Handle_SelectionChanged"
                     ItemsSource="{Binding Properties}"
                     SelectionMode="Single"
@@ -184,13 +140,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
-            <!--<controls:ColorPicker
-                ColorPicked="Handle_ColorPicked"
-                IsVisible="true"
-                BackgroundColor="White"
-                Grid.Row="1"
-                Grid.ColumnSpan="2" />-->
-        </Grid>
+            </Grid><!-- PropertyContainer -->
+        </Grid><!-- ContentGrid -->
     </ContentPage.Content>
 </ContentPage>
