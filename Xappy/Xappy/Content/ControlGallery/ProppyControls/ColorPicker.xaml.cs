@@ -112,6 +112,15 @@ namespace Xappy.Content.ControlGallery.ProppyControls
         {
             var c = e.CurrentSelection[0] as ColorViewModel;
             Color = Color.FromHex($"{c.HexColor}");
+            
+            isEditingHex = true;
+
+            R.Value = Math.Min((int)(Color.R * 256), 255);
+            G.Value = Math.Min((int)(Color.G * 256), 255);
+            B.Value = Math.Min((int)(Color.B * 256), 255);
+            A.Value = Color.A * 255;
+
+            isEditingHex = false;
 
         }
 
@@ -130,15 +139,5 @@ namespace Xappy.Content.ControlGallery.ProppyControls
                 picker.HexEntry.Text = picker.Color.ToHex();
             }
         }
-    }
-
-    public class ColorPickedEventArgs : EventArgs
-    {
-        public ColorPickedEventArgs(Color color)
-        {
-            Color = color;
-        }
-
-        public Color Color { get; }
     }
 }

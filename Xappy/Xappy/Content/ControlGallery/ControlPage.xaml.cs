@@ -110,29 +110,37 @@ namespace Xappy.ControlGallery
 
         }
 
-        ColorPicker colorPicker;
+        View propertyControl;
 
         void Handle_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
-            // show the property editor
             ActiveProperty = e.CurrentSelection[0] as PropertyInfo;
+            PropertyToolbar.SetProperty(ActiveProperty.Name);
+            
             if (ActiveProperty.PropertyType == typeof(Color))
             {
-                PropertyToolbar.SetProperty(ActiveProperty.Name);
-                
-                // show ColorPicker, set property 
-                colorPicker = new ColorPicker
+                propertyControl = new ColorPicker
                 {
                     Color = (Color)ActiveProperty.GetValue(_element),
                     ElementInfo = ActiveProperty,
                     Element =  _element
                 };
-                colorPicker.TranslationX = this.Width;
-                Grid.SetRow(colorPicker, 1);
-                PropertyContainer.Children.Add(colorPicker);
+                
 
-                colorPicker.TranslateTo(0, 0);
+                
+            }else if (ActiveProperty.PropertyType == typeof(string))
+            {
+                propertyControl = new TextEntry
+                {
+                    Element = _element,
+                    ElementInfo = ActiveProperty
+                };
             }
+            
+            propertyControl.TranslationX = this.Width;
+            Grid.SetRow(propertyControl, 1);
+            PropertyContainer.Children.Add(propertyControl);
+            propertyControl.TranslateTo(0, 0);
         }
 
         Dictionary<string, (double min, double max)> _minMaxProperties = new Dictionary<string, (double min, double max)>
@@ -380,8 +388,8 @@ namespace Xappy.ControlGallery
 
         private void PropertyToolbar_OnBack(object sender, EventArgs e)
         {
-            colorPicker.TranslateTo(this.Width, 0);
-            PropertyContainer.Children.Remove(colorPicker);
+            propertyControl.TranslateTo(this.Width, 0);
+            PropertyContainer.Children.Remove(propertyControl);
         }
 
         private async void PropertyToolbar_OnViewSource(object sender, EventArgs e)

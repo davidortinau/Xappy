@@ -6,6 +6,7 @@
     Shell.TabBarIsVisible="false"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Xappy;assembly=Xappy"
     mc:Ignorable="d"
     Visual="Material"
     Title="Button"
@@ -62,6 +63,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
+                                BackgroundColor="White"
                                 Padding="15,4"
                                 RowSpacing="0">
                                 <Grid.ColumnDefinitions>
@@ -79,8 +81,17 @@
                                         Height="1" />
                                 </Grid.RowDefinitions>
                                 <Label
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    />
+                                <Label
                                     Grid.Column="1"
                                     Text="{Binding Name}"
+                                    FontSize="16"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Start" />
                                 <Label

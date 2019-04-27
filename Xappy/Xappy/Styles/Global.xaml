@@ -2,7 +2,8 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
     
     <Style x:Key="BaseStyle" TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#f2f2f2" />
@@ -28,6 +29,8 @@
     <Style x:Key="SenaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
     </Style>
+    
+    <converters:TypeToIconConverter x:Key="TypeToIconConverter"/>
     
     <OnPlatform x:Key="FontAwesome"
                 x:TypeArguments="x:String"
