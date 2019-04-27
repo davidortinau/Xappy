@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using Xamarin.Forms;
 
 namespace Xappy.Content.ControlGallery.ProppyControls
 {
     public partial class ColorPicker
     {
-        public static readonly BindableProperty UseDefaultProperty = BindableProperty.Create(nameof(UseDefault), typeof(bool), typeof(ColorPicker), false,
-            propertyChanged: OnColorChanged);
-
-        public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(ColorPicker), Color.Default,
-            propertyChanged: OnColorChanged);
-
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(ColorPicker), "Pick a color:",
-            propertyChanged: OnTitleChanged);
+        public static readonly BindableProperty ElementInfoProperty = BindableProperty.Create(nameof(ElementInfo), typeof(PropertyInfo), typeof(ColorPicker), null,
+            propertyChanged: OnElementInfoChanged);
 
         public static readonly BindableProperty ElementProperty = BindableProperty.Create(nameof(Element), typeof(View), typeof(ColorPicker), null,
             propertyChanged: OnElementChanged);
+        
+        public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(ColorPicker), Color.Default,
+            propertyChanged: OnColorChanged);
 
         Slider[] _sliders;
 
@@ -26,13 +24,6 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             InitializeComponent();
 
             BindingContext = new ColorPickerViewModel();
-
-
-        }
-
-        void Handle_BackClicked(object sender, System.EventArgs e)
-        {
-            Back?.Invoke(this, EventArgs.Empty);
         }
 
         public View Element
@@ -41,27 +32,17 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             set => SetValue(ElementProperty, value);
         }
 
-        public string Title
+        public PropertyInfo ElementInfo
         {
-            get => (string)GetValue(TitleProperty);
-            set => SetValue(TitleProperty, value);
+            get => (PropertyInfo)GetValue(ElementInfoProperty);
+            set => SetValue(ElementInfoProperty, value);
         }
-
-        public bool UseDefault
-        {
-            get => (bool)GetValue(UseDefaultProperty);
-            set => SetValue(UseDefaultProperty, value);
-        }
-
+        
         public Color Color
         {
             get => (Color)GetValue(ColorProperty);
             set => SetValue(ColorProperty, value);
         }
-
-        public event EventHandler<ColorPickedEventArgs> ColorPicked;
-
-        public event EventHandler Back;
 
         void OnColorSliderChanged(object sender, ValueChangedEventArgs e)
         {
@@ -78,22 +59,15 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             }
         }
 
-        private void OnUseDefaultToggled(object sender, ToggledEventArgs e)
-        {
-            UseDefault = !e.Value;
-
-            foreach (var slider in _sliders)
-                slider.IsEnabled = e.Value;
-        }
-
         static void OnColorChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is ColorPicker picker)
             {
-                var color = picker.UseDefault ? Color.Default : picker.Color;
-                picker.HexEntry.Text = color.ToHex();
-                //picker._box.Color = color;
-                picker.ColorPicked?.Invoke(picker, new ColorPickedEventArgs(color));
+                picker.HexEntry.Text = picker.Color.ToHex();
+                if (picker.Element != null)
+                {
+                    picker.ElementInfo.SetValue(picker.Element, picker.Color);
+                }
             }
         }
 
@@ -141,21 +115,20 @@ namespace Xappy.Content.ControlGallery.ProppyControls
 
         }
 
-        static void OnTitleChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is ColorPicker picker)
-            {
-                picker.HexEntry.Text = picker.Title;
-            }
-        }
-
-        
         static void OnElementChanged(BindableObject bindable, object oldValue, object newValue)
         {
             //if (bindable is View picker)
             //{
             //    picker.HexEntry.Text = picker.Title;
             //}
+        }
+        
+        static void OnElementInfoChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is ColorPicker picker)
+            {
+                picker.HexEntry.Text = picker.Color.ToHex();
+            }
         }
     }
 

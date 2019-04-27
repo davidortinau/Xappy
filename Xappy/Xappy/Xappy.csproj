@@ -30,8 +30,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />
+    <Compile Update="Content\ControlGallery\ControlTemplates\Button.xaml.cs">
+      <DependentUpon>ButtonControlTemplate.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Content\ControlGallery\ControlTemplates\ButtonControlTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
     <Page Include="Content\ControlGallery\ProppyControls\Toolbar.xaml">
       <SubType>Designer</SubType>
       <Generator></Generator>

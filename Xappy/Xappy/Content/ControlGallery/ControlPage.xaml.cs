@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xappy.Content.ControlGallery;
+using Xappy.Content.ControlGallery.ControlTemplates;
 using Xappy.Content.ControlGallery.ProppyControls;
 
 namespace Xappy.ControlGallery
@@ -31,23 +33,26 @@ namespace Xappy.ControlGallery
             BindingContext = new ControlPageViewModel();
         }
 
+        private View ControlTemplate;
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
+            // do the looked to get the right template
+            ControlTemplate = new ButtonControlTemplate();
+            
+            ControlCanvas.Children.Clear();
+            ControlCanvas.Children.Add(ControlTemplate);
 
-            _element = TargetControl;
+            _element = (ControlTemplate as IControlTemplate).TargetControl;
             //_propertyLayout = PropertyContainer;
 
             //OnElementUpdated(_element);
 
-            (BindingContext as ControlPageViewModel).SetElement(TargetControl);
+            (BindingContext as ControlPageViewModel).SetElement(_element);
         }
 
-        void Handle_ColorPicked(object sender, Xappy.Content.ControlGallery.ProppyControls.ColorPickedEventArgs e)
-        {
-            //(TargetControl as Button)[] = e.Color;
-            ActiveProperty.SetValue(_element, e.Color);
-        }
 
         void OnElementUpdated(View oldElement)
         {
@@ -118,9 +123,10 @@ namespace Xappy.ControlGallery
                 // show ColorPicker, set property 
                 colorPicker = new ColorPicker
                 {
-                    Color = (Color)ActiveProperty.GetValue(_element)
+                    Color = (Color)ActiveProperty.GetValue(_element),
+                    ElementInfo = ActiveProperty,
+                    Element =  _element
                 };
-                colorPicker.ColorPicked += Handle_ColorPicked;
                 colorPicker.TranslationX = this.Width;
                 Grid.SetRow(colorPicker, 1);
                 PropertyContainer.Children.Add(colorPicker);
@@ -128,10 +134,6 @@ namespace Xappy.ControlGallery
                 colorPicker.TranslateTo(0, 0);
             }
         }
-
-        
-        
-
 
         Dictionary<string, (double min, double max)> _minMaxProperties = new Dictionary<string, (double min, double max)>
         {
@@ -378,10 +380,17 @@ namespace Xappy.ControlGallery
 
         private void PropertyToolbar_OnBack(object sender, EventArgs e)
         {
-            
             colorPicker.TranslateTo(this.Width, 0);
-            colorPicker.ColorPicked -= Handle_ColorPicked;
             PropertyContainer.Children.Remove(colorPicker);
+        }
+
+        private async void PropertyToolbar_OnViewSource(object sender, EventArgs e)
+        {
+            var source = XamlUtil.GetXamlForType(this.ControlTemplate.GetType());
+            await Shell.Current.Navigation.PushAsync(new ViewSourcePage
+            {
+                Source = source
+            });
         }
     }
 
