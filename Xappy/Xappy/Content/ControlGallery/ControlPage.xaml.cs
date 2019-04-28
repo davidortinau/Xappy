@@ -135,6 +135,16 @@ namespace Xappy.ControlGallery
                     Element = _element,
                     ElementInfo = ActiveProperty
                 };
+            }else if (ActiveProperty.PropertyType == typeof(Thickness))
+            {
+                if (ActiveProperty.Name.ToLower() == "padding")
+                {
+                    propertyControl = new PaddingProperty
+                    {
+                        Element = _element,
+                        ElementInfo = ActiveProperty
+                    };
+                }
             }
             
             propertyControl.TranslationX = this.Width;

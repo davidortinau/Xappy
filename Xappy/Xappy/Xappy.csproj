@@ -33,9 +33,14 @@
     <Compile Update="Content\ControlGallery\ControlTemplates\Button.xaml.cs">
       <DependentUpon>ButtonControlTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Content\ControlGallery\ControlTemplates\ButtonControlTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
+    <Page Include="Content\ControlGallery\ProppyControls\PaddingProperty.xaml">
       <SubType>Designer</SubType>
       <Generator></Generator>
     </Page>

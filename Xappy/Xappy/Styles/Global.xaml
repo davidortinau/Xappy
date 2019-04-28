@@ -30,6 +30,7 @@
         <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
     </Style>
     
+    
     <converters:TypeToIconConverter x:Key="TypeToIconConverter"/>
     
     <OnPlatform x:Key="FontAwesome"
