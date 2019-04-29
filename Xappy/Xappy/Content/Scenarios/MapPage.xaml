@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" x:Class="Xappy.Scenarios.MapPage">
-    <Grid BackgroundColor="Red">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Shell.NavBarIsVisible="False" 
+             Shell.TabBarIsVisible="False" x:Class="Xappy.Scenarios.MapPage">
+    <Grid>
         <maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Street" />
-        <Frame x:Name="InfoPanel" HasShadow="false" BackgroundColor="White" VerticalOptions="EndAndExpand"
-               Margin="4,0" Padding="20,0,20,40" BorderColor="LightGray">
+        <Frame x:Name="InfoPanel" HasShadow="false" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="4,0" Padding="20,0,20,40" BorderColor="LightGray">
             <StackLayout>
                 <StackLayout x:Name="MainContent" HeightRequest="200">
                     <ContentView Padding="0,12" Margin="0,0,0,20">
@@ -16,9 +17,55 @@
                     <Label FontSize="14" Text="250 Newbury St, Boston, MA 02116" />
                     <Button Margin="0,20" BackgroundColor="DodgerBlue" Text="Share The Address" TextColor="White" Clicked="Handle_Clicked" />
                 </StackLayout>
-                <ContentView x:Name="AdditionalContent" BackgroundColor="LightGray" HeightRequest="300">
-                    <Label Text="Something goes in here..." VerticalOptions="Center" HorizontalOptions="Center" />
-                </ContentView>
+                <StackLayout x:Name="AdditionalContent" HeightRequest="300" Spacing="12">
+                    <CollectionView HeightRequest="120" Margin="0,0,0,12" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}" ItemSizingStrategy="MeasureFirstItem">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>https://media-cdn.tripadvisor.com/media/photo-s/02/ff/ff/22/good-cup-of-coffee.jpg</x:String>
+                                <x:String>https://media-cdn.tripadvisor.com/media/photo-s/10/2b/51/b0/photo0jpg.jpg</x:String>
+                                <x:String>https://media-cdn.tripadvisor.com/media/photo-p/0c/19/a5/29/patio.jpg</x:String>
+                                <x:String>https://media-cdn.tripadvisor.com/media/photo-s/04/14/e7/df/wired-puppy.jpg</x:String>
+                                <x:String>https://media-cdn.tripadvisor.com/media/photo-o/03/df/d3/69/pastries.jpg</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="0,0,8,0">
+                                    <Image Source="{Binding .}" Aspect="AspectFill" WidthRequest="150" HeightRequest="120" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label FontSize="12" Text="Snug subterranean cafe offering coffee, tea, espresso &amp; baked goods plus free WiFi &amp; a patio."
+                           VerticalOptions="Start" MaxLines="2" />
+                    <Label FontSize="12" Text="Outdoor seating • Quick bite • Fast service" VerticalOptions="Start" />
+                    <BoxView HeightRequest="1" BackgroundColor="Silver" Margin="0,12" />
+                    <StackLayout Margin="20,0" Spacing="8">
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label FontSize="12" Text="250 Newbury St, Boston, MA 02116" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label FontSize="12" Text="8WX8+PX Boston, Massachusetts" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label FontSize="12" Text="revelatorcoffee.com" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label FontSize="12" Text="(857) 366-4655" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label FontSize="12" TextColor="OrangeRed" Text="Opens at 7:00 AM" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Margin="0,20" HorizontalOptions="Center" Padding="20,0" Text="Suggest an edit" FontSize="12" 
+                            BorderColor="Silver" BorderWidth="1" CornerRadius="20" HeightRequest="40" TextColor="Black"
+                        BackgroundColor="White" />
+                </StackLayout>
             </StackLayout>
         </Frame>
     </Grid>
