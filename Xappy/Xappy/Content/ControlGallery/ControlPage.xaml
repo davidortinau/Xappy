@@ -8,12 +8,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Xappy;assembly=Xappy"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery;assembly=Xappy"
+    xmlns:behaviors="clr-namespace:Xappy.Behaviors"
     mc:Ignorable="d"
     Visual="Material"
     Title="Buttons"
+    x:Name="self"
     x:Class="Xappy.ControlGallery.ControlPage">
     <ContentPage.Content>
-        <Grid x:Name="ContentGrid">
+        <Grid
+            x:Name="ContentGrid">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="2*" />
@@ -31,8 +34,9 @@
             <ScrollView
                 Grid.Row="0"
                 Grid.ColumnSpan="2">
-                <Grid x:Name="ControlCanvas">
-                <!-- Templates Go Here -->
+                <Grid
+                    x:Name="ControlCanvas">
+                    <!-- Templates Go Here -->
                 </Grid>
             </ScrollView>
             <Grid
@@ -40,17 +44,17 @@
                 Grid.Row="1"
                 Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
                 </Grid.RowDefinitions>
-                
-                <controls:Toolbar 
+                <controls:Toolbar
                     Grid.Row="0"
-                    x:Name="PropertyToolbar"   
+                    x:Name="PropertyToolbar"
+                    BackgroundColor="#f1f1f1"
                     Back="PropertyToolbar_OnBack"
-                    ViewSource="PropertyToolbar_OnViewSource"
-                />
-                
+                    ViewSource="PropertyToolbar_OnViewSource" />
                 <CollectionView
                     x:Name="PropertiesList"
                     Grid.Row="1"
@@ -61,111 +65,121 @@
                     ItemTemplate="{StaticResource PropertySelector}"
                     SelectionMode="Single"
                     SelectedItem="{Binding Selected, Mode=TwoWay}"
-                    SelectionChangedCommand="{Binding SelectCommand}"
-                    >
+                    SelectionChangedCommand="{Binding SelectCommand}">
                 </CollectionView>
-            </Grid><!-- PropertyContainer -->
-        </Grid><!-- ContentGrid -->
+            </Grid>
+            <!-- PropertyContainer -->
+        </Grid>
+        <!-- ContentGrid -->
     </ContentPage.Content>
-    
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="DefaultTemplate">
-                            <Grid
-                                BackgroundColor="White"
-                                Padding="15,4"
-                                RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="40" />
-                                    <ColumnDefinition
-                                        Width="*" />
-                                    <ColumnDefinition
-                                        Width="25" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="38" />
-                                    <RowDefinition
-                                        Height="1" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.Column="0"
-                                    VerticalOptions="Center"
-                                    FontFamily="{StaticResource FontAwesome}"
-                                    Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
-                                    TextColor="Black"
-                                    FontSize="18"
-                                    />
-                                <Label
-                                    Grid.Column="1"
-                                    Text="{Binding Name}"
-                                    FontSize="16"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Start" />
-                                <Label
-                                    Grid.Column="2"
-                                    Text="&gt;"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End" />
-                                <BoxView
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Grid.ColumnSpan="3"
-                                    Margin="-15,0"
-                                    BackgroundColor="#cccccc" />
-                            </Grid>
-                        </DataTemplate>
-            
-                        <DataTemplate x:Key="BooleanTemplate">
-                            <Grid
-                                BackgroundColor="White"
-                                Padding="15,4"
-                                RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="40" />
-                                    <ColumnDefinition
-                                        Width="*" />
-                                    <ColumnDefinition
-                                        Width="25" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="38" />
-                                    <RowDefinition
-                                        Height="1" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.Column="0"
-                                    VerticalOptions="Center"
-                                    FontFamily="{StaticResource FontAwesome}"
-                                    Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
-                                    TextColor="Black"
-                                    FontSize="18"
-                                    />
-                                <Label
-                                    Grid.Column="1"
-                                    Text="{Binding Name}"
-                                    FontSize="16"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Start" />
-                                <Switch
-                                    Grid.Column="2"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End" />
-                                <BoxView
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Grid.ColumnSpan="3"
-                                    Margin="-15,0"
-                                    BackgroundColor="#cccccc" />
-                            </Grid>
-                        </DataTemplate>
-            
-            <controlGallery:XappyPropertySelector x:Key="PropertySelector"
-                                       DefaultTemplate="{StaticResource DefaultTemplate}"
-                                       BooleanTemplate="{StaticResource BooleanTemplate}" />
+            <DataTemplate
+                x:Key="DefaultTemplate">
+                <Grid
+                    BackgroundColor="White"
+                    Padding="15,4"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="40" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="25" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="38" />
+                        <RowDefinition
+                            Height="1" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
+                        TextColor="Black"
+                        FontSize="18" />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Name}"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                    <Label
+                        Grid.Column="2"
+                        Text="&gt;"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End" />
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="-15,0"
+                        BackgroundColor="#cccccc" />
+                </Grid>
+            </DataTemplate>
+            <DataTemplate
+                x:Key="BooleanTemplate">
+                <Grid
+                    BackgroundColor="White"
+                    Padding="15,4"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="40" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="38" />
+                        <RowDefinition
+                            Height="1" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
+                        TextColor="Black"
+                        FontSize="18" />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Name}"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                    <Switch
+                        Grid.Column="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding ., 
+                            Converter={StaticResource PropertyInfoBooleanValueConverter}, 
+                            ConverterParameter={x:Reference self}}"
+                    >
+                        <Switch.Behaviors>
+                            <behaviors:EventToCommandBehavior 
+                                EventName="Toggled"
+                                Command="{Binding BindingContext.SwitchedCommand, Source={x:Reference self}}"
+                                CommandParameter="{Binding .}" />
+                        </Switch.Behaviors>
+                    </Switch>
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="-15,0"
+                        BackgroundColor="#cccccc" />
+                </Grid>
+            </DataTemplate>
+            <controlGallery:XappyPropertySelector
+                x:Key="PropertySelector"
+                DefaultTemplate="{StaticResource DefaultTemplate}"
+                BooleanTemplate="{StaticResource BooleanTemplate}" />
         </ResourceDictionary>
     </ContentPage.Resources>
 </ContentPage>

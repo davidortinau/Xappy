@@ -98,7 +98,7 @@
                 x:Name="BackBtn"
                 HeightRequest="45"
                 BackgroundColor="Transparent"
-            >
+                InputTransparent="true">
                 <ImageButton.Source>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"
                                      Glyph="{x:Static local:IconFont.ChevronLeft}"

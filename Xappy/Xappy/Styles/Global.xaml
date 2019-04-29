@@ -33,6 +33,7 @@
     
     <converters:TypeToIconConverter x:Key="TypeToIconConverter"/>
     <converters:DoubleToIntConverter x:Key="DoubleToIntConverter"/>
+    <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter"/>
     
     <OnPlatform x:Key="FontAwesome"
                 x:TypeArguments="x:String"

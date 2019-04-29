@@ -15,7 +15,15 @@ namespace Xappy.ControlGallery
     {
         PropertyInfo ActiveProperty;
 
-        View _element; // this is the target control
+        private View _element; // this is the target control
+
+        public View Element
+        {
+            get
+            {
+                return _element;
+            }
+        }
 
         StackLayout _propertyLayout; // this is the property grid content
 
@@ -378,6 +386,11 @@ namespace Xappy.ControlGallery
                 Source = source
             });
         }
+
+        void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
+        {
+
+        }
     }
 
     public class XappyPropertySelector : DataTemplateSelector
@@ -388,7 +401,7 @@ namespace Xappy.ControlGallery
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
 
-            Console.WriteLine($"{((PropertyInfo)item).Name}, {((PropertyInfo)item).PropertyType.Name}");
+            //Console.WriteLine($"{((PropertyInfo)item).Name}, {((PropertyInfo)item).PropertyType.Name}");
 
             return ((PropertyInfo)item).PropertyType == typeof(Boolean)
                 ? BooleanTemplate

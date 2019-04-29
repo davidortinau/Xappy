@@ -45,6 +45,8 @@ namespace Xappy.ControlGallery
 
         public ICommand SelectCommand { get; set; }
 
+        public ICommand SwitchedCommand { get; set; }
+
         public ObservableCollection<PropertyInfo> Properties { get => properties; set => SetAndRaisePropertyChanged(ref properties, value); }
 
         public PropertyInfo Selected { get; set; }
@@ -67,13 +69,18 @@ namespace Xappy.ControlGallery
 
         public ControlPageViewModel()
         {
-
-
             ViewXAMLCommand = new Command(ViewXAML);
             UndoCommand = new Command(Undo);
             RedoCommand = new Command(Redo);
             ResetCommand = new Command(Reset);
             SelectCommand = new Command(OnPropertySelect);
+            SwitchedCommand = new Command<PropertyInfo>(OnSwitchToggled);
+        }
+
+        private void OnSwitchToggled(PropertyInfo propertyInfo)
+        {
+            var currentValue = (bool)propertyInfo.GetValue(_element);
+            propertyInfo.SetValue(_element, !currentValue);
         }
 
         private void OnPropertySelect()
