@@ -54,12 +54,14 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             Back?.Invoke(this,EventArgs.Empty);
             PropertyInfoContainer.IsVisible = false;
             PropertyNameLbl.Text = string.Empty;
+            ControlNameLbl.IsVisible = true;
         }
 
         public void SetProperty(string name)
         {
             PropertyNameLbl.Text = name;
             PropertyInfoContainer.IsVisible = true;
+            ControlNameLbl.IsVisible = false;
         }
 
         private void ToggleBtn_OnClicked(object sender, EventArgs e)

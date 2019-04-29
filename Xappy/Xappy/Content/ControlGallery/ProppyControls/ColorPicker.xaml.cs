@@ -13,7 +13,7 @@ namespace Xappy.Content.ControlGallery.ProppyControls
 
         public static readonly BindableProperty ElementProperty = BindableProperty.Create(nameof(Element), typeof(View), typeof(ColorPicker), null,
             propertyChanged: OnElementChanged);
-        
+
         public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(ColorPicker), Color.Default,
             propertyChanged: OnColorChanged);
 
@@ -37,7 +37,7 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             get => (PropertyInfo)GetValue(ElementInfoProperty);
             set => SetValue(ElementInfoProperty, value);
         }
-        
+
         public Color Color
         {
             get => (Color)GetValue(ColorProperty);
@@ -112,7 +112,7 @@ namespace Xappy.Content.ControlGallery.ProppyControls
         {
             var c = e.CurrentSelection[0] as ColorViewModel;
             Color = Color.FromHex($"{c.HexColor}");
-            
+
             isEditingHex = true;
 
             R.Value = Math.Min((int)(Color.R * 256), 255);
@@ -131,12 +131,22 @@ namespace Xappy.Content.ControlGallery.ProppyControls
             //    picker.HexEntry.Text = picker.Title;
             //}
         }
-        
+
         static void OnElementInfoChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is ColorPicker picker)
             {
                 picker.HexEntry.Text = picker.Color.ToHex();
+                picker.Color = (Color)picker.ElementInfo.GetValue(picker.Element);
+
+                picker.isEditingHex = true;
+
+                picker.R.Value = Math.Min((int)(picker.Color.R * 256), 255);
+                picker.G.Value = Math.Min((int)(picker.Color.G * 256), 255);
+                picker.B.Value = Math.Min((int)(picker.Color.B * 256), 255);
+                picker.A.Value = picker.Color.A * 255;
+
+                picker.isEditingHex = false;
             }
         }
     }

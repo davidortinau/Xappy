@@ -32,6 +32,7 @@
     
     
     <converters:TypeToIconConverter x:Key="TypeToIconConverter"/>
+    <converters:DoubleToIntConverter x:Key="DoubleToIntConverter"/>
     
     <OnPlatform x:Key="FontAwesome"
                 x:TypeArguments="x:String"

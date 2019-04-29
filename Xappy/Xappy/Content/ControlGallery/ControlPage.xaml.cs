@@ -38,10 +38,10 @@ namespace Xappy.ControlGallery
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+
             // do the looked to get the right template
             ControlTemplate = new ButtonControlTemplate();
-            
+
             ControlCanvas.Children.Clear();
             ControlCanvas.Children.Add(ControlTemplate);
 
@@ -116,26 +116,28 @@ namespace Xappy.ControlGallery
         {
             ActiveProperty = e.CurrentSelection[0] as PropertyInfo;
             PropertyToolbar.SetProperty(ActiveProperty.Name);
-            
+
             if (ActiveProperty.PropertyType == typeof(Color))
             {
                 propertyControl = new ColorPicker
                 {
-                    Color = (Color)ActiveProperty.GetValue(_element),
+                    Element = _element,
                     ElementInfo = ActiveProperty,
-                    Element =  _element
-                };
-                
 
-                
-            }else if (ActiveProperty.PropertyType == typeof(string))
+                };
+
+
+
+            }
+            else if (ActiveProperty.PropertyType == typeof(string))
             {
                 propertyControl = new TextEntry
                 {
                     Element = _element,
                     ElementInfo = ActiveProperty
                 };
-            }else if (ActiveProperty.PropertyType == typeof(Thickness))
+            }
+            else if (ActiveProperty.PropertyType == typeof(Thickness))
             {
                 if (ActiveProperty.Name.ToLower() == "padding")
                 {
@@ -145,8 +147,28 @@ namespace Xappy.ControlGallery
                         ElementInfo = ActiveProperty
                     };
                 }
+                else if (ActiveProperty.Name.ToLower() == "margin")
+                {
+                    propertyControl = new MarginProperty
+                    {
+                        Element = _element,
+                        ElementInfo = ActiveProperty
+                    };
+                }
             }
-            
+            else if (
+               ActiveProperty.PropertyType == typeof(double) ||
+               ActiveProperty.PropertyType == typeof(float) ||
+               ActiveProperty.PropertyType == typeof(int)
+               )
+            {
+                propertyControl = new SingleSmallNumberProperty
+                {
+                    Element = _element,
+                    ElementInfo = ActiveProperty
+                };
+            }
+
             propertyControl.TranslationX = this.Width;
             Grid.SetRow(propertyControl, 1);
             PropertyContainer.Children.Add(propertyControl);

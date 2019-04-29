@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="White"
+             x:Class="Xappy.Content.ControlGallery.ProppyControls.MarginProperty">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        
+        <Stepper Grid.Row="1"
+                 Grid.Column="0"
+                 x:Name="LeftStepper"
+                 ValueChanged="LeftStepper_OnValueChanged"
+                 VerticalOptions="Center"
+                 />
+        <Stepper Grid.Row="0" 
+                 Grid.Column="1"
+                 x:Name="TopStepper"
+                 ValueChanged="TopStepper_OnValueChanged"
+                 HorizontalOptions="Center"
+        />
+        <Stepper Grid.Row="1"
+                 Grid.Column="2"
+                 x:Name="RightStepper"
+                 ValueChanged="RightStepper_OnValueChanged"
+                 VerticalOptions="Center"
+        />
+        <Stepper Grid.Row="2"
+                 Grid.Column="1"
+                 x:Name="BottomStepper"
+                 ValueChanged="BottomStepper_OnValueChanged"
+                 HorizontalOptions="Center"
+        />
+        
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            
+            <Frame HasShadow="False"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="3"
+                   Margin="22"
+                   BorderColor="Red"
+                   BackgroundColor="LightBlue">
+            </Frame>
+            
+            <Label Grid.Row="1" Grid.Column="0" x:Name="LeftMargin" Text="0"  VerticalOptions="Center"/>
+            <Label Grid.Row="0" Grid.Column="1" x:Name="TopMargin" Text="0" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+            <Label Grid.Row="1" Grid.Column="2" x:Name="RightMargin" Text="0" VerticalOptions="Center" HorizontalOptions="End" />
+            <Label Grid.Row="2" Grid.Column="1" x:Name="BottomMargin" Text="0" HorizontalOptions="Center" VerticalOptions="End" />
+            
+        </Grid>
+    </Grid>
+</ScrollView>

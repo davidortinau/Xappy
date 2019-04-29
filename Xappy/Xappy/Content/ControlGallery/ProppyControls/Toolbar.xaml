@@ -30,6 +30,7 @@
             Direction="Row"
             Wrap="NoWrap"
             AlignContent="End"
+            IsVisible="false"
         >
             <ImageButton
                 x:Name="ViewSourceBtn"
@@ -87,6 +88,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
+            Margin="15,0,0,0"
             Orientation="Horizontal">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="BackBtn_OnClicked" />
@@ -99,28 +101,40 @@
             >
                 <ImageButton.Source>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                     Glyph="{x:Static local:IconFont.CaretLeft}"
-                                     Color="#f1f1f1"
+                                     Glyph="{x:Static local:IconFont.ChevronLeft}"
+                                     Size="16"
+                                     Color="#000000"
                                      />
                 </ImageButton.Source>
             </ImageButton>
             
             <Label x:Name="PropertyNameLbl" 
                    VerticalOptions="Center"
-                   
+                   FontSize="16"                   
                    Text="Button" />
         </StackLayout>
+        
+        <Label x:Name="ControlNameLbl" 
+               Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Margin="15,0,0,0"
+               VerticalOptions="Center"
+               FontSize="16"                   
+               Text="Button" />
         
         <ImageButton
             x:Name="ToggleBtn"
             Clicked="ToggleBtn_OnClicked"
             Grid.Row="1"
             Grid.Column="2"
+            HorizontalOptions="Center"
             >
             <ImageButton.Source>
                 <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                 Color="#f1f1f1"
-                                 Glyph="{x:Static local:IconFont.CaretDown}" />
+                                 Color="#000000"
+                                 Size="16"
+                                 Glyph="{x:Static local:IconFont.ChevronUp}" />
             </ImageButton.Source>
         </ImageButton>
         
