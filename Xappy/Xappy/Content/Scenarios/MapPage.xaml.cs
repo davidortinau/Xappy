@@ -9,19 +9,7 @@ namespace Xappy.Scenarios
 {
     public partial class MapPage : ContentPage
     {
-
         private Thickness _safeInsets;
-
-        public void Handle_PanUpdated(object sender, PanUpdatedEventArgs e)
-        {
-            switch (e.StatusType)
-            {
-                case GestureStatus.Running:
-                    InformationPanel.TranslationY = Math.Max(_safeInsets.Top, 
-                        Math.Min(AdditionalContent.HeightRequest, InformationPanel.TranslationY + e.TotalY));
-                    break;
-            }
-        }
 
         public MapPage()
         {
@@ -35,24 +23,35 @@ namespace Xappy.Scenarios
 
             _safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
 
-            AdditionalContent.HeightRequest = this.Height - MainContent.Height;
-            InformationPanel.TranslationY = AdditionalContent.HeightRequest;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                AdditionalContent.HeightRequest = this.Height - MainContent.Height;
+                InfoPanel.TranslationY = AdditionalContent.HeightRequest;
 
-            var newPadding = InformationPanel.Padding;
-            newPadding.Bottom = _safeInsets.Bottom + newPadding.Bottom;
-            InformationPanel.Padding = newPadding;
+                var newPadding = InfoPanel.Padding;
+                newPadding.Bottom = newPadding.Bottom + _safeInsets.Bottom;
+                InfoPanel.Padding = newPadding;
+            });
         }
 
-        public async void Handle_Tapped(object sender, EventArgs e)
+        public void Handle_PanUpdated(object sender, PanUpdatedEventArgs e)
         {
-            await InformationPanel.TranslateTo(0, MainContent.HeightRequest, 400, Easing.CubicInOut);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                switch (e.StatusType)
+                {
+                    case GestureStatus.Running:
+                        InfoPanel.TranslationY = Math.Max(_safeInsets.Top,
+                            Math.Min(AdditionalContent.HeightRequest, InfoPanel.TranslationY + e.TotalY));
+                        break;
+                }
+            });
         }
 
         public async void Handle_Clicked(object sender, EventArgs e)
         {
             var location = new Location(42.349344, -71.082504);
             var options = new MapLaunchOptions { Name = "Wired Puppy", NavigationMode = NavigationMode.Driving };
-
             await Xamarin.Essentials.Map.OpenAsync(location, options);
         }
 
@@ -65,7 +64,6 @@ namespace Xappy.Scenarios
                 if (location != null)
                 {
                     Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-
                     MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(42.349344, -71.082504), Distance.FromMiles(0.1)));
                 }
             }

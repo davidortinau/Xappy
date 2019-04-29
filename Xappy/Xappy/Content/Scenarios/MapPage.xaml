@@ -2,42 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" x:Class="Xappy.Scenarios.MapPage">
     <Grid BackgroundColor="Red">
         <maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Street" />
-        <Frame x:Name="InformationPanel" HasShadow="false" CornerRadius="0" BorderColor="LightGray" Margin="10,0" VerticalOptions="End" BackgroundColor="White" Padding="0,0,0,20">
+        <Frame x:Name="InfoPanel" HasShadow="false" BackgroundColor="White" VerticalOptions="EndAndExpand"
+               Margin="4,0" Padding="20,0,20,40" BorderColor="LightGray">
             <StackLayout>
                 <StackLayout x:Name="MainContent" HeightRequest="200">
-                    <ContentView Padding="0,12">
+                    <ContentView Padding="0,12" Margin="0,0,0,20">
                         <ContentView.GestureRecognizers>
                             <PanGestureRecognizer PanUpdated="Handle_PanUpdated" />
                         </ContentView.GestureRecognizers>
                         <BoxView HeightRequest="4" BackgroundColor="LightGray" HorizontalOptions="Center" />
                     </ContentView>
-                    <StackLayout Padding="20,0" Spacing="12">
-                        <Label Text="Wired Puppy, OG Xamarin HQ" FontSize="20" />
-                        <Label Text="250 Newbury St, Boston, MA 02116" />
-                        <Button Clicked="Handle_Clicked" Margin="0,12,0,12" Text="Share The Address" BackgroundColor="DodgerBlue" TextColor="White" />
-                    </StackLayout>
+                    <Label FontSize="18" Text="Wired Puppy, First Xamarin HQ" />
+                    <Label FontSize="14" Text="250 Newbury St, Boston, MA 02116" />
+                    <Button Margin="0,20" BackgroundColor="DodgerBlue" Text="Share The Address" TextColor="White" Clicked="Handle_Clicked" />
                 </StackLayout>
-                <StackLayout Margin="20,0" x:Name="AdditionalContent" HeightRequest="400">
-                    <CollectionView Margin="0,0,-20,0" HeightRequest="100" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
-                        <CollectionView.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>https://loremflickr.com/320/240</x:String>
-                                <x:String>https://loremflickr.com/320/240</x:String>
-                                <x:String>https://loremflickr.com/320/240</x:String>
-                                <x:String>https://loremflickr.com/320/240</x:String>
-                                <x:String>https://loremflickr.com/320/240</x:String>
-                                <x:String>https://loremflickr.com/320/240</x:String>
-                            </x:Array>
-                        </CollectionView.ItemsSource>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <ContentView Padding="8,0">
-                                    <Image Source="{Binding .}" />
-                                </ContentView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
+                <ContentView x:Name="AdditionalContent" BackgroundColor="LightGray" HeightRequest="300">
+                    <Label Text="Something goes in here..." VerticalOptions="Center" HorizontalOptions="Center" />
+                </ContentView>
             </StackLayout>
         </Frame>
     </Grid>
