@@ -48,66 +48,7 @@ namespace Xappy.ControlGallery
             _element = (ControlTemplate as IControlTemplate).TargetControl;
             //_propertyLayout = PropertyContainer;
 
-            //OnElementUpdated(_element);
-
-            (BindingContext as ControlPageViewModel).SetElement(_element);
-        }
-
-
-        void OnElementUpdated(View oldElement)
-        {
-            _propertyLayout.Children.Clear();
-
-            var elementType = _element.GetType();
-
-            var publicProperties = elementType
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => p.CanRead && p.CanWrite && !_exceptProperties.Contains(p.Name));
-
-            // BindableProperty used to clean property values
-            var bindableProperties = elementType
-                .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
-                .Where(p => p.FieldType.IsAssignableFrom(typeof(BindableProperty)))
-                .Select(p => (BindableProperty)p.GetValue(_element));
-
-            foreach (var property in publicProperties)
-            {
-
-                //if (property.PropertyType == typeof(Color))
-                //{
-                //    var colorPicker = new ColorPicker
-                //    {
-                //        Title = property.Name,
-                //        Color = (Color)property.GetValue(_element)
-                //    };
-                //    colorPicker.ColorPicked += (_, e) => property.SetValue(_element, e.Color);
-                //    _propertyLayout.Children.Add(colorPicker);
-                //}
-                //else if (property.PropertyType == typeof(string))
-                //{
-                //    _propertyLayout.Children.Add(CreateStringPicker(property));
-                //}
-                //else if (property.PropertyType == typeof(double) ||
-                //    property.PropertyType == typeof(float) ||
-                //    property.PropertyType == typeof(int))
-                //{
-                //    _propertyLayout.Children.Add(
-                //        CreateValuePicker(property, bindableProperties.FirstOrDefault(p => p.PropertyName == property.Name)));
-                //}
-                //else if (property.PropertyType == typeof(bool))
-                //{
-                //    _propertyLayout.Children.Add(CreateBooleanPicker(property));
-                //}
-                //else if (property.PropertyType == typeof(Thickness))
-                //{
-                //    _propertyLayout.Children.Add(CreateThicknessPicker(property));
-                //}
-                //else
-                //{
-                //    //_propertyLayout.Children.Add(new Label { Text = $"//TODO: {property.Name} ({property.PropertyType})", TextColor = Color.Gray });
-                //}
-            }
-
+            (BindingContext as ControlPageViewModel).SetElement(_element, _exceptProperties);
         }
 
         View propertyControl;
@@ -167,6 +108,11 @@ namespace Xappy.ControlGallery
                     Element = _element,
                     ElementInfo = ActiveProperty
                 };
+            }
+            else
+            {
+                Console.WriteLine($"{ActiveProperty.Name}, {ActiveProperty.PropertyType.Name}");
+                return;
             }
 
             propertyControl.TranslationX = this.Width;
@@ -431,6 +377,22 @@ namespace Xappy.ControlGallery
             {
                 Source = source
             });
+        }
+    }
+
+    public class XappyPropertySelector : DataTemplateSelector
+    {
+        public DataTemplate BooleanTemplate { get; set; }
+        public DataTemplate DefaultTemplate { get; set; }
+
+        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        {
+
+            Console.WriteLine($"{((PropertyInfo)item).Name}, {((PropertyInfo)item).PropertyType.Name}");
+
+            return ((PropertyInfo)item).PropertyType == typeof(Boolean)
+                ? BooleanTemplate
+                : DefaultTemplate;
         }
     }
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -7,6 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Xappy;assembly=Xappy"
+    xmlns:controlGallery="clr-namespace:Xappy.ControlGallery;assembly=Xappy"
     mc:Ignorable="d"
     Visual="Material"
     Title="Buttons"
@@ -57,11 +58,19 @@
                     HorizontalOptions="Fill"
                     SelectionChanged="Handle_SelectionChanged"
                     ItemsSource="{Binding Properties}"
+                    ItemTemplate="{StaticResource PropertySelector}"
                     SelectionMode="Single"
                     SelectedItem="{Binding Selected, Mode=TwoWay}"
-                    SelectionChangedCommand="{Binding SelectCommand}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                    SelectionChangedCommand="{Binding SelectCommand}"
+                    >
+                </CollectionView>
+            </Grid><!-- PropertyContainer -->
+        </Grid><!-- ContentGrid -->
+    </ContentPage.Content>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="DefaultTemplate">
                             <Grid
                                 BackgroundColor="White"
                                 Padding="15,4"
@@ -84,7 +93,7 @@
                                     Grid.Column="0"
                                     VerticalOptions="Center"
                                     FontFamily="{StaticResource FontAwesome}"
-                                    Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}"
+                                    Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
                                     TextColor="Black"
                                     FontSize="18"
                                     />
@@ -107,9 +116,56 @@
                                     BackgroundColor="#cccccc" />
                             </Grid>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid><!-- PropertyContainer -->
-        </Grid><!-- ContentGrid -->
-    </ContentPage.Content>
+            
+                        <DataTemplate x:Key="BooleanTemplate">
+                            <Grid
+                                BackgroundColor="White"
+                                Padding="15,4"
+                                RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="40" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                    <ColumnDefinition
+                                        Width="25" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="38" />
+                                    <RowDefinition
+                                        Height="1" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    />
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Name}"
+                                    FontSize="16"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start" />
+                                <Switch
+                                    Grid.Column="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="End" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="-15,0"
+                                    BackgroundColor="#cccccc" />
+                            </Grid>
+                        </DataTemplate>
+            
+            <controlGallery:XappyPropertySelector x:Key="PropertySelector"
+                                       DefaultTemplate="{StaticResource DefaultTemplate}"
+                                       BooleanTemplate="{StaticResource BooleanTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

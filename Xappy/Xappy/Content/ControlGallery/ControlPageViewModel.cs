@@ -105,29 +105,25 @@ namespace Xappy.ControlGallery
 
         }
 
-        //HashSet<string> _exceptProperties = new HashSet<string>
-        //{
-        //    AutomationIdProperty.PropertyName,
-        //    ClassIdProperty.PropertyName,
-        //    "StyleId",
-        //};
-
-
-        public void SetElement(View view)
+        public void SetElement(View view, HashSet<string> exceptions)
         {
             _element = view;
 
             var elementType = _element.GetType();
 
             var publicProperties = elementType
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => p.CanRead && p.CanWrite);// && !_exceptProperties.Contains(p.Name)
+                .GetProperties(BindingFlags.Public
+                    | BindingFlags.Instance
+                    | BindingFlags.FlattenHierarchy)
+                .Where(p => p.CanRead && p.CanWrite && !exceptions.Contains(p.Name));
+
+
 
             // BindableProperty used to clean property values
-            var bindableProperties = elementType
-                .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
-                .Where(p => p.FieldType.IsAssignableFrom(typeof(BindableProperty)))
-                .Select(p => (BindableProperty)p.GetValue(_element));
+            //var bindableProperties = elementType
+            //    .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+            //    .Where(p => p.FieldType.IsAssignableFrom(typeof(BindableProperty)))
+            //    .Select(p => (BindableProperty)p.GetValue(_element));
 
             var props = new ObservableCollection<PropertyInfo>();
             foreach (var property in publicProperties)
@@ -144,42 +140,9 @@ namespace Xappy.ControlGallery
                 {
                     props.Add(property);
                 }
-                //if (property.PropertyType == typeof(Color))
-                //{
-                //    var colorPicker = new ColorPicker
-                //    {
-                //        Title = property.Name,
-                //        Color = (Color)property.GetValue(_element)
-                //    };
-                //    colorPicker.ColorPicked += (_, e) => property.SetValue(_element, e.Color);
-                //    _propertyLayout.Children.Add(colorPicker);
-                //}
-                //else if (property.PropertyType == typeof(string))
-                //{
-                //    _propertyLayout.Children.Add(CreateStringPicker(property));
-                //}
-                //else if (property.PropertyType == typeof(double) ||
-                //    property.PropertyType == typeof(float) ||
-                //    property.PropertyType == typeof(int))
-                //{
-                //    _propertyLayout.Children.Add(
-                //        CreateValuePicker(property, bindableProperties.FirstOrDefault(p => p.PropertyName == property.Name)));
-                //}
-                //else if (property.PropertyType == typeof(bool))
-                //{
-                //    _propertyLayout.Children.Add(CreateBooleanPicker(property));
-                //}
-                //else if (property.PropertyType == typeof(Thickness))
-                //{
-                //    _propertyLayout.Children.Add(CreateThicknessPicker(property));
-                //}
-                //else
-                //{
-                //    //_propertyLayout.Children.Add(new Label { Text = $"//TODO: {property.Name} ({property.PropertyType})", TextColor = Color.Gray });
-                //}
             }
 
-            Properties = props;
+            Properties = new ObservableCollection<PropertyInfo>(props.OrderBy(x => x.Name));
 
         }
 
