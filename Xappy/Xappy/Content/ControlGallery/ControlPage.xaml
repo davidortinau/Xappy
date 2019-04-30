@@ -11,7 +11,7 @@
     xmlns:behaviors="clr-namespace:Xappy.Behaviors"
     mc:Ignorable="d"
     Visual="Material"
-    Title="Buttons"
+    Title="Button"
     x:Name="self"
     x:Class="Xappy.ControlGallery.ControlPage">
     <ContentPage.Content>

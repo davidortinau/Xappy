@@ -5,38 +5,77 @@
     xmlns:local="clr-namespace:Xappy"
     xmlns:scenarios="clr-namespace:Xappy.Scenarios"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
-    FlyoutBehavior="Disabled"
+    FlyoutBehavior="Flyout"
     Route=""
     RouteHost="microsoft.com"
     RouteScheme="app"
     x:Class="Xappy.AppShell">
-    
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <ContentView HeightRequest="64"/>
+            <Grid Padding="0,66,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="40" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Column="0"
+                    Source="{Binding Icon}" />
+                <Label
+                    Grid.Column="1"
+                    Text="Visual Settings"
+                    TextColor="White" />
+            </Grid>
         </DataTemplate>
-        
     </Shell.FlyoutHeaderTemplate>
-    
-    <FlyoutItem Title="Main"
-                Style="{DynamicResource CurrentTheme}"
-                FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="UI Controls">
-            <ShellContent ContentTemplate="{DataTemplate controlGallery:ControlPage}" />
+    <FlyoutItem
+        Title="Main"
+        Style="{DynamicResource CurrentTheme}"
+        FlyoutDisplayOptions="AsMultipleItems">
+        <Tab
+            Title="Latest">
+            <ShellContent
+                ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Latest">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        <Tab
+            Title="UI Controls">
+            <ShellContent
+                ContentTemplate="{DataTemplate controlGallery:ControlPage}" />
         </Tab>
-        
-        <Tab Title="Scenarios">
-            <ShellContent ContentTemplate="{DataTemplate scenarios:IndexPage}" />
+        <Tab
+            Title="Scenarios">
+            <ShellContent
+                ContentTemplate="{DataTemplate scenarios:IndexPage}" />
         </Tab>
-        <Tab Title="Resource">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        <Tab
+            Title="Resource">
+            <ShellContent
+                ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="About">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        <Tab
+            Title="About">
+            <ShellContent
+                ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </FlyoutItem>
-    
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="40" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Column="0"
+                    Source="{Binding Icon}" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding Title}"
+                    TextColor="White" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
 </Shell>
