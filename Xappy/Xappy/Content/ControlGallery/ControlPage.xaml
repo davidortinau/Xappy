@@ -2,128 +2,184 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Shell.TabBarIsVisible="false" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:controls="clr-namespace:Xappy.Content.ControlGallery.ProppyControls"
+    Shell.TabBarIsVisible="false"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Xappy;assembly=Xappy"
+    xmlns:controlGallery="clr-namespace:Xappy.ControlGallery;assembly=Xappy"
+    xmlns:behaviors="clr-namespace:Xappy.Behaviors"
     mc:Ignorable="d"
     Visual="Material"
+    Title="Button"
+    x:Name="self"
     x:Class="Xappy.ControlGallery.ControlPage">
     <ContentPage.Content>
-       
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" /> <!-- Content container -->
-                    <RowDefinition Height="1*" />    <!-- Selection panel -->
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-            <ScrollView Grid.Row="0" 
-                       Grid.ColumnSpan="2">
-                <Frame  
-                       CornerRadius="4"
-                       Padding="0" 
-                       Margin="60">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        
-                        <ContentView Grid.Row="0" BackgroundColor="#00BCD4" HeightRequest="176">
-                            <Label Text="Card Title" 
-                            TextColor="White"
-                            VerticalOptions="End" Margin="15"/>
-                            
-                        </ContentView>
-
-                        <Label Margin="15" Grid.Row="1" Text="It is a long established fact that a reader will be distracted by the readable content of a page..."/>
-                        
-                        <StackLayout Orientation="Vertical" 
-                                     Spacing="15"
-                                     Padding="0,0,0,8"
-                                     Grid.Row="2">
-                            <BoxView BackgroundColor="#000000" 
-                                     HeightRequest="1"/>
-                            <Button
-                                Visual="Default"
-                                HorizontalOptions="Start"
-                                Margin="15,0"
-                                Text="BUTTON" 
-                                BackgroundColor="Transparent"
-                                TextColor="#00BCD4"
-                            />
-                            
-                            
-                        </StackLayout>
-                    </Grid>
-                </Frame>
-            
+        <Grid
+            x:Name="ContentGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="2*" />
+                <!-- Content container -->
+                <RowDefinition
+                    Height="1*" />
+                <!-- Selection panel -->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <ScrollView
+                Grid.Row="0"
+                Grid.ColumnSpan="2">
+                <Grid
+                    x:Name="ControlCanvas">
+                    <!-- Templates Go Here -->
+                </Grid>
             </ScrollView>
-                <FlexLayout Grid.Row="1" 
-                            Grid.ColumnSpan="2" 
-                            AlignContent="Start"
-                            JustifyContent="SpaceEvenly"
-                            Wrap="Wrap">
-                    <BoxView BackgroundColor="#222222" 
-                             FlexLayout.Basis="100%"
-                             HeightRequest="1" 
-                             />
-                    <Button Text="View" 
-                            Visual="Default" 
-                            HeightRequest="45"
-                            Command="{Binding ViewXAMLCommand}"
-                            BackgroundColor="Transparent"
-                            TextColor="#00BCD4"
-                    />
-                    <Button Text="Undo" 
-                            Visual="Default" 
-                            HeightRequest="45"
-                            Command="{Binding UndoCommand}"
-                            BackgroundColor="Transparent"
-                            TextColor="#00BCD4"
-                    />
-                    <Button Text="Redo" 
-                            Visual="Default" 
-                            HeightRequest="45"
-                            Command="{Binding RedoCommand}"
-                            BackgroundColor="Transparent"
-                            TextColor="#00BCD4"
-                    />
-                    <Button Text="Reset" 
-                            Visual="Default" 
-                            HeightRequest="45"
-                            Command="{Binding ResetCommand}"
-                            BackgroundColor="Transparent"
-                            TextColor="#00BCD4"
-                    />
-                    <BoxView BackgroundColor="#222222" HeightRequest="1" 
-                             FlexLayout.Basis="100%"
-                             />
-                             
-                    
-                    <CollectionView VerticalOptions="Fill"
-                                    HorizontalOptions="Fill"
-                                    FlexLayout.Basis="100%"
-                                    FlexLayout.Grow="1"
-                                    FlexLayout.Shrink="0"
-                                    FlexLayout.AlignSelf="Start"
-                                    >
-                        <CollectionView.EmptyView>
-                            <StackLayout>
-                                <Label Text="Properties Here" 
-                                       FontSize="18"
-                                       VerticalOptions="Center"
-                                       HorizontalOptions="Center"/>
-                            </StackLayout>
-                        </CollectionView.EmptyView>
-                    </CollectionView>
-                </FlexLayout>
-
+            <Grid
+                x:Name="PropertyContainer"
+                Grid.Row="1"
+                Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
+                </Grid.RowDefinitions>
+                <controls:Toolbar
+                    Grid.Row="0"
+                    x:Name="PropertyToolbar"
+                    BackgroundColor="#f1f1f1"
+                    Back="PropertyToolbar_OnBack"
+                    ViewSource="PropertyToolbar_OnViewSource" />
+                <CollectionView
+                    x:Name="PropertiesList"
+                    Grid.Row="1"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
+                    SelectionChanged="Handle_SelectionChanged"
+                    ItemsSource="{Binding Properties}"
+                    ItemTemplate="{StaticResource PropertySelector}"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding Selected, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectCommand}">
+                </CollectionView>
             </Grid>
-        
-
+            <!-- PropertyContainer -->
+        </Grid>
+        <!-- ContentGrid -->
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate
+                x:Key="DefaultTemplate">
+                <Grid
+                    BackgroundColor="White"
+                    Padding="15,4"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="40" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="25" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="38" />
+                        <RowDefinition
+                            Height="1" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
+                        TextColor="Black"
+                        FontSize="18" />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Name}"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                    <Label
+                        Grid.Column="2"
+                        Text="&gt;"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End" />
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="-15,0"
+                        BackgroundColor="#cccccc" />
+                </Grid>
+            </DataTemplate>
+            <DataTemplate
+                x:Key="BooleanTemplate">
+                <Grid
+                    BackgroundColor="White"
+                    Padding="15,4"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="40" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="38" />
+                        <RowDefinition
+                            Height="1" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
+                        TextColor="Black"
+                        FontSize="18" />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Name}"
+                        FontSize="16"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                    <Switch
+                        Grid.Column="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding ., 
+                            Converter={StaticResource PropertyInfoBooleanValueConverter}, 
+                            ConverterParameter={x:Reference self}}"
+                    >
+                        <Switch.Behaviors>
+                            <behaviors:EventToCommandBehavior 
+                                EventName="Toggled"
+                                Command="{Binding BindingContext.SwitchedCommand, Source={x:Reference self}}"
+                                CommandParameter="{Binding .}" />
+                        </Switch.Behaviors>
+                    </Switch>
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="-15,0"
+                        BackgroundColor="#cccccc" />
+                </Grid>
+            </DataTemplate>
+            <controlGallery:XappyPropertySelector
+                x:Key="PropertySelector"
+                DefaultTemplate="{StaticResource DefaultTemplate}"
+                BooleanTemplate="{StaticResource BooleanTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

@@ -2,12 +2,13 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
     
     <Style x:Key="BaseStyle" TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#f2f2f2" />
-        <Setter Property="Shell.ShellForegroundColor" Value="Green" />
-        <Setter Property="Shell.ShellTitleColor" Value="Blue" />
+        <Setter Property="Shell.ShellForegroundColor" Value="#1d1d1d" />
+        <Setter Property="Shell.ShellTitleColor" Value="#1f1f1f" />
         <Setter Property="Shell.ShellDisabledColor" Value="#B4FFFFFF" />
         <Setter Property="Shell.ShellUnselectedColor" Value="#CC0000" />
     </Style>
@@ -29,9 +30,13 @@
         <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
     </Style>
     
-    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesome">
-      <On Platform="iOS" Value="FontAwesome5Free-Solid"/>
-      <On Platform="Android" Value="fontawesome.otf#Solid"/>
-    </OnPlatform>
+    <converters:TypeToIconConverter x:Key="TypeToIconConverter"/>
+    <converters:DoubleToIntConverter x:Key="DoubleToIntConverter"/>
+    <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter"/>
+    
+    <OnPlatform x:Key="FontAwesome"
+                x:TypeArguments="x:String"
+                Android="fa-solid-900.ttf#Font Awesome 5 Free"
+                iOS="Font Awesome 5 Free" />
     
 </ResourceDictionary>

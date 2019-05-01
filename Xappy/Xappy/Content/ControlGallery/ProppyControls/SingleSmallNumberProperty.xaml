@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView
+    BackgroundColor="White"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Xappy.Content.ControlGallery.ProppyControls.SingleSmallNumberProperty">
+    <StackLayout
+        Padding="15,8">
+        <Entry
+            x:Name="TextEntryField"
+            Text="{Binding Value, Source={x:Reference TheStepper}}"
+            BackgroundColor="Transparent"
+            TextChanged="TextEntryField_OnTextChanged" />
+        <Stepper
+            x:Name="TheStepper"
+            Increment="1"
+            Minimum="0" />
+            
+        
+    </StackLayout>
+</ScrollView>

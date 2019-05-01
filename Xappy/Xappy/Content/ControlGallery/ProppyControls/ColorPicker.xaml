@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView
+    BackgroundColor="White"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Xappy.Content.ControlGallery.ProppyControls.ColorPicker">
+    
+        <StackLayout
+            Padding="15,8">
+            <FlexLayout Direction="Row" 
+                        JustifyContent="SpaceBetween">
+                <Entry
+                    Placeholder="#"
+                    BackgroundColor="Transparent"
+                    x:Name="HexEntry"
+                    Focused="Handle_Focused"
+                    Unfocused="Handle_Unfocused"
+                    FlexLayout.Basis="30%"
+                    Text="000000" />
+                <Entry
+                    Placeholder="R"
+                    BackgroundColor="Transparent"
+                    IsReadOnly="True"
+                    x:Name="RedLbl"
+                    FlexLayout.Basis="18%"
+                    Text="{Binding Value, Source={x:Reference R}, Converter={StaticResource DoubleToIntConverter}}" />
+                <Entry
+                    Placeholder="G"
+                    BackgroundColor="Transparent"
+                    IsReadOnly="True"
+                    x:Name="GreenLbl"
+                    FlexLayout.Basis="18%"
+                    Text="{Binding Value, Source={x:Reference G}, Converter={StaticResource DoubleToIntConverter}}" />
+                <Entry
+                    Placeholder="B"
+                    BackgroundColor="Transparent"
+                    IsReadOnly="True"
+                    x:Name="BlueLbl"
+                    FlexLayout.Basis="18%"
+                    Text="{Binding Value, Source={x:Reference B}, Converter={StaticResource DoubleToIntConverter}}" />
+                <Entry
+                    Placeholder="A"
+                    BackgroundColor="Transparent"
+                    IsReadOnly="True"
+                    x:Name="AlphaLbl"
+                    FlexLayout.Basis="18%"
+                    Text="{Binding Value, Source={x:Reference A}, Converter={StaticResource DoubleToIntConverter}}" />
+            </FlexLayout>
+            <Slider
+                x:Name="R"
+                ValueChanged="OnColorSliderChanged"
+                Visual="Default"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#E52E15"
+                ThumbColor="#E52E15" />
+            <Slider
+                x:Name="G"
+                ValueChanged="OnColorSliderChanged"
+                Visual="Default"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#88C800"
+                ThumbColor="#88C800" />
+            <Slider
+                x:Name="B"
+                ValueChanged="OnColorSliderChanged"
+                Visual="Default"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#006CCF"
+                ThumbColor="#006CCF" />
+            <Slider
+                x:Name="A"
+                ValueChanged="OnColorSliderChanged"
+                Visual="Default"
+                Value="255"
+                Minimum="0"
+                Maximum="255"
+                MaximumTrackColor="#cccccc"
+                MinimumTrackColor="#888888"
+                ThumbColor="#888888" />
+            <CollectionView
+                HeightRequest="45"
+                Margin="-15,0"
+                SelectionMode="Single"
+                SelectionChanged="Handle_SelectionChanged"
+                ItemsSource="{Binding ColorViewModels}"
+                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView
+                            BackgroundColor="White"
+                            Padding="0,0,8,0">
+                            <BoxView
+                                CornerRadius="8"
+                                VerticalOptions="Start"
+                                HeightRequest="45"
+                                WidthRequest="45"
+                                BackgroundColor="{Binding HexColor}" />
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    
+</ScrollView>

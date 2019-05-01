@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xappy;assembly=Xappy"
+             x:Class="Xappy.Content.ControlGallery.ProppyControls.Toolbar">
+   
+    <Grid.RowDefinitions>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="45"/>
+        <RowDefinition Height="1"/>
+    </Grid.RowDefinitions>
+    
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="80"/>
+    </Grid.ColumnDefinitions>
+    
+        <BoxView
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            BackgroundColor="#222222"
+            FlexLayout.Basis="100%"
+            HeightRequest="1" />
+        
+        <FlexLayout
+            Grid.Row="1"
+            Grid.Column="1"
+            Direction="Row"
+            Wrap="NoWrap"
+            AlignContent="End"
+            IsVisible="false"
+        >
+            <ImageButton
+                x:Name="ViewSourceBtn"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+                Clicked="ImageButton_OnClicked"
+                >
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Color="#f1f1f1"
+                                     Glyph="{x:Static local:IconFont.FileCode}" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton
+                x:Name="UndoBtn"
+                Clicked="UndoBtn_OnClicked"
+                Visual="Default"
+                HeightRequest="45"
+                BackgroundColor="Transparent">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Color="#f1f1f1"
+                                     Glyph="{x:Static local:IconFont.Undo}" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton
+                x:Name="RedoBtn"
+                Clicked="RedoBtn_OnClicked"
+                Visual="Default"
+                HeightRequest="45"
+                BackgroundColor="Transparent">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Color="#f1f1f1"
+                                     Glyph="{x:Static local:IconFont.Redo}" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton
+                x:Name="ResetBtn"
+                Clicked="ResetBtn_OnClicked"
+                Visual="Default"
+                HeightRequest="45"
+                BackgroundColor="Transparent">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Color="#f1f1f1"
+                                     Glyph="{x:Static local:IconFont.Reply}" />
+                </ImageButton.Source>
+            </ImageButton>
+        </FlexLayout>
+        
+        <StackLayout 
+            x:Name="PropertyInfoContainer"
+            IsVisible="false"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="15,0,0,0"
+            Orientation="Horizontal">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackBtn_OnClicked" />
+            </StackLayout.GestureRecognizers>
+            
+            <ImageButton
+                x:Name="BackBtn"
+                HeightRequest="45"
+                BackgroundColor="Transparent"
+                InputTransparent="true">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static local:IconFont.ChevronLeft}"
+                                     Size="16"
+                                     Color="#000000"
+                                     />
+                </ImageButton.Source>
+            </ImageButton>
+            
+            <Label x:Name="PropertyNameLbl" 
+                   VerticalOptions="Center"
+                   FontSize="16"                   
+                   Text="Button" />
+        </StackLayout>
+        
+        <Label x:Name="ControlNameLbl" 
+               Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Margin="15,0,0,0"
+               VerticalOptions="Center"
+               FontSize="16"                   
+               Text="Button" />
+        
+        <ImageButton
+            x:Name="ToggleBtn"
+            Clicked="ToggleBtn_OnClicked"
+            Grid.Row="1"
+            Grid.Column="2"
+            HorizontalOptions="Center"
+            >
+            <ImageButton.Source>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Color="#000000"
+                                 Size="16"
+                                 Glyph="{x:Static local:IconFont.ChevronUp}" />
+            </ImageButton.Source>
+        </ImageButton>
+        
+        <BoxView
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            BackgroundColor="#222222"
+            HeightRequest="1"
+            FlexLayout.Basis="100%" />
+    
+    
+</Grid>
