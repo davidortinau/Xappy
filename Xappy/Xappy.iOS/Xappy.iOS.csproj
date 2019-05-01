@@ -146,7 +146,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\3bar%402x.png" />
     <BundleResource Include="Resources\3bar.png" />
-    <BundleResource Include="Resources\fontawesome.otf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\fa-solid-900.ttf" />

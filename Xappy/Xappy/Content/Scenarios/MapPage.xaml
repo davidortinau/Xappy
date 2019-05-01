@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Shell.NavBarIsVisible="False" 
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:Xappy;assembly=Xappy" Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False" x:Class="Xappy.Scenarios.MapPage">
     <Grid>
         <maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Street" />
@@ -44,19 +45,19 @@
                     <BoxView HeightRequest="1" BackgroundColor="Silver" Margin="0,12" />
                     <StackLayout Margin="20,0" Spacing="8">
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12" Text="{x:Static local:IconFont.Home}" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" Text="250 Newbury St, Boston, MA 02116" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12"  Text="{x:Static local:IconFont.Globe}" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" Text="revelatorcoffee.com" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12"  Text="{x:Static local:IconFont.Phone}" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" Text="(857) 366-4655" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12"  Text="{x:Static local:IconFont.Clock}" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" TextColor="OrangeRed" Text="Opens at 7:00 AM" /> 
                         </StackLayout>
                     </StackLayout>
