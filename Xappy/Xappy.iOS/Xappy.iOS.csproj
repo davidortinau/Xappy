@@ -145,6 +145,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\3bar%402x.png" />
     <BundleResource Include="Resources\3bar.png" />
+    <BundleResource Include="Resources\fontawesome.otf" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

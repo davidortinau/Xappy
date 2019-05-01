@@ -4,7 +4,7 @@
              Shell.TabBarIsVisible="False" x:Class="Xappy.Scenarios.MapPage">
     <Grid>
         <maps:Map x:Name="MyMap" IsShowingUser="true" MapType="Street" />
-        <Frame x:Name="InfoPanel" HasShadow="false" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="4,0" Padding="20,0,20,40" BorderColor="LightGray">
+        <Frame x:Name="InfoPanel" HasShadow="false" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="4,0" Padding="20,0,20,0" BorderColor="LightGray">
             <StackLayout>
                 <StackLayout x:Name="MainContent" HeightRequest="200">
                     <ContentView Padding="0,12" Margin="0,0,0,20">
@@ -17,7 +17,8 @@
                     <Label FontSize="14" Text="250 Newbury St, Boston, MA 02116" />
                     <Button Margin="0,20" BackgroundColor="DodgerBlue" Text="Share The Address" TextColor="White" Clicked="Handle_Clicked" />
                 </StackLayout>
-                <StackLayout x:Name="AdditionalContent" HeightRequest="300" Spacing="12">
+                <ScrollView x:Name="AdditionalContent" HeightRequest="300">
+                    <StackLayout Spacing="12">
                     <CollectionView HeightRequest="120" Margin="0,0,0,12" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}" ItemSizingStrategy="MeasureFirstItem">
                         <CollectionView.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
@@ -42,30 +43,27 @@
                     <BoxView HeightRequest="1" BackgroundColor="Silver" Margin="0,12" />
                     <StackLayout Margin="20,0" Spacing="8">
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" Text="250 Newbury St, Boston, MA 02116" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
-                            <Label FontSize="12" Text="8WX8+PX Boston, Massachusetts" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" Text="revelatorcoffee.com" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
+                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
                             <Label FontSize="12" Text="(857) 366-4655" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="12">
-                            <Label FontSize="12" Text="P" TextColor="DodgerBlue" />
-                            <Label FontSize="12" TextColor="OrangeRed" Text="Opens at 7:00 AM" />
+                            <Label VerticalTextAlignment="Center" FontSize="12" Text="" FontFamily="{StaticResource FontAwesome}" TextColor="DodgerBlue" />
+                            <Label FontSize="12" TextColor="OrangeRed" Text="Opens at 7:00 AM" /> 
                         </StackLayout>
                     </StackLayout>
                     <Button Margin="0,20" HorizontalOptions="Center" Padding="20,0" Text="Suggest an edit" FontSize="12" 
                             BorderColor="Silver" BorderWidth="1" CornerRadius="20" HeightRequest="40" TextColor="Black"
-                        BackgroundColor="White" />
+                            BackgroundColor="White" />
                 </StackLayout>
+                </ScrollView>
             </StackLayout>
         </Frame>
     </Grid>
