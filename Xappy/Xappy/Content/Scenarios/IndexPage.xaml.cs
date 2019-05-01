@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xappy.Scenarios;
@@ -20,6 +22,8 @@ namespace Xappy.Scenarios
             base.OnAppearing();
 
             ScenariosCV.SelectedItem = null;
+
+
         }
     }
 }

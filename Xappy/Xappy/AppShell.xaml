@@ -12,18 +12,24 @@
     x:Class="Xappy.AppShell">
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid Padding="0,66,0,0">
+            <Grid Padding="0,66,0,40">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="40" />
                     <ColumnDefinition
                         Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image
-                    Grid.Column="0"
-                    Source="{Binding Icon}" />
+                <Image Grid.Column="0">
+                    <Image.Source>
+                        <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                         Glyph="{x:Static local:IconFont.PaintBrush}"
+                                         Color="White"
+                                         Size="14" />
+                    </Image.Source>
+                </Image>
                 <Label
                     Grid.Column="1"
+                    FontSize="17"
                     Text="Visual Settings"
                     TextColor="White" />
             </Grid>
@@ -35,33 +41,65 @@
         FlyoutDisplayOptions="AsMultipleItems">
         <Tab
             Title="Latest">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.AddressBook}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
             <ShellContent
                 ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
         <Tab
             Title="UI Controls">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.Toolbox}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
             <ShellContent
                 ContentTemplate="{DataTemplate controlGallery:ControlPage}" />
         </Tab>
         <Tab
             Title="Scenarios">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.Monument}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
             <ShellContent
                 ContentTemplate="{DataTemplate scenarios:IndexPage}" />
         </Tab>
         <Tab
             Title="Resource">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.Boxes}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
             <ShellContent
                 ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
         <Tab
             Title="About">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.InfoCircle}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
             <ShellContent
                 ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </FlyoutItem>
+    
+    
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid>
+            <Grid Padding="0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
                         Width="40" />
@@ -74,7 +112,9 @@
                 <Label
                     Grid.Column="1"
                     Text="{Binding Title}"
-                    TextColor="White" />
+                    TextColor="White"
+                    FontSize="17"
+                    />
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>

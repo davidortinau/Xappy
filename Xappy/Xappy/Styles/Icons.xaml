@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:xappy="clr-namespace:Xappy;assembly=Xappy">
+
+    <OnPlatform x:Key="FontAwesome"
+                x:TypeArguments="x:String"
+                Android="fa-solid-900.ttf#Font Awesome 5 Free"
+                iOS="Font Awesome 5 Free" />
+
+    <Color x:Key="ColorTabIcon">Gray</Color>
+    <x:Double x:Key="SizeTabIcon">24</x:Double>
+
+    <FontImageSource x:Key="IconTabNews"
+                     FontFamily="{StaticResource FontAwesome}"
+                     Glyph="{x:Static xappy:IconFont.Newspaper}"
+                     Size="{StaticResource SizeTabIcon}"
+                     Color="{StaticResource ColorTabIcon}" />
+
+    <FontImageSource x:Key="IconTabControls"
+                     FontFamily="{StaticResource FontAwesome}"
+                     Glyph="{x:Static xappy:IconFont.Cogs}"
+                     Size="{StaticResource SizeTabIcon}"
+                     Color="{StaticResource ColorTabIcon}" />
+
+    <FontImageSource x:Key="IconTabScenarios"
+                     FontFamily="{StaticResource FontAwesome}"
+                     Glyph="{x:Static xappy:IconFont.Scroll}"
+                     Size="{StaticResource SizeTabIcon}"
+                     Color="{StaticResource ColorTabIcon}" />
+
+    <FontImageSource x:Key="IconTabResources"
+                     FontFamily="{StaticResource FontAwesome}"
+                     Glyph="{x:Static xappy:IconFont.Book}"
+                     Size="{StaticResource SizeTabIcon}"
+                     Color="{StaticResource ColorTabIcon}" />
+
+    <FontImageSource x:Key="IconTabAbout"
+                     FontFamily="{StaticResource FontAwesome}"
+                     Glyph="{x:Static xappy:IconFont.Info}"
+                     Size="{StaticResource SizeTabIcon}"
+                     Color="{StaticResource ColorTabIcon}" />
+
+</ResourceDictionary>
