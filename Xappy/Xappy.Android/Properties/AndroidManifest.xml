@@ -4,8 +4,11 @@
 	<application android:label="Xappy.Android" android:networkSecurityConfig="@xml/network_security_config"></application>
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-feature android:name="android.hardware.location" android:required="false" />
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 	<uses-feature android:name="android.hardware.location.network" android:required="false" />

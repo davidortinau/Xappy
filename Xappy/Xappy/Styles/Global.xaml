@@ -45,7 +45,6 @@
         <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
     </Style>
 
-
     <converters:TypeToIconConverter x:Key="TypeToIconConverter" />
     <converters:DoubleToIntConverter x:Key="DoubleToIntConverter" />
     <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter" />
