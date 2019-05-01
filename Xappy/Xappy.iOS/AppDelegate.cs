@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+
+using ImageCircle.Forms.Plugin.iOS;
+
 using UIKit;
 
 namespace Xappy.iOS
@@ -27,6 +30,7 @@ namespace Xappy.iOS
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();
 
+            ImageCircleRenderer.Init();
             Xamarin.FormsMaps.Init();
 
             return base.FinishedLaunching(app, options);

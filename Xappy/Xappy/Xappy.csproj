@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="LiveXAML" Version="2.1.72" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.346134-pre9" />
@@ -18,14 +19,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Styles\" />
-    <Folder Include="Content\" />
     <Folder Include="Content\ControlGallery\" />
     <Folder Include="Content\LatestNews\" />
-    <Folder Include="Content\Scenarios\" />
     <Folder Include="Content\ControlGallery\ProppyControls\" />
-    <Folder Include="Converters\" />
     <Folder Include="Extensions\" />
     <Folder Include="Behaviors\" />
   </ItemGroup>
@@ -33,6 +29,9 @@
     <Compile Remove="ApiConstants.cs" />
     <Compile Update="Content\ControlGallery\ControlTemplates\Button.xaml.cs">
       <DependentUpon>ButtonControlTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Content\Scenarios\ConversationPage.xaml.cs">
+      <DependentUpon>ConversationPage.xaml</DependentUpon>
     </Compile>
     <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
   </ItemGroup>

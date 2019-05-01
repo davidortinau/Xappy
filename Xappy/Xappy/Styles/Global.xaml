@@ -1,43 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xaml-comp compile="true" ?>
-<ResourceDictionary
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
-    
+<?xml version="1.0" encoding="UTF-8" ?>
+<?Mapping compile="true"    ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
+
+    <Color x:Key="AccentColor">DodgerBlue</Color>
+    <Color x:Key="ColorPrimary">#F1F1F1</Color>
+    <Color x:Key="ColorAppBackground">White</Color>
+
     <Style x:Key="BaseStyle" TargetType="Element">
-        <Setter Property="Shell.ShellBackgroundColor" Value="#f2f2f2" />
+        <Setter Property="Shell.ShellBackgroundColor" Value="{StaticResource ColorPrimary}" />
         <Setter Property="Shell.ShellForegroundColor" Value="#1d1d1d" />
         <Setter Property="Shell.ShellTitleColor" Value="#1f1f1f" />
         <Setter Property="Shell.ShellDisabledColor" Value="#B4FFFFFF" />
         <Setter Property="Shell.ShellUnselectedColor" Value="#CC0000" />
     </Style>
-    <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
-    <Style x:Key="CurrentTheme" TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}"/>
-    <Style x:Key="SecondaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+    <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" />
+    <Style x:Key="CurrentTheme"
+           BasedOn="{StaticResource BaseStyle}"
+           TargetType="ShellItem" />
+    <Style x:Key="SecondaryShell"
+           BasedOn="{StaticResource BaseStyle}"
+           TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#AF3800" />
     </Style>
-    <Style x:Key="TertiaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+    <Style x:Key="TertiaryShell"
+           BasedOn="{StaticResource BaseStyle}"
+           TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#FA7921" />
     </Style>
-    <Style x:Key="QuaternaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+    <Style x:Key="QuaternaryShell"
+           BasedOn="{StaticResource BaseStyle}"
+           TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#FE9920" />
     </Style>
-    <Style x:Key="QuinaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+    <Style x:Key="QuinaryShell"
+           BasedOn="{StaticResource BaseStyle}"
+           TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#566E3D" />
     </Style>
-    <Style x:Key="SenaryShell" TargetType="Element" BasedOn="{StaticResource BaseStyle}">
+    <Style x:Key="SenaryShell"
+           BasedOn="{StaticResource BaseStyle}"
+           TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#1B3022" />
     </Style>
-    
-    
-    <converters:TypeToIconConverter x:Key="TypeToIconConverter"/>
-    <converters:DoubleToIntConverter x:Key="DoubleToIntConverter"/>
-    <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter"/>
-    
-    <OnPlatform x:Key="FontAwesome"
-                x:TypeArguments="x:String"
-                Android="fa-solid-900.ttf#Font Awesome 5 Free"
-                iOS="Font Awesome 5 Free" />
-    
+
+
+    <converters:TypeToIconConverter x:Key="TypeToIconConverter" />
+    <converters:DoubleToIntConverter x:Key="DoubleToIntConverter" />
+    <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter" />
+    <converters:NullOrEmptyToBoolConverter x:Key="NullOrEmptyToBoolConverter" />
+
 </ResourceDictionary>

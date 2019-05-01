@@ -52,6 +52,9 @@ namespace Xappy.Scenarios
                 case "to do list":
                     targetPage = "todo";
                     break;
+                case "conversation":
+                    targetPage = "conversation";
+                    break;
                 default:
                     break;
 
