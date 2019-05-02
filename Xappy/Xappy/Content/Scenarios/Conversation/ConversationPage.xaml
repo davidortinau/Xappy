@@ -5,39 +5,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:vm="clr-namespace:Xappy.Scenarios;assembly=Xappy"
              xmlns:xappy="clr-namespace:Xappy;assembly=Xappy"
              xmlns:customViews="clr-namespace:Xappy.CustomViews;assembly=Xappy"
              xmlns:conversation="clr-namespace:Xappy.Content.Scenarios.Conversation;assembly=Xappy"
-             x:Name="RootLayout"
              Title="Conversation"
              ios:Page.UseSafeArea="true"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="True"
              Shell.TabBarIsVisible="false">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="TextTitleStyle"
-                   BasedOn="{StaticResource TextTitle}"
-                   TargetType="Label">
-                <Setter Property="HorizontalOptions">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="LayoutOptions">
-                            <On Platform="iOS">Center</On>
-                            <On Platform="Android">Start</On>
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Margin">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS">0</On>
-                            <On Platform="Android">22,0,0,0</On>
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
 
             <Style x:Key="TextMessageMe" TargetType="Label" BasedOn="{StaticResource TextBody}">
                 <Setter Property="TextColor" Value="White" />
@@ -124,7 +101,6 @@
     <ContentPage.Content>
         <Grid ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="{StaticResource GridLengthNavigationBarHeight}" />
                 <RowDefinition Height="130" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="70" />
@@ -133,38 +109,14 @@
                 <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="MessageCollectionViewOnTapped"/>
             </Grid.GestureRecognizers>
 
-            <CollectionView Grid.Row="1"
+            <CollectionView Grid.Row="0"
                             Grid.RowSpan="3"
                             x:Name="MessageCollectionView"
                             ItemsSource="{Binding Chunks}"
                             Rotation="180"
                             ItemTemplate="{StaticResource MessageTemplateSelector}"/>
 
-            <Grid x:Name="Grid"
-                  Grid.Row="0"
-                  ColumnSpacing="0"
-                  BackgroundColor="Transparent"
-                  RowSpacing="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="50" />
-                </Grid.ColumnDefinitions>
-
-                <ImageButton HorizontalOptions="Center"
-                             VerticalOptions="Center"
-                             BackgroundColor="Transparent"
-                             Aspect="AspectFit"
-                             Clicked="BackButtonOnClicked"
-                             Source="{StaticResource IconBack}" />
-
-                <Label Grid.Row="0"
-                       Grid.Column="1"
-                       Style="{StaticResource TextTitleStyle}"
-                       Text="{Binding Source={x:Reference RootLayout}, Path=Title}" />
-            </Grid>
-
-            <Frame Grid.Row="1"
+            <Frame Grid.Row="0"
                    x:Name="ParticipantsFrame"
                    Padding="0"
                    Margin="15,10,-60,0"
@@ -200,7 +152,7 @@
                 </CollectionView>
             </Frame>
            
-            <Frame Grid.Row="3"
+            <Frame Grid.Row="2"
                    x:Name="EntryFrame"
                    Margin="-25,0,10,10"
                    Padding="45,0,5,0"
