@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+
+using Xappy.Content.Scenarios.Conversation;
 using Xappy.ControlGallery;
 using Xappy.Scenarios;
 

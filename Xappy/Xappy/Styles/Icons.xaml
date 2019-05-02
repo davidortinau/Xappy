@@ -12,6 +12,17 @@
     <Color x:Key="ColorTabIcon">Gray</Color>
     <x:Double x:Key="SizeTabIcon">24</x:Double>
 
+    <OnPlatform x:Key="StringBackIcon"
+                x:TypeArguments="x:String"
+                Android="{x:Static xappy:IconFont.ArrowLeft}"
+                iOS="{x:Static xappy:IconFont.ChevronLeft}" />
+
+    <FontImageSource x:Key="IconBack"
+                     FontFamily="{StaticResource FontAwesome}"
+                     Glyph="{StaticResource StringBackIcon}"
+                     Size="{StaticResource SizeTabIcon}"
+                     Color="{StaticResource ColorTabIcon}" />
+
     <FontImageSource x:Key="IconTabNews"
                      FontFamily="{StaticResource FontAwesome}"
                      Glyph="{x:Static xappy:IconFont.Newspaper}"

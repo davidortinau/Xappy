@@ -30,7 +30,7 @@
     <Compile Update="Content\ControlGallery\ControlTemplates\Button.xaml.cs">
       <DependentUpon>ButtonControlTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Content\Scenarios\ConversationPage.xaml.cs">
+    <Compile Update="Content\Scenarios\Conversation\ConversationPage.xaml.cs">
       <DependentUpon>ConversationPage.xaml</DependentUpon>
     </Compile>
     <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
@@ -56,6 +56,11 @@
       <SubType>Designer</SubType>
       <Generator></Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="CustomViews\BorderlessEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

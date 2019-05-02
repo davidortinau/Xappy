@@ -80,10 +80,10 @@ namespace Xappy.Domain.Conversational
                             new List<ConversationChunk>
                                 {
                                     new ConversationChunk(NextSentTime(ref now), WillFerrel, WillFerrelQuote),
-                                    //new ConversationChunk(NextSentTime(ref now), KnightsOfNi, KnightsOfNi.SpamSentence),
-                                    //new ConversationChunk(NextSentTime(ref now), Moss, Moss.SpamSentence),
-                                    //new ConversationChunk(NextSentTime(ref now), KnightsOfNi, KnightsOfNi.SpamSentence),
-                                    //new ConversationChunk(NextSentTime(ref now), SergeKara, SergeKara.SpamSentence),
+                                    new ConversationChunk(NextSentTime(ref now), KnightsOfNi, KnightsOfNi.SpamSentence),
+                                    new ConversationChunk(NextSentTime(ref now), Moss, Moss.SpamSentence),
+                                    new ConversationChunk(NextSentTime(ref now), KnightsOfNi, KnightsOfNi.SpamSentence),
+                                    new ConversationChunk(NextSentTime(ref now), SergeKara, SergeKara.SpamSentence),
                                 });
                     });
         }
