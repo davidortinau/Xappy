@@ -69,6 +69,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer .cs" />
     <Compile Include="Renderers\XappyShellRenderer.cs" />
   </ItemGroup>
   <ItemGroup>

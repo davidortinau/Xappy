@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <x:Double x:Key="SpacingSmall">5</x:Double>
+    <x:Double x:Key="SpacingMedium">10</x:Double>
+    <x:Double x:Key="SpacingLarge">15</x:Double>
+
+    <OnPlatform x:Key="GridLengthNavigationBarHeight"
+                x:TypeArguments="GridLength"
+                Android="56"
+                iOS="44" />
+
+    <x:Double x:Key="NavigationBar">15</x:Double>
+
+    <Color x:Key="TextPrimaryColor">#B0000000</Color>
+    <Color x:Key="TextSecondaryColor">#80000000</Color>
+    <Color x:Key="TextTernaryColor">#C8C8C8</Color>
+
+</ResourceDictionary>

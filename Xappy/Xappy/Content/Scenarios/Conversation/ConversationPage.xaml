@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage x:Class="Xappy.Content.Scenarios.Conversation.ConversationPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:xappy="clr-namespace:Xappy;assembly=Xappy"
+             xmlns:customViews="clr-namespace:Xappy.CustomViews;assembly=Xappy"
+             xmlns:conversation="clr-namespace:Xappy.Content.Scenarios.Conversation;assembly=Xappy"
+             Title="Conversation"
+             ios:Page.UseSafeArea="true"
+             Shell.NavBarIsVisible="True"
+             Shell.TabBarIsVisible="false">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TextMessageMe" TargetType="Label" BasedOn="{StaticResource TextBody}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <FontImageSource x:Key="ButtonSent"
+                             FontFamily="{StaticResource FontAwesome}"
+                             Glyph="{x:Static xappy:IconFont.PaperPlane}"
+                             Size="24"
+                             Color="{StaticResource AccentColor}" />
+
+            <FontImageSource x:Key="ButtonSentDisabled"
+                             FontFamily="{StaticResource FontAwesome}"
+                             Glyph="{x:Static xappy:IconFont.PaperPlane}"
+                             Size="24"
+                             Color="LightGray" />
+
+            <DataTemplate x:Key="MessageFromOthers">
+                <Grid Padding="10"
+                      ColumnSpacing="0"
+                      Rotation="180">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <abstractions:CircleImage Grid.Column="0"
+                                              WidthRequest="40"
+                                              HeightRequest="40"
+                                              HorizontalOptions="End"
+                                              VerticalOptions="Start"
+                                              Aspect="AspectFill"
+                                              Source="{Binding Author.AvatarUrl}" />
+                    <Frame Grid.Column="1"
+                           Margin="5,0,20,0"
+                           Padding="5"
+                           HorizontalOptions="Start"
+                           BackgroundColor="{StaticResource ColorPrimary}"
+                           CornerRadius="20"
+                           HasShadow="False">
+                        <Label Margin="10,5"
+                               Style="{StaticResource TextBody}"
+                               Text="{Binding Text}" />
+                    </Frame>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="MessageFromMe">
+                <!-- For some reason, if I use a ContentView here the size is not auto computed -->
+                <Grid Padding="10"
+                      ColumnSpacing="0"
+                      Rotation="180">
+                    <Frame Margin="20,0,10,0"
+                           Padding="5"
+                           BackgroundColor="{StaticResource AccentColor}"
+                           HorizontalOptions="End"
+                           VerticalOptions="Fill"
+                           CornerRadius="20"
+                           HasShadow="False">
+                        <Label Margin="10,5"
+                               Style="{StaticResource TextMessageMe}"
+                               Text="{Binding Text}" />
+                    </Frame>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="PaddingMessageTop">
+                <!-- Trick to overcome the lack of collection padding -->
+                <ContentView HeightRequest="130" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="PaddingMessageBottom">
+                <!-- Trick to overcome the lack of collection padding -->
+                <ContentView HeightRequest="70" />
+            </DataTemplate>
+
+            <conversation:MessageTemplateSelector x:Key="MessageTemplateSelector"
+                                             MessageFromMe="{StaticResource MessageFromMe}"
+                                             MessageFromOthers="{StaticResource MessageFromOthers}"
+                                             TopPaddingMessage="{StaticResource PaddingMessageTop}"
+                                             BottomPaddingMessage="{StaticResource PaddingMessageBottom}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="MessageCollectionViewOnTapped"/>
+            </Grid.GestureRecognizers>
+
+            <CollectionView Grid.Row="0"
+                            Grid.RowSpan="3"
+                            x:Name="MessageCollectionView"
+                            ItemsSource="{Binding Chunks}"
+                            Rotation="180"
+                            ItemTemplate="{StaticResource MessageTemplateSelector}"/>
+
+            <Frame Grid.Row="0"
+                   x:Name="ParticipantsFrame"
+                   Padding="0"
+                   Margin="15,10,-60,0"
+                   CornerRadius="60"
+                   BorderColor="{StaticResource ColorPrimary}"
+                   HasShadow="False">
+                <CollectionView Margin="0,0,60,0"
+                                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
+                                ItemsSource="{Binding Participants}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Vertical"
+                                         WidthRequest="80"
+                                         Padding="10"
+                                         Spacing="0">
+                                <abstractions:CircleImage WidthRequest="60"
+                                                          HeightRequest="60"
+                                                          Margin="5"
+                                                          HorizontalOptions="Center"
+                                                          VerticalOptions="Center"
+                                                          Aspect="AspectFill"
+                                                          Source="{Binding AvatarUrl}" />
+                                <Label HorizontalOptions="Center"
+                                       Style="{StaticResource TextBody}"
+                                       LineBreakMode="TailTruncation"
+                                       Text="{Binding LastName}" />
+                                <Label HorizontalOptions="Center"
+                                       Style="{StaticResource TextCaptionSecondary}"
+                                       Text="{Binding FirstName}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+           
+            <Frame Grid.Row="2"
+                   x:Name="EntryFrame"
+                   Margin="-25,0,10,10"
+                   Padding="45,0,5,0"
+                   HorizontalOptions="FillAndExpand"
+                   HasShadow="False"
+                   BorderColor="{StaticResource ColorPrimary}"
+                   CornerRadius="30">
+                <Frame.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Swiped="EntryFrameOnSwipedLeft"/>
+                    <SwipeGestureRecognizer Direction="Right" Swiped="EntryFrameOnSwipedRight"/>
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <customViews:BorderlessEntry Grid.Column="0"
+                                                 Margin="0,5"
+                                                 BackgroundColor="Transparent"
+                                                 Placeholder="Message"
+                                                 Text="{Binding MessageToSend, Mode=TwoWay}">
+                    </customViews:BorderlessEntry>
+                    <ImageButton Grid.Column="1"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="Transparent"
+                                 Command="{Binding SendMessageCommand}"
+                                 IsEnabled="{Binding MessageToSend, Converter={StaticResource NullOrEmptyToBoolConverter}}"
+                                 Source="{StaticResource ButtonSent}">
+                        <ImageButton.Triggers>
+                            <Trigger TargetType="ImageButton" Property="IsEnabled" Value="False">
+                                <Setter Property="Source" Value="{StaticResource ButtonSentDisabled}" />
+                            </Trigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
+                </Grid>
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
