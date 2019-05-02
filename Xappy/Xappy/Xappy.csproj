@@ -27,6 +27,7 @@
     <Folder Include="Domain\Global\" />
     <Folder Include="Content\Settings\" />
     <Folder Include="Content\Scenarios\ToDo\" />
+    <Folder Include="Content\About\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />
