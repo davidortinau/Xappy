@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xappy.Content.ControlGallery;
@@ -14,6 +15,7 @@ namespace Xappy.ControlGallery
     public partial class ControlPage : ContentPage
     {
         PropertyInfo ActiveProperty;
+        View PresentedPropertyControl;
 
         private View _element; // this is the target control
 
@@ -58,75 +60,74 @@ namespace Xappy.ControlGallery
 
             (BindingContext as ControlPageViewModel).SetElement(_element, _exceptProperties);
         }
-
-        View propertyControl;
-
-        void Handle_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        
+        async void Handle_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
-            ActiveProperty = e.CurrentSelection[0] as PropertyInfo;
-            PropertyToolbar.SetProperty(ActiveProperty.Name);
+            if (!e.CurrentSelection.Any())
+                return;
 
-            if (ActiveProperty.PropertyType == typeof(Color))
+            var property = e.CurrentSelection[0] as PropertyInfo;
+            var propertyControl = EditorForProperty(property);
+
+            if (propertyControl != null)
+                await PresentControlForProperty(property, propertyControl);
+        }
+
+        private View EditorForProperty(PropertyInfo property)
+        {
+            if (property.PropertyType == typeof(Color))
             {
-                propertyControl = new ColorPicker
+                return new ColorPicker
                 {
                     Element = _element,
-                    ElementInfo = ActiveProperty,
+                    ElementInfo = property,
 
                 };
-
-
-
             }
-            else if (ActiveProperty.PropertyType == typeof(string))
+            else if (property.PropertyType == typeof(string))
             {
-                propertyControl = new TextEntry
+                return new TextEntry
                 {
                     Element = _element,
-                    ElementInfo = ActiveProperty
+                    ElementInfo = property
                 };
             }
-            else if (ActiveProperty.PropertyType == typeof(Thickness))
+            else if (property.PropertyType == typeof(Thickness))
             {
-                if (ActiveProperty.Name.ToLower() == "padding")
+                if (property.Name.ToLower() == "padding")
                 {
-                    propertyControl = new PaddingProperty
+                    return new PaddingProperty
                     {
                         Element = _element,
-                        ElementInfo = ActiveProperty
+                        ElementInfo = property
                     };
                 }
-                else if (ActiveProperty.Name.ToLower() == "margin")
+                else if (property.Name.ToLower() == "margin")
                 {
-                    propertyControl = new MarginProperty
+                    return new MarginProperty
                     {
                         Element = _element,
-                        ElementInfo = ActiveProperty
+                        ElementInfo = property
                     };
                 }
             }
             else if (
-               ActiveProperty.PropertyType == typeof(double) ||
-               ActiveProperty.PropertyType == typeof(float) ||
-               ActiveProperty.PropertyType == typeof(int)
+               property.PropertyType == typeof(double) ||
+               property.PropertyType == typeof(float) ||
+               property.PropertyType == typeof(int)
                )
             {
-                propertyControl = new SingleSmallNumberProperty
+                return new SingleSmallNumberProperty
                 {
                     Element = _element,
-                    ElementInfo = ActiveProperty
+                    ElementInfo = property
                 };
             }
-            else
-            {
-                Console.WriteLine($"{ActiveProperty.Name}, {ActiveProperty.PropertyType.Name}");
-                return;
-            }
 
-            propertyControl.TranslationX = this.Width;
-            Grid.SetRow(propertyControl, 1);
-            PropertyContainer.Children.Add(propertyControl);
-            propertyControl.TranslateTo(0, 0);
+            // no implementation for this property
+            Console.WriteLine($"{property.Name}, {property.PropertyType.Name}");
+
+            return null;
         }
 
         Dictionary<string, (double min, double max)> _minMaxProperties = new Dictionary<string, (double min, double max)>
@@ -371,11 +372,10 @@ namespace Xappy.ControlGallery
             );
         }
 
-
-        private void PropertyToolbar_OnBack(object sender, EventArgs e)
+        private async void PropertyToolbar_OnBack(object sender, EventArgs e)
         {
-            propertyControl.TranslateTo(this.Width, 0);
-            PropertyContainer.Children.Remove(propertyControl);
+            if (PresentedPropertyControl != null)
+                await DismissPresentedPropertyControl();
         }
 
         private async void PropertyToolbar_OnViewSource(object sender, EventArgs e)
@@ -385,6 +385,53 @@ namespace Xappy.ControlGallery
             {
                 Source = source
             });
+        }
+
+        private async Task PresentControlForProperty(PropertyInfo property, View propertyControl)
+        {
+            SetInteractionEnabled(false);
+
+            ActiveProperty = property;
+            PresentedPropertyControl = propertyControl;
+
+            PropertyToolbar.SetProperty(property.Name);
+
+            Grid.SetRow(propertyControl, 1);
+            PresentedPropertyControl.TranslationX = this.Width;
+            PropertyContainer.Children.Add(PresentedPropertyControl);
+
+            await Task.WhenAll(
+                PropertiesList.FadeTo(0, easing: Easing.CubicOut),
+                PresentedPropertyControl.TranslateTo(0, 0, easing: Easing.CubicOut));
+
+            SetInteractionEnabled(true);
+        }
+
+        private async Task DismissPresentedPropertyControl()
+        {
+            SetInteractionEnabled(false);
+
+            await Task.WhenAll(
+                PropertiesList.FadeTo(1, easing: Easing.CubicIn),
+                PresentedPropertyControl.TranslateTo(this.Width, 0, easing: Easing.CubicIn));
+
+            PropertyContainer.Children.Remove(PresentedPropertyControl);
+            ClearSelection();
+
+            SetInteractionEnabled(true);
+        }
+
+        private void ClearSelection()
+        {
+            ActiveProperty = null;
+            PresentedPropertyControl = null;
+            PropertiesList.SelectedItem = null;
+        }
+
+        private void SetInteractionEnabled(bool enabled)
+        {
+            PropertyToolbar.IsEnabled = enabled;
+            PropertiesList.IsEnabled = enabled;
         }
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
