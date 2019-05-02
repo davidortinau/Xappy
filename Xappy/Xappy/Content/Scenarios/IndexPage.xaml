@@ -20,7 +20,7 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <ContentView Padding="10">
+                <ContentView Padding="10" BackgroundColor="White">
                     <Frame HeightRequest="40"
                            BackgroundColor="{StaticResource ColorPrimary}"
                            Visual="Material">

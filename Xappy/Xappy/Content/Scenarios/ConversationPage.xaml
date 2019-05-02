@@ -4,12 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:xappy="clr-namespace:Xappy;assembly=Xappy"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
              Title="Conversation"
              Shell.TabBarIsVisible="false">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-
             <Style x:Key="TextMessageBody" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="VerticalOptions" Value="Start" />
@@ -35,7 +36,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="60" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <Frame Margin="0"
                    Padding="0"
@@ -89,6 +90,7 @@
                             <Frame Grid.Column="1"
                                    Margin="5,0,20,0"
                                    Padding="5"
+                                   Visual="Material"
                                    BackgroundColor="{StaticResource AccentColor}"
                                    CornerRadius="25">
                                 <Label Margin="10,5"
@@ -102,6 +104,7 @@
             <Frame Grid.Row="2"
                    Margin="10,0,10,10"
                    Padding="20,0,10,0"
+                   Visual="Material"
                    HorizontalOptions="FillAndExpand"
                    CornerRadius="25">
                 <Grid>
@@ -111,6 +114,8 @@
                     </Grid.ColumnDefinitions>
                     <Entry Grid.Column="0"
                            Placeholder="Message"
+                           Visual="Material"
+                           BackgroundColor="Transparent"
                            Text="{Binding MessageToSend, Mode=TwoWay}" />
                     <ImageButton Grid.Column="1"
                                  HorizontalOptions="Center"

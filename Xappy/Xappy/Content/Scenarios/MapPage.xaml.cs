@@ -47,6 +47,11 @@ namespace Xappy.Scenarios
             });
         }
 
+        void Handle_BackClicked(object sender, System.EventArgs e)
+        {
+            Shell.Current.Navigation.PopAsync();
+        }
+
         public async void Handle_Clicked(object sender, EventArgs e)
         {
             var location = new Location(42.349344, -71.082504);
