@@ -1,14 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Octokit;
+using Xamarin.Forms;
 
 namespace Xappy.About.ViewModels
 {
-    public class GitHubViewModel : BaseViewModel
+    public class GitHubViewModel : INotifyPropertyChanged //: BaseViewModel
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
+
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private readonly GitHubClient _xappyGitHubClient = new GitHubClient(new ProductHeaderValue("Xappy"));
 
         private ObservableCollection<RepositoryContributor> _contributors;
@@ -18,7 +31,30 @@ namespace Xappy.About.ViewModels
             set
             {
                 _contributors = value;
-                SetAndRaisePropertyChanged(ref _contributors, value);
+                OnPropertyChanged();
+
+                //SetAndRaisePropertyChanged(ref _contributors, value);
+            }
+        }
+
+        private RepositoryContributor _selectedContributor;
+        public RepositoryContributor SelectedContributor
+        {
+            get => _selectedContributor;
+            set
+            {
+                _selectedContributor = value;
+
+                if (_selectedContributor != null)
+                {
+                    OnPropertyChanged();
+
+                    if (!string.IsNullOrEmpty(SelectedContributor.HtmlUrl))
+                        Device.OpenUri(new Uri(SelectedContributor.HtmlUrl));
+
+                    //Clear current selection
+                    SelectedContributor = null;
+                }
             }
         }
 

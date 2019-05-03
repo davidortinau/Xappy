@@ -11,7 +11,10 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding Contributors}"
+        <CollectionView x:Name="ContributorsCollectionView"
+                        ItemsSource="{Binding Contributors}"
+                        SelectedItem="{Binding SelectedContributor, Mode=TwoWay}"
+                        SelectionMode="Single"
                         VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="3" />
@@ -30,7 +33,7 @@
                                                   VerticalOptions="Center" HorizontalOptions="Center"
                                                   Grid.Row="0" />
                         <Label Text="{Binding Login}"
-                               FontSize="Small"
+                               Style="{StaticResource TextBody}"
                                LineBreakMode="NoWrap"
                                HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
                                Grid.Row="1" />

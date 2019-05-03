@@ -14,6 +14,7 @@ namespace Xappy.About
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            ContributorsCollectionView.SelectedItem = null;
             await ((GitHubViewModel)BindingContext).OnAppearing();
         }
     }
