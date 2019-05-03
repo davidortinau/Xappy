@@ -17,18 +17,18 @@ namespace Xappy.Content.Blog
             InitializeComponent();
         }
 
-        protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
-        { 
-            if (BindingContext is BlogItem blog && Parent is  CollectionView collection)
-            { 
-                var size = new Size(collection.Width / 2, blog.Height); 
-                if(blog.WholeScreen)
-                {
-                    size.Width = collection.Width;
-                }
-                return new SizeRequest(size, size);
-            }
-            return base.OnMeasure(widthConstraint, heightConstraint);
-        }
+        //protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+        //{ 
+        //    if (BindingContext is BlogItem blog && Parent is  CollectionView collection)
+        //    { 
+        //        var size = new Size(collection.Width / 2, blog.Height); 
+        //        if(blog.WholeScreen)
+        //        {
+        //            size.Width = collection.Width;
+        //        }
+        //        return new SizeRequest(size, size);
+        //    }
+        //    return base.OnMeasure(widthConstraint, heightConstraint);
+        //}
     }
 }

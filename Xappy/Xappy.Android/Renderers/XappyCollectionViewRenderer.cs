@@ -1,5 +1,7 @@
 ﻿using Android.Content;
+using Android.Graphics;
 using Android.Support.V7.Widget;
+using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xappy.CustomViews;
@@ -11,6 +13,13 @@ namespace Xappy.Droid.Renderers
     {
         public XappyCollectionViewRenderer(Context context) : base(context)
         {
+        }
+
+        protected override void SetUpNewElement(ItemsView newElement)
+        {
+            base.SetUpNewElement(newElement);
+            SetClipToPadding(false);
+            SetPadding(10, 10, 10, 10);
         }
 
         protected override LayoutManager SelectLayoutManager(IItemsLayout layoutSpecification)
@@ -33,6 +42,6 @@ namespace Xappy.Droid.Renderers
             // Fall back to plain old vertical list
             // TODO hartez 2018/08/30 19:34:36 Log a warning when we have to fall back because of an unknown layout	
             return new LinearLayoutManager(Context);
-        }
+        } 
     }
 }

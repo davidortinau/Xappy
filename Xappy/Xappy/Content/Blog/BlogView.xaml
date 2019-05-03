@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:blog="clr-namespace:Xappy.Content.Blog"
              x:Class="Xappy.Content.Blog.BlogView" 
-          
-             HeightRequest="{Binding Height}"
-            >
+             x:DataType="blog:BlogItem"
+             HeightRequest="{Binding Height}">
     <ContentView.Content>
-        <Frame BackgroundColor="Gray" Padding="10" Margin="10">
-            <Label Text="{Binding Name}"/>
+        <Frame BackgroundColor="Gray" Padding="0" Margin="5" CornerRadius="3" HasShadow="True">
+            <Grid>
+                <Image Source="{Binding ImageUri}" Aspect="AspectFill" />
+                <BoxView Color="Black" Opacity="0.3"></BoxView>
+                <Label Text="{Binding Title}" TextColor="White" FontSize="Large" Margin="5" HorizontalOptions="Center" VerticalOptions="End"/>
+            </Grid> 
         </Frame>
 
     </ContentView.Content>
