@@ -63,9 +63,8 @@ namespace Xappy.iOS.Renderers
         {
             if (_flyoutBackground == null && sender != null && sender is IShellFlyoutContentRenderer flyout)
             {
-            
+
                 var theme = DependencyService.Get<AppTheme>();
-                var flyout = base.CreateShellFlyoutContentRenderer();
 
                 var v = flyout.ViewController.View;
 
