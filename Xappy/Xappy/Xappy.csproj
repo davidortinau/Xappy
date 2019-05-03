@@ -61,19 +61,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="Content\Scenarios\ToDo\NewItemPage.xaml" />
-    <EmbeddedResource Remove="Content\Scenarios\ToDo\ItemsPage.xaml" />
-    <EmbeddedResource Remove="Content\Scenarios\ToDo\ItemDetailPage.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Update="CustomViews\BorderlessEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Scenarios\ToDo\NewItemPage.xaml" />
-    <None Include="Content\Scenarios\ToDo\ItemsPage.xaml" />
-    <None Include="Content\Scenarios\ToDo\ItemDetailPage.xaml" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

@@ -9,6 +9,8 @@ namespace Xappy.Scenarios
 {
     public class IndexPageViewModel : INotifyPropertyChanged
     {
+        private string selectedItem;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void SetAndRaisePropertyChanged<TRef>(
@@ -60,10 +62,14 @@ namespace Xappy.Scenarios
 
             }
 
+            SelectedItem = null;
             await Shell.Current.GoToAsync($"{targetPage}");
         }
 
-        public string SelectedItem { get; set; }
+        public string SelectedItem {
+            get => selectedItem;
+            set => SetAndRaisePropertyChanged(ref selectedItem, value);
+        }
     }
 
 }

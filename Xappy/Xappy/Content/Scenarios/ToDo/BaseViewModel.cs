@@ -5,10 +5,8 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using XappyDo.Models;
-using XappyDo.Services;
+namespace Xappy.Content.Scenarios.ToDo
 
-namespace XappyDo.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

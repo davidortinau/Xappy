@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using XappyDo.Models;
-using XappyDo.Views;
-using XappyDo.ViewModels;
 
-namespace XappyDo.Views
+namespace Xappy.Content.Scenarios.ToDo
 {
     public partial class ItemsPage : ContentPage
     {

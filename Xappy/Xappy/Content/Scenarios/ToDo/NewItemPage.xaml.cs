@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using XappyDo.Models;
-
-namespace XappyDo.Views
+namespace Xappy.Content.Scenarios.ToDo
 {
     public partial class NewItemPage : ContentPage
     {

@@ -63,9 +63,7 @@
                     SelectionChanged="Handle_SelectionChanged"
                     ItemsSource="{Binding Properties}"
                     ItemTemplate="{StaticResource PropertySelector}"
-                    SelectionMode="Single"
-                    SelectedItem="{Binding Selected, Mode=TwoWay}"
-                    SelectionChangedCommand="{Binding SelectCommand}">
+                    SelectionMode="Single">
                 </CollectionView>
             </Grid>
             <!-- PropertyContainer -->

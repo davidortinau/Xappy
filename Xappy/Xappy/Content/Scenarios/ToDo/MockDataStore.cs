@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using XappyDo.Models;
 
-namespace XappyDo.Services
+namespace Xappy.Content.Scenarios.ToDo
 {
     public class MockDataStore : IDataStore<Item>
     {

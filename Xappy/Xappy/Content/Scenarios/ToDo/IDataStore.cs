@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace XappyDo.Services
+namespace Xappy.Content.Scenarios.ToDo
 {
     public interface IDataStore<T>
     {

@@ -126,6 +126,7 @@
         <ImageButton
             x:Name="ToggleBtn"
             Clicked="ToggleBtn_OnClicked"
+            BackgroundColor="Transparent"
             Grid.Row="1"
             Grid.Column="2"
             HorizontalOptions="Center"

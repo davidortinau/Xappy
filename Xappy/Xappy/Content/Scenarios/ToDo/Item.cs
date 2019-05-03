@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XappyDo.Models
+namespace Xappy.Content.Scenarios.ToDo
 {
     public class Item
     {

@@ -1,8 +1,6 @@
 ﻿using System;
 
-using XappyDo.Models;
-
-namespace XappyDo.ViewModels
+namespace Xappy.Content.Scenarios.ToDo
 {
     public class ItemDetailViewModel : BaseViewModel
     {

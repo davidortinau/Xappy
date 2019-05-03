@@ -20,10 +20,11 @@ namespace Xappy.Scenarios
         protected override void OnAppearing()
         {
             base.OnAppearing();
+        }
 
-            ScenariosCV.SelectedItem = null;
-
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
         }
     }
 }

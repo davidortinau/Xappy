@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using XappyDo.Models;
-using XappyDo.Views;
-
-namespace XappyDo.ViewModels
+namespace Xappy.Content.Scenarios.ToDo
 {
     public class ItemsViewModel : BaseViewModel
     {
