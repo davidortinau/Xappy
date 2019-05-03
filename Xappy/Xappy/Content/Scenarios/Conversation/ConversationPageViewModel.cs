@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
@@ -10,7 +9,7 @@ using Xappy.Domain.Conversational;
 
 namespace Xappy.Content.Scenarios.Conversation
 {
-    public class ConversationPageViewModel : INotifyPropertyChanged
+    public class ConversationPageViewModel : BaseViewModel
     {
         private readonly IConversationService _conversationService;
 
@@ -38,7 +37,7 @@ namespace Xappy.Content.Scenarios.Conversation
         public string MessageToSend
         {
             get => _messageToSend;
-            set => SetAndRaise(ref _messageToSend, value);
+            set => SetProperty(ref _messageToSend, value);
         }
 
         public async void InitAsync()
@@ -58,9 +57,9 @@ namespace Xappy.Content.Scenarios.Conversation
                 newChunks.Add(new ConversationChunkPaddingTop());
 
                 Chunks = newChunks;
-                RaisePropertyChanged(nameof(Chunks));
+                OnPropertyChanged(nameof(Chunks));
                 Participants = new ObservableCollection<Participant>(conversation.Participants);
-                RaisePropertyChanged(nameof(Participants));
+                OnPropertyChanged(nameof(Participants));
 
                 _conversationService.ConversationChunkAdded += ConversationServiceConversationChunkAdded;
             }
@@ -73,23 +72,6 @@ namespace Xappy.Content.Scenarios.Conversation
         private void ConversationServiceConversationChunkAdded(object sender, ConversationChunkEventArgs e)
         {
             Device.BeginInvokeOnMainThread(() => Chunks.Insert(1, e.Chunk));
-        }
-
-        protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetAndRaise<T>(ref T property, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (Equals(property, value))
-            {
-                return false;
-            }
-
-            property = value;
-            RaisePropertyChanged(propertyName);
-            return true;
         }
     }
 }

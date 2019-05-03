@@ -1,33 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace Xappy.Content.ControlGallery.ProppyControls
 {
-    public class ColorPickerViewModel : INotifyPropertyChanged
+    public class ColorPickerViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void SetAndRaisePropertyChanged<TRef>(
-            ref TRef field, TRef value, [CallerMemberName] string propertyName = null)
-        {
-            field = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetAndRaisePropertyChangedIfDifferentValues<TRef>(
-            ref TRef field, TRef value, [CallerMemberName] string propertyName = null)
-            where TRef : class
-        {
-            if (field == null || !field.Equals(value))
-            {
-                SetAndRaisePropertyChanged(ref field, value, propertyName);
-            }
-        }
-
         List<string> _colors;
         public List<string> Colors { get { return _colors; } }
 

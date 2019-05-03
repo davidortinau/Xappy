@@ -7,9 +7,8 @@ namespace Xappy.Content.ControlGallery.ProppyControls
 {
 
 
-    public class ColorViewModel : INotifyPropertyChanged
+    public class ColorViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private ColorTypeConverter _converter;
 
         public ColorViewModel()
@@ -54,11 +53,5 @@ namespace Xappy.Content.ControlGallery.ProppyControls
         {
             return HexColor.Replace("#", "");
         }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
     }
 }
