@@ -5,13 +5,14 @@ using Android.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Xappy.Domain.Global;
 
 [assembly: ExportRenderer(typeof(Shell), typeof(Xappy.Droid.Renderers.XappyShellRenderer))]
 namespace Xappy.Droid.Renderers
 {
     public class XappyShellRenderer : ShellRenderer
     {
-        public XappyShellRenderer(Context context) : base (context)
+        public XappyShellRenderer(Context context) : base(context)
         {
         }
 
@@ -35,13 +36,14 @@ namespace Xappy.Droid.Renderers
 
         protected override IShellFlyoutContentRenderer CreateShellFlyoutContentRenderer()
         {
+            var theme = DependencyService.Get<AppTheme>();
             var flyout = base.CreateShellFlyoutContentRenderer();
 
             GradientDrawable gradient = new GradientDrawable(
-                GradientDrawable.Orientation.BottomTop, 
+                GradientDrawable.Orientation.BottomTop,
                 new Int32[] {
-                    Color.FromRgb(1, 126, 216).ToAndroid(),
-                    Color.FromRgb(20, 217, 217).ToAndroid()
+                    ((Color)theme.LookupColor("flyoutGradientEnd")).ToAndroid(),
+                    ((Color)theme.LookupColor("flyoutGradientStart")).ToAndroid()
                 }
             );
             //flyout.AndroidView.SetBackground(gradient);
@@ -57,7 +59,7 @@ namespace Xappy.Droid.Renderers
             var header = g.GetChildAt(0);
             header.SetBackgroundColor(Color.Transparent.ToAndroid());
 
-           
+
 
             //var appbar = cl.FindViewById<AppBarLayout>(Resource.Id.flyoutcontent_appbar)
             //appBar.GetChildAt(0)

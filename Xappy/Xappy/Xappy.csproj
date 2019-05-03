@@ -24,6 +24,8 @@
     <Folder Include="Content\ControlGallery\ProppyControls\" />
     <Folder Include="Extensions\" />
     <Folder Include="Behaviors\" />
+    <Folder Include="Domain\Global\" />
+    <Folder Include="Content\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />

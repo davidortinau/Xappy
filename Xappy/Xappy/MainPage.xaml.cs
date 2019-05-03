@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xappy.Domain.Global;
 using Xappy.Services;
 
 namespace Xappy
@@ -31,12 +32,16 @@ namespace Xappy
 
         void Handle_Clicked_2(object sender, System.EventArgs e)
         {
-            Application.Current.Resources["CurrentTheme"] = Application.Current.Resources["BaseStyle"];
+            DependencyService
+                .Get<AppTheme>()
+                .SetTheme(XappyTheme.Default);
         }
 
         void Handle_Clicked_3(object sender, System.EventArgs e)
         {
-            Application.Current.Resources["CurrentTheme"] = Application.Current.Resources["SecondaryShell"];
+            DependencyService
+                .Get<AppTheme>()
+                .SetTheme(XappyTheme.Clancey);
         }
     }
 }

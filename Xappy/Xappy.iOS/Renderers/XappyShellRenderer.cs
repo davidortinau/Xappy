@@ -4,6 +4,7 @@ using CoreGraphics;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xappy.Domain.Global;
 
 [assembly: ExportRenderer(typeof(Shell), typeof(Xappy.iOS.Renderers.XappyShellRenderer))]
 namespace Xappy.iOS.Renderers
@@ -20,26 +21,27 @@ namespace Xappy.iOS.Renderers
         protected override IShellSectionRenderer CreateShellSectionRenderer(ShellSection shellSection)
         {
             var renderer = base.CreateShellSectionRenderer(shellSection);
-            //if (renderer != null)
-            //{
-            //    (renderer as ShellSectionRenderer).NavigationBar.SetBackgroundImage(new UIImage(),
-            //        UIBarMetrics.Default);
-            //    (renderer as ShellSectionRenderer).NavigationBar.ShadowImage = new UIImage();
+            if (renderer != null)
+            {
+                (renderer as ShellSectionRenderer).NavigationBar.SetBackgroundImage(new UIImage(),
+                    UIBarMetrics.Default);
+                (renderer as ShellSectionRenderer).NavigationBar.ShadowImage = new UIImage();
 
-            //    UINavigationBar.Appearance.BarTintColor = Color.FromHex("#11313F").ToUIColor(); //bar background
-            //    UINavigationBar.Appearance.TintColor = UIColor.White; //Tint color of button items
-            //    UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
-            //    {
-            //        Font = UIFont.FromName("HelveticaNeue-Light", (nfloat)20f),
-            //        TextColor = UIColor.White
-            //    });
-            //}
+                //UINavigationBar.Appearance.BarTintColor = Color.FromHex("#11313F").ToUIColor(); //bar background
+                //UINavigationBar.Appearance.TintColor = UIColor.White; //Tint color of button items
+                //UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
+                //{
+                //    Font = UIFont.FromName("HelveticaNeue-Light", (nfloat)20f),
+                //    TextColor = UIColor.White
+                //});
+            }
 
             return (IShellSectionRenderer)renderer;
         }
 
         protected override IShellFlyoutContentRenderer CreateShellFlyoutContentRenderer()
         {
+
             var flyout = base.CreateShellFlyoutContentRenderer();
             flyout.WillAppear += OnFlyoutWillAppear;
 
@@ -61,14 +63,18 @@ namespace Xappy.iOS.Renderers
         {
             if (_flyoutBackground == null && sender != null && sender is IShellFlyoutContentRenderer flyout)
             {
+            
+                var theme = DependencyService.Get<AppTheme>();
+                var flyout = base.CreateShellFlyoutContentRenderer();
+
                 var v = flyout.ViewController.View;
 
                 _flyoutBackground = new CAGradientLayer();
                 _flyoutBackground.Frame = new CGRect(0, 0, v.Bounds.Width, v.Bounds.Height); ;
                 _flyoutBackground.Colors = new CoreGraphics.CGColor[]
                 {
-                    UIColor.FromRGB(1, 126, 216).CGColor,
-                    UIColor.FromRGB(20, 217, 217).CGColor
+                    ((Color)theme.LookupColor("flyoutGradientStart")).ToCGColor(),
+                    ((Color)theme.LookupColor("flyoutGradientEnd")).ToCGColor()
                 };
 
                 flyout.ViewController.View.Layer.InsertSublayer(_flyoutBackground, 0);
