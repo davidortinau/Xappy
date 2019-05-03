@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Xappy"
+    x:Class="Xappy.Content.Settings.SettingsPages"
+    Title="Settings"
+    >
+    
+    <ScrollView>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    Clicked="Handle_CloseClicked"
+                    >
+                <ImageButton.Source>
+                    <FontImageSource 
+                        FontFamily="{StaticResource FontAwesome}"
+                        Glyph="{x:Static local:IconFont.Times}"
+                        Color="{DynamicResource ColorPrimary}"
+                    />
+                </ImageButton.Source>
+            </ImageButton>
+        
+            <Label Grid.Column="1" 
+                   VerticalOptions="Center"
+                   Text="Craft Your Experience"/>
+        </Grid>
+            
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontSize="17"
+                              FontAttributes="Bold"
+                              TextColor="#333333"
+                              >Theme: </Span>
+                        <Span Text="Default"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+        </StackLayout>
+    </ScrollView>
+    
+    
+</ContentPage>

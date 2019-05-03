@@ -3,42 +3,80 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
-
+                    
+    <!-- Default -->
+    <Color x:Key="aqua_marine">#FF36D1DC</Color>
+    <Color x:Key="almost_black">#FF333333</Color>
+    <Color x:Key="brown_grey">#FF888888</Color>
+    <Color x:Key="cerulean">#FF0078D4</Color>
+    <Color x:Key="cerulean_three">#FF017ED8</Color>
+    <Color x:Key="cerulean_two">#FF006CCF</Color>
+    <Color x:Key="dark_lime_green">#FF88C800</Color>
+    <Color x:Key="dusty_orange">#FFFF6230</Color>
+    <Color x:Key="green_blue">#FF00BF79</Color>
+    <Color x:Key="soft_blue">#FF5B86E5</Color>
+    <Color x:Key="tomato">#FFE52E15</Color>
+    <Color x:Key="very_light_pink">#FFCCCCCC</Color>
+    <Color x:Key="very_light_pink_two">#FFC4C4C4</Color>
+    <Color x:Key="white">#FFFFFFFF</Color>
+    <Color x:Key="teal">#FF14D9D9</Color>
+    <Color x:Key="dark_peach">#FFFF4B4B</Color>
+    <Color x:Key="light_peach">#87FF7B7B</Color>
+    
+    <!-- Dynamic Colors (these are applied in styles) -->
+    <Color x:Key="pageBackgroundColor">#CC0000</Color>
+    <Color x:Key="flyoutGradientStart">#FF017ED8</Color>
+    <Color x:Key="flyoutGradientEnd">#FF14D9D9</Color>
+    <Color x:Key="navBarTitleColor"/>
+    
+    <Style ApplyToDerivedTypes="true" CanCascade="true" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{DynamicResource pageBackgroundColor}"/>
+    </Style>
+    
     <Color x:Key="AccentColor">DodgerBlue</Color>
     <Color x:Key="ColorPrimary">#F1F1F1</Color>
     <Color x:Key="ColorAppBackground">White</Color>
-
+    
     <Style x:Key="BaseStyle" TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="{StaticResource ColorPrimary}" />
         <Setter Property="Shell.ShellForegroundColor" Value="#1d1d1d" />
         <Setter Property="Shell.ShellTitleColor" Value="#1f1f1f" />
         <Setter Property="Shell.ShellDisabledColor" Value="#B4FFFFFF" />
         <Setter Property="Shell.ShellUnselectedColor" Value="#CC0000" />
+        <Setter Property="Shell.FlyoutBehavior" Value="Disabled" />
     </Style>
+    
     <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" />
-    <Style x:Key="CurrentTheme"
+    
+    <Style x:Key="CurrentShellTheme"
            BasedOn="{StaticResource BaseStyle}"
            TargetType="ShellItem" />
+    
     <Style x:Key="SecondaryShell"
            BasedOn="{StaticResource BaseStyle}"
            TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#AF3800" />
+        <Setter Property="Shell.FlyoutBehavior" Value="Disabled" />
     </Style>
+    
     <Style x:Key="TertiaryShell"
            BasedOn="{StaticResource BaseStyle}"
            TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#FA7921" />
     </Style>
+    
     <Style x:Key="QuaternaryShell"
            BasedOn="{StaticResource BaseStyle}"
            TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#FE9920" />
     </Style>
+    
     <Style x:Key="QuinaryShell"
            BasedOn="{StaticResource BaseStyle}"
            TargetType="Element">
         <Setter Property="Shell.ShellBackgroundColor" Value="#566E3D" />
     </Style>
+    
     <Style x:Key="SenaryShell"
            BasedOn="{StaticResource BaseStyle}"
            TargetType="Element">

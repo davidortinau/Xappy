@@ -10,25 +10,35 @@
     RouteHost="microsoft.com"
     RouteScheme="app"
     x:Class="Xappy.AppShell">
+    
+    <Shell.FlyoutIcon>
+        <FontImageSource
+            FontFamily="{StaticResource FontAwesome}"
+            Glyph="{x:Static local:IconFont.Bars}"
+            Color="{StaticResource AccentColor}"
+            Size="24" />
+    </Shell.FlyoutIcon>
+    
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid Padding="0,66,0,40">
+            <Grid Padding="20,66,0,40" ColumnSpacing="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="40" />
+                        Width="20" />
                     <ColumnDefinition
                         Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0">
+                <Image Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End">
                     <Image.Source>
                         <FontImageSource FontFamily="{StaticResource FontAwesome}"
                                          Glyph="{x:Static local:IconFont.PaintBrush}"
                                          Color="White"
-                                         Size="14" />
+                                         Size="16" />
                     </Image.Source>
                 </Image>
                 <Label
                     Grid.Column="1"
+                    VerticalOptions="Center"
                     FontSize="17"
                     Text="Visual Settings"
                     TextColor="White" />
@@ -99,18 +109,22 @@
     
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid Padding="0,10">
+            <Grid Padding="20,10,0,10" ColumnSpacing="20
+                ">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="40" />
+                        Width="20" />
                     <ColumnDefinition
                         Width="*" />
                 </Grid.ColumnDefinitions>
                 <Image
                     Grid.Column="0"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
                     Source="{Binding Icon}" />
                 <Label
                     Grid.Column="1"
+                    VerticalOptions="Center"
                     Text="{Binding Title}"
                     TextColor="White"
                     FontSize="17"

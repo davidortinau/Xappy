@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xappy.Domain.Global;
 
 namespace Xappy
 {
@@ -11,7 +12,17 @@ namespace Xappy
         {
             InitializeComponent();
 
+            DependencyService.Register<AppTheme>();
+
+            InitStyles();
+
             MainPage = new AppShell();
+        }
+
+        private void InitStyles()
+        {
+            var theme = DependencyService.Get<AppTheme>();
+            theme.InitTheme();
         }
 
         protected override void OnStart()
