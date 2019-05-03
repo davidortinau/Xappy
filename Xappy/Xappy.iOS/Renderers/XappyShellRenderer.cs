@@ -11,6 +11,8 @@ namespace Xappy.iOS.Renderers
 {
     public class XappyShellRenderer : ShellRenderer
     {
+        private CAGradientLayer _flyoutBackground = null;
+
         protected override void OnElementSet(Shell element)
         {
             base.OnElementSet(element);
@@ -39,20 +41,9 @@ namespace Xappy.iOS.Renderers
 
         protected override IShellFlyoutContentRenderer CreateShellFlyoutContentRenderer()
         {
-            var theme = DependencyService.Get<AppTheme>();
+
             var flyout = base.CreateShellFlyoutContentRenderer();
-
-            var v = flyout.ViewController.View;
-
-            var gradient = new CAGradientLayer();
-            gradient.Frame = new CGRect(0, 0, 332, v.Bounds.Height); // TODO fix this hardcoded value
-            gradient.Colors = new CoreGraphics.CGColor[]
-            {
-                ((Color)theme.LookupColor("flyoutGradientStart")).ToCGColor(),
-                ((Color)theme.LookupColor("flyoutGradientEnd")).ToCGColor()
-            };
-
-            flyout.ViewController.View.Layer.InsertSublayer(gradient, 0);
+            flyout.WillAppear += OnFlyoutWillAppear;
 
             var tv = (UITableView)flyout.ViewController.View.Subviews[0];
             tv.ScrollEnabled = false;
@@ -61,6 +52,35 @@ namespace Xappy.iOS.Renderers
             tvs.Groups.RemoveAt(1); // this is a total hack to hide the separator that appears when there are multiple groups
 
             return flyout;
+        }
+
+        /// <summary>
+        /// Only grab the bounds of the View when View rendering calculations are already done
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
+        private void OnFlyoutWillAppear(object sender, EventArgs e)
+        {
+            if (_flyoutBackground == null && sender != null && sender is IShellFlyoutContentRenderer flyout)
+            {
+            
+                var theme = DependencyService.Get<AppTheme>();
+                var flyout = base.CreateShellFlyoutContentRenderer();
+
+                var v = flyout.ViewController.View;
+
+                _flyoutBackground = new CAGradientLayer();
+                _flyoutBackground.Frame = new CGRect(0, 0, v.Bounds.Width, v.Bounds.Height); ;
+                _flyoutBackground.Colors = new CoreGraphics.CGColor[]
+                {
+                    ((Color)theme.LookupColor("flyoutGradientStart")).ToCGColor(),
+                    ((Color)theme.LookupColor("flyoutGradientEnd")).ToCGColor()
+                };
+
+                flyout.ViewController.View.Layer.InsertSublayer(_flyoutBackground, 0);
+
+                flyout.WillAppear -= OnFlyoutWillAppear;
+            }
         }
     }
 }
