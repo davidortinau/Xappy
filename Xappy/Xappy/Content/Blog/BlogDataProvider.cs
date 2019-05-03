@@ -1,15 +1,13 @@
-﻿using Microsoft.SyndicationFeed.Rss;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Linq;
-using Microsoft.SyndicationFeed;
 using System.ServiceModel.Syndication;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace Xappy.Content.Blog
 {
@@ -19,6 +17,8 @@ namespace Xappy.Content.Blog
         {
             try
             {
+                var sw = new Stopwatch();
+                sw.Start();
                 var client = new HttpClient();
                 var response = await client.GetAsync("https://devblogs.microsoft.com/xamarin/feed/");
 
@@ -45,7 +45,7 @@ namespace Xappy.Content.Blog
                         items.Add(blogItem);
                     }
                 }
-
+                sw.Stop();
                 return items;
             }
             catch (Exception ex)

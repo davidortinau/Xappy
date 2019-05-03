@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\GradientViewRenderer.cs" />
     <Compile Include="Renderers\XappyCollectionViewRenderer.cs" />
     <Compile Include="Renderers\XappyShellRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

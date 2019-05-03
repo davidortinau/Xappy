@@ -2,6 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:blog="clr-namespace:Xappy.Content.Blog"
+             xmlns:customviews="clr-namespace:Xappy.CustomViews"
              x:Class="Xappy.Content.Blog.BlogView" 
              x:DataType="blog:BlogItem"
              HeightRequest="{Binding Height}">
@@ -9,7 +10,7 @@
         <Frame BackgroundColor="Gray" Padding="0" Margin="5" CornerRadius="3" HasShadow="True">
             <Grid>
                 <Image Source="{Binding ImageUri}" Aspect="AspectFill" />
-                <BoxView Color="Black" Opacity="0.3"></BoxView>
+                <customviews:GradientView></customviews:GradientView>
                 <Label Text="{Binding Title}" TextColor="White" FontSize="Large" Margin="5" HorizontalOptions="Center" VerticalOptions="End"/>
             </Grid> 
         </Frame>
