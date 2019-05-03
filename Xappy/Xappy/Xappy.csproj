@@ -28,52 +28,14 @@
     <Folder Include="Content\Settings\" />
     <Folder Include="Content\Scenarios\ToDo\" />
   </ItemGroup>
+  
   <ItemGroup>
-    <Compile Remove="ApiConstants.cs" />
-    <Compile Update="Content\ControlGallery\ControlTemplates\Button.xaml.cs">
-      <DependentUpon>ButtonControlTemplate.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Content\Scenarios\Conversation\ConversationPage.xaml.cs">
-      <DependentUpon>ConversationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Content\ControlGallery\ControlTemplates\ButtonControlTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </Page>
-    <Page Include="Content\ControlGallery\ProppyControls\MarginProperty.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </Page>
-    <Page Include="Content\ControlGallery\ProppyControls\PaddingProperty.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </Page>
-    <Page Include="Content\ControlGallery\ProppyControls\TextEntry.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </Page>
-    <Page Include="Content\ControlGallery\ProppyControls\Toolbar.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Content\Scenarios\ToDo\NewItemPage.xaml" />
-    <EmbeddedResource Remove="Content\Scenarios\ToDo\ItemsPage.xaml" />
-    <EmbeddedResource Remove="Content\Scenarios\ToDo\ItemDetailPage.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="CustomViews\BorderlessEntry.xaml">
+    <EmbeddedResource Update="Content\Blog\BlogPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\Scenarios\ToDo\NewItemPage.xaml" />
-    <None Include="Content\Scenarios\ToDo\ItemsPage.xaml" />
-    <None Include="Content\Scenarios\ToDo\ItemDetailPage.xaml" />
-  </ItemGroup>
+    <EmbeddedResource Update="Content\Blog\BlogView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup> 
   <Import Project="..\ApiConstants.targets" />
 </Project>

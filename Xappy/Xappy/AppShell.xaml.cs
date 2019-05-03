@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-
+using Xappy.Content.Blog;
 using Xappy.Content.Scenarios.Conversation;
 using Xappy.ControlGallery;
 using Xappy.Scenarios;
@@ -23,8 +23,9 @@ namespace Xappy
             Routing.RegisterRoute("control", typeof(ControlPage));
             Routing.RegisterRoute("map", typeof(MapPage));
             Routing.RegisterRoute("login", typeof(LoginPage));
-            Routing.RegisterRoute("todo", typeof(ToDoListPage));
+            //Routing.RegisterRoute("todo", typeof(Todo));
             Routing.RegisterRoute("conversation", typeof(ConversationPage));
+            Routing.RegisterRoute("blog", typeof(BlogPage));
         }
     }
 }
