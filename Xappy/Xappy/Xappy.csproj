@@ -17,6 +17,7 @@
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.394984-pre10" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.394984-pre10" />
     <PackageReference Include="Octokit" Version="0.32.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
   
   <ItemGroup>
@@ -63,9 +64,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AppVersionInfo.json" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="CustomViews\BorderlessEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="AppVersionInfo.json" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>
