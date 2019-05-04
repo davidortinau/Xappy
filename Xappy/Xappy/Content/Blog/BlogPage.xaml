@@ -5,12 +5,15 @@
              xmlns:customviews="clr-namespace:Xappy.CustomViews"
              x:Class="Xappy.Content.Blog.BlogPage">
     <ContentPage.Content>
-        <customviews:CustomCollectionView ItemsSource="{Binding Items}" >
+        <customviews:CustomCollectionView ItemsSource="{Binding Items}" 
+                                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectCommand}"
+                    SelectionMode="Single">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                         Span="2" />
             </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate> 
+            <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="blog:BlogItem">
                     <blog:BlogView />
                 </DataTemplate>

@@ -26,6 +26,7 @@ namespace Xappy
             //Routing.RegisterRoute("todo", typeof(Todo));
             Routing.RegisterRoute("conversation", typeof(ConversationPage));
             Routing.RegisterRoute("blog", typeof(BlogPage));
+            Routing.RegisterRoute("blogDetail", typeof(BlogDetailPage));
         }
     }
 }

@@ -11,6 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.0.0" />
     <PackageReference Include="System.ServiceModel.Syndication" Version="4.6.0-preview4.19212.13" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
@@ -31,6 +33,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <EmbeddedResource Update="Content\Blog\BlogDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Content\Blog\BlogPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

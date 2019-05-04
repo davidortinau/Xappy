@@ -22,8 +22,6 @@ namespace Xappy.Scenarios
             base.OnAppearing();
 
             ScenariosCV.SelectedItem = null;
-
-
         }
     }
 }

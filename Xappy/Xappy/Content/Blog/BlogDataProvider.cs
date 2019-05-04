@@ -31,14 +31,18 @@ namespace Xappy.Content.Blog
                     {
                         var contentElement = item.ElementExtensions.First(x => x.OuterNamespace == "http://purl.org/rss/1.0/modules/content/");
                         var content = contentElement.GetObject<XElement>().Value;
+                        var creatorElement = item.ElementExtensions.First(x => x.OuterName == "creator");
+                        var creator = creatorElement.GetObject<XElement>().Value;
                         var imageUriMatches = Regex.Match(content, "src=\"(?<image>.+(?:\\.jpg|\\.png))\"");
                         var imageUri = imageUriMatches.Groups["image"].Value;
                         var blogItem = new BlogItem
                         {
+                            Id = Guid.NewGuid().ToString(),
                             Title = item.Title.Text,
                             Content = content,
-                            ImageUri = imageUri,
-                            Author = string.Join(", ", item.Contributors.Select(x => x.Name)),
+                            ImageUri = imageUri.Replace("http://", "https://"), 
+                            FullUri = item.Links.First().Uri.ToString(),
+                            Author = creator,
                             LastEditDate = item.LastUpdatedTime.LocalDateTime,
                             PublishDate = item.PublishDate.LocalDateTime
                         };
@@ -46,6 +50,8 @@ namespace Xappy.Content.Blog
                     }
                 }
                 sw.Stop();
+                BlogStore.BlogItems.Clear();
+                BlogStore.BlogItems.AddRange(items);
                 return items;
             }
             catch (Exception ex)

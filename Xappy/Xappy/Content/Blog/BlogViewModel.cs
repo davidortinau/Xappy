@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PropertyChanged;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Xappy.Content.Blog
 {
+    [AddINotifyPropertyChangedInterface]
     public class BlogViewModel
     {
         public ObservableCollection<BlogItem> Items { get; } = new ObservableCollection<BlogItem>();
@@ -28,6 +29,19 @@ namespace Xappy.Content.Blog
 
             Task.Run(LoadData);
         }
+
+        public ICommand SelectCommand => new Command(async () => await Selected());
+
+        private async Task Selected()
+        {
+            if (SelectedItem == null)
+                return;
+            var item = SelectedItem;
+            SelectedItem = null;
+            await Shell.Current.GoToAsync($"blogDetail?id={item.Id}"); 
+        }
+
+        public BlogItem SelectedItem { get; set; }
 
         public async Task LoadData()
         {

@@ -71,6 +71,7 @@
     <Compile Include="Renderers\GradientViewRenderer.cs" />
     <Compile Include="Renderers\XappyCollectionViewRenderer.cs" />
     <Compile Include="Renderers\XappyShellRenderer.cs" />
+    <Compile Include="Renderers\XappyWebViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
