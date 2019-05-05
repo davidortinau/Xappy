@@ -2,26 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Xappy.About.ViewModels"
+             xmlns:global="clr-namespace:Xappy.Domain.Global"
              x:Class="Xappy.About.IndexPage"
              Title="About"
              Shell.TabBarIsVisible="false"
              BackgroundColor="{StaticResource ColorAppBackground}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="VersionGroupHeaderTemplate">
+            <DataTemplate x:Key="HeaderTemplate">
                 <ViewCell>
-                    <Button Text="{Binding Key.Version}"
-                            CommandParameter="{Binding .}"
-                            Clicked="OnHeaderClicked"
-                            BackgroundColor="Transparent" BorderColor="Transparent" />
+                    <Label Text="{Binding Version}" />
                 </ViewCell>
             </DataTemplate>
-            
-            <DataTemplate x:Key="VersionItemTemplate">
+            <DataTemplate x:Key="FeatureTemplate">
                 <ViewCell>
                     <Label Text="{Binding Description}" />
                 </ViewCell>
             </DataTemplate>
+            <DataTemplate x:Key="BugFixTemplate">
+                <ViewCell>
+                    <Label Text="{Binding Description}" />
+                </ViewCell>
+            </DataTemplate>
+            <global:VersionInfoDataTemplateSelector x:Key="VersionInfoDataTemplateSelector"
+                                                    HeaderTemplate="{StaticResource HeaderTemplate}"
+                                                    FeatureTemplate="{StaticResource FeatureTemplate}"
+                                                    BugFixTemplate="{StaticResource BugFixTemplate}" />            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
@@ -31,9 +37,8 @@
     <ContentPage.Content>
         <ListView x:Name="VersionsList"
                   ItemsSource="{Binding Versions}"
-                  ItemTemplate="{StaticResource VersionItemTemplate}"
-                  IsGroupingEnabled="true"
-                  GroupHeaderTemplate="{StaticResource VersionGroupHeaderTemplate}"
+                  ItemTemplate="{StaticResource VersionInfoDataTemplateSelector}"
+                  SelectedItem="{Binding SelectedVerion, Mode=TwoWay}"
                   Margin="0,50,0,0"/>
     </ContentPage.Content>
 </ContentPage>

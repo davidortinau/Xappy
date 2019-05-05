@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using Xappy.About.ViewModels;
 
 namespace Xappy.About
 {
@@ -8,12 +7,6 @@ namespace Xappy.About
         public IndexPage()
         {
             InitializeComponent();
-        }
-
-        private void OnHeaderClicked(object sender, System.EventArgs e)
-        {
-            if(sender is Button button)
-                ((IndexViewModel)this.BindingContext).HeaderSelectedCommand.Execute(button.CommandParameter);
         }
     }
 }
