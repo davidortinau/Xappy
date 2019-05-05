@@ -14,8 +14,6 @@ namespace Xappy.About.ViewModels
 {
     public class IndexViewModel : INotifyPropertyChanged //: BaseViewModel
     {
-        private string _json;
-
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -25,6 +23,8 @@ namespace Xappy.About.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private string _json;
 
         private ObservableCollection<VersionInfoItem> _versionsExpanded = new ObservableCollection<VersionInfoItem>();
         private ObservableCollection<VersionInfoItem> _versions = new ObservableCollection<VersionInfoItem>();

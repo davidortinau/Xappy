@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Xappy.About.ViewModels"
-             xmlns:global="clr-namespace:Xappy.Domain.Global"
+             xmlns:global="clr-namespace:Xappy.Domain.Global"             
              x:Class="Xappy.About.IndexPage"
              Title="About"
              Shell.TabBarIsVisible="false"
@@ -13,7 +13,11 @@
                 <ViewCell>
                     <StackLayout Orientation="Horizontal"
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Spacing="12"
                                  Margin="12,0,12,0">
+                        <Label Text="{Binding Icon}"
+                               FontFamily="{StaticResource FontAwesome}"
+                               VerticalOptions="Center" />
                         <Label Text="{Binding Version}" VerticalOptions="Center" HorizontalOptions="Start" />
                     </StackLayout>
                 </ViewCell>

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Xappy.Domain.Global
@@ -60,11 +62,34 @@ namespace Xappy.Domain.Global
         public List<BugFix> BugFixes { get; set; }
     }
 
-    public class VersionInfoItem
+    public class VersionInfoItem : INotifyPropertyChanged
     {
-        public bool Expanded { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
+
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private bool _expanded;
+        public bool Expanded
+        {
+            get => _expanded;
+            set
+            {
+                _expanded = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Icon));
+            }
+        }
+
         public string Version { get; set; }
         public VersionInfoType InfoType { get; set; }
         public string Description { get; set; }
+
+        public string Icon => Expanded ? IconFont.AngleDown : IconFont.AngleRight;
     }
 }
