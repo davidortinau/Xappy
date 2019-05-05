@@ -47,21 +47,25 @@ namespace Xappy.About.ViewModels
                 _selectedVerion = value;
                 OnPropertyChanged();
 
-                if(_selectedVerion.InfoType == VersionInfoType.Header)
+                if (SelectedVerion != null)
                 {
-                    if(_selectedVerion.Expanded)
+                    if (SelectedVerion.InfoType == VersionInfoType.Header)
                     {
-                        _selectedVerion.Expanded = false;
-                        foreach (var item in Versions.Where(item => item.Version == _selectedVerion.Version && item.InfoType != VersionInfoType.Header).ToList())
-                            Versions.Remove(item);
+                        if (SelectedVerion.Expanded)
+                        {
+                            _selectedVerion.Expanded = false;
+                            foreach (var item in Versions.Where(item => item.Version == SelectedVerion.Version && item.InfoType != VersionInfoType.Header).ToList())
+                                Versions.Remove(item);
+                        }
+                        else
+                        {
+                            SelectedVerion.Expanded = true;
+                            var selectedIndex = Versions.IndexOf(SelectedVerion);
+                            foreach (var item in _versionsExpanded.Where(item => item.Version == SelectedVerion.Version && item.InfoType != VersionInfoType.Header))
+                                Versions.Insert(++selectedIndex, item);
+                        }
                     }
-                    else
-                    {
-                        _selectedVerion.Expanded = true;
-                        var selectedIndex = Versions.IndexOf(_selectedVerion);
-                        foreach(var item in _versionsExpanded.Where(item => item.Version == _selectedVerion.Version && item.InfoType != VersionInfoType.Header))
-                            Versions.Insert(++selectedIndex, item);
-                    }
+                    SelectedVerion = null;
                 }
             }
         }

@@ -11,17 +11,29 @@
         <ResourceDictionary>
             <DataTemplate x:Key="HeaderTemplate">
                 <ViewCell>
-                    <Label Text="{Binding Version}" />
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Margin="12,0,12,0">
+                        <Label Text="{Binding Version}" VerticalOptions="Center" HorizontalOptions="Start" />
+                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="FeatureTemplate">
                 <ViewCell>
-                    <Label Text="{Binding Description}" />
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Margin="12,0,12,0">                    
+                        <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
+                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="BugFixTemplate">
                 <ViewCell>
-                    <Label Text="{Binding Description}" />
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Margin="12,0,12,0">                    
+                        <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
+                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
             <global:VersionInfoDataTemplateSelector x:Key="VersionInfoDataTemplateSelector"
@@ -39,6 +51,6 @@
                   ItemsSource="{Binding Versions}"
                   ItemTemplate="{StaticResource VersionInfoDataTemplateSelector}"
                   SelectedItem="{Binding SelectedVerion, Mode=TwoWay}"
-                  Margin="0,50,0,0"/>
+                  SeparatorVisibility="None" />
     </ContentPage.Content>
 </ContentPage>
