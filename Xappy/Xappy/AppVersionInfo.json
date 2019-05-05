@@ -18,7 +18,23 @@
     ],
     "BugFixes": [
       { "Description": "- Bug 1" },
-      { "Description": "- Bug 2" }
+      { "Description": "- Bug 2" },
+      { "Description": "- Bug 3" }
+    ]
+  },
+  {
+    "Version": "0.0.0.3",
+    "Description": "Our third app release",
+    "Features": [
+      { "Description": "- Feature 1" },
+      { "Description": "- Feature 2" },
+      { "Description": "- Feature 3" }
+    ],
+    "BugFixes": [
+      { "Description": "- Bug 1" },
+      { "Description": "- Bug 2" },
+      { "Description": "- Bug 3" },
+      { "Description": "- Bug 4" }
     ]
   }
 ]

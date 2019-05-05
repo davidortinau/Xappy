@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Xappy.Domain.Global
 {
@@ -27,15 +28,21 @@ namespace Xappy.Domain.Global
         public List<BugFix> BugFixes { get; set; }
     }
 
-    public class VersionInfoGroup : List<VersionInfo>
-    {
-        public string Header { get; set; }
-        public List<VersionInfoItem> Items { get; set; }
-    }
-
     public class VersionInfoItem
     {
         public VersionInfoType InfoType { get; set; }
         public string Description { get; set; }
+    }
+
+    public class Grouping<K, T> : ObservableCollection<T>
+    {
+        public K Key { get; private set; }
+
+        public Grouping(K key, IEnumerable<T> items)
+        {
+            Key = key;
+            foreach (var item in items)
+                Items.Add(item);
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 using Xappy.Domain.Global;
 
 namespace Xappy.About.ViewModels
@@ -25,8 +26,9 @@ namespace Xappy.About.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private ObservableCollection<VersionInfoGroup> _versions = new ObservableCollection<VersionInfoGroup>();
-        public ObservableCollection<VersionInfoGroup> Versions
+        private ObservableCollection<Grouping<VersionInfo, VersionInfoItem>> _versionsExpanded = new ObservableCollection<Grouping<VersionInfo, VersionInfoItem>>();
+        private ObservableCollection<Grouping<VersionInfo, VersionInfoItem>> _versions = new ObservableCollection<Grouping<VersionInfo, VersionInfoItem>>();
+        public ObservableCollection<Grouping<VersionInfo, VersionInfoItem>> Versions
         {
             get => _versions;
             set
@@ -35,6 +37,9 @@ namespace Xappy.About.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private Command<Grouping<VersionInfo, VersionInfoItem>> _headerSelectedCommand;
+        public Command<Grouping<VersionInfo, VersionInfoItem>> HeaderSelectedCommand => _headerSelectedCommand ?? (_headerSelectedCommand = new Command<Grouping<VersionInfo, VersionInfoItem>>(obj => HeaderSelected(obj)));
 
         public IndexViewModel()
         {
@@ -49,19 +54,33 @@ namespace Xappy.About.ViewModels
             var versions = new ObservableCollection<VersionInfo>(JsonConvert.DeserializeObject<List<VersionInfo>>(_json));
             foreach(var version in versions)
             {
-                var versionInfo = new VersionInfoGroup() { Header = version.Version, Items = new List<VersionInfoItem>() };
+                var versionInfoItems = new List<VersionInfoItem>();
                 if (version.Features != null && version.Features.Any())
                 {
                     foreach (var feature in version.Features)
-                        versionInfo.Items.Add(new VersionInfoItem() { InfoType = VersionInfoType.Feature, Description = feature.Description });
+                        versionInfoItems.Add(new VersionInfoItem() { InfoType = VersionInfoType.Feature, Description = feature.Description });
                 }
                 if (version.BugFixes != null && version.BugFixes.Any())
                 {
                     foreach (var bugFix in version.BugFixes)
-                        versionInfo.Items.Add(new VersionInfoItem() { InfoType = VersionInfoType.BugFix, Description = bugFix.Description });
+                        versionInfoItems.Add(new VersionInfoItem() { InfoType = VersionInfoType.BugFix, Description = bugFix.Description });
                 }
 
-                Versions.Add(versionInfo);
+                _versionsExpanded.Add(new Grouping<VersionInfo, VersionInfoItem>(version, versionInfoItems));
+            }
+
+            foreach (var group in _versionsExpanded)
+                Versions.Add(new Grouping<VersionInfo, VersionInfoItem>(group.Key, new List<VersionInfoItem>()));
+        }
+
+        private void HeaderSelected(Grouping<VersionInfo, VersionInfoItem> selectedGroup)
+        {
+            if (selectedGroup.Any())
+                selectedGroup.Clear();
+            else
+            {
+                foreach (var item in _versionsExpanded.FirstOrDefault(i => i.Key == selectedGroup.Key))
+                    selectedGroup.Add(item);
             }
         }
     }

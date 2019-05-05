@@ -10,11 +10,17 @@
         <ResourceDictionary>
             <DataTemplate x:Key="VersionGroupHeaderTemplate">
                 <ViewCell>
-                    <Label Text="{Binding Header}" />
+<!--                    <Label Text="{Binding Key.Version}" />-->
+                    <Button CommandParameter="{Binding .}"
+                            Text="{Binding Key.Version}"
+                            Clicked="Handle_Clicked"
+                            BackgroundColor="Transparent" BorderColor="Transparent" />
                 </ViewCell>
             </DataTemplate>
+            
             <DataTemplate x:Key="VersionItemTemplate">
                 <ViewCell>
+                    <Label Text="{Binding Description}" />
                 </ViewCell>
             </DataTemplate>
         </ResourceDictionary>
@@ -28,6 +34,7 @@
                   ItemsSource="{Binding Versions}"
                   ItemTemplate="{StaticResource VersionItemTemplate}"
                   IsGroupingEnabled="true"
-                  GroupHeaderTemplate="{StaticResource VersionGroupHeaderTemplate}"/>
+                  GroupHeaderTemplate="{StaticResource VersionGroupHeaderTemplate}"
+                  Margin="0,50,0,0"/>
     </ContentPage.Content>
 </ContentPage>
