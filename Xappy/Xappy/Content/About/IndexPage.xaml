@@ -6,10 +6,28 @@
              Title="About"
              Shell.TabBarIsVisible="false"
              BackgroundColor="{StaticResource ColorAppBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="VersionGroupHeaderTemplate">
+                <ViewCell>
+                    <Label Text="{Binding Header}" />
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="VersionItemTemplate">
+                <ViewCell>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <viewModels:IndexViewModel />
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
+        <ListView x:Name="VersionsList"
+                  ItemsSource="{Binding Versions}"
+                  ItemTemplate="{StaticResource VersionItemTemplate}"
+                  IsGroupingEnabled="true"
+                  GroupHeaderTemplate="{StaticResource VersionGroupHeaderTemplate}"/>
     </ContentPage.Content>
 </ContentPage>

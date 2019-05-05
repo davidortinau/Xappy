@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
@@ -24,8 +25,8 @@ namespace Xappy.About.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private ObservableCollection<VersionInfo> _versions;
-        public ObservableCollection<VersionInfo> Versions
+        private ObservableCollection<VersionInfoGroup> _versions = new ObservableCollection<VersionInfoGroup>();
+        public ObservableCollection<VersionInfoGroup> Versions
         {
             get => _versions;
             set
@@ -45,7 +46,23 @@ namespace Xappy.About.ViewModels
                     _json = reader.ReadToEnd();
             }
 
-            Versions = new ObservableCollection<VersionInfo>(JsonConvert.DeserializeObject<List<VersionInfo>>(_json));
+            var versions = new ObservableCollection<VersionInfo>(JsonConvert.DeserializeObject<List<VersionInfo>>(_json));
+            foreach(var version in versions)
+            {
+                var versionInfo = new VersionInfoGroup() { Header = version.Version, Items = new List<VersionInfoItem>() };
+                if (version.Features != null && version.Features.Any())
+                {
+                    foreach (var feature in version.Features)
+                        versionInfo.Items.Add(new VersionInfoItem() { InfoType = VersionInfoType.Feature, Description = feature.Description });
+                }
+                if (version.BugFixes != null && version.BugFixes.Any())
+                {
+                    foreach (var bugFix in version.BugFixes)
+                        versionInfo.Items.Add(new VersionInfoItem() { InfoType = VersionInfoType.BugFix, Description = bugFix.Description });
+                }
+
+                Versions.Add(versionInfo);
+            }
         }
     }
 }
