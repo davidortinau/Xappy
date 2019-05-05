@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xappy.About.ViewModels;
 
 namespace Xappy.About
@@ -13,7 +10,7 @@ namespace Xappy.About
             InitializeComponent();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        private void OnHeaderClicked(object sender, System.EventArgs e)
         {
             if(sender is Button button)
                 ((IndexViewModel)this.BindingContext).HeaderSelectedCommand.Execute(button.CommandParameter);

@@ -10,10 +10,9 @@
         <ResourceDictionary>
             <DataTemplate x:Key="VersionGroupHeaderTemplate">
                 <ViewCell>
-<!--                    <Label Text="{Binding Key.Version}" />-->
-                    <Button CommandParameter="{Binding .}"
-                            Text="{Binding Key.Version}"
-                            Clicked="Handle_Clicked"
+                    <Button Text="{Binding Key.Version}"
+                            CommandParameter="{Binding .}"
+                            Clicked="OnHeaderClicked"
                             BackgroundColor="Transparent" BorderColor="Transparent" />
                 </ViewCell>
             </DataTemplate>
