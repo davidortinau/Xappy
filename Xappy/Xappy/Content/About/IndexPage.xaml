@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Xappy.About.ViewModels"
+             xmlns:global="clr-namespace:Xappy.Domain.Global"             
+             x:Class="Xappy.About.IndexPage"
+             Title="About"
+             Shell.TabBarIsVisible="false"
+             BackgroundColor="{StaticResource ColorAppBackground}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="HeaderTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Spacing="12"
+                                 Margin="12,0,12,0">
+                        <Label Text="{Binding Icon}"
+                               FontFamily="{StaticResource FontAwesome}"
+                               VerticalOptions="Center" />
+                        <Label Text="{Binding Version}" VerticalOptions="Center" HorizontalOptions="Start" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="FeatureTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Margin="12,0,12,0">                    
+                        <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="BugFixTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                 Margin="12,0,12,0">                    
+                        <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <global:VersionInfoDataTemplateSelector x:Key="VersionInfoDataTemplateSelector"
+                                                    HeaderTemplate="{StaticResource HeaderTemplate}"
+                                                    FeatureTemplate="{StaticResource FeatureTemplate}"
+                                                    BugFixTemplate="{StaticResource BugFixTemplate}" />            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <viewModels:IndexViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ListView x:Name="VersionsList"
+                  ItemsSource="{Binding Versions}"
+                  ItemTemplate="{StaticResource VersionInfoDataTemplateSelector}"
+                  SelectedItem="{Binding SelectedVerion, Mode=TwoWay}"
+                  SeparatorVisibility="None" />
+    </ContentPage.Content>
+</ContentPage>

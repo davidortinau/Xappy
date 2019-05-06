@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Xappy"
     xmlns:scenarios="clr-namespace:Xappy.Scenarios"
+    xmlns:about="clr-namespace:Xappy.About"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     FlyoutBehavior="Flyout"
     Route=""
@@ -101,8 +102,10 @@
                                  Color="White"
                                  Size="14" />
             </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent Title="General"
+                ContentTemplate="{DataTemplate about:IndexPage}" />
+            <ShellContent Title="Contributors"
+                ContentTemplate="{DataTemplate about:GitHubPage}" />
         </Tab>
     </FlyoutItem>
     
