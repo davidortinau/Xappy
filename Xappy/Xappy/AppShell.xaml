@@ -3,13 +3,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Xappy"
+    xmlns:common="clr-namespace:Xappy.Content.Common"
     xmlns:scenarios="clr-namespace:Xappy.Scenarios"
     xmlns:about="clr-namespace:Xappy.About"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
+    FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     FlyoutBehavior="Flyout"
-    Route=""
-    RouteHost="microsoft.com"
-    RouteScheme="app"
     x:Class="Xappy.AppShell">
     
     <Shell.FlyoutIcon>
@@ -20,32 +19,6 @@
             Size="24" />
     </Shell.FlyoutIcon>
     
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid Padding="20,66,0,40" ColumnSpacing="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="20" />
-                    <ColumnDefinition
-                        Width="*" />
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End">
-                    <Image.Source>
-                        <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                         Glyph="{x:Static local:IconFont.PaintBrush}"
-                                         Color="White"
-                                         Size="16" />
-                    </Image.Source>
-                </Image>
-                <Label
-                    Grid.Column="1"
-                    VerticalOptions="Center"
-                    FontSize="17"
-                    Text="Visual Settings"
-                    TextColor="White" />
-            </Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
     <FlyoutItem
         Title="Main"
         Style="{DynamicResource CurrentTheme}"

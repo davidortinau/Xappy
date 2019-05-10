@@ -1,42 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Xappy.About.ViewModels"
-             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             x:Class="Xappy.About.GitHubPage"
-             Title="About"
-             Shell.TabBarIsVisible="false">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Xappy.About.ViewModels"
+    xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    x:Class="Xappy.About.GitHubPage"
+    Title="About"
+    Shell.TabBarIsVisible="false">
     <ContentPage.BindingContext>
         <viewModels:GitHubViewModel />
     </ContentPage.BindingContext>
-    
     <ContentPage.Content>
-        <CollectionView x:Name="ContributorsCollectionView"
-                        ItemsSource="{Binding Contributors}"
-                        SelectedItem="{Binding SelectedContributor, Mode=TwoWay}"
-                        SelectionMode="Single"
-                        VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <CollectionView
+            x:Name="ContributorsCollectionView"
+            Margin="0,40,0,0"
+            ItemsSource="{Binding Contributors}"
+            SelectedItem="{Binding SelectedContributor, Mode=TwoWay}"
+            SelectionMode="Single"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="3" />
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="3" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="12" ColumnSpacing="0" RowSpacing="2">
+                    <Grid
+                        Padding="12"
+                        BackgroundColor="White"
+                        ColumnSpacing="0"
+                        RowSpacing="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition
+                                Height="50" />
+                            <RowDefinition
+                                Height="*" />
                         </Grid.RowDefinitions>
-                        
-                        <abstractions:CircleImage Source="{Binding AvatarUrl}" Aspect="AspectFill"
-                                                  WidthRequest="50" HeightRequest="50"
-                                                  BorderColor="Gray" BorderThickness="1"
-                                                  VerticalOptions="Center" HorizontalOptions="Center"
-                                                  Grid.Row="0" />
-                        <Label Text="{Binding Login}"
-                               Style="{StaticResource TextBody}"
-                               LineBreakMode="NoWrap"
-                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
-                               Grid.Row="1" />
+                        <abstractions:CircleImage
+                            Source="{Binding AvatarUrl}"
+                            Aspect="AspectFill"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            BorderColor="Gray"
+                            BorderThickness="1"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Grid.Row="0" />
+                        <Label
+                            Text="{Binding Login}"
+                            Style="{StaticResource TextBody}"
+                            LineBreakMode="NoWrap"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Grid.Row="1" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

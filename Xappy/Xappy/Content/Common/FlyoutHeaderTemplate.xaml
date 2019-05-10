@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:local="clr-namespace:Xappy"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Xappy.Content.Common.FlyoutHeaderTemplate"
+    Padding="20,66,0,40"
+    ColumnSpacing="20">
+    
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition
+            Width="20" />
+        <ColumnDefinition
+            Width="*" />
+    </Grid.ColumnDefinitions>
+    <Image
+        Grid.Column="0"
+        VerticalOptions="Center"
+        HorizontalOptions="End">
+        <Image.Source>
+            <FontImageSource
+                FontFamily="{StaticResource FontAwesome}"
+                Glyph="{x:Static local:IconFont.PaintBrush}"
+                Color="White"
+                Size="16" />
+        </Image.Source>
+    </Image>
+    <Label
+        Grid.Column="1"
+        VerticalOptions="Center"
+        FontSize="17"
+        Text="Visual Settings"
+        TextColor="White" />
+</Grid>
