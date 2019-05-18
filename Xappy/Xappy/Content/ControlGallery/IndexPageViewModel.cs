@@ -4,30 +4,12 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xappy.Content;
 
 namespace Xappy.ControlGallery
 {
-    public class IndexPageViewModel : INotifyPropertyChanged
+    public class IndexPageViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void SetAndRaisePropertyChanged<TRef>(
-            ref TRef field, TRef value, [CallerMemberName] string propertyName = null)
-        {
-            field = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetAndRaisePropertyChangedIfDifferentValues<TRef>(
-            ref TRef field, TRef value, [CallerMemberName] string propertyName = null)
-            where TRef : class
-        {
-            if (field == null || !field.Equals(value))
-            {
-                SetAndRaisePropertyChanged(ref field, value, propertyName);
-            }
-        }
-
         public ControlType SelectedControl { get; set; }
 
         public ICommand SelectCommand { get; set; }
