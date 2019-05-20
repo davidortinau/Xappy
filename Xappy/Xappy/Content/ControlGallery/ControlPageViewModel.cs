@@ -1,39 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xappy.Content;
 using Xappy.Content.ControlGallery;
 
 namespace Xappy.ControlGallery
 {
     [QueryProperty("ControlTemplate", "template")]
     [QueryProperty("ControlTitle", "control")]
-    public class ControlPageViewModel : INotifyPropertyChanged
+    public class ControlPageViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void SetAndRaisePropertyChanged<TRef>(
-            ref TRef field, TRef value, [CallerMemberName] string propertyName = null)
-        {
-            field = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetAndRaisePropertyChangedIfDifferentValues<TRef>(
-            ref TRef field, TRef value, [CallerMemberName] string propertyName = null)
-            where TRef : class
-        {
-            if (field == null || !field.Equals(value))
-            {
-                SetAndRaisePropertyChanged(ref field, value, propertyName);
-            }
-        }
-
         public ControlType SelectedControl { get; set; }
 
         public ICommand ViewXAMLCommand { get; set; }
@@ -48,21 +27,15 @@ namespace Xappy.ControlGallery
 
         public ICommand SwitchedCommand { get; set; }
 
-        public ObservableCollection<PropertyInfo> Properties { get => properties; set => SetAndRaisePropertyChanged(ref properties, value); }
+        public ObservableCollection<PropertyInfo> Properties { get => properties; set => SetProperty(ref properties, value); }
 
         public PropertyInfo Selected { get; set; }
 
         private string _controlTitle;
         public string ControlTitle
         {
-            get
-            {
-                return _controlTitle;
-            }
-            set
-            {
-                SetAndRaisePropertyChanged(ref _controlTitle, value);
-            }
+            get => _controlTitle;
+            set => SetProperty(ref _controlTitle, value);
         }
 
         private string _controlTemplate;

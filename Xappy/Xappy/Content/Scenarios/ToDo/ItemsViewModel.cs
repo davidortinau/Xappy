@@ -9,6 +9,8 @@ namespace Xappy.Content.Scenarios.ToDo
 {
     public class ItemsViewModel : BaseViewModel
     {
+        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
