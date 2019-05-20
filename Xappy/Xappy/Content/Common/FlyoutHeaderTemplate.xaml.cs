@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Xappy.Content.Settings;
 
 namespace Xappy.Content.Common
 {
@@ -10,6 +11,12 @@ namespace Xappy.Content.Common
         public FlyoutHeaderTemplate()
         {
             InitializeComponent();
+
+        }
+
+        async void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            await Shell.Current.Navigation.PushModalAsync(new SettingsPages(), true);
         }
     }
 }

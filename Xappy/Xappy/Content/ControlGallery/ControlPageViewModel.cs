@@ -11,6 +11,7 @@ using Xappy.Content.ControlGallery;
 
 namespace Xappy.ControlGallery
 {
+    [QueryProperty("ControlTemplate", "template")]
     [QueryProperty("ControlTitle", "control")]
     public class ControlPageViewModel : INotifyPropertyChanged
     {
@@ -61,6 +62,19 @@ namespace Xappy.ControlGallery
             set
             {
                 SetAndRaisePropertyChanged(ref _controlTitle, value);
+            }
+        }
+
+        private string _controlTemplate;
+        public string ControlTemplate
+        {
+            get
+            {
+                return _controlTemplate;
+            }
+            set
+            {
+                SetAndRaisePropertyChanged(ref _controlTemplate, value);
             }
         }
 

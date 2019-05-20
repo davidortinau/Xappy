@@ -36,11 +36,13 @@ namespace Xappy.ControlGallery
             "StyleId",
         };
 
+        ControlPageViewModel _vm;
+
         public ControlPage()
         {
             InitializeComponent();
 
-            BindingContext = new ControlPageViewModel();
+            BindingContext = _vm = new ControlPageViewModel();
         }
 
         private View ControlTemplate;
@@ -49,8 +51,14 @@ namespace Xappy.ControlGallery
         {
             base.OnAppearing();
 
-            // do the looked to get the right template
-            ControlTemplate = new ButtonControlTemplate();
+            if (_vm != null && !string.IsNullOrEmpty(_vm.ControlTemplate))
+            {
+                ControlTemplate = (View)Activator.CreateInstance(Type.GetType($"Xappy.Content.ControlGallery.ControlTemplates.{_vm.ControlTemplate}"));
+            }
+            else
+            {
+                ControlTemplate = new ButtonControlTemplate();
+            }
 
             ControlCanvas.Children.Clear();
             ControlCanvas.Children.Add(ControlTemplate);
@@ -60,7 +68,7 @@ namespace Xappy.ControlGallery
 
             (BindingContext as ControlPageViewModel).SetElement(_element, _exceptProperties);
         }
-        
+
         async void Handle_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
             if (!e.CurrentSelection.Any())

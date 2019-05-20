@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage x:Class="Xappy.Scenarios.IndexPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
+             Shell.TabBarIsVisible="false"
              BackgroundColor="{StaticResource ColorAppBackground}">
 
     <CollectionView x:Name="ScenariosCV"
@@ -22,7 +23,8 @@
             <DataTemplate>
                 <ContentView Padding="10" BackgroundColor="White">
                     <Frame HeightRequest="40"
-                           BackgroundColor="{StaticResource ColorPrimary}"
+                           CornerRadius="3"
+                           BackgroundColor="{StaticResource dusty_orange}"
                            Visual="Material">
                         <Label VerticalOptions="Center"
                                Style="{StaticResource TextHeadline}"

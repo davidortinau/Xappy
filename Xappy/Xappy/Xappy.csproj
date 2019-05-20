@@ -13,11 +13,12 @@
   <ItemGroup>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
-    <PackageReference Include="LiveXAML" Version="2.1.72" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.394984-pre10" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.394984-pre10" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
     <PackageReference Include="Octokit" Version="0.32.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.2.9" />
   </ItemGroup>
   
   <ItemGroup>
@@ -30,6 +31,7 @@
     <Folder Include="Content\Settings\" />
     <Folder Include="Content\Scenarios\ToDo\" />
     <Folder Include="Content\About\" />
+    <Folder Include="Content\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -8,6 +8,7 @@
     xmlns:about="clr-namespace:Xappy.About"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
+    ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBehavior="Flyout"
     x:Class="Xappy.AppShell">
     
@@ -24,17 +25,6 @@
         Style="{DynamicResource CurrentTheme}"
         FlyoutDisplayOptions="AsMultipleItems">
         <Tab
-            Title="Latest">
-            <Tab.Icon>
-                <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                 Glyph="{x:Static local:IconFont.AddressBook}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate local:MainPage}" />
-        </Tab>
-        <Tab
             Title="UI Controls">
             <Tab.Icon>
                 <FontImageSource FontFamily="{StaticResource FontAwesome}"
@@ -43,7 +33,7 @@
                                  Size="14" />
             </Tab.Icon>
             <ShellContent
-                ContentTemplate="{DataTemplate controlGallery:ControlPage}" />
+                ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
         </Tab>
         <Tab
             Title="Scenarios">
@@ -80,32 +70,18 @@
             <ShellContent Title="Contributors"
                 ContentTemplate="{DataTemplate about:GitHubPage}" />
         </Tab>
+        <Tab
+            Title="Latest">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.AddressBook}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
+            <ShellContent
+                ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
     </FlyoutItem>
     
     
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <Grid Padding="20,10,0,10" ColumnSpacing="20
-                ">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="20" />
-                    <ColumnDefinition
-                        Width="*" />
-                </Grid.ColumnDefinitions>
-                <Image
-                    Grid.Column="0"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Source="{Binding Icon}" />
-                <Label
-                    Grid.Column="1"
-                    VerticalOptions="Center"
-                    Text="{Binding Title}"
-                    TextColor="White"
-                    FontSize="17"
-                    />
-            </Grid>
-        </DataTemplate>
-    </Shell.ItemTemplate>
 </Shell>

@@ -11,7 +11,7 @@
     xmlns:behaviors="clr-namespace:Xappy.Behaviors"
     mc:Ignorable="d"
     Visual="Material"
-    Title="Button"
+    Title="{Binding ControlTitle}"
     x:Name="self"
     x:Class="Xappy.ControlGallery.ControlPage">
     <ContentPage.Content>
@@ -157,10 +157,9 @@
                         HorizontalOptions="End"
                         IsToggled="{Binding ., 
                             Converter={StaticResource PropertyInfoBooleanValueConverter}, 
-                            ConverterParameter={x:Reference self}}"
-                    >
+                            ConverterParameter={x:Reference self}}">
                         <Switch.Behaviors>
-                            <behaviors:EventToCommandBehavior 
+                            <behaviors:EventToCommandBehavior
                                 EventName="Toggled"
                                 Command="{Binding BindingContext.SwitchedCommand, Source={x:Reference self}}"
                                 CommandParameter="{Binding .}" />

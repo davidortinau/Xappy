@@ -5,12 +5,15 @@ using Xappy.Domain.Global;
 
 namespace Xappy
 {
-    // This needs Prism :)
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
+
+#if DEBUG
+            HotReloader.Current.Start(this);
+#endif
 
             DependencyService.Register<AppTheme>();
 

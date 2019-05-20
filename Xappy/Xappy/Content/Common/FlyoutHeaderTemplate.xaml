@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Grid
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:local="clr-namespace:Xappy"
@@ -7,12 +7,20 @@
     Padding="20,66,0,40"
     ColumnSpacing="20">
     
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer
+            Tapped="Handle_Tapped"
+            />
+    </Grid.GestureRecognizers>
+    
+    
     <Grid.ColumnDefinitions>
         <ColumnDefinition
             Width="20" />
         <ColumnDefinition
             Width="*" />
     </Grid.ColumnDefinitions>
+    
     <Image
         Grid.Column="0"
         VerticalOptions="Center"

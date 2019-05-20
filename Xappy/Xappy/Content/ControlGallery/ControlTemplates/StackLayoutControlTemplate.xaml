@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Frame
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Xappy.Content.ControlGallery.ControlTemplates.StackLayoutControlTemplate"
+    CornerRadius="4"
+    Padding="0"
+    Margin="60">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <ContentView
+            Grid.Row="0"
+            BackgroundColor="#00BCD4"
+            HeightRequest="176">
+            <Label
+                Text="Card Title"
+                TextColor="White"
+                VerticalOptions="End"
+                Margin="15" />
+        </ContentView>
+        <Label
+            Margin="15"
+            Grid.Row="1"
+            Text="It is a long established fact that a reader will be distracted by the readable content of a page..." />
+        <StackLayout
+            x:Name="targetControl"
+            Orientation="Vertical"
+            Spacing="15"
+            Padding="0,0,0,8"
+            Grid.Row="2">
+            <BoxView
+                BackgroundColor="#000000"
+                HeightRequest="1" />
+            <Button
+                Visual="Default"
+                HorizontalOptions="Start"
+                Margin="15,0"
+                Text="BUTTON"
+                BackgroundColor="Transparent"
+                TextColor="#00BCD4" />
+        </StackLayout>
+    </Grid>
+</Frame>
