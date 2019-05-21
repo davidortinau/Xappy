@@ -47,7 +47,7 @@ namespace Xappy.Content.ControlGallery.ProppyControls
         void OnColorSliderChanged(object sender, ValueChangedEventArgs e)
         {
 
-            if (!isEditingHex)
+            if (!isEditingHex & R != null)
             {
                 var color = Color.FromRgba(
                 (int)R.Value,

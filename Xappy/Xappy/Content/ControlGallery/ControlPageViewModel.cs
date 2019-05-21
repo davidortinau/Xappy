@@ -47,7 +47,7 @@ namespace Xappy.ControlGallery
             }
             set
             {
-                SetAndRaisePropertyChanged(ref _controlTemplate, value);
+                SetProperty(ref _controlTemplate, value);
             }
         }
 
