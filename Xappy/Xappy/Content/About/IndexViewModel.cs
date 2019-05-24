@@ -1,29 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
-using Xamarin.Forms;
+using Xappy.Content;
 using Xappy.Domain.Global;
 
 namespace Xappy.About.ViewModels
 {
-    public class IndexViewModel : INotifyPropertyChanged //: BaseViewModel
+    public class IndexViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private string _json;
 
         private ObservableCollection<VersionInfoItem> _versionsExpanded = new ObservableCollection<VersionInfoItem>();
@@ -31,11 +18,7 @@ namespace Xappy.About.ViewModels
         public ObservableCollection<VersionInfoItem> Versions
         {
             get => _versions;
-            set
-            {
-                _versions = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _versions, value);
         }
 
         private VersionInfoItem _selectedVerion;
