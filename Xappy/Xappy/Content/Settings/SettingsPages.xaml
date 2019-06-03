@@ -3,15 +3,20 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Xappy"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:views="clr-namespace:Xappy.Content.Settings"
     x:Class="Xappy.Content.Settings.SettingsPages"
     Title="Craft Your Experience"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
-    BackgroundColor="{StaticResource cerulean}">
+    BackgroundColor="White">
 
     <ScrollView>
-        <StackLayout BackgroundColor="White">
-            <Grid BackgroundColor="{StaticResource cerulean}">
+        <StackLayout BackgroundColor="White"
+                     Padding="20">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="44" />
                     <ColumnDefinition Width="*" />
@@ -27,30 +32,109 @@
                         <FontImageSource
                             FontFamily="{StaticResource FontAwesome}"
                             Glyph="{x:Static local:IconFont.Times}"
-                            Color="{DynamicResource ColorPrimary}" />
+                            Color="{StaticResource cerulean}" />
                     </ImageButton.Source>
                 </ImageButton>
 
-                <Label Grid.Column="1"
+                <Label Grid.Column="0"
+                       Grid.ColumnSpan="2"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       TextColor="White"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Header"
+                       TextColor="{StaticResource almost_black}"
                        Text="Craft Your Experience" />
             </Grid>
 
             <Label>
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span FontSize="
-                       17"
-                              FontAttributes="
-                       Bold"
-                              TextColor="#333333">Theme:
+                        <Span FontSize="17"
+                              FontAttributes="Bold"
+                              TextColor="{StaticResource almost_black}">Theme:
                         </Span>
-                        <Span Text="Default" />
+                        <Span Text=" Default" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+
+            <CollectionView
+                HeightRequest="120"
+                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Map</x:String>
+                        <x:String>Conversation</x:String>
+                        <x:String>Login</x:String>
+                        <x:String>To Do List</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="5">
+                            <views:ThemeCardView />
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <Label Margin="0,15,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontSize="17"
+                              FontAttributes="Bold"
+                              TextColor="{StaticResource almost_black}">Visual
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap">
+                <CheckBox x:Name="ChkDefault"
+                          IsChecked="True"
+                          FlexLayout.Basis="10%"
+                          FlexLayout.AlignSelf="Center" />
+                <Label Text="Default"
+                       FlexLayout.Basis="90%"
+                       FlexLayout.AlignSelf="Center" />
+                <CheckBox x:Name="ChkMaterial"
+                          FlexLayout.Basis="10%"
+                          FlexLayout.AlignSelf="Center" />
+                <Label Text="Material"
+                       FlexLayout.Basis="90%"
+                       FlexLayout.AlignSelf="Center" />
+            </FlexLayout>
+
+            <Label Margin="0,15,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontSize="17"
+                              FontAttributes="Bold"
+                              TextColor="{StaticResource almost_black}">Navigation
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap">
+                <Button
+                    BackgroundColor="{StaticResource cerulean}"
+                    Text="Flyout"
+                    TextColor="White"
+                    FlexLayout.Basis="50%"
+                    BorderColor="{StaticResource cerulean}"
+                    BorderWidth="1"
+                    CornerRadius="0" />
+                <Button
+                    BackgroundColor="Transparent"
+                    Text="Bottom Tabs"
+                    TextColor="{StaticResource cerulean}"
+                    BorderColor="{StaticResource cerulean}"
+                    BorderWidth="1"
+                    FlexLayout.Basis="50%"
+                    CornerRadius="0" />
+            </FlexLayout>
 
         </StackLayout>
     </ScrollView>

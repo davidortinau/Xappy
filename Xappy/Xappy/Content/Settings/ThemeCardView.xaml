@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Xappy.Content.Settings.ThemeCardView"
+    Visual="Material"
+    BorderColor="{StaticResource DodgerBlue}"
+    Padding="8,10">
+    <Frame.Resources>
+        <Style TargetType="BoxView">
+            <Setter
+                Property="HeightRequest"
+                Value="12" />
+        </Style>
+    </Frame.Resources>
+    <StackLayout Orientation="Vertical">
+        <Label Text="Default" />
+        <BoxView
+            BackgroundColor="{StaticResource cerulean}" />
+        <BoxView
+            BackgroundColor="{StaticResource cerulean_two}" />
+        <BoxView
+            BackgroundColor="{StaticResource cerulean_three}" />
+        <BoxView
+            BackgroundColor="{StaticResource dark_lime_green}" />
+
+
+    </StackLayout>
+</Frame>
