@@ -27,7 +27,14 @@ namespace Xappy.iOS
         {
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+
+            var formsApp = new App();
+
+            var vm = new XappyVM();
+            var vis = new XappyVis() { App = formsApp };
+            new Continuous.Server.HttpServer(vm: vm, visualizer: vis).Run();
+            
+            LoadApplication(formsApp);
             global::Xamarin.Forms.FormsMaterial.Init();
 
             ImageCircleRenderer.Init();
