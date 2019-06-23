@@ -76,9 +76,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\BorderlessEntryRenderer .cs" />
     <Compile Include="Renderers\XappyShellRenderer.cs" />
-    <Compile Include="C\IApp.cs" />
-    <Compile Include="C\XappyVis.cs" />
-    <Compile Include="C\XappyVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -147,19 +144,12 @@
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>4.1.0.483098-pre1</Version>
     </PackageReference>
-    <PackageReference Include="Mono.CSharp.Repl">
-      <Version>2019.6.4</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Xappy\Xappy.csproj">
       <Project>{AB03FC9C-B52B-4D35-A442-FBF2EF30F85D}</Project>
       <Name>Xappy</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\Volumes\[C] My Boot Camp\Users\rdavis\source\repos\Continuous\Continuous.Server.iOS\Continuous.Server.iOS.csproj">
-      <Project>{00144521-688B-49D0-9753-C02FF06DE345}</Project>
-      <Name>Continuous.Server.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

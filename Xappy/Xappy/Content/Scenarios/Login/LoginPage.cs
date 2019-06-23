@@ -9,7 +9,6 @@ using Xappy.Domain.Global;
 
 namespace Xappy.Content.Scenarios.Login
 {
-    [Route(Path = "login")]
     public class LoginPage : ContentPage
     {
         private Grid MainGrid;
