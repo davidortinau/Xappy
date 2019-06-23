@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using CSharpForMarkup;
 using ImageCircle.Forms.Plugin.Abstractions;
@@ -9,21 +9,11 @@ using Xappy.Domain.Global;
 
 namespace Xappy.Content.Scenarios.Login
 {
-    [Route(Path ="login")]
+    [Route(Path = "login")]
     public class LoginPage : ContentPage
     {
-        public enum Row
-        {
-            Avatar,
-            Controls,
-            ToggleMode,
-        }
-
-        private Uri _avatarUri = new Uri("https://devblogs.microsoft.com/xamarin/wp-content/uploads/sites/44/2019/03/Screen-Shot-2017-01-03-at-3.35.53-PM.png"); 
-
         private Grid MainGrid;
-        private StackLayout LoginControls;
-        private StackLayout SignupControls;
+        private StackLayout LoginControls, SignupControls;
         private CircleImage AvatarImage;
         private Label ToggleModeLabel;
 
@@ -31,35 +21,135 @@ namespace Xappy.Content.Scenarios.Login
 
         public LoginPage()
         {
-            BindingContext = ViewModel; 
-            Visual = VisualMarker.Material; 
+            // wire up viewmodel
+            BindingContext = ViewModel;
 
+            // set content
+            Visual = VisualMarker.Material;
             Content = GetContent();
 
-            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+            // prepare for entrance animation
+            MainGrid.Opacity = 0;
+            MainGrid.TranslationY = 50;
         }
 
-        private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        protected override void OnAppearing()
         {
-            switch(e.PropertyName)
+            base.OnAppearing();
+
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+
+            // perform entrance animation
+            MainGrid.FadeTo(1);
+            MainGrid.TranslateTo(0, 0);
+            MainGrid.Children.StaggerIn(50, 0.05);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+        }
+
+        private View GetContent() => new ScrollView
+        {
+            Content = new Grid
             {
-                case nameof(ViewModel.Mode):
-                    TransitionToMode(ViewModel.Mode);
+                RowDefinitions = new Dictionary<LoginRow, GridLength>
+                {
+                    [LoginRow.Avatar] = 140,
+                    [LoginRow.Controls] = GridLength.Auto,
+                    [LoginRow.ToggleMode] = GridLength.Auto,
+                }
+                .ToRowDefinitions(),
 
-                    break;
+                Children =
+                {
+                    new CircleImage { }
+                        .Center() .Size(140)
+                        .Assign(out AvatarImage)
+                        .Row(LoginRow.Avatar)
+                        .Bind(nameof(ViewModel.AvatarUri)),
 
-                default:
-                    return;
+                    LoginControls_Declarative()
+                        .Assign(out LoginControls)
+                        .Row(LoginRow.Controls),
+
+                    SignupControls_DSL()
+                        .Assign(out SignupControls)
+                        .Row(LoginRow.Controls),
+
+                    new Label { Text = ViewModel.TextForToggleTitle }
+                        .Center() .FontSize(14)
+                        .Margin(12)
+                        .Row(LoginRow.ToggleMode)
+                        .Assign(out ToggleModeLabel)
+                        .BindTapGesture(nameof(ViewModel.ToggleModeCommand)),
+
+                    new ActivityIndicator { }
+                        .Bind(nameof(ViewModel.IsBusy)),
+                }
+            }
+            .Center()
+            .Margin(20)
+            .Assign(out MainGrid)
+        };
+
+        // returns the controls for the login form in a declarative, CSharpForMarkup manner
+        // this style balances conciseness, consistency and reusability
+        private StackLayout LoginControls_Declarative() => new StackLayout
+        {
+            Children =
+            {
+                new Entry { Placeholder = "Username" }
+                    .Bind(nameof(ViewModel.Username)),
+
+                new Entry { Placeholder = "Password", IsPassword = true }
+                    .Bind(nameof(ViewModel.Password)),
+
+                new Button { Text = "Log in", Command = ViewModel.LoginCommand }
+                    .Bind(sourcePropertyName: nameof(IsBusy),
+                            targetProperty: IsEnabledProperty,
+                            converter: BoolNotConverter.Instance),
             }
         }
+        .Invoke(x => x.IsVisible = ViewModel.Mode == LoginScreenMode.Login);
 
-        private async Task TransitionToMode(LoginViewModel.ScreenMode mode)
+        // returns ths controls for the login form in using a dedicated DSL syntax for the page
+        // this format is concise and readable, but potentially specific to the page
+        private StackLayout SignupControls_DSL()
+            => Stack(
+                Entry("Username", nameof(ViewModel.Username)),
+                Validation(nameof(ViewModel.UsernameValidation)),
+
+                Entry("Email Address", nameof(ViewModel.EmailAddress)),
+                Validation(nameof(ViewModel.EmailAddressValidation)),
+
+                Entry("Password", nameof(ViewModel.Password), true),
+                Validation(nameof(ViewModel.PasswordValidation)),
+
+                Entry("Confirm Password", nameof(ViewModel.ConfirmPassword), true),
+                Validation(nameof(ViewModel.ConfirmPasswordValidation)),
+
+                Button("Sign up", ViewModel.SignupCommand)
+            )
+            .Invoke(x => x.IsVisible = ViewModel.Mode == LoginScreenMode.Signup);
+
+        private async void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            var outgoingControls = mode == LoginViewModel.ScreenMode.Login
+            if (e.PropertyName == nameof(ViewModel.Mode))
+                await TransitionToMode(ViewModel.Mode);
+        }
+
+        // performs an animated transition between the signup and login controls, or vice-versa
+        private async Task TransitionToMode(LoginScreenMode mode)
+        {
+            var outgoingControls = mode == LoginScreenMode.Login
                 ? SignupControls
                 : LoginControls;
 
-            var incomingControls = mode == LoginViewModel.ScreenMode.Signup
+            var incomingControls = mode == LoginScreenMode.Signup
                 ? SignupControls
                 : LoginControls;
 
@@ -70,213 +160,31 @@ namespace Xappy.Content.Scenarios.Login
             incomingControls.IsVisible = true;
 
             Title = ViewModel.TitleForMode;
-            ToggleModeLabel.Text = ViewModel.TextForToggleTitle; 
+            ToggleModeLabel.Text = ViewModel.TextForToggleTitle;
 
             await Task.WhenAll(AvatarImage.FadeTo(1), incomingControls.FadeTo(1));
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            MainGrid.Opacity = 0;
-            MainGrid.TranslationY = 50;
-
-            MainGrid.FadeTo(1);
-            MainGrid.TranslateTo(0,0);
-
-            var i = 0;
-            foreach (var v in MainGrid.Children)
-            {
-                v.Opacity = 0;
-                v.TranslationY = 50;
-
-                Task.Delay(TimeSpan.FromSeconds(i++ * .05))
-                    .ContinueWith(_ =>
-                    {
-                        v.FadeTo(1);
-                        v.TranslateTo(0, 0, easing: Easing.CubicOut);   
-                    }); 
-            }  
-        }
-
-        private View GetContent()
-            => new Grid
-            {
-                RowDefinitions = new Dictionary<Row, GridLength>
-                {
-                    [Row.Avatar] = 140,
-                    [Row.Controls] = GridLength.Auto,
-                    [Row.ToggleMode] = GridLength.Auto,
-                }
-                .ToRowDefinitions(),
-
-                Children =
-                { 
-                    new CircleImage { Source = _avatarUri }
-                        .Center() .Size(140)
-                        .Assign(out AvatarImage)
-                        .Row(Row.Avatar),
-
-                    new StackLayout
-                    {
-                        IsVisible = ViewModel.Mode == LoginViewModel.ScreenMode.Login,
-                        Children =
-                        {
-                            new Entry { Placeholder = "Username" }
-                                .Bind(nameof(ViewModel.Username)),
-
-                            new Entry { Placeholder = "Password", IsPassword = true }
-                                .Bind(nameof(ViewModel.Password)),
-
-                            new Button { Text = "Log in", Command = ViewModel.LoginCommand }
-                                .Bind(sourcePropertyName: nameof(IsBusy),
-                                      targetProperty: Button.IsEnabledProperty,
-                                      converter: BoolNotConverter.Instance),
-                        }
-                    }
-                    .Assign(out LoginControls)
-                    .Row(Row.Controls),
-
-                    new Label { Text = "New User? Sign up" }
-                        .Center() .FontSize(14)
-                        .Margin(12)
-                        .Row(Row.ToggleMode)
-                        .Assign(out ToggleModeLabel)
-                        .BindTapGesture(nameof(ViewModel.ToggleModeCommand)),
-
-                    new ActivityIndicator { }
-                        .Bind(nameof(ViewModel.IsBusy)),
-
-                    MakeStack(ViewModel.Mode == LoginViewModel.ScreenMode.Signup,
-                        MakeEntry("Username", nameof(ViewModel.Username)),
-                        MakeEntry("Email Address", nameof(ViewModel.Username)),
-                        MakeValidation(nameof(ViewModel.Username)),  
-                        MakeEntry("Password", nameof(ViewModel.Password), true),
-                        MakeEntry("Confirm Password", nameof(ViewModel.Password), true),
-                        MakeButton("Sign up", ViewModel.LoginCommand))
-                    .Assign(out SignupControls)
-                    .Row(Row.Controls),
-                }
-            }
-            .Center()
-            .Margin(20) 
-            .Assign(out MainGrid);
-
-        public Label MakeValidation(string bindTo) =>
-            new Label
-            {
-                TextColor = Color.Red
-            }
-            .Bind(bindTo)
-            .Bind(sourcePropertyName: bindTo, targetProperty: Label.IsVisibleProperty,
-                converter: new FuncConverter<string, bool>(x => !String.IsNullOrWhiteSpace(x))); 
-
-        public Entry MakeEntry(string placeholder, string bindTo, bool isPassword = false)
-            => new Entry { Placeholder = placeholder, IsPassword = isPassword }
+        // DSL-style helpers for the signup controls
+        public Entry Entry(string placeholder, string bindTo, bool isPassword = false)
+            => new Xamarin.Forms.Entry { Placeholder = placeholder, IsPassword = isPassword }
                 .Bind(bindTo);
 
-        public Button MakeButton(string text, Command command)
-            => new Button { Text = text, Command = command }
+        public Button Button(string text, Command command)
+            => new Xamarin.Forms.Button { Text = text, Command = command }
                 .Bind(sourcePropertyName: nameof(IsBusy),
                         targetProperty: IsEnabledProperty,
                         converter: BoolNotConverter.Instance);
 
-        public StackLayout MakeStack(bool isVisible, params View[] args)
-        {
-            var sl = new StackLayout { };
-            foreach (var v in args)
-                sl.Children.Add(v);
+        public Label Validation(string bindTo)
+            => new Label { TextColor = Color.Red }
+            .FontSize(12)
+            .Bind(bindTo)
+            .Bind(sourcePropertyName: bindTo, targetProperty: IsVisibleProperty,
+                converter: new FuncConverter<string, bool>(x => !String.IsNullOrWhiteSpace(x)));
 
-            return sl; 
-        }
-
-        public class LoginViewModel : BaseViewModel
-        {
-            public enum ScreenMode
-            {
-                Login,
-                Signup
-            }
-
-            private string username;
-            public string Username
-            {
-                get => username;
-                set => SetProperty(ref username, value);
-            }
-
-            private string password;
-            public string Password
-            {
-                get => password;
-                set => SetProperty(ref password, value);
-            }
-
-            private string emailAddressValidation;
-            public string EmailAddressValidation
-            {
-                get => emailAddressValidation;
-                set => SetProperty(ref emailAddressValidation, value);
-            }
-
-            private ScreenMode mode;
-            public ScreenMode Mode
-            {
-                get => mode;
-                set => SetProperty(ref mode, value);
-            }
-
-            public Command LoginCommand { get; set; }
-            public Command ToggleModeCommand { get; set; }
-
-            public LoginViewModel()
-            {
-                LoginCommand = new Command(() => Login());
-                ToggleModeCommand = new Command(ToggleMode);
-
-                PropertyChanged += LoginViewModel_PropertyChanged;
-
-                Username = "dave";
-                Password = "hunter2";
-
-                Mode = ScreenMode.Signup; 
-            }
-
-            public async Task Login()
-            {
-                IsBusy = true;
-                Debug.WriteLine("logging in..");  
-                await Task.Delay(TimeSpan.FromSeconds(3));
-
-                IsBusy = false;
-            }
-
-            public void ToggleMode()
-            {
-                Mode = Mode == ScreenMode.Login
-                    ? ScreenMode.Signup
-                    : ScreenMode.Login; 
-            }
-
-            private void LoginViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                Debug.WriteLine(e.PropertyName);
-
-                EmailAddressValidation = Username.Length > 5
-                    ? ""
-                    : "Email address is not valid.";
-            }
-
-            public string TitleForMode =>
-                Mode == ScreenMode.Login
-                    ? "Login"
-                    : "Sign up";
-
-            public string TextForToggleTitle =>
-                Mode == ScreenMode.Login
-                    ? "New User? Sign up"
-                    : "Have an account? Log in";
-        }
+        public StackLayout Stack(params View[] args)
+             => new StackLayout { }
+                    .Invoke(sl => args.ToList().ForEach(sl.Children.Add));        
     }
 }

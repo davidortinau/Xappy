@@ -12,7 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
     <LangVersion>7.1</LangVersion>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
@@ -36,6 +38,7 @@
     <Folder Include="Content\Scenarios\ToDo\" />
     <Folder Include="Content\About\" />
     <Folder Include="Content\Common\" />
+    <Folder Include="Content\Scenarios\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />
