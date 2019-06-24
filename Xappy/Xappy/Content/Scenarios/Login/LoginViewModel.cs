@@ -9,6 +9,8 @@ namespace Xappy.Content.Scenarios.Login
 {
     public class LoginViewModel : BaseViewModel
     {
+        public enum Modes { Login, Signup }
+
         const int MinimumUsernameLength = 5;
         const int MinimumPasswordLength = 8;
 
@@ -76,8 +78,8 @@ namespace Xappy.Content.Scenarios.Login
             set => SetProperty(ref confirmPasswordValidation, value);
         }
 
-        private LoginScreenMode mode;
-        public LoginScreenMode Mode
+        private Modes mode;
+        public Modes Mode
         {
             get => mode;
             set => SetProperty(ref mode, value);
@@ -107,9 +109,9 @@ namespace Xappy.Content.Scenarios.Login
 
         private void ToggleMode()
         {
-            Mode = Mode == LoginScreenMode.Login
-                ? LoginScreenMode.Signup
-                : LoginScreenMode.Login;
+            Mode = Mode == Modes.Login
+                ? Modes.Signup
+                : Modes.Login;
         }
 
         // implements a basic validation routine in which the presence of a validation message implies invalid state
@@ -149,12 +151,12 @@ namespace Xappy.Content.Scenarios.Login
         }
 
         public string TitleForMode =>
-            Mode == LoginScreenMode.Login
+            Mode == Modes.Login
                 ? "Login"
                 : "Sign up";
 
         public string TextForToggleTitle =>
-            Mode == LoginScreenMode.Login
+            Mode == Modes.Login
                 ? "New User? Sign up"
                 : "Have an account? Log in";
 
