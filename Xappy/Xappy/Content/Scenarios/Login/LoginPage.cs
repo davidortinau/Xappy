@@ -9,6 +9,8 @@ namespace Xappy.Content.Scenarios.Login
     {
         enum Row { Avatar, Controls, ToggleMode }
 
+        // Note that the .Assign statements are only needed for the animation code in LoginPage.logic.cs; 
+        // otherwise this markup could be even cleaner
         void Build() => Content = new ScrollView { Content = 
             new Grid {
                 RowDefinitions = Rows.Define (
@@ -31,11 +33,6 @@ namespace Xappy.Content.Scenarios.Login
                         .Assign (out SignupControls)
                         .Row (Row.Controls),
 
-                    new Label { Text = ViewModel.TextForToggleTitle } .FontSize (14)
-                        .Assign (out ToggleModeLabel)
-                        .Row (Row.ToggleMode) .Center () .Margin (12)
-                        .BindTapGesture (nameof(ViewModel.ToggleModeCommand)),
-
                     new ActivityIndicator { }
                         .Bind (nameof(ViewModel.IsBusy)),
                 }
@@ -43,20 +40,26 @@ namespace Xappy.Content.Scenarios.Login
               .Center () .Margin (20)
         };
 
-        // returns the controls for the login form in a declarative, CSharpForMarkup manner
+        // Returns the controls for the login form in a declarative, CSharpForMarkup manner
         // this style balances conciseness, consistency and reusability
         StackLayout LoginControls_Declarative => new StackLayout { Children = {
-                new Entry { Placeholder = "Username" }
-                    .Bind (nameof(ViewModel.Username)),
+            new Entry { Placeholder = "Username" }
+                .Bind (nameof(ViewModel.Username)),
 
-                new Entry { Placeholder = "Password", IsPassword = true }
-                    .Bind (nameof(ViewModel.Password)),
+            new Entry { Placeholder = "Password", IsPassword = true }
+                .Bind (nameof(ViewModel.Password)),
 
-                new Button { Text = "Log in", Command = ViewModel.LoginCommand }
-                    .Bind (StackLayout.IsEnabledProperty, nameof(IsBusy), converter: BoolNotConverter.Instance),
+            new Button { Text = "Log in", Command = ViewModel.LoginCommand }
+                .Bind (StackLayout.IsEnabledProperty, nameof(IsBusy), converter: BoolNotConverter.Instance),
+
+            new Label { Text = "Have an account? Log in" } .FontSize (18) .FormattedText (
+                new Span { Text = "New User? " },
+                new Span { Text = "Sign up", TextColor = Color.Blue, TextDecorations = TextDecorations.Underline }
+                .BindTap (nameof(ViewModel.ToggleModeCommand))
+            ) .CenterH () .Margin (12)
         } } .Invoke (loginControls => loginControls.IsVisible = ViewModel.Mode == LoginViewModel.Modes.Login);
 
-        // returns ths controls for the login form in using a dedicated DSL syntax for the page
+        // Returns ths controls for the login form in using a dedicated DSL syntax for the page
         // this format is concise and readable, but potentially specific to the page or app
         StackLayout SignupControls_DSL => Stack (
             Entry ("Username", nameof(ViewModel.Username)),
@@ -71,7 +74,9 @@ namespace Xappy.Content.Scenarios.Login
             Entry ("Confirm Password", nameof(ViewModel.ConfirmPassword), true),
             Validation (nameof(ViewModel.ConfirmPasswordValidation)),
 
-            Button ("Sign up", ViewModel.SignupCommand)
-        ) .Invoke (signupControls => signupControls.IsVisible = ViewModel.Mode == LoginViewModel.Modes.Signup);
+            Button ("Sign up", ViewModel.SignupCommand),
+
+            Link("Have an account? ", "Log in", nameof(ViewModel.ToggleModeCommand))
+        ).Invoke (signupControls => signupControls.IsVisible = ViewModel.Mode == LoginViewModel.Modes.Signup);
     }
 }

@@ -12,7 +12,6 @@ namespace Xappy.Content.Scenarios.Login
         private Grid MainGrid;
         private StackLayout LoginControls, SignupControls;
         private CircleImage AvatarImage;
-        private Label ToggleModeLabel;
 
         public LoginViewModel ViewModel = new LoginViewModel();
 
@@ -73,31 +72,33 @@ namespace Xappy.Content.Scenarios.Login
             incomingControls.IsVisible = true;
 
             Title = ViewModel.TitleForMode;
-            ToggleModeLabel.Text = ViewModel.TextForToggleTitle;
 
             await Task.WhenAll(AvatarImage.FadeTo(1), incomingControls.FadeTo(1));
         }
 
         // DSL-style helpers for the signup controls
-        public Entry Entry(string placeholder, string bindTo, bool isPassword = false)
-            => new Xamarin.Forms.Entry { Placeholder = placeholder, IsPassword = isPassword }
-                .Bind(bindTo);
+        public Entry Entry(string placeholder, string bindTo, bool isPassword = false) =>
+            new Xamarin.Forms.Entry { Placeholder = placeholder, IsPassword = isPassword }
+            .Bind (bindTo);
 
-        public Button Button(string text, Command command)
-            => new Xamarin.Forms.Button { Text = text, Command = command }
-                .Bind(sourcePropertyName: nameof(IsBusy),
-                        targetProperty: IsEnabledProperty,
-                        converter: BoolNotConverter.Instance);
+        public Button Button(string text, Command command) =>
+            new Xamarin.Forms.Button { Text = text, Command = command }
+            .Bind (Xamarin.Forms.Button.IsEnabledProperty, nameof(IsBusy), converter: BoolNotConverter.Instance);
 
-        public Label Validation(string bindTo)
-            => new Label { TextColor = Color.Red }
-            .FontSize(12)
-            .Bind(bindTo)
-            .Bind(sourcePropertyName: bindTo, targetProperty: IsVisibleProperty,
-                converter: new FuncConverter<string, bool>(x => !String.IsNullOrWhiteSpace(x)));
+        public Label Validation(string bindTo) =>
+            new Label { TextColor = Color.Red } .FontSize (12)
+            .Bind (bindTo)
+            .Bind (Xamarin.Forms.Label.IsVisibleProperty, bindTo, converter: new FuncConverter<string, bool>(x => !String.IsNullOrWhiteSpace(x)));
 
-        public StackLayout Stack(params View[] args)
-             => new StackLayout { }
-                    .Invoke(sl => args.ToList().ForEach(sl.Children.Add));        
+        public Label Link(string before, string link, string bindTo) => 
+            new Label { } .FontSize (18) .FormattedText (
+                new Span { Text = before },
+                new Span { Text = link, TextColor = Color.Blue, TextDecorations = TextDecorations.Underline } 
+                .BindTap (bindTo)
+            ) .CenterH () .Margin (12);
+
+        public StackLayout Stack(params View[] args) => 
+            new StackLayout { }
+            .Invoke (sl => args.ToList().ForEach(sl.Children.Add));
     }
 }

@@ -155,11 +155,6 @@ namespace Xappy.Content.Scenarios.Login
                 ? "Login"
                 : "Sign up";
 
-        public string TextForToggleTitle =>
-            Mode == Modes.Login
-                ? "New User? Sign up"
-                : "Have an account? Log in";
-
         private bool IsValidEmailAddress(string input)
             => emailValidationRegex.IsMatch(input);
 
