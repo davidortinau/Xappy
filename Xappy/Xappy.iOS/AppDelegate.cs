@@ -27,7 +27,6 @@ namespace Xappy.iOS
         {
             global::Xamarin.Forms.Forms.SetFlags("Shell_Experimental", "CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
-            
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();
 
