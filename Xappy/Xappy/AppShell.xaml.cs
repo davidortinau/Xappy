@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 using Xappy.Content.Scenarios.Conversation;
+using Xappy.Content.Scenarios.Login;
 using Xappy.Content.Scenarios.ToDo;
 using Xappy.ControlGallery;
 using Xappy.Scenarios;
