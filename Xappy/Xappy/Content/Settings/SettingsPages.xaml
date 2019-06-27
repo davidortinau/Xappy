@@ -13,6 +13,10 @@
     ios:Page.UseSafeArea="true"
     BackgroundColor="White">
 
+    <ContentPage.BindingContext>
+        <views:SettingsViewModel />
+    </ContentPage.BindingContext>
+
     <ScrollView>
         <StackLayout BackgroundColor="White"
                      Padding="20">
@@ -41,7 +45,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Fill"
                        HorizontalTextAlignment="Center"
-                       FontSize="Header"
+                       FontSize="Large"
                        TextColor="{StaticResource almost_black}"
                        Text="Craft Your Experience" />
             </Grid>
@@ -92,13 +96,16 @@
             <FlexLayout Direction="Row"
                         Wrap="Wrap">
                 <CheckBox x:Name="ChkDefault"
-                          IsChecked="True"
+                          IsChecked="{Binding IsVisualDefault}"
+                          Visual="Default"
                           FlexLayout.Basis="10%"
                           FlexLayout.AlignSelf="Center" />
                 <Label Text="Default"
                        FlexLayout.Basis="90%"
                        FlexLayout.AlignSelf="Center" />
                 <CheckBox x:Name="ChkMaterial"
+                          Visual="Material"
+                          IsChecked="{Binding IsVisualMaterial}"
                           FlexLayout.Basis="10%"
                           FlexLayout.AlignSelf="Center" />
                 <Label Text="Material"

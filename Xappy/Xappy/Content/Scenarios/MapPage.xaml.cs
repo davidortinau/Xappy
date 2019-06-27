@@ -59,8 +59,29 @@ namespace Xappy.Scenarios
             await Xamarin.Essentials.Map.OpenAsync(location, options);
         }
 
+        void Handle_MapClicked(object sender, MapClickedEventArgs e)
+        {
+
+            MyMap.Pins.Add(
+                 new Pin
+                 {
+                     Position = new Position(e.Position.Latitude, e.Position.Longitude),
+                     Label = "Joe's Place"
+                 }
+                );
+            DisplayAlert("Joe Says:", $"Last MapClick: {e.Position.Latitude}, {e.Position.Longitude}", "Thanks");
+        }
+
         async void SetLocation()
         {
+            MyMap.Pins.Add(
+                 new Pin
+                 {
+                     Position = new Position(42.349344, -71.082504),
+                     Label = "Wired Puppy"
+                 }
+                );
+
             try
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
@@ -69,6 +90,7 @@ namespace Xappy.Scenarios
                 {
                     Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
                     MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(42.349344, -71.082504), Distance.FromMiles(0.1)));
+
                 }
             }
             catch (FeatureNotSupportedException fnsEx)

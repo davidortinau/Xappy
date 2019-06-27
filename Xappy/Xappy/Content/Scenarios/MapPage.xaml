@@ -12,7 +12,7 @@
             x:Name="MyMap"
             IsShowingUser="true"
             MapType="Street"
-        />
+            MapClicked="Handle_MapClicked" />
         <Frame
             x:Name="InfoPanel"
             HasShadow="false"
