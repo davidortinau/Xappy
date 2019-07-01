@@ -6,13 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Shell.TabBarIsVisible="false"
+    Title="UI Controls"
     x:Class="Xappy.ControlGallery.IndexPage">
     <ContentPage.Resources>
         <StyleSheet>
             <![CDATA[
             .title {
-                font-size: 24;
-                color: #000000;
+                font-size: 32;
             }
             ]]>
         </StyleSheet>
@@ -50,8 +50,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            WidthRequest="50"
-                            HeightRequest="140"
+                            WidthRequest="140"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
                             BackgroundColor="White"
                             Padding="10">
                             <Frame
@@ -102,8 +103,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            WidthRequest="50"
-                            HeightRequest="140"
+                            WidthRequest="140"
+                            HeightRequest="50"
                             BackgroundColor="White"
                             Padding="10">
                             <Frame
@@ -154,8 +155,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            WidthRequest="50"
-                            HeightRequest="140"
+                            WidthRequest="140"
+                            HeightRequest="50"
                             BackgroundColor="White"
                             Padding="10">
                             <Frame

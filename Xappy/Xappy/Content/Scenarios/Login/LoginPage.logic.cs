@@ -20,6 +20,7 @@ namespace Xappy.Content.Scenarios.Login
 
             // set content
             Visual = VisualMarker.Material;
+            Shell.SetTabBarIsVisible(this, false);
             Build();
             LoginControls.IsVisible = ViewModel.Mode == LoginViewModel.Modes.Login;
             SignupControls.IsVisible = ViewModel.Mode == LoginViewModel.Modes.Signup;

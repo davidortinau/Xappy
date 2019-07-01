@@ -27,7 +27,7 @@
                 </Grid.ColumnDefinitions>
                 <ImageButton
                     Aspect="AspectFit"
-                    BackgroundColor="Transparent"
+                    BackgroundColor="transparent"
                     VerticalOptions="Center"
                     Grid.Column="0"
                     Padding="5"

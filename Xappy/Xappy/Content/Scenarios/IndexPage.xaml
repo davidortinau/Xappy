@@ -10,29 +10,46 @@
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">
+
         <CollectionView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
+                <x:String>Product Details</x:String>
                 <x:String>Map</x:String>
-                <x:String>Conversation</x:String>
+                <x:String>Conversational</x:String>
                 <x:String>Login</x:String>
                 <x:String>To Do List</x:String>
             </x:Array>
         </CollectionView.ItemsSource>
 
+
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <ContentView Padding="10" BackgroundColor="White">
+                <ContentView Padding="10"
+                             BackgroundColor="White">
                     <Frame HeightRequest="40"
                            CornerRadius="3"
                            BackgroundColor="{StaticResource dusty_orange}"
                            Visual="Material">
                         <Label VerticalOptions="Center"
+                               InputTransparent="True"
                                Style="{StaticResource TextHeadline}"
                                Text="{Binding .}" />
                     </Frame>
                 </ContentView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
+
+        <CollectionView.EmptyView>
+
+            <Grid>
+                <Label Text="Hmm, where are the scenarios?"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       TextColor="black" />
+            </Grid>
+
+        </CollectionView.EmptyView>
     </CollectionView>
 
 </ContentPage>

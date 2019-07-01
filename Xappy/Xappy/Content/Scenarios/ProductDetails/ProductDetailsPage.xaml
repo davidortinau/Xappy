@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Xappy"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    mc:Ignorable="d"
+    BackgroundColor="#f1f1f1"
+    x:Class="Xappy.Content.Scenarios.ProductDetails.ProductDetailsPage">
+
+    <ContentPage.Resources>
+        <StyleSheet>
+            <![CDATA[
+
+              .btn {
+               height: 44;
+            font-size: 16;
+              }
+
+              ]]>
+        </StyleSheet>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="360" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <!-- header carousel -->
+            <CarouselView BackgroundColor="#1d1d1d"
+                          Grid.Row="0">
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg</x:String>
+                        <x:String>https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg</x:String>
+                        <x:String>https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg</x:String>
+                        <x:String>https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg</x:String>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}"
+                               BackgroundColor="red"
+                               HorizontalOptions="Fill"
+                               HeightRequest="300"
+                               Aspect="AspectFill" />
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <ScrollView Grid.RowSpan="2">
+                <StackLayout Margin="15,310,15,15"
+                             Spacing="20">
+                    <Frame Visual="Material"
+                           d:IsVisible="False">
+                        <StackLayout Spacing="15">
+                            <Label HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="Large">$1,929</Span>
+                                        <Span Text=" + Shipping"
+                                              TextColor="#999999" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Button class="btn"
+                                    Visual="Default"
+                                    TextColor="White"
+                                    Text="Add to Cart"
+                                    BackgroundColor="#FF9900" />
+                            <Button class="btn"
+                                    Visual="Default"
+                                    Text="Watch"
+                                    BackgroundColor="#f1f1f1"
+                                    TextColor="#1d1d1d">
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesome}"
+                                        Glyph="{x:Static local:IconFont.Star}"
+                                        Size="12"
+                                        Color="#1d1d1d" />
+                                </Button.ImageSource>
+                            </Button>
+                            <Button class="btn"
+                                    Visual="Default"
+                                    Text="Message Seller"
+                                    BackgroundColor="#f1f1f1"
+                                    TextColor="#1d1d1d" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Visual="Material"
+                           d:IsVisible="false">
+                        <StackLayout>
+                            <Label HorizontalTextAlignment="Center"
+                                   FontSize="16"
+                                   TextColor="#1d1d1d"
+                                   FontAttributes="Bold"
+                                   Text="Cole Clark Angel 2 Series Redwood Blackwood Acoustic-Electric Guitar (With Case), Blemished" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                            <Label Text="With a Queensland maple neck, Tasmanian blackwood back and sides and Australian redwood top, this Angel 2 is decked-out in beautiful, sustainable tonewoods."
+                                   FontSize="16"
+                                   TextColor="#333333"
+                                   LineHeight="1.2" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                            <Button Text="Read More"
+                                    FontSize="18"
+                                    TextColor="#FF9900"
+                                    Visual="Default"
+                                    BackgroundColor="transparent" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Visual="Material"
+                           d:IsVisible="False">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="44" />
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="{StaticResource FontAwesome}"
+                                   FontSize="24"
+                                   TextColor="Blue"
+                                   VerticalOptions="Center"
+                                   Text="{x:Static local:IconFont.ShieldAlt}" />
+
+                            <Label Grid.Column="1">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Buy with Confidence &#x0a;"
+                                              TextColor="#1d1d1d"
+                                              FontAttributes="Bold"
+                                              FontSize="16" />
+                                        <Span TextColor="#999999"
+                                              FontSize="14"
+                                              Text="Reverb Protection has you covered. We provide a safe, secure community for finding the gear you want." />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Visual="Material"
+                           d:IsVisible="false">
+                        <StackLayout Spacing="15">
+                            <Label Text="Details"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="This item is sold " />
+                                        <Span Text="As-Described. "
+                                              FontAttributes="Bold" />
+                                        <Span Text="It cannot be returned unless it arrives in a condition different from how it was described or photographed." />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Make&#x0a;Model&#x0a;Condition"
+                                       TextColor="#666666"
+                                       LineHeight="1.5"
+                                       Grid.Column="0" />
+                                <Label TextColor="#1d1d1d"
+                                       LineHeight="1.5"
+                                       Grid.Column="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="#FF9900"
+                                                  Text="Cole Clark&#x0a;">
+
+                                            </Span>
+                                            <Span Text="AN2EC-RDBL&#x0a;Mint" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+
+                            <Label Text="Listed 5 days ago" />
+                            <FlexLayout Wrap="Wrap">
+                                <Label FlexLayout.Basis="50%"
+                                       Margin="0,0,0,15">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  Text="{x:Static local:IconFont.Star} " />
+                                            <Span Text=" 0 Watchers" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FlexLayout.Basis="50%"
+                                       Margin="0,0,0,15">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  Text="{x:Static local:IconFont.Eye} " />
+                                            <Span Text=" 41 Views" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FlexLayout.Basis="50%"
+                                       Margin="0,0,0,15">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  Text="{x:Static local:IconFont.BowlingBall} " />
+                                            <Span Text=" 0 Offers" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </FlexLayout>
+
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                            <Label TextColor="#999999"
+                                   Text="Accepted Payment Methods"
+                                   HorizontalTextAlignment="Center" />
+                            <FlexLayout JustifyContent="SpaceBetween">
+                                <Label HorizontalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  FontSize="40"
+                                                  Text="{x:Static local:IconFont.CreditCard}" />
+                                            <Span Text="&#x0a;Credit Card"
+                                                  FontSize="10"
+                                                  TextColor="#666666" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  FontSize="40"
+                                                  Text="{x:Static local:IconFont.CreditCard}" />
+                                            <Span Text="&#x0a;Gift Card"
+                                                  FontSize="10"
+                                                  TextColor="#666666" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  FontSize="40"
+                                                  Text="{x:Static local:IconFont.CreditCard}" />
+                                            <Span Text="&#x0a;PayPal"
+                                                  FontSize="10"
+                                                  TextColor="#666666" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="{StaticResource FontAwesome}"
+                                                  FontSize="40"
+                                                  Text="{x:Static local:IconFont.CreditCard}" />
+                                            <Span Text="&#x0a;Affirm"
+                                                  FontSize="10"
+                                                  TextColor="#666666" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </FlexLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Seller -->
+                    <Frame Visual="Material">
+                        <StackLayout>
+                            <Label HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span TextColor="Blue"
+                                              Text="Music Works&#x0a;"
+                                              FontSize="24" />
+                                        <Span FontFamily="{x:StaticResource FontAwesome}"
+                                              Text="{x:Static local:IconFont.MapMarker}"
+                                              TextColor="#999999" />
+                                        <Span Text=" Saint George, UT, United States&#x0a;"
+                                              TextColor="#999999" />
+                                        <Span Text="&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;"
+                                              FontFamily="{x:StaticResource FontAwesome}"
+                                              FontSize="12"
+                                              TextColor="Gold" />
+                                        <Span Text=" (60)"
+                                              TextColor="#999999"
+                                              FontSize="12" />
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                            <Label HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="SELLER ACHIEVEMENTS&#x0a;"
+                                              TextColor="#999999" />
+                                        <Span FontFamily="{x:StaticResource FontAwesome}"
+                                              Text="{x:Static local:IconFont.Headphones}"
+                                              TextColor="Blue" />
+                                        <Span FontFamily="{x:StaticResource FontAwesome}"
+                                              Text="{x:Static local:IconFont.Microphone}"
+                                              TextColor="Blue" />
+                                        <Span FontFamily="{x:StaticResource FontAwesome}"
+                                              Text="{x:Static local:IconFont.SpaceShuttle}"
+                                              TextColor="Blue" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+
+                            </Label>
+                            <Button
+                                Visual="Default"
+                                Text="Message Seller"
+                                BackgroundColor="#f1f1f1"
+                                TextColor="#1d1d1d" />
+                            <Button
+                                Visual="Default"
+                                Text="Shop Policies"
+                                BackgroundColor="#f1f1f1"
+                                TextColor="#1d1d1d" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="Similar Products" />
+                    <CollectionView>
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Map</x:String>
+                                <x:String>Conversational</x:String>
+                                <x:String>Login</x:String>
+                                <x:String>To Do List</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Visual="Material">
+
+                                </Frame>
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- fake navbar -->
+        <FlexLayout Direction="Row"
+                    Padding="15">
+            <ImageButton>
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="{StaticResource FontAwesome}"
+                        Glyph="{x:Static local:IconFont.ChevronLeft}"
+                        Color="White" />
+                </ImageButton.Source>
+            </ImageButton>
+            <BoxView FlexLayout.Grow="1" />
+            <ImageButton>
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="{StaticResource FontAwesome}"
+                        Glyph="{x:Static local:IconFont.ExpandArrowsAlt}"
+                        Color="White" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton Margin="15,0,0,0">
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="{StaticResource FontAwesome}"
+                        Glyph="{x:Static local:IconFont.ShoppingCart}"
+                        Color="White" />
+                </ImageButton.Source>
+            </ImageButton>
+        </FlexLayout>
+    </Grid>
+
+</ContentPage>
