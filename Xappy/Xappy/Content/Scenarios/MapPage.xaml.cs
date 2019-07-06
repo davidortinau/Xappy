@@ -74,18 +74,22 @@ namespace Xappy.Scenarios
             catch (FeatureNotSupportedException fnsEx)
             {
                 // Handle not supported on device exception
+                Console.WriteLine(fnsEx.Message);
             }
             catch (FeatureNotEnabledException fneEx)
             {
                 // Handle not enabled on device exception
+                Console.WriteLine(fneEx.Message);
             }
             catch (PermissionException pEx)
             {
                 // Handle permission exception
+                Console.WriteLine(pEx.Message);
             }
             catch (Exception ex)
             {
                 // Unable to get location
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -1,12 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="Xappy.ControlGallery.IndexPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    Title="CollectionView"
     Shell.TabBarIsVisible="false"
-    x:Class="Xappy.ControlGallery.IndexPage">
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <StyleSheet>
             <![CDATA[
@@ -18,159 +19,140 @@
         </StyleSheet>
     </ContentPage.Resources>
     <ScrollView>
-        <StackLayout
-            Margin="15,30,0,0">
-            <Label
-                class="title"
-                Text="Layouts" />
+        <StackLayout Margin="15,30,0,0">
+            <Label Text="Layouts" class="title" />
             <CollectionView
-                Margin="-15,0,0,0"
                 x:Name="LayoutsCV"
+                Margin="-15,0,0,0"
+                HeightRequest="200"
                 ItemsSource="{Binding Layouts}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
-                SelectionMode="Single"
                 SelectionChangedCommand="{Binding SelectCommand}"
-                HeightRequest="200">
+                SelectionMode="Single">
                 <CollectionView.EmptyView>
-                    <StackLayout
-                        VerticalOptions="Fill"
-                        BackgroundColor="Silver">
+                    <StackLayout BackgroundColor="Silver" VerticalOptions="Fill">
                         <Label
-                            Text="Empty"
                             BackgroundColor="Red"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="Center" />
+                            HorizontalOptions="Center"
+                            Text="Empty"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                 </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        Span="2"
-                        Orientation="Horizontal" />
+                    <GridItemsLayout Orientation="Horizontal" Span="2" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            WidthRequest="50"
-                            HeightRequest="140"
+                            Padding="10"
                             BackgroundColor="White"
-                            Padding="10">
+                            HeightRequest="140"
+                            WidthRequest="50">
                             <Frame
                                 Padding="8"
-                                CornerRadius="3"
                                 BackgroundColor="{StaticResource tomato}"
+                                CornerRadius="3"
                                 Visual="Material">
                                 <Label
-                                    InputTransparent="true"
+                                    d:Text="Something Else"
                                     FontSize="14"
-                                    TextColor="White"
+                                    InputTransparent="true"
                                     LineBreakMode="NoWrap"
-                                    VerticalOptions="End"
                                     Text="{Binding Title}"
-                                    d:Text="Something Else" />
+                                    TextColor="White"
+                                    VerticalOptions="End" />
                             </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Label
-                class="title"
-                Text="Pages" />
+            <Label Text="Pages" class="title" />
             <CollectionView
                 x:Name="PagesCV"
                 Margin="-15,0,0,0"
+                HeightRequest="200"
                 ItemsSource="{Binding Pages}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
-                SelectionMode="Single"
                 SelectionChangedCommand="{Binding SelectCommand}"
-                HeightRequest="200">
+                SelectionMode="Single">
                 <CollectionView.EmptyView>
-                    <StackLayout
-                        VerticalOptions="Fill"
-                        BackgroundColor="Silver">
+                    <StackLayout BackgroundColor="Silver" VerticalOptions="Fill">
                         <Label
-                            Text="Empty"
                             BackgroundColor="Red"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="Center" />
+                            HorizontalOptions="Center"
+                            Text="Empty"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                 </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        Span="2"
-                        Orientation="Horizontal" />
+                    <GridItemsLayout Orientation="Horizontal" Span="2" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            WidthRequest="50"
-                            HeightRequest="140"
+                            Padding="10"
                             BackgroundColor="White"
-                            Padding="10">
+                            HeightRequest="140"
+                            WidthRequest="50">
                             <Frame
                                 Padding="8"
-                                CornerRadius="3"
                                 BackgroundColor="{StaticResource soft_blue}"
+                                CornerRadius="3"
                                 Visual="Material">
                                 <Label
-                                    InputTransparent="true"
+                                    d:Text="Something Else"
                                     FontSize="14"
-                                    TextColor="White"
+                                    InputTransparent="true"
                                     LineBreakMode="NoWrap"
-                                    VerticalOptions="End"
                                     Text="{Binding Title}"
-                                    d:Text="Something Else" />
+                                    TextColor="White"
+                                    VerticalOptions="End" />
                             </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Label
-                class="title"
-                Text="Views" />
+            <Label Text="Views" class="title" />
             <CollectionView
                 x:Name="ViewsCV"
                 Margin="-15,0,0,0"
+                HeightRequest="200"
                 ItemsSource="{Binding Views}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
-                SelectionMode="Single"
                 SelectionChangedCommand="{Binding SelectCommand}"
-                HeightRequest="200">
+                SelectionMode="Single">
                 <CollectionView.EmptyView>
-                    <StackLayout
-                        VerticalOptions="Fill"
-                        BackgroundColor="Silver">
+                    <StackLayout BackgroundColor="Silver" VerticalOptions="Fill">
                         <Label
-                            Text="Empty"
                             BackgroundColor="Red"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="Center" />
+                            HorizontalOptions="Center"
+                            Text="Empty"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                 </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        Span="2"
-                        Orientation="Horizontal" />
+                    <GridItemsLayout Orientation="Horizontal" Span="2" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            WidthRequest="50"
-                            HeightRequest="140"
+                            Padding="10"
                             BackgroundColor="White"
-                            Padding="10">
+                            HeightRequest="140"
+                            WidthRequest="50">
                             <Frame
                                 Padding="8"
-                                CornerRadius="3"
                                 BackgroundColor="{StaticResource brown_grey}"
+                                CornerRadius="3"
                                 Visual="Material">
                                 <Label
-                                    InputTransparent="true"
+                                    d:Text="Something Else"
                                     FontSize="14"
-                                    TextColor="White"
+                                    InputTransparent="true"
                                     LineBreakMode="NoWrap"
-                                    VerticalOptions="End"
                                     Text="{Binding Title}"
-                                    d:Text="Something Else" />
+                                    TextColor="White"
+                                    VerticalOptions="End" />
                             </Frame>
                         </Grid>
                     </DataTemplate>

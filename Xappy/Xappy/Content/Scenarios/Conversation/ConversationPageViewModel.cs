@@ -26,7 +26,7 @@ namespace Xappy.Content.Scenarios.Conversation
                     });
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Participant> Participants { get; set; }
 
@@ -66,6 +66,7 @@ namespace Xappy.Content.Scenarios.Conversation
             catch (Exception e)
             {
                 // Handle this exception
+                Console.WriteLine(e.Message);
             }
         }
 
