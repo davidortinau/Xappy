@@ -105,5 +105,6 @@
     <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter" />
     <converters:NullOrEmptyToBoolConverter x:Key="NullOrEmptyToBoolConverter" />
     <converters:ScrollValueConverter x:Key="ScrollValueConverter"/>
+    <converters:ComparisonConverter x:Key="ComparisonConverter"/>
 
 </ResourceDictionary>

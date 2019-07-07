@@ -4,6 +4,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
              Shell.TabBarIsVisible="false"
+             Shell.BackgroundColor="White"
+             Shell.ForegroundColor="{StaticResource cerulean}"
+             Shell.TitleColor="{StaticResource cerulean}"
              BackgroundColor="{StaticResource ColorAppBackground}">
 
     <CollectionView x:Name="ScenariosCV"
@@ -28,11 +31,12 @@
                              BackgroundColor="White">
                     <Frame HeightRequest="40"
                            CornerRadius="3"
-                           BackgroundColor="{StaticResource dusty_orange}"
+                           BackgroundColor="{StaticResource cerulean_three}"
                            Visual="Material">
                         <Label VerticalOptions="Center"
                                InputTransparent="True"
                                Style="{StaticResource TextHeadline}"
+                               TextColor="White" FontAttributes="Bold"
                                Text="{Binding .}" />
                     </Frame>
                 </ContentView>
