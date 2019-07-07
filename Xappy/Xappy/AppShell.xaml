@@ -11,7 +11,7 @@
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBehavior="Flyout"
     x:Class="Xappy.AppShell">
-    
+        
     <Shell.FlyoutIcon>
         <FontImageSource
             FontFamily="{StaticResource FontAwesome}"

@@ -5,10 +5,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Xappy"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:c="clr-namespace:Xappy.Content.Common"
+    xmlns:ll="clr-namespace:Xamarin.Forms.EasyLoading;assembly=Xamarin.Forms.EasyLoading" 
+    xmlns:this="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
     mc:Ignorable="d"
     BackgroundColor="#f1f1f1"
+    Shell.TabBarIsVisible="false"
+    Shell.NavBarIsVisible="false"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="{StaticResource cerulean}"
     x:Class="Xappy.Content.Scenarios.ProductDetails.ProductDetailsPage">
 
+    <ContentPage.BindingContext>
+        <this:ProductDetailsViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <StyleSheet>
             <![CDATA[
@@ -17,16 +30,36 @@
                height: 44;
             font-size: 16;
               }
+            
+            ^ImageButton {
+            background-color: transparent;
+            }
+            
 
               ]]>
         </StyleSheet>
     </ContentPage.Resources>
 
+    <ContentPage.Triggers>
+        <DataTrigger TargetType="ContentPage" Binding="{Binding Opacity, Source={x:Reference boxView}}"
+                     Value="1">
+            <Setter Property="Shell.NavBarIsVisible" Value="True"/>
+        </DataTrigger>
+    </ContentPage.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="64" />
+            <RowDefinition Height="64"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <Grid.Triggers>
+            <DataTrigger TargetType="Grid" Binding="{Binding Opacity, Source={x:Reference boxView}}"
+                     Value="1">
+                <Setter Property="Margin" Value="0,-64,0,0"/>
+            </DataTrigger>
+        </Grid.Triggers>
+        
 
         <Grid Grid.RowSpan="2">
             <Grid.RowDefinitions>
@@ -37,7 +70,16 @@
 
             <!-- header carousel -->
             <CarouselView BackgroundColor="#1d1d1d"
-                          Grid.Row="0">
+                          Grid.Row="0"
+                          TranslationY="{Binding ScrollPercentage, 
+                                            Source={x:Reference sv}, 
+                                            Converter={StaticResource ScrollValueConverter}, 
+                                            ConverterParameter='-10;0;100;false;0'}"
+                          Opacity="{Binding ScrollPercentage, 
+                                            Source={x:Reference sv}, 
+                                            Converter={StaticResource ScrollValueConverter}, 
+                                            ConverterParameter='6;1;1;true;0.05'}"
+                          >
                 <CarouselView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg</x:String>
@@ -50,19 +92,56 @@
                     <DataTemplate>
                         <Image Source="{Binding .}"
                                BackgroundColor="red"
-                               HorizontalOptions="Fill"
+                               HorizontalOptions="FillAndExpand"
                                HeightRequest="300"
                                Aspect="AspectFill" />
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
+                
             </CarouselView>
 
-            <ScrollView Grid.RowSpan="2">
+            <c:ScrollerView x:Name="sv" Grid.RowSpan="2">
                 <StackLayout Margin="15,310,15,15"
                              Spacing="20">
+                    
                     <Frame Visual="Material"
                            d:IsVisible="False">
-                        <StackLayout Spacing="15">
+                        <StackLayout Spacing="15" 
+                                     ll:LoadingLayout.IsLoading="{Binding IsSkeletonLoading}">
+                            <ll:LoadingLayout.LoadingTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="15">
+                                        <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+
+                                        <Button class="btn"
+                                        Visual="Default"
+                                                IsEnabled="False"
+                                        TextColor="White"
+                                        Text="Add to Cart"
+                                        BackgroundColor="#FF9900" />
+                                        <Button class="btn"
+                                        Visual="Default"
+                                        Text="Watch"
+                                        BackgroundColor="#f1f1f1"
+                                        TextColor="#1d1d1d">
+                                            <Button.ImageSource>
+                                                <FontImageSource
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Glyph="{x:Static local:IconFont.Star}"
+                                            Size="12"
+                                            Color="#1d1d1d" />
+                                            </Button.ImageSource>
+                                        </Button>
+                                        <Button class="btn"
+                                                IsEnabled="False"
+                                        Visual="Default"
+                                        Text="Message Seller"
+                                        BackgroundColor="#f1f1f1"
+                                        TextColor="#1d1d1d" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </ll:LoadingLayout.LoadingTemplate>
+                            
                             <Label HorizontalOptions="Center">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -77,6 +156,7 @@
                                     Visual="Default"
                                     TextColor="White"
                                     Text="Add to Cart"
+                                    Command="{Binding SkeletonCommand}"
                                     BackgroundColor="#FF9900" />
                             <Button class="btn"
                                     Visual="Default"
@@ -289,7 +369,6 @@
                         </StackLayout>
                     </Frame>
 
-                    <!-- Seller -->
                     <Frame Visual="Material">
                         <StackLayout>
                             <Label HorizontalOptions="Center"
@@ -350,10 +429,14 @@
                         </StackLayout>
                     </Frame>
 
-                    <Label Text="Similar Products" />
-                    <CollectionView>
+                    <Label Text="Similar Products" FontSize="Large" FontAttributes="Bold" />
+                    <CollectionView ItemsLayout="HorizontalList" HeightRequest="300" Margin="0,-15,0,0">
                         <CollectionView.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
+                                <x:String>Map</x:String>
+                                <x:String>Conversational</x:String>
+                                <x:String>Login</x:String>
+                                <x:String>To Do List</x:String>
                                 <x:String>Map</x:String>
                                 <x:String>Conversational</x:String>
                                 <x:String>Login</x:String>
@@ -362,16 +445,79 @@
                         </CollectionView.ItemsSource>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame Visual="Material">
+                                <ContentView WidthRequest="180">
+                                <Frame Visual="Material" Padding="0" Margin="15"> 
+                                    <StackLayout Orientation="Vertical" BackgroundColor="White">                                    
+                                        <Image Source="https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg"
+                                           Aspect="AspectFill"
+                                           HeightRequest="180"
+                                           WidthRequest="180"/>
+                                        <Label Margin="15" LineHeight="1.2">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
+                                                    <Span Text="$2,069.99" TextColor="#FF9900" FontSize="14"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
 
                                 </Frame>
+                                </ContentView>
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label Text="Treat Yourself" FontSize="Large" FontAttributes="Bold" />
+                    <CollectionView ItemsLayout="HorizontalList" HeightRequest="300" Margin="0,-15,0,0">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Map</x:String>
+                                <x:String>Conversational</x:String>
+                                <x:String>Login</x:String>
+                                <x:String>To Do List</x:String>
+                                <x:String>Map</x:String>
+                                <x:String>Conversational</x:String>
+                                <x:String>Login</x:String>
+                                <x:String>To Do List</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentView WidthRequest="180">
+                                    <Frame Visual="Material" Padding="0" Margin="15">
+                                        <StackLayout Orientation="Vertical" BackgroundColor="White">
+                                            <Image Source="https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg"
+                                           Aspect="AspectFill"
+                                           HeightRequest="180"
+                                           WidthRequest="180"/>
+                                            <Label Margin="15" LineHeight="1.2">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
+                                                        <Span Text="$2,069.99" TextColor="#1d1d1d" FontAttributes="Bold" FontSize="14"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+
+                                    </Frame>
+                                </ContentView>
                             </DataTemplate>
 
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
-            </ScrollView>
+            </c:ScrollerView>
         </Grid>
+
+        <BoxView BackgroundColor="White"
+                 x:Name="boxView"
+                 Opacity="{Binding ScrollPercentage, 
+                                            Source={x:Reference sv}, 
+                                            Converter={StaticResource ScrollValueConverter}, 
+                                            ConverterParameter='8;0;1;false;0.07'}"/>
 
         <!-- fake navbar -->
         <FlexLayout Direction="Row"

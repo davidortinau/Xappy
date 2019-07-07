@@ -104,5 +104,6 @@
     <converters:DoubleToIntConverter x:Key="DoubleToIntConverter" />
     <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter" />
     <converters:NullOrEmptyToBoolConverter x:Key="NullOrEmptyToBoolConverter" />
+    <converters:ScrollValueConverter x:Key="ScrollValueConverter"/>
 
 </ResourceDictionary>

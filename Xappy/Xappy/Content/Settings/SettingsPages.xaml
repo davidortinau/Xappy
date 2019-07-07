@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xaml-comp compile="false" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,7 +11,7 @@
     x:Class="Xappy.Content.Settings.SettingsPages"
     Title="Craft Your Experience"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    ios:Page.UseSafeArea="true"
+    ios:Page.UseSafeArea="true"        
     BackgroundColor="White">
 
     <ContentPage.BindingContext>
@@ -64,7 +65,7 @@
 
             <CollectionView
                 HeightRequest="120"
-                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
+                ItemsLayout="HorizontalList">
                 <CollectionView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Map</x:String>

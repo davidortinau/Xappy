@@ -6,6 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Shell.TabBarIsVisible="false"
+    Shell.BackgroundColor="White"
+    Shell.TitleColor="{StaticResource cerulean}"
     Title="UI Controls"
     x:Class="Xappy.ControlGallery.IndexPage">
     <ContentPage.Resources>

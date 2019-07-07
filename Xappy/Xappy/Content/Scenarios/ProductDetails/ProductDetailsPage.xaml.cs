@@ -11,5 +11,12 @@ namespace Xappy.Content.Scenarios.ProductDetails
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            (BindingContext as ProductDetailsViewModel).SkeletonCommand.Execute(null);
+        }
     }
 }
