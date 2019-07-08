@@ -9,13 +9,17 @@ namespace Xappy.Content.Scenarios.ProductDetails
 {
     public class ProductDetailsViewModel : BaseViewModel
     {
-        public ICommand SkeletonCommand = new Command(async (x) =>
-            {
-            IsSkeletonLoading = true;
-            await Task.Delay(2000);
-            IsSkeletonLoading = false;
-        });
+        public ICommand SkeletonCommand { get; set; }
 
-        public static bool IsSkeletonLoading { get; private set; }
+        public ProductDetailsViewModel()
+        {
+            SkeletonCommand = new Command(async (x) =>
+            {
+                IsBusy = true;
+                await Task.Delay(4000);
+                IsBusy = false;
+            });
+        }
+
     }
 }

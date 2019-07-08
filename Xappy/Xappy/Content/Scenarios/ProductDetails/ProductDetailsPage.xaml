@@ -132,7 +132,7 @@
                     <Frame Visual="Material"
                            d:IsVisible="False">
                         <StackLayout Spacing="15" 
-                                     ll:LoadingLayout.IsLoading="{Binding IsSkeletonLoading}">
+                                     ll:LoadingLayout.IsLoading="{Binding IsBusy}">
                             <ll:LoadingLayout.LoadingTemplate>
                                 <DataTemplate>
                                     <StackLayout Spacing="15">
@@ -206,7 +206,25 @@
 
                     <Frame Visual="Material"
                            d:IsVisible="false">
-                        <StackLayout>
+                        <StackLayout
+                            ll:LoadingLayout.IsLoading="{Binding IsBusy}">
+                            <ll:LoadingLayout.LoadingTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <BoxView BackgroundColor="#CCCCCC" HeightRequest="20" HorizontalOptions="Fill" />
+                                        <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                                        <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                        <BoxView HeightRequest="1"
+                                     BackgroundColor="#f1f1f1" />
+                                        <Button Text="Read More" IsEnabled="False"
+                                    FontSize="18"
+                                    TextColor="#FF9900"
+                                    Visual="Default"
+                                    BackgroundColor="transparent" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </ll:LoadingLayout.LoadingTemplate>
                             <Label HorizontalTextAlignment="Center"
                                    FontSize="16"
                                    TextColor="#1d1d1d"

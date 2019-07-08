@@ -74,6 +74,9 @@
     <EmbeddedResource Include="AppVersionInfo.json" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Content\Scenarios\NavBars\BaseNavAwarePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="CustomViews\BorderlessEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
