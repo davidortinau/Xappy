@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xappy.Content.Scenarios.Login.Controls"
+             x:Class="Xappy.Content.Scenarios.Login.LoginPage"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             Title="Login"
+             Shell.TabBarIsVisible="false">
+    <ContentPage.Resources>
+        <Style x:Key="CenteredTextTitle"
+               TargetType="Label"
+               BasedOn="{StaticResource TextTitle}">
+            <Setter Property="Margin"
+                    Value="24,12" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor"
+                    Value="Transparent" />
+        </Style>
+        <Style TargetType="controls:Card"
+               x:Key="FormStyle">
+            <Setter Property="BackgroundColor"
+                    Value="White" />
+            <Setter Property="Margin"
+                    Value="12" />
+            <Setter Property="CornerRadius"
+                    Value="24" />
+            <Setter Property="Elevation"
+                    Value="10" />
+            <Setter Property="Visual"
+                    Value="Material" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <controls:GradientView StartColor="{StaticResource flyoutGradientStart}"
+                               EndColor="{StaticResource flyoutGradientEnd}" />
+        <Grid x:Name="Root"
+              Margin="0,42,0,42">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <lottie:AnimationView Animation="login.json"
+                                  AutoPlay="true" 
+                                  HeightRequest="120"
+                                  Loop="true"
+                                  Margin="0,0,0,6"/>
+            <Grid Margin="40,0"
+                  ColumnSpacing="0"
+                  Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="#20000000"
+                         Grid.ColumnSpan="2"
+                         x:Name="SelectorBackground"
+                         CornerRadius="40" />
+                <Label Text="Existing"
+                       Style="{StaticResource CenteredTextTitle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Grid Grid.Column="1">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
+                    </Grid.GestureRecognizers>
+                    <Label Text="New"
+                           Style="{StaticResource CenteredTextTitle}" />
+                </Grid>
+                <controls:Card x:Name="SelectorButton"
+                               CornerRadius="40"
+                               Elevation="20"
+                               BackgroundColor="White">
+                    <Label Text="Existing"
+                           x:Name="SelectorButtonLabel"
+                           Style="{StaticResource CenteredTextTitle}" />
+                </controls:Card>
+            </Grid>
+            <controls:Card Grid.Row="2"
+                           Style="{StaticResource FormStyle}"
+                           x:Name="LoginForm"
+                           BackgroundColor="White"
+                           IsVisible="false"
+                           Opacity="0">
+                <StackLayout Spacing="12">
+                    <Entry Placeholder="Email" />
+                    <Entry Placeholder="Password"
+                           IsPassword="true" />
+                </StackLayout>
+            </controls:Card>
+            <controls:Card Style="{StaticResource FormStyle}"
+                           Grid.Row="2"
+                           BackgroundColor="White"
+                           x:Name="SignupForm">
+                <StackLayout Spacing="12">
+                    <Entry Placeholder="Username" />
+                    <Entry Placeholder="Email" />
+                    <Entry Placeholder="Password" />
+                    <Entry Placeholder="Confirm password" />
+                </StackLayout>
+            </controls:Card>
+            <controls:GradientButton HorizontalOptions="Center"
+                                     Text="Submit"
+                                     Grid.Row="3" />
+        </Grid>
+    </Grid>
+</ContentPage>

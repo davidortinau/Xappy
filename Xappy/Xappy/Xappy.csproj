@@ -23,6 +23,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.1.0.483098-pre1" />
     <PackageReference Include="Xamarin.HotReload" Version="1.2.9" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.1" />
   </ItemGroup>
   
   <ItemGroup>
@@ -37,6 +38,7 @@
     <Folder Include="Content\About\" />
     <Folder Include="Content\Common\" />
     <Folder Include="Content\Scenarios\Login\" />
+    <Folder Include="Content\Scenarios\Login\Controls\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />

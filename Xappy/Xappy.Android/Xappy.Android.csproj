@@ -65,6 +65,9 @@
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>4.1.0.483098-pre1</Version>
     </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>2.7.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -115,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fa-solid-900.ttf" />
+    <AndroidAsset Include="Assets\login.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\network_security_config.xml" />
