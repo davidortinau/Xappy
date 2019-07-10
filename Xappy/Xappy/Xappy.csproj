@@ -18,11 +18,11 @@
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms.EasyLoading" Version="1.0.5-beta" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.2.0.581076-nightly" />
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.581076-nightly" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.3.0.930-nightly" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.930-nightly" />
     <PackageReference Include="Octokit" Version="0.32.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.2.0.581076-nightly" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.3.0.930-nightly" />
     <PackageReference Include="Xamanimation" Version="1.2.0" />
   </ItemGroup>
   
@@ -33,7 +33,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Behaviors\" />
     <Folder Include="Domain\Global\" />
-    <Folder Include="Content\Settings\" />
     <Folder Include="Content\Scenarios\ToDo\" />
     <Folder Include="Content\About\" />
     <Folder Include="Content\Scenarios\Login\" />
@@ -75,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Content\Scenarios\NavBars\BaseNavAwarePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Content\Settings\StyleGuidePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="CustomViews\BorderlessEntry.xaml">

@@ -11,6 +11,8 @@ namespace Xappy.Content.Scenarios.ProductDetails
     {
         public ICommand SkeletonCommand { get; set; }
 
+        public ICommand BackCommand { get; set; }
+
         public ProductDetailsViewModel()
         {
             SkeletonCommand = new Command(async (x) =>
@@ -18,6 +20,11 @@ namespace Xappy.Content.Scenarios.ProductDetails
                 IsBusy = true;
                 await Task.Delay(4000);
                 IsBusy = false;
+            });
+
+            BackCommand = new Command((x) =>
+            {
+                Shell.Current.SendBackButtonPressed();
             });
         }
 

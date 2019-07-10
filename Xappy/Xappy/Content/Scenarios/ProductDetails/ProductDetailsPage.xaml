@@ -43,7 +43,10 @@
         <anim:FadeToAnimation x:Key="CarouselFadeOut" Target="{x:Reference Carousel}" Opacity="0" Duration="500"/>
         <anim:FadeToAnimation x:Key="FakeNavBarFadeOut" Target="{x:Reference FakeNavBar}" Opacity="0" Duration="500"/>
         <anim:FadeToAnimation x:Key="CarouselFadeIn" Target="{x:Reference Carousel}" Opacity="1" Duration="500" />
-        <anim:FadeToAnimation x:Key="FakeNavBarFadeIn" Target="{x:Reference FakeNavBar}" Opacity="1" Duration="500"/>
+        <anim:FadeToAnimation x:Key="FakeNavBarFadeIn" Target="{x:Reference FakeNavBar}" Opacity="1" Duration="500" />
+        
+
+        
     </ContentPage.Resources>
 <!--
     <ContentPage.Triggers>
@@ -124,7 +127,7 @@
                 </CarouselView.ItemTemplate>
 
             </CarouselView>
-            
+
             <c:ScrollerView x:Name="sv" Grid.RowSpan="2">
                 <StackLayout Margin="15,310,15,15"
                              Spacing="20">
@@ -135,34 +138,31 @@
                                      ll:LoadingLayout.IsLoading="{Binding IsBusy}">
                             <ll:LoadingLayout.LoadingTemplate>
                                 <DataTemplate>
-                                    <StackLayout Spacing="15">
+                                    <StackLayout Spacing="15" x:Name="Loader">
+                                        <StackLayout.Resources>
+                                            <anim:StoryBoard x:Key="LoadingBoard" Target="{x:Reference Loader}">
+                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                            </anim:StoryBoard>
+                                        </StackLayout.Resources>
+                                        <StackLayout.Triggers>
+                                            <EventTrigger Event="Focused">
+                                                <EventTrigger.EnterActions>
+                                                    <anim:BeginAnimation
+                                                        Animation="{StaticResource LoadingBoard}" />                                                          
+                                                </EventTrigger.EnterActions>
+                                            </EventTrigger>
+                                        </StackLayout.Triggers>
                                         <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
 
-                                        <Button class="btn"
-                                        Visual="Default"
-                                                IsEnabled="False"
-                                        TextColor="White"
-                                        Text="Add to Cart"
-                                        BackgroundColor="#FF9900" />
-                                        <Button class="btn"
-                                        Visual="Default"
-                                        Text="Watch"
-                                        BackgroundColor="#f1f1f1"
-                                        TextColor="#1d1d1d">
-                                            <Button.ImageSource>
-                                                <FontImageSource
-                                            FontFamily="{StaticResource FontAwesome}"
-                                            Glyph="{x:Static local:IconFont.Star}"
-                                            Size="12"
-                                            Color="#1d1d1d" />
-                                            </Button.ImageSource>
-                                        </Button>
-                                        <Button class="btn"
-                                                IsEnabled="False"
-                                        Visual="Default"
-                                        Text="Message Seller"
-                                        BackgroundColor="#f1f1f1"
-                                        TextColor="#1d1d1d" />
+                                        <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                        <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                        <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>                                       
+                                       
                                     </StackLayout>
                                 </DataTemplate>
                             </ll:LoadingLayout.LoadingTemplate>
@@ -557,7 +557,7 @@
 
         <FlexLayout Direction="Row"
                     Padding="15">
-            <ImageButton FlexLayout.Shrink="0">
+            <ImageButton FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
                         FontFamily="{StaticResource FontAwesome}"
@@ -608,7 +608,7 @@
                     </DataTrigger.ExitActions>
                 </DataTrigger>
             </FlexLayout.Triggers>
-            <ImageButton FlexLayout.Shrink="0">
+            <ImageButton FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
                         FontFamily="{StaticResource FontAwesome}"

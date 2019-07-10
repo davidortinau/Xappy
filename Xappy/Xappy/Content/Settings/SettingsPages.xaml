@@ -11,16 +11,15 @@
     x:Class="Xappy.Content.Settings.SettingsPages"
     Title="Craft Your Experience"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    ios:Page.UseSafeArea="true"        
-    BackgroundColor="White">
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{DynamicResource backgroundColor}">
 
     <ContentPage.BindingContext>
         <views:SettingsViewModel />
     </ContentPage.BindingContext>
 
     <ScrollView>
-        <StackLayout BackgroundColor="White"
-                     Padding="20">
+        <StackLayout Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="44" />
@@ -46,8 +45,8 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Fill"
                        HorizontalTextAlignment="Center"
-                       FontSize="Large"
-                       TextColor="{StaticResource almost_black}"
+                       Style="{StaticResource TextHeadline}"
+                       TextColor="{StaticResource cerulean}"
                        Text="Craft Your Experience" />
             </Grid>
 
@@ -56,44 +55,39 @@
                     <FormattedString>
                         <Span FontSize="17"
                               FontAttributes="Bold"
-                              TextColor="{StaticResource almost_black}">Theme:
+                              TextColor="{DynamicResource TextPrimaryColor}">Theme:
                         </Span>
-                        <Span Text=" Default" />
+                        <Span Text=" Default" TextColor="{DynamicResource TextPrimaryColor}"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
             <CollectionView
-                HeightRequest="120"
-                ItemsLayout="HorizontalList">
+                SelectionChangedCommand="{Binding ChangeThemeCommand}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedTheme}"
+                HeightRequest="120">
+                <CollectionView.ItemsLayout>
+                    <ListItemsLayout Orientation="Horizontal"
+
+ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Map</x:String>
-                        <x:String>Conversation</x:String>
-                        <x:String>Login</x:String>
-                        <x:String>To Do List</x:String>
+                        <x:String>Light</x:String>
+                        <x:String>Dark</x:String>
                     </x:Array>
                 </CollectionView.ItemsSource>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ContentView Padding="5">
-                            <views:ThemeCardView />
-                        </ContentView>
+                        <views:ThemeCardView WidthRequest="125" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
             </CollectionView>
 
-            <Label Margin="0,15,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span FontSize="17"
-                              FontAttributes="Bold"
-                              TextColor="{StaticResource almost_black}">Visual
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+            <Label Margin="0,15,0,0" Style="{StaticResource TextTitle}" Text="Visual"/>
+
             <FlexLayout Direction="Row"
                         Wrap="Wrap">
                 <CheckBox x:Name="ChkDefault"
@@ -102,6 +96,7 @@
                           FlexLayout.Basis="10%"
                           FlexLayout.AlignSelf="Center" />
                 <Label Text="Default"
+                       Style="{StaticResource TextBody}"
                        FlexLayout.Basis="90%"
                        FlexLayout.AlignSelf="Center" />
                 <CheckBox x:Name="ChkMaterial"
@@ -110,20 +105,15 @@
                           FlexLayout.Basis="10%"
                           FlexLayout.AlignSelf="Center" />
                 <Label Text="Material"
+                       
+                       Style="{StaticResource TextBody}"
                        FlexLayout.Basis="90%"
                        FlexLayout.AlignSelf="Center" />
             </FlexLayout>
 
-            <Label Margin="0,15,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span FontSize="17"
-                              FontAttributes="Bold"
-                              TextColor="{StaticResource almost_black}">Navigation
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+            <Label Margin="0,15,0,0"
+                   Style="{StaticResource TextTitle}"
+                   Text="Navigation"/>
             <FlexLayout Direction="Row"
                         Wrap="Wrap">
                 <Button
