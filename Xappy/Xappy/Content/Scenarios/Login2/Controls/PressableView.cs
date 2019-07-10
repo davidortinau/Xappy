@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace Xappy.Content.Scenarios.Login.Controls
+namespace Xappy.Content.Scenarios.Login2.Controls
 {
     public class PressableView : ContentView
     {

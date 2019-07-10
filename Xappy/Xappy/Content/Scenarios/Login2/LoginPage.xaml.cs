@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
-namespace Xappy.Content.Scenarios.Login
+namespace Xappy.Content.Scenarios.Login2
 {
     public partial class LoginPage : ContentPage
     {

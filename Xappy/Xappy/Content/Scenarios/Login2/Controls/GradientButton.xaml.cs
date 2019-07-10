@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Xappy.Content.Scenarios.Login.Controls
+namespace Xappy.Content.Scenarios.Login2.Controls
 {
     public partial class GradientButton : ContentView
     {

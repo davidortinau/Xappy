@@ -3,7 +3,7 @@ using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Xappy.Content.Scenarios.Login.Controls;
+using Xappy.Content.Scenarios.Login2.Controls;
 using Xappy.iOS.Renderers;
 
 [assembly: ExportRenderer(typeof(PressableView), typeof(PressableViewRenderer))]

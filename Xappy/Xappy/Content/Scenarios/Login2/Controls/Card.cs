@@ -4,12 +4,12 @@ using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
-namespace Xappy.Content.Scenarios.Login.Controls
+namespace Xappy.Content.Scenarios.Login2.Controls
 {
     public class Card : Frame
     {
         public static readonly BindableProperty ElevationProperty = BindableProperty.Create(
-            "Elevation",
+            nameof(Elevation),
             typeof(int),
             typeof(Card),
             4,

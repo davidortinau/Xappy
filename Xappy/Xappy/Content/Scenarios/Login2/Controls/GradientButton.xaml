@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Xappy.Content.Scenarios.Login.Controls"
+             xmlns:controls="clr-namespace:Xappy.Content.Scenarios.Login2.Controls"
              xmlns:local="clr-namespace:Xappy"
-             x:Class="Xappy.Content.Scenarios.Login.Controls.GradientButton"
+             x:Class="Xappy.Content.Scenarios.Login2.Controls.GradientButton"
              x:Name="This">
     <ContentView.ControlTemplate>
         <ControlTemplate>

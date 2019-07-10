@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Xappy.Content.Scenarios.Login.Controls"
-             x:Class="Xappy.Content.Scenarios.Login.LoginPage"
+             xmlns:controls="clr-namespace:Xappy.Content.Scenarios.Login2.Controls"
+             x:Class="Xappy.Content.Scenarios.Login2.LoginPage"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              Title="Login"
+             Shell.TitleColor="White"
              Shell.TabBarIsVisible="false">
     <ContentPage.Resources>
         <Style x:Key="CenteredTextTitle"
@@ -47,10 +48,10 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <lottie:AnimationView Animation="login.json"
-                                  AutoPlay="true" 
+                                  AutoPlay="true"
                                   HeightRequest="120"
                                   Loop="true"
-                                  Margin="0,0,0,6"/>
+                                  Margin="0,0,0,6" />
             <Grid Margin="40,0"
                   ColumnSpacing="0"
                   Grid.Row="1">
@@ -62,12 +63,13 @@
                          Grid.ColumnSpan="2"
                          x:Name="SelectorBackground"
                          CornerRadius="40" />
-                <Label Text="Existing"
-                       Style="{StaticResource CenteredTextTitle}">
-                    <Label.GestureRecognizers>
+                <Grid>
+                    <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+                    </Grid.GestureRecognizers>
+                    <Label Text="Existing"
+                           Style="{StaticResource CenteredTextTitle}" />
+                </Grid>
                 <Grid Grid.Column="1">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="SelectorOption_Tapped" />

@@ -26,8 +26,8 @@ namespace Xappy.Scenarios
                 case "map":
                     targetPage = "map";
                     break;
-                case "login":
-                    targetPage = "login";
+                case "login2":
+                    targetPage = "login2";
                     break;
                 case "to do list":
                     targetPage = "todo";
