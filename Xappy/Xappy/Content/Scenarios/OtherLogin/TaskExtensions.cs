@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Xappy.Content.Scenarios.Login2
+namespace Xappy.Content.Scenarios.OtherLogin
 {
     public static class TasksExtensions
     {

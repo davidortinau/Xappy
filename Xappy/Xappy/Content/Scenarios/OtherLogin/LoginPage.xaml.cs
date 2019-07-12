@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Xappy.Content.Scenarios.Login2
+namespace Xappy.Content.Scenarios.OtherLogin
 {
     public partial class LoginPage : ContentPage
     {

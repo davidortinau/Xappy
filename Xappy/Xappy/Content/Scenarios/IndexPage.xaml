@@ -14,6 +14,7 @@
             <x:Array Type="{x:Type x:String}">
                 <x:String>Map</x:String>
                 <x:String>Conversation</x:String>
+                <x:String>Login</x:String>
                 <x:String>Other Login</x:String>
                 <x:String>To Do List</x:String>
             </x:Array>

@@ -22,7 +22,7 @@ namespace Xappy
             Routing.RegisterRoute("control", typeof(ControlPage));
             Routing.RegisterRoute("map", typeof(MapPage));
             Routing.RegisterRoute("login", typeof(LoginPage));
-            Routing.RegisterRoute("login2", typeof(Content.Scenarios.Login2.LoginPage));
+            Routing.RegisterRoute("otherlogin", typeof(Content.Scenarios.OtherLogin.LoginPage));
             Routing.RegisterRoute("todo", typeof(ItemsPage));
             Routing.RegisterRoute("conversation", typeof(ConversationPage));
         }

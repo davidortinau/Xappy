@@ -2,7 +2,7 @@
 using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Xappy.Content.Scenarios.Login2.Controls;
+using Xappy.Content.Scenarios.OtherLogin.Controls;
 using Xappy.Droid.Renderers;
 
 [assembly: ExportRenderer(typeof(PressableView), typeof(PressableViewRenderer))]

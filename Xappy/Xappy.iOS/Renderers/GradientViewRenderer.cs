@@ -2,7 +2,7 @@
 using CoreGraphics;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Xappy.Content.Scenarios.Login2.Controls;
+using Xappy.Content.Scenarios.OtherLogin.Controls;
 using Xappy.iOS.Renderers;
 using CoreAnimation;
 using System.ComponentModel;

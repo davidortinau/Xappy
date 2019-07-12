@@ -5,7 +5,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
-namespace Xappy.Content.Scenarios.Login2.Controls
+namespace Xappy.Content.Scenarios.OtherLogin.Controls
 {
     public class Card : Frame
     {
