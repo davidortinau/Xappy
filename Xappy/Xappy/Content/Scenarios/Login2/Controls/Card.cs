@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -39,6 +40,27 @@ namespace Xappy.Content.Scenarios.Login2.Controls
 
             On<Android>()
                 .SetElevation(Elevation);
+        }
+
+        /// <summary>
+        /// Fix for styling a few properties (Padding, BackgroundColor...)
+        /// </summary>
+        protected override void OnPropertyChanged(string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            if (propertyName == StyleProperty.PropertyName)
+            {
+                if (Style.Setters.Any(s => s.Property == PaddingProperty))
+                {
+                    Padding = (Thickness)Style.Setters.First(s => s.Property == PaddingProperty).Value;
+                }
+
+                if (Style.Setters.Any(s => s.Property == BackgroundColorProperty))
+                {
+                    BackgroundColor = (Color)Style.Setters.First(s => s.Property == BackgroundColorProperty).Value;
+                }
+            }
         }
     }
 }
