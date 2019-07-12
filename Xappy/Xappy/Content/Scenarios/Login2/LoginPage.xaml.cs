@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace Xappy.Content.Scenarios.Login2
 {
@@ -22,16 +19,11 @@ namespace Xappy.Content.Scenarios.Login2
         {
             if (SelectorBackground.Height < 0) return;
 
-            SelectorBackground.CornerRadius = new CornerRadius(SelectorBackground.Height / 2);
+            SizeChanged -= LoginPage_SizeChanged;
+
+            // Calculate corner radius depending on height
+            SelectorBackground.CornerRadius = (float)SelectorBackground.Height / 2f;
             SelectorButton.CornerRadius = (float)SelectorButton.Height / 2f;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            var safeAreaInsets = On<iOS>().SafeAreaInsets();
-            Root.Margin = safeAreaInsets;
         }
 
         private async void SelectorOption_Tapped(object sender, System.EventArgs e)
@@ -53,10 +45,12 @@ namespace Xappy.Content.Scenarios.Login2
             await Task.WhenAll(
                 hideForm.TranslateTo(direction * 200, 0, AnimationDuration, Easing.SinOut),
                 hideForm.FadeTo(0, AnimationDuration));
+
             hideForm.IsVisible = false;
 
             revealForm.TranslationX = -direction * 200;
             revealForm.IsVisible = true;
+
             await Task.WhenAll(
                 revealForm.TranslateTo(0, 0, AnimationDuration, Easing.SinOut),
                 revealForm.FadeTo(1, AnimationDuration));

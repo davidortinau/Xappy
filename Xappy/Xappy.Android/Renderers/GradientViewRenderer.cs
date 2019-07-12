@@ -19,8 +19,8 @@ namespace Xappy.Droid.Renderers
             var box = Element;
 
             var gradient = new LinearGradient(0, 0,
-                                              box.Direction == GradientDirection.Vertical ? Width : 0,
-                                              box.Direction == GradientDirection.Horizontal ? Height : 0,
+                                              box.Direction == GradientDirection.Horizontal ? Width : 0,
+                                              box.Direction == GradientDirection.Vertical ? Height : 0,
                                               box.StartColor.ToAndroid(),
                                               box.EndColor.ToAndroid(),
                                               Shader.TileMode.Mirror);

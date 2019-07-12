@@ -4,9 +4,13 @@ using Xamarin.Forms;
 
 namespace Xappy.Content.Scenarios.Login2.Controls
 {
-    public partial class GradientButton : ContentView
+    public partial class GradientButton
     {
-        public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(GradientButton), default(string));
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(
+            "Text",
+            typeof(string),
+            typeof(GradientButton),
+            default(string));
 
         public string Text
         {
@@ -21,7 +25,7 @@ namespace Xappy.Content.Scenarios.Login2.Controls
 
         void Handle_Pressed(object sender, System.EventArgs e)
         {
-            this.FadeTo(0.7, 200);
+            this.FadeTo(0.7, 100);
         }
 
         void Handle_Released(object sender, System.EventArgs e)

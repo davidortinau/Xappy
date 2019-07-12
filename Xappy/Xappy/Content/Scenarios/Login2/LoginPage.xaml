@@ -27,91 +27,109 @@
             <Setter Property="BackgroundColor"
                     Value="White" />
             <Setter Property="Margin"
-                    Value="12" />
+                    Value="12,0" />
             <Setter Property="CornerRadius"
-                    Value="24" />
+                    Value="16" />
             <Setter Property="Elevation"
                     Value="10" />
             <Setter Property="Visual"
                     Value="Material" />
+            <Setter Property="Padding"
+                    Value="20,16" />
         </Style>
     </ContentPage.Resources>
     <Grid>
         <controls:GradientView StartColor="{StaticResource flyoutGradientStart}"
                                EndColor="{StaticResource flyoutGradientEnd}" />
-        <Grid x:Name="Root"
-              Margin="0,42,0,42">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <lottie:AnimationView Animation="login.json"
-                                  AutoPlay="true"
-                                  HeightRequest="120"
-                                  Loop="true"
-                                  Margin="0,0,0,6" />
-            <Grid Margin="40,0"
-                  ColumnSpacing="0"
-                  Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <BoxView BackgroundColor="#20000000"
-                         Grid.ColumnSpan="2"
-                         x:Name="SelectorBackground"
-                         CornerRadius="40" />
-                <Grid>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
-                    </Grid.GestureRecognizers>
-                    <Label Text="Existing"
-                           Style="{StaticResource CenteredTextTitle}" />
+
+        <ScrollView>
+            <Grid x:Name="Root"
+                  Margin="0,12"
+                  RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <lottie:AnimationView Animation="login.json"
+                                      AutoPlay="true"
+                                      HeightRequest="120"
+                                      Loop="true" />
+
+                <!-- Form Selector -->
+                <Grid Margin="40,0"
+                      ColumnSpacing="0"
+                      Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <controls:Card BackgroundColor="#20000000"
+                                   Grid.ColumnSpan="2"
+                                   InputTransparent="True"
+                                   x:Name="SelectorBackground"
+                                   CornerRadius="40"
+                                   Elevation="10" />
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
+                        </Grid.GestureRecognizers>
+                        <Label Text="Existing"
+                               InputTransparent="True"
+                               Style="{StaticResource CenteredTextTitle}" />
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
+                        </Grid.GestureRecognizers>
+                        <Label Text="New"
+                               InputTransparent="True"
+                               Style="{StaticResource CenteredTextTitle}" />
+                    </Grid>
+                    <controls:Card x:Name="SelectorButton"
+                                   CornerRadius="40"
+                                   Elevation="10"
+                                   BackgroundColor="White"
+                                   Margin="6">
+                        <Label Text="Existing"
+                               x:Name="SelectorButtonLabel"
+                               Style="{StaticResource CenteredTextTitle}" />
+                    </controls:Card>
                 </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SelectorOption_Tapped" />
-                    </Grid.GestureRecognizers>
-                    <Label Text="New"
-                           Style="{StaticResource CenteredTextTitle}" />
-                </Grid>
-                <controls:Card x:Name="SelectorButton"
-                               CornerRadius="40"
-                               Elevation="20"
-                               BackgroundColor="White">
-                    <Label Text="Existing"
-                           x:Name="SelectorButtonLabel"
-                           Style="{StaticResource CenteredTextTitle}" />
+
+                <!-- Login Form -->
+                <controls:Card Grid.Row="2"
+                               Style="{StaticResource FormStyle}"
+                               x:Name="LoginForm"
+                               IsVisible="false"
+                               Opacity="0">
+                    <StackLayout Spacing="12">
+                        <Entry Placeholder="Email" />
+                        <Entry Placeholder="Password"
+                               IsPassword="true" />
+                    </StackLayout>
                 </controls:Card>
+                <!-- Signup Form -->
+                <controls:Card Style="{StaticResource FormStyle}"
+                               Grid.Row="2"
+                               x:Name="SignupForm">
+                    <StackLayout Spacing="12">
+                        <Entry Placeholder="Username" />
+                        <Entry Placeholder="Email" />
+                        <Entry Placeholder="Password" />
+                        <Entry Placeholder="Confirm password" />
+                    </StackLayout>
+                </controls:Card>
+
+                <controls:GradientButton Grid.Row="3"
+                                         HorizontalOptions="Center"
+                                         WidthRequest="200"
+                                         Text="Submit" />
+
             </Grid>
-            <controls:Card Grid.Row="2"
-                           Style="{StaticResource FormStyle}"
-                           x:Name="LoginForm"
-                           BackgroundColor="White"
-                           IsVisible="false"
-                           Opacity="0">
-                <StackLayout Spacing="12">
-                    <Entry Placeholder="Email" />
-                    <Entry Placeholder="Password"
-                           IsPassword="true" />
-                </StackLayout>
-            </controls:Card>
-            <controls:Card Style="{StaticResource FormStyle}"
-                           Grid.Row="2"
-                           BackgroundColor="White"
-                           x:Name="SignupForm">
-                <StackLayout Spacing="12">
-                    <Entry Placeholder="Username" />
-                    <Entry Placeholder="Email" />
-                    <Entry Placeholder="Password" />
-                    <Entry Placeholder="Confirm password" />
-                </StackLayout>
-            </controls:Card>
-            <controls:GradientButton HorizontalOptions="Center"
-                                     Text="Submit"
-                                     Grid.Row="3" />
-        </Grid>
+        </ScrollView>
     </Grid>
 </ContentPage>
