@@ -1,6 +1,7 @@
 ﻿using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Support.Design.Widget;
+using Android.Support.V7.Widget;
 using Android.Views;
 using System;
 using Xamarin.Forms;
@@ -21,10 +22,12 @@ namespace Xappy.Droid.Renderers
             base.OnElementSet(element);
         }
 
-        protected override IShellSectionRenderer CreateShellSectionRenderer(ShellSection shellSection)
+        protected override IShellItemRenderer CreateShellItemRenderer(ShellItem shellItem)
         {
-            var renderer = base.CreateShellSectionRenderer(shellSection);
-            return (IShellSectionRenderer)renderer;
+            var renderer = base.CreateShellItemRenderer(shellItem);
+
+
+            return renderer;
         }
 
         protected override IShellFlyoutRenderer CreateShellFlyoutRenderer()
@@ -70,5 +73,6 @@ namespace Xappy.Droid.Renderers
 
             return flyout;
         }
+
     }
 }

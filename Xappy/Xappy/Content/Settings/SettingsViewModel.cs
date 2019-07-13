@@ -1,10 +1,29 @@
 ﻿using System;
+using System.Windows.Input;
+using Xamarin.Forms;
+using Xappy.Styles;
+
 namespace Xappy.Content.Settings
 {
     public class SettingsViewModel : BaseViewModel
     {
+        public ICommand ChangeThemeCommand { get; set; }
+
+        public string SelectedTheme { get; set; }
+
         public SettingsViewModel()
         {
+            ChangeThemeCommand = new Command((x) =>
+            {
+                if (SelectedTheme.ToLower() == "dark")
+                {
+                    Application.Current.Resources = new DarkTheme();
+                }
+                else
+                {
+                    Application.Current.Resources = new WhiteTheme();
+                }
+            });
         }
 
         private bool isVisualMaterial;

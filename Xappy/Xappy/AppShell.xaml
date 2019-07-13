@@ -7,11 +7,13 @@
     xmlns:scenarios="clr-namespace:Xappy.Scenarios"
     xmlns:about="clr-namespace:Xappy.About"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
+    xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
+    xmlns:settings="clr-namespace:Xappy.Content.Settings"
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBehavior="Flyout"
     x:Class="Xappy.AppShell">
-    
+        
     <Shell.FlyoutIcon>
         <FontImageSource
             FontFamily="{StaticResource FontAwesome}"
@@ -24,6 +26,9 @@
         Title="Main"
         Style="{DynamicResource CurrentTheme}"
         FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Working File">
+            <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}"/>
+        </Tab>
         <Tab
             Title="UI Controls">
             <Tab.Icon>

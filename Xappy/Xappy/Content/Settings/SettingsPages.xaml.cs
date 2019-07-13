@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using Xappy.Services;
+
 
 namespace Xappy.Content.Settings
 {
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class SettingsPages : ContentPage
     {
         public SettingsPages()

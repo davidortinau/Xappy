@@ -4,35 +4,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
              Shell.TabBarIsVisible="false"
-             BackgroundColor="{StaticResource ColorAppBackground}">
+             Style="{DynamicResource backgroundColor}">
 
     <CollectionView x:Name="ScenariosCV"
+                    Margin="15"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">
+        <CollectionView.ItemsLayout>
+            <ListItemsLayout Orientation="Vertical"
+                              ItemSpacing="10"/>
+        </CollectionView.ItemsLayout>
+
         <CollectionView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
+                <x:String>Product Details</x:String>
                 <x:String>Map</x:String>
-                <x:String>Conversation</x:String>
+                <x:String>Conversational</x:String>
                 <x:String>Login</x:String>
                 <x:String>To Do List</x:String>
             </x:Array>
         </CollectionView.ItemsSource>
 
+
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <ContentView Padding="10" BackgroundColor="White">
-                    <Frame HeightRequest="40"
+                <Frame HeightRequest="40"
                            CornerRadius="3"
-                           BackgroundColor="{StaticResource dusty_orange}"
+                           BackgroundColor="{StaticResource cerulean_three}"
                            Visual="Material">
-                        <Label VerticalOptions="Center"
+                    <Label VerticalOptions="Center"
+                               InputTransparent="True"
                                Style="{StaticResource TextHeadline}"
+                               TextColor="White" FontAttributes="Bold"
                                Text="{Binding .}" />
-                    </Frame>
-                </ContentView>
+                </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
+
+        <CollectionView.EmptyView>
+
+            <Grid>
+                <Label Text="Hmm, where are the scenarios?"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       TextColor="black" />
+            </Grid>
+
+        </CollectionView.EmptyView>
     </CollectionView>
 
 </ContentPage>

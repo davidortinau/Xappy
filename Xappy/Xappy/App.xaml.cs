@@ -11,10 +11,6 @@ namespace Xappy
         {
             InitializeComponent();
 
-#if DEBUG
-            HotReloader.Current.Start(this);
-#endif
-
             DependencyService.Register<AppTheme>();
 
             InitStyles();
