@@ -15,13 +15,16 @@
                 <x:String>Map</x:String>
                 <x:String>Conversation</x:String>
                 <x:String>Login</x:String>
+                <x:String>Other Login</x:String>
                 <x:String>To Do List</x:String>
             </x:Array>
         </CollectionView.ItemsSource>
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <ContentView Padding="10" BackgroundColor="White">
+                <ContentView Padding="10"
+                             BackgroundColor="White"
+                             InputTransparent="True">
                     <Frame HeightRequest="40"
                            CornerRadius="3"
                            BackgroundColor="{StaticResource dusty_orange}"

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xappy.Content.Scenarios.OtherLogin.Controls"
+             x:Class="Xappy.Content.Scenarios.OtherLogin.Controls.GradientButton"
+             x:Name="This">
+    <controls:PressableView Pressed="Handle_Pressed"
+                            Released="Handle_Released">
+        <controls:Card Elevation="6"
+                       CornerRadius="20"
+                       BackgroundColor="Transparent"
+                       Padding="0"
+                       InputTransparent="true">
+            <Frame CornerRadius="20"
+                   BackgroundColor="Transparent"
+                   IsClippedToBounds="true"
+                   Padding="0">
+                <Grid>
+                    <controls:GradientView StartColor="{StaticResource AccentColor}"
+                                           EndColor="{StaticResource flyoutGradientStart}"/>
+                    <Label Text="{Binding Text, Source={x:Reference This}}"
+                           TextColor="White"
+                           Margin="24,20"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource TextTitle}" />
+                </Grid>
+            </Frame>
+        </controls:Card>
+    </controls:PressableView>
+</ContentView>
