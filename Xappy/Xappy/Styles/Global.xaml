@@ -29,7 +29,8 @@
     <Color x:Key="navBarTitleColor" />
 
     <Style x:Key="backgroundStyle" TargetType="VisualElement">
-        <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
+        <Setter Property="BackgroundColor" 
+                Value="{DynamicResource backgroundColor}" />
     </Style>
     
     <Color x:Key="AccentColor">DodgerBlue</Color>

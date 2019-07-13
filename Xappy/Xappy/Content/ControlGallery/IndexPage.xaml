@@ -17,7 +17,7 @@
                 Style="{StaticResource TextTitle}"
                 Text="Layouts" />
             <CollectionView
-                Margin="-15,0,0,0"
+                Margin="0,0,0,0"
                 x:Name="LayoutsCV"
                 ItemsSource="{Binding Layouts}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
@@ -57,7 +57,7 @@
                 Text="Pages" />
             <CollectionView
                 x:Name="PagesCV"
-                Margin="-15,0,0,0"
+                Margin="0,0,0,0"
                 ItemsSource="{Binding Pages}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
                 SelectionMode="Single"
@@ -97,7 +97,7 @@
                 Text="Views" />
             <CollectionView
                 x:Name="ViewsCV"
-                Margin="-15,0,0,0"
+                Margin="0,0,0,0"
                 ItemsSource="{Binding Views}"
                 SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
                 SelectionMode="Single"

@@ -2,7 +2,7 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xappy.Styles.WhiteTheme"
-                    Source="DefaultTheme.xaml">
+             Source="DefaultTheme.xaml">
 
     <Color x:Key="backgroundColor">#FFFFFFFF</Color>
 

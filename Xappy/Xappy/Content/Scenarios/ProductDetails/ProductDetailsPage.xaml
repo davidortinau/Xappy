@@ -113,7 +113,6 @@
                 <CarouselView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>https://reverb-res.cloudinary.com/image/upload/s--iVfX_zrI--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1469146616/jjr3tm36lrgbyyfesp9p.jpg</x:String>
-                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--bRAhWR5w--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1469146646/b48gkgpm2bywf2fyuuqo.jpg</x:String>
                         <x:String>https://reverb-res.cloudinary.com/image/upload/s--p91cyv0u--/a_exif,c_limit,f_auto,fl_progressive,g_south,h_620,q_auto:eco,w_620/v1445701470/fe7fxrxliah4gtfj4jd0.jpg</x:String>
                         <x:String>https://reverb-res.cloudinary.com/image/upload/s--tAxNbGkO--/a_exif,c_limit,f_auto,fl_progressive,h_620,q_75,w_620/v1445703522/x7jyrcq7dikac9hmkeew.jpg</x:String>
                     </x:Array>
