@@ -24,85 +24,50 @@
     <Color x:Key="light_peach">#87FF7B7B</Color>
 
     <!-- Dynamic Colors (these are applied in styles) -->
-    <Color x:Key="pageBackgroundColor">#FFFFFF</Color>
     <Color x:Key="flyoutGradientStart">#FF017ED8</Color>
     <Color x:Key="flyoutGradientEnd">#FF14D9D9</Color>
     <Color x:Key="navBarTitleColor" />
 
-    <Style ApplyToDerivedTypes="true"
-           CanCascade="true"
-           TargetType="ContentPage">
-        <Setter Property="BackgroundColor"
-                Value="{DynamicResource pageBackgroundColor}" />
+    <Style x:Key="backgroundStyle" TargetType="VisualElement">
+        <Setter Property="BackgroundColor" 
+                Value="{DynamicResource backgroundColor}" />
     </Style>
-
+    
     <Color x:Key="AccentColor">DodgerBlue</Color>
     <Color x:Key="ColorPrimary">#F1F1F1</Color>
-    <Color x:Key="ColorAppBackground">White</Color>
 
     <Style x:Key="BaseStyle"
            TargetType="Element">
         <Setter Property="Shell.BackgroundColor"
-                Value="{StaticResource ColorPrimary}" />
+                Value="{DynamicResource backgroundColor}" />
         <Setter Property="Shell.ForegroundColor"
                 Value="#1d1d1d" />
         <Setter Property="Shell.TitleColor"
-                Value="#1f1f1f" />
+                Value="{DynamicResource cerulean}" />
         <Setter Property="Shell.DisabledColor"
                 Value="#B4FFFFFF" />
         <Setter Property="Shell.UnselectedColor"
                 Value="#CC0000" />
-        <Setter Property="Shell.FlyoutBehavior"
-                Value="Disabled" />
     </Style>
 
     <Style BasedOn="{StaticResource BaseStyle}"
-           TargetType="ShellItem" />
+           ApplyToDerivedTypes="True"
+           TargetType="FlyoutItem" />
 
-    <Style x:Key="CurrentShellTheme"
-           BasedOn="{StaticResource BaseStyle}"
-           TargetType="ShellItem" />
-
-    <Style x:Key="SecondaryShell"
-           BasedOn="{StaticResource BaseStyle}"
-           TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-                Value="#AF3800" />
-        <Setter Property="Shell.FlyoutBehavior"
-                Value="Disabled" />
-    </Style>
-
-    <Style x:Key="TertiaryShell"
-           BasedOn="{StaticResource BaseStyle}"
-           TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-                Value="#FA7921" />
-    </Style>
-
-    <Style x:Key="QuaternaryShell"
-           BasedOn="{StaticResource BaseStyle}"
-           TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-                Value="#FE9920" />
-    </Style>
-
-    <Style x:Key="QuinaryShell"
-           BasedOn="{StaticResource BaseStyle}"
-           TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-                Value="#566E3D" />
-    </Style>
-
-    <Style x:Key="SenaryShell"
-           BasedOn="{StaticResource BaseStyle}"
-           TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-                Value="#1B3022" />
+    <Style x:Key="HRule"
+           TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="BackgroundColor" Value="#CCCCCC"/>
     </Style>
 
     <converters:TypeToIconConverter x:Key="TypeToIconConverter" />
     <converters:DoubleToIntConverter x:Key="DoubleToIntConverter" />
     <converters:PropertyInfoBooleanValueConverter x:Key="PropertyInfoBooleanValueConverter" />
     <converters:NullOrEmptyToBoolConverter x:Key="NullOrEmptyToBoolConverter" />
-
+    <converters:ScrollValueConverter x:Key="ScrollValueConverter"/>
+    <converters:ComparisonConverter x:Key="ComparisonConverter"/>
+    <converters:ScrollPositionConverter x:Key="ScrollPositionConverter"/>
+    <converters:StringToColorResourceConverter x:Key="StringToColorResourceConverter"/>
+    <converters:ResourceToHexStringConverter x:Key="ResourceToHexStringConverter"/>
 </ResourceDictionary>

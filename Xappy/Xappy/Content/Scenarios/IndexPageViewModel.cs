@@ -23,6 +23,9 @@ namespace Xappy.Scenarios
             string targetPage = "map";
             switch (SelectedItem.ToLower())
             {
+                case "product details":
+                    targetPage = "productdetails";
+                    break;
                 case "map":
                     targetPage = "map";
                     break;
@@ -35,7 +38,7 @@ namespace Xappy.Scenarios
                 case "to do list":
                     targetPage = "todo";
                     break;
-                case "conversation":
+                case "conversational":
                     targetPage = "conversation";
                     break;
                 default:
@@ -47,7 +50,8 @@ namespace Xappy.Scenarios
             await Shell.Current.GoToAsync($"{targetPage}");
         }
 
-        public string SelectedItem {
+        public string SelectedItem
+        {
             get => selectedItem;
             set => SetProperty(ref selectedItem, value);
         }

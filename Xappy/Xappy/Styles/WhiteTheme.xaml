@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xappy.Styles.WhiteTheme"
+             Source="DefaultTheme.xaml">
+
+    <Color x:Key="backgroundColor">#FFFFFFFF</Color>
+
+    <Color x:Key="TextPrimaryColor">#B0000000</Color>
+    <Color x:Key="TextSecondaryColor">#80000000</Color>
+    <Color x:Key="TextTernaryColor">#C8C8C8</Color>
+</ResourceDictionary>

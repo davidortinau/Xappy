@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Style Guide"
+             Shell.BackgroundColor="{DynamicResource backgroundColor}"
+             BackgroundColor="{DynamicResource backgroundColor}"
+             Shell.TitleColor="{StaticResource cerulean}"
+             Shell.TabBarIsVisible="False"
+             x:Class="Xappy.Content.Settings.StyleGuidePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="15" Spacing="10">
+                <Label Text="Colors"
+                       Style="{DynamicResource TextHeadline}" />
+                <BoxView Style="{DynamicResource HRule}"/>
+
+                <CollectionView HeightRequest="460">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout VerticalItemSpacing="10" 
+                                         HorizontalItemSpacing="10"
+                                         Orientation="Horizontal"
+                                         Span="4"
+                                         />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>AccentColor</x:String>
+                            <x:String>aqua_marine</x:String>
+                            <x:String>almost_black</x:String>
+                            <x:String>dusty_orange</x:String>
+                            <x:String>cerulean</x:String>
+                            <x:String>cerulean_two</x:String>
+                            <x:String>cerulean_three</x:String>
+                            <x:String>dark_lime_green</x:String>
+                            <x:String>green_blue</x:String>
+                            <x:String>tomato</x:String>
+                            <x:String>soft_blue</x:String>
+                            <x:String>very_light_pink</x:String>
+                            <x:String>very_light_pink_two</x:String>
+                            <x:String>white</x:String>
+                            <x:String>teal</x:String>
+                            <x:String>dark_peach</x:String>
+                            <x:String>light_peach</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                        <Frame HasShadow="False" 
+                               BackgroundColor="{DynamicResource backgroundColor}"
+                               BorderColor="#CCCCCC" CornerRadius="0" Padding="0">
+                            <StackLayout>
+                                    <BoxView BackgroundColor="{Binding ., Converter={x:StaticResource StringToColorResourceConverter}}"/>
+                                <Label Margin="8"  Style="{DynamicResource TextTitle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                                <Span Text="{Binding .}"/>
+                                                <Span Text="&#x0a;"/>
+                                                <Span Text="{Binding ., Converter={x:StaticResource ResourceToHexStringConverter}}" FontSize="{DynamicResource TextSizeCaption}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+                
+                
+                <Label Text="Text"
+                       Style="{DynamicResource TextHeadline}" />
+                <BoxView Style="{DynamicResource HRule}"/>
+
+                <Label Text="Headline"
+                       Style="{DynamicResource TextHeadline}" />
+
+                <Label Text="Title"
+                       Style="{DynamicResource TextTitle}" />
+
+                <Label Text="Subhead"
+                       Style="{DynamicResource TextSubhead}" />
+
+                <Label Text="Subhead Secondary"
+                       Style="{DynamicResource TextSubheadSecondary}" />
+
+                <Label Text="The quick brown fox jumps over the lazy dog." />
+
+                <Label Text="Buttons"
+                       Style="{DynamicResource TextHeadline}" />
+                <BoxView Style="{DynamicResource HRule}"/>
+
+                <Button Text="Default"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

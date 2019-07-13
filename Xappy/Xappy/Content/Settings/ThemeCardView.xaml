@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.Settings.ThemeCardView"
     Visual="Material"
-    BorderColor="{StaticResource DodgerBlue}"
+    BorderColor="{StaticResource AccentColor}"
+    HasShadow="True"
+    BackgroundColor="{DynamicResource backgroundColor}"
     Padding="8,10">
     <Frame.Resources>
         <Style TargetType="BoxView">
@@ -14,7 +16,7 @@
         </Style>
     </Frame.Resources>
     <StackLayout Orientation="Vertical">
-        <Label Text="Default" />
+        <Label Text="{Binding .}" Style="{StaticResource TextTitle}" />
         <BoxView
             BackgroundColor="{StaticResource cerulean}" />
         <BoxView

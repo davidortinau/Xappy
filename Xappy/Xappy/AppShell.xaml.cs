@@ -2,6 +2,7 @@
 
 using Xappy.Content.Scenarios.Conversation;
 using Xappy.Content.Scenarios.Login;
+using Xappy.Content.Scenarios.ProductDetails;
 using Xappy.Content.Scenarios.ToDo;
 using Xappy.ControlGallery;
 using Xappy.Scenarios;
@@ -25,6 +26,7 @@ namespace Xappy
             Routing.RegisterRoute("otherlogin", typeof(Content.Scenarios.OtherLogin.LoginPage));
             Routing.RegisterRoute("todo", typeof(ItemsPage));
             Routing.RegisterRoute("conversation", typeof(ConversationPage));
+            Routing.RegisterRoute("productdetails", typeof(ProductDetailsPage));
         }
     }
 }

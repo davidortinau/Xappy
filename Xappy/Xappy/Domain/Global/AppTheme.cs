@@ -54,8 +54,15 @@ namespace Xappy.Domain.Global
 
         public Color LookupColor(string key)
         {
-            Application.Current.Resources.TryGetValue(key, out var newColor);
-            return (Color)newColor;
+            try
+            {
+                Application.Current.Resources.TryGetValue(key, out var newColor);
+                return (Color)newColor;
+            }
+            catch
+            {
+                return Color.White;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
