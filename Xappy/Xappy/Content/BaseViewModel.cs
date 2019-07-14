@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Xappy.Content
 {
@@ -19,6 +22,25 @@ namespace Xappy.Content
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        public ICommand SkeletonCommand { get; set; }
+
+        public ICommand BackCommand { get; set; }
+
+        public BaseViewModel()
+        {
+            SkeletonCommand = new Command(async (x) =>
+            {
+                IsBusy = true;
+                await Task.Delay(4000);
+                IsBusy = false;
+            });
+
+            BackCommand = new Command((x) =>
+            {
+                Shell.Current.SendBackButtonPressed();
+            });
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

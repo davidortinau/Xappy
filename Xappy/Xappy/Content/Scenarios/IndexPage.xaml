@@ -4,10 +4,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
              Shell.TabBarIsVisible="false"
-             Style="{DynamicResource backgroundColor}">
+             BackgroundColor="{DynamicResource backgroundColor}">
 
     <CollectionView x:Name="ScenariosCV"
-                    Margin="15"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">
@@ -27,17 +26,16 @@
             </x:Array>
         </CollectionView.ItemsSource>
 
-
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame HeightRequest="40"
+                <Frame HeightRequest="30"
                            CornerRadius="3"
                            BackgroundColor="{StaticResource cerulean_three}"
                            Visual="Material">
                     <Label VerticalOptions="Center"
                                InputTransparent="True"
                                Style="{StaticResource TextHeadline}"
-                               TextColor="White" FontAttributes="Bold"
+                               FontAttributes="Bold"
                                Text="{Binding .}" />
                 </Frame>
             </DataTemplate>

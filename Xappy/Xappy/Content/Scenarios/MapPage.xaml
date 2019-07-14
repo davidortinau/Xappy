@@ -58,7 +58,7 @@
                         <CollectionView
                             HeightRequest="120"
                             Margin="0,0,0,12"
-                            ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
+                            ItemsLayout="HorizontalList"
                             ItemSizingStrategy="MeasureFirstItem">
                             <CollectionView.ItemsSource>
                                 <x:Array
@@ -177,6 +177,7 @@
             HorizontalOptions="Start"
             VerticalOptions="Start"
             Clicked="Handle_BackClicked"
+            BackgroundColor="Transparent"
             Aspect="AspectFit">
             <ImageButton.Source>
                 <FontImageSource

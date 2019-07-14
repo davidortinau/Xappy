@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
+using Xamarin.Forms.Internals;
 using Xappy.Domain.Conversational;
 
 namespace Xappy.Content.Scenarios.Conversation

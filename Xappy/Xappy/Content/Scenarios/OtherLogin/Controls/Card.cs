@@ -56,10 +56,10 @@ namespace Xappy.Content.Scenarios.OtherLogin.Controls
                     Padding = (Thickness)Style.Setters.First(s => s.Property == PaddingProperty).Value;
                 }
 
-                if (Style.Setters.Any(s => s.Property == BackgroundColorProperty))
-                {
-                    BackgroundColor = (Color)Style.Setters.First(s => s.Property == BackgroundColorProperty).Value;
-                }
+                //if (Style.Setters.Any(s => s.Property == BackgroundColorProperty))
+                //{
+                //    BackgroundColor = (Color)Style.Setters.First(s => s.Property == BackgroundColorProperty).Value;
+                //}
             }
         }
     }

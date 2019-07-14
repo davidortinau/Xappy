@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.Scenarios.ToDo.NewItemPage"
+    BackgroundColor="{DynamicResource backgroundColor}"
     Title="New Item">
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -18,15 +19,17 @@
             Padding="15">
             <Label
                 Text="Text"
-                FontSize="Medium" />
+                Style="{DynamicResource TextHeadline}" />
             <Entry
                 Text="{Binding Item.Text}"
+                TextColor="{DynamicResource TextPrimaryColor}"
                 FontSize="Small" />
             <Label
                 Text="Description"
-                FontSize="Medium" />
+                Style="{DynamicResource TextHeadline}"/>
             <Editor
                 Text="{Binding Item.Description}"
+                TextColor="{DynamicResource TextPrimaryColor}"
                 FontSize="Small"
                 Margin="0" />
         </StackLayout>

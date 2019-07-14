@@ -9,6 +9,7 @@
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:settings="clr-namespace:Xappy.Content.Settings"
+    xmlns:resources="clr-namespace:Xappy.Content.Resources"
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBehavior="Flyout"
@@ -60,7 +61,7 @@
                                  Size="14" />
             </Tab.Icon>
             <ShellContent
-                ContentTemplate="{DataTemplate local:MainPage}" />
+                ContentTemplate="{DataTemplate resources:IndexPage}" />
         </Tab>
         <Tab
             Title="About">
@@ -74,17 +75,6 @@
                 ContentTemplate="{DataTemplate about:IndexPage}" />
             <ShellContent Title="Contributors"
                 ContentTemplate="{DataTemplate about:GitHubPage}" />
-        </Tab>
-        <Tab
-            Title="Latest">
-            <Tab.Icon>
-                <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                 Glyph="{x:Static local:IconFont.AddressBook}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </FlyoutItem>
     

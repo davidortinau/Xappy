@@ -26,14 +26,6 @@ namespace Xappy.iOS.Renderers
                 (renderer as ShellSectionRenderer).NavigationBar.SetBackgroundImage(new UIImage(),
                     UIBarMetrics.Default);
                 (renderer as ShellSectionRenderer).NavigationBar.ShadowImage = new UIImage();
-
-                //UINavigationBar.Appearance.BarTintColor = Color.FromHex("#11313F").ToUIColor(); //bar background
-                //UINavigationBar.Appearance.TintColor = UIColor.White; //Tint color of button items
-                //UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
-                //{
-                //    Font = UIFont.FromName("HelveticaNeue-Light", (nfloat)20f),
-                //    TextColor = UIColor.White
-                //});
             }
 
             return (IShellSectionRenderer)renderer;
@@ -63,17 +55,14 @@ namespace Xappy.iOS.Renderers
         {
             if (_flyoutBackground == null && sender != null && sender is IShellFlyoutContentRenderer flyout)
             {
-
-                var theme = DependencyService.Get<AppTheme>();
-
                 var v = flyout.ViewController.View;
 
                 _flyoutBackground = new CAGradientLayer();
                 _flyoutBackground.Frame = new CGRect(0, 0, v.Bounds.Width, v.Bounds.Height); ;
                 _flyoutBackground.Colors = new CoreGraphics.CGColor[]
                 {
-                    ((Color)theme.LookupColor("flyoutGradientStart")).ToCGColor(),
-                    ((Color)theme.LookupColor("flyoutGradientEnd")).ToCGColor()
+                    ((Color)App.LookupColor("flyoutGradientStart")).ToCGColor(),
+                    ((Color)App.LookupColor("flyoutGradientEnd")).ToCGColor()
                 };
 
                 flyout.ViewController.View.Layer.InsertSublayer(_flyoutBackground, 0);

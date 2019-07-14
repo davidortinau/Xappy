@@ -5,6 +5,8 @@
     x:Class="Xappy.Content.Scenarios.ToDo.ItemsPage"
     Shell.TabBarIsVisible="False"
     Title="{Binding Title}"
+    Shell.ForegroundColor="{StaticResource cerulean}"
+    BackgroundColor="{DynamicResource backgroundColor}"
     x:Name="BrowseItemsPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -30,12 +32,12 @@
                             <Label
                                 Text="{Binding Text}"
                                 LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemTextStyle}"
+                                Style="{DynamicResource TextHeadline}"
                                 FontSize="16" />
                             <Label
                                 Text="{Binding Description}"
                                 LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                Style="{DynamicResource TextSubhead}"
                                 FontSize="13" />
                         </StackLayout>
                     </ViewCell>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<ContentPage x:Class="Xappy.Content.Scenarios.Conversation.ConversationPage"
-             xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:xappy="clr-namespace:Xappy;assembly=Xappy"
-             xmlns:customViews="clr-namespace:Xappy.CustomViews;assembly=Xappy"
              xmlns:conversation="clr-namespace:Xappy.Content.Scenarios.Conversation;assembly=Xappy"
+             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
+             xmlns:ext="clr-namespace:Xappy.Extensions"
+             xmlns:xf="clr-namespace:Xamarin.Forms.Internals;assembly=Xamarin.Forms.Core"
+             x:Class="Xappy.Content.Scenarios.Conversation.ConversationPage"
              Title="Conversation"
              ios:Page.UseSafeArea="true"
              Shell.NavBarIsVisible="True"
@@ -24,14 +25,14 @@
                              FontFamily="{StaticResource FontAwesome}"
                              Glyph="{x:Static xappy:IconFont.PaperPlane}"
                              Size="24"
-                             Color="{StaticResource AccentColor}" />
+                             Color="{StaticResource white}" />
 
             <FontImageSource x:Key="ButtonSentDisabled"
                              FontFamily="{StaticResource FontAwesome}"
                              Glyph="{x:Static xappy:IconFont.PaperPlane}"
                              Size="24"
-                             Color="LightGray" />
-
+                             Color="{StaticResource brown_grey}" />
+            
             <DataTemplate x:Key="MessageFromOthers">
                 <Grid Padding="10"
                       ColumnSpacing="0"
@@ -98,16 +99,40 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <Shell.TitleView>
+        <Frame 
+                   x:Name="ParticipantsFrame" 
+                   IsClippedToBounds="True"
+                   Padding="0"
+                   Margin="0,0,0,0"
+                   CornerRadius="4"
+                   BorderColor="{StaticResource ColorPrimary}"
+                   HasShadow="false">
+            <StackLayout Orientation="Horizontal" 
+                             BindableLayout.ItemsSource="{Binding Participants}"
+                             Spacing="-10"
+                             >
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <abstractions:CircleImage WidthRequest="30"
+                                                          HeightRequest="30"
+                                                          Aspect="AspectFill"
+                                                          Source="{Binding AvatarUrl}" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+
+
+            </StackLayout>
+        </Frame>
+    </Shell.TitleView>
+    
     <ContentPage.Content>
         <Grid ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="130" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="70" />
             </Grid.RowDefinitions>
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="MessageCollectionViewOnTapped"/>
-            </Grid.GestureRecognizers>
 
             <CollectionView Grid.Row="0"
                             Grid.RowSpan="3"
@@ -116,48 +141,13 @@
                             Rotation="180"
                             ItemTemplate="{StaticResource MessageTemplateSelector}"/>
 
-            <Frame Grid.Row="0"
-                   x:Name="ParticipantsFrame"
-                   Padding="0"
-                   Margin="15,10,-60,0"
-                   CornerRadius="60"
-                   BorderColor="{StaticResource ColorPrimary}"
-                   HasShadow="False">
-                <CollectionView Margin="0,0,60,0"
-                                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
-                                ItemsSource="{Binding Participants}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Orientation="Vertical"
-                                         WidthRequest="80"
-                                         Padding="10"
-                                         Spacing="0">
-                                <abstractions:CircleImage WidthRequest="60"
-                                                          HeightRequest="60"
-                                                          Margin="5"
-                                                          HorizontalOptions="Center"
-                                                          VerticalOptions="Center"
-                                                          Aspect="AspectFill"
-                                                          Source="{Binding AvatarUrl}" />
-                                <Label HorizontalOptions="Center"
-                                       Style="{StaticResource TextBody}"
-                                       LineBreakMode="TailTruncation"
-                                       Text="{Binding LastName}" />
-                                <Label HorizontalOptions="Center"
-                                       Style="{StaticResource TextCaptionSecondary}"
-                                       Text="{Binding FirstName}" />
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Frame>
-           
             <Frame Grid.Row="2"
                    x:Name="EntryFrame"
                    Margin="-25,0,10,10"
                    Padding="45,0,5,0"
                    HorizontalOptions="FillAndExpand"
-                   HasShadow="False"
+                   HasShadow="True"
+                   BackgroundColor="#cccccc"
                    BorderColor="{StaticResource ColorPrimary}"
                    CornerRadius="30">
                 <Frame.GestureRecognizers>
@@ -169,12 +159,11 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="50" />
                     </Grid.ColumnDefinitions>
-                    <customViews:BorderlessEntry Grid.Column="0"
+                    <Entry Grid.Column="0"
                                                  Margin="0,5"
                                                  BackgroundColor="Transparent"
                                                  Placeholder="Message"
-                                                 Text="{Binding MessageToSend, Mode=TwoWay}">
-                    </customViews:BorderlessEntry>
+                                                 Text="{Binding MessageToSend, Mode=TwoWay}"/>
                     <ImageButton Grid.Column="1"
                                  HorizontalOptions="Center"
                                  VerticalOptions="Center"

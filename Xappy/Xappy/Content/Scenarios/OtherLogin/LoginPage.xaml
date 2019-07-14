@@ -4,13 +4,21 @@
              xmlns:controls="clr-namespace:Xappy.Content.Scenarios.OtherLogin.Controls"
              x:Class="Xappy.Content.Scenarios.OtherLogin.LoginPage"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:this="clr-namespace:Xappy.Content.Scenarios.OtherLogin"
+             xmlns:app="clr-namespace:Xappy"
              Title="Login"
+             Shell.NavBarIsVisible="False"
              Shell.TitleColor="White"
              Shell.TabBarIsVisible="false">
+    
+    <ContentPage.BindingContext>
+        <this:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <Style x:Key="CenteredTextTitle"
                TargetType="Label"
-               BasedOn="{StaticResource TextTitle}">
+               BasedOn="{StaticResource TextCaption}">
             <Setter Property="Margin"
                     Value="24,12" />
             <Setter Property="HorizontalOptions"
@@ -21,11 +29,13 @@
         <Style TargetType="Entry">
             <Setter Property="BackgroundColor"
                     Value="Transparent" />
+            <Setter Property="TextColor"
+                    Value="{DynamicResource TextPrimaryColor}"/>
         </Style>
         <Style TargetType="controls:Card"
                x:Key="FormStyle">
             <Setter Property="BackgroundColor"
-                    Value="White" />
+                    Value="{DynamicResource backgroundColor}" />
             <Setter Property="Margin"
                     Value="12,0" />
             <Setter Property="CornerRadius"
@@ -35,7 +45,7 @@
             <Setter Property="Visual"
                     Value="Material" />
             <Setter Property="Padding"
-                    Value="20,16" />
+                    Value="10,8" />
         </Style>
     </ContentPage.Resources>
     <Grid>
@@ -92,7 +102,7 @@
                     <controls:Card x:Name="SelectorButton"
                                    CornerRadius="40"
                                    Elevation="10"
-                                   BackgroundColor="White"
+                                   BackgroundColor="{DynamicResource backgroundColor}"
                                    Margin="6">
                         <Label Text="Existing"
                                x:Name="SelectorButtonLabel"
@@ -103,9 +113,9 @@
                 <!-- Login Form -->
                 <controls:Card Grid.Row="2"
                                Style="{StaticResource FormStyle}"
+                               BackgroundColor="{DynamicResource backgroundColor}"
                                x:Name="LoginForm"
-                               IsVisible="false"
-                               Opacity="0">
+                               IsVisible="True">
                     <StackLayout Spacing="12">
                         <Entry Placeholder="Email" />
                         <Entry Placeholder="Password"
@@ -114,7 +124,10 @@
                 </controls:Card>
                 <!-- Signup Form -->
                 <controls:Card Style="{StaticResource FormStyle}"
+                               BackgroundColor="{DynamicResource backgroundColor}"
                                Grid.Row="2"
+                               IsVisible="True"
+                               Opacity="0"
                                x:Name="SignupForm">
                     <StackLayout Spacing="12">
                         <Entry Placeholder="Username" />
@@ -131,5 +144,16 @@
 
             </Grid>
         </ScrollView>
+
+        <ImageButton Command="{Binding BackCommand}" BackgroundColor="Transparent" HeightRequest="44" WidthRequest="44"
+                     Padding="8"
+                     HorizontalOptions="Start" VerticalOptions="Start">
+            <ImageButton.Source>
+                <FontImageSource
+                        FontFamily="{StaticResource FontAwesome}"
+                        Glyph="{x:Static app:IconFont.ChevronLeft}"
+                        Color="{DynamicResource backgroundColor}" />
+            </ImageButton.Source>
+        </ImageButton>
     </Grid>
 </ContentPage>

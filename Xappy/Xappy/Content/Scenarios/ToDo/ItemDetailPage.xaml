@@ -3,21 +3,27 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xappy.Content.Scenarios.ToDo.ItemDetailPage"
+    BackgroundColor="{DynamicResource backgroundColor}"
+    Shell.ForegroundColor="{StaticResource cerulean}"
+    Shell.TabBarIsVisible="False"
     Title="{Binding Title}">
     <StackLayout
         Spacing="20"
         Padding="15">
         <Label
             Text="Text:"
+            Style="{DynamicResource TextHeadline}"
             FontSize="Medium" />
         <Label
             Text="{Binding Item.Text}"
+            Style="{DynamicResource TextBody}"
             FontSize="Small" />
         <Label
             Text="Description:"
             FontSize="Medium" />
         <Label
             Text="{Binding Item.Description}"
+            TextColor="{DynamicResource TextPrimaryColor}"
             FontSize="Small" />
     </StackLayout>
 </ContentPage>

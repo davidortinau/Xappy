@@ -38,7 +38,7 @@ namespace Xappy.Content.Scenarios.OtherLogin
             SelectorButtonLabel.Text = index == 1 ? "New" : "Existing";
             await SelectorButtonLabel.FadeTo(1, AnimationDuration / 2);
 
-            var revealForm = index == 0 ? SignupForm : LoginForm;
+            var revealForm = index == 0 ? LoginForm : SignupForm;
             var hideForm = revealForm == LoginForm ? SignupForm : LoginForm;
             var direction = revealForm == LoginForm ? 1 : -1;
 
