@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.TabBarIsVisible="false"
+             xmlns:blog="clr-namespace:Xappy.Content.Blog"
+             x:Class="Xappy.Content.Blog.BlogPage">
+    <ContentPage.Content>
+        <CollectionView ItemsSource="{Binding Items}" 
+                                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectCommand}"
+                    SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                        Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="blog:BlogItem">
+                    <blog:BlogView />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,5 +1,5 @@
 ﻿using Xamarin.Forms;
-
+using Xappy.Content.Blog;
 using Xappy.Content.Scenarios.Conversation;
 using Xappy.Content.Scenarios.Login;
 using Xappy.Content.Scenarios.ProductDetails;
@@ -27,6 +27,8 @@ namespace Xappy
             Routing.RegisterRoute("todo", typeof(ItemsPage));
             Routing.RegisterRoute("conversation", typeof(ConversationPage));
             Routing.RegisterRoute("productdetails", typeof(ProductDetailsPage));
+            Routing.RegisterRoute("blog", typeof(BlogPage));
+            Routing.RegisterRoute("blogDetail", typeof(BlogDetailPage));
         }
     }
 }

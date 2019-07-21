@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:Xappy"
     xmlns:common="clr-namespace:Xappy.Content.Common"
     xmlns:scenarios="clr-namespace:Xappy.Scenarios"
+    xmlns:blog="clr-namespace:Xappy.Content.Blog"
     xmlns:about="clr-namespace:Xappy.About"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
@@ -29,6 +30,17 @@
         FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="Working File">
             <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}"/>
+        </Tab>
+        <Tab
+            Title="Latest News">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                 Glyph="{x:Static local:IconFont.Newspaper}"
+                                 Color="White"
+                                 Size="14" />
+            </Tab.Icon>
+            <ShellContent
+                ContentTemplate="{DataTemplate blog:BlogPage}" />
         </Tab>
         <Tab
             Title="UI Controls">

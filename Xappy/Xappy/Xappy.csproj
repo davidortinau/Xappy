@@ -25,6 +25,7 @@
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.0" />
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.3.0.930-nightly" />
     <PackageReference Include="Xamanimation" Version="1.2.0" />
+    <PackageReference Include="System.ServiceModel.Syndication" Version="4.6.0-preview6.19303.8" />
   </ItemGroup>
   
   <ItemGroup>
