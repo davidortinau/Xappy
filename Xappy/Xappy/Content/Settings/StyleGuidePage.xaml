@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
@@ -48,7 +49,8 @@
                     </CollectionView.ItemsSource>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                        <Frame HasShadow="False" 
+                        <Frame HasShadow="False"
+                               WidthRequest="150"
                                BackgroundColor="{DynamicResource backgroundColor}"
                                BorderColor="#CCCCCC" CornerRadius="0" Padding="0">
                             <StackLayout>
@@ -93,6 +95,23 @@
                 <BoxView Style="{DynamicResource HRule}"/>
 
                 <Button Text="Default"/>
+
+                <Label Text="Segmented Control (iOS Only)"
+                       Style="{DynamicResource TextHeadline}" />
+                <BoxView Style="{DynamicResource HRule}"/>
+
+                <ios:UISegmentedControl>
+                    <x:Arguments>
+                        <x:String>Flyout Menu</x:String>
+                        <x:String>Bottom Tabs</x:String>
+                        <x:String>Top Tabs</x:String>
+                        <x:String>Bananas</x:String>
+                      </x:Arguments>
+                </ios:UISegmentedControl>
+
+                <Switch ThumbColor="{StaticResource cerulean_three}"
+                        OnColor="{StaticResource dusty_orange}"/>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

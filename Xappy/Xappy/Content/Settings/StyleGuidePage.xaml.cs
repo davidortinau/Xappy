@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace Xappy.Content.Settings
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class StyleGuidePage : ContentPage
     {
         public StyleGuidePage()
