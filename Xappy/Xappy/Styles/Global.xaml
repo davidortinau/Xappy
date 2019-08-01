@@ -70,4 +70,5 @@
     <converters:ScrollPositionConverter x:Key="ScrollPositionConverter"/>
     <converters:StringToColorResourceConverter x:Key="StringToColorResourceConverter"/>
     <converters:ResourceToHexStringConverter x:Key="ResourceToHexStringConverter"/>
+    <converters:IndexToColorConverter x:Key="IndexToColorConverter"/>
 </ResourceDictionary>

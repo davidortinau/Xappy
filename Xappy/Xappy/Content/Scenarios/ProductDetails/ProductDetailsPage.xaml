@@ -519,11 +519,11 @@
                                            Aspect="AspectFill"
                                            HeightRequest="180"
                                            WidthRequest="180"/>
-                                            <Label Margin="15" LineHeight="1.2">
+                                            <Label Margin="15" LineHeight="1.2" FontSize="12">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
-                                                        <Span Text="$2,069.99" TextColor="#FF9900" FontSize="14"/>
+                                                        <Span Text="$2,069.99" TextColor="#FF9900"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -559,11 +559,12 @@
                                            Aspect="AspectFill"
                                            HeightRequest="180"
                                            WidthRequest="180"/>
-                                            <Label Margin="15" LineHeight="1.2">
+                                            <Label Margin="15" LineHeight="1.2" FontSize="12">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
-                                                        <Span Text="$2,069.99" TextColor="#1d1d1d" FontAttributes="Bold" FontSize="14"/>
+                                                        <Span Text="$2,069.99" TextColor="#1d1d1d" FontAttributes="Bold"
+                                                              FontSize="12"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -580,8 +581,7 @@
         </Grid>
 
         <FlexLayout Direction="Row"
-                    Padding="15,42,15,15"
-                    >
+                    Padding="15,42,15,15">
             <ImageButton FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource

@@ -121,7 +121,7 @@
                Margin="15,0,0,0"
                VerticalOptions="Center"
                FontSize="16"                   
-               Text="Button" />
+               Text="{Binding ControlTitle}" />
         
         <ImageButton
             x:Name="ToggleBtn"
