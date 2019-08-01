@@ -48,7 +48,9 @@
                     HeightRequest="50"
                     Padding="8"
                     CornerRadius="3"
-                    BackgroundColor="{Binding GroupColor}"
+                    BackgroundColor="{Binding GroupIndex,
+                        Converter={StaticResource IndexToColorConverter},
+                        ConverterParameter='dusty_orange;cerulean;tomato'}"
                     Visual="Material">
                     <Label
                         InputTransparent="true"

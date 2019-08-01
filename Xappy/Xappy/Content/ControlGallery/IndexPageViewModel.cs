@@ -27,7 +27,7 @@ namespace Xappy.ControlGallery
 
         public IndexPageViewModel()
         {
-            var layouts = new ControlGroup("Layouts", Color.Red, new List<ControlType>
+            var layouts = new ControlGroup("Layouts", new List<ControlType>
             {
                 new ControlType{ Title = nameof(StackLayout), ControlTemplate = nameof(StackLayoutControlTemplate) },
                 new ControlType{ Title = nameof(Frame)},
@@ -41,36 +41,36 @@ namespace Xappy.ControlGallery
                 new ControlType{ Title = nameof(TemplatedView)}
             });;
 
-            var pages = new ControlGroup("Pages", Color.Blue, new List<ControlType>
+            var pages = new ControlGroup("Pages", new List<ControlType>
             {
-                new ControlType{ Title = nameof(ContentPage)},
-                new ControlType{ Title = nameof(TabbedPage)},
-                new ControlType{ Title = nameof(MasterDetailPage)},
-                new ControlType{ Title = nameof(NavigationPage)},
-                new ControlType{ Title = nameof(CarouselPage)}
+                new ControlType{ Title = nameof(ContentPage), GroupIndex = 1},
+                new ControlType{ Title = nameof(TabbedPage), GroupIndex = 1},
+                new ControlType{ Title = nameof(MasterDetailPage), GroupIndex = 1},
+                new ControlType{ Title = nameof(NavigationPage), GroupIndex = 1},
+                new ControlType{ Title = nameof(CarouselPage), GroupIndex = 1}
 
             });
 
-            var views = new ControlGroup("Views", Color.Orange, new List<ControlType>
+            var views = new ControlGroup("Views", new List<ControlType>
             {
-                new ControlType{ Title = nameof(ActivityIndicator)},
-                new ControlType{ Title = nameof(Button)},
-                new ControlType{ Title = nameof(Editor)},
-                new ControlType{ Title = nameof(Entry)},
-                new ControlType{ Title = nameof(ListView)},
-                new ControlType{ Title = nameof(CollectionView)},
-                new ControlType{ Title = nameof(DatePicker)},
-                new ControlType{ Title = nameof(TimePicker)},
-                new ControlType{ Title = nameof(Picker)},
-                new ControlType{ Title = nameof(Stepper)},
-                new ControlType{ Title = nameof(BoxView)},
-                new ControlType{ Title = nameof(Switch)},
-                new ControlType{ Title = nameof(ProgressBar)},
-                new ControlType{ Title = nameof(Label)},
-                new ControlType{ Title = nameof(Image)},
-                new ControlType{ Title = nameof(ImageButton)},
-                new ControlType{ Title = nameof(SearchBar)},
-                new ControlType{ Title = nameof(WebView)}
+                new ControlType{ Title = nameof(ActivityIndicator), GroupIndex = 2},
+                new ControlType{ Title = nameof(Button), GroupIndex = 2},
+                new ControlType{ Title = nameof(Editor), GroupIndex = 2},
+                new ControlType{ Title = nameof(Entry), GroupIndex = 2},
+                new ControlType{ Title = nameof(ListView), GroupIndex = 2},
+                new ControlType{ Title = nameof(CollectionView), GroupIndex = 2},
+                new ControlType{ Title = nameof(DatePicker), GroupIndex = 2},
+                new ControlType{ Title = nameof(TimePicker), GroupIndex = 2},
+                new ControlType{ Title = nameof(Picker), GroupIndex = 2},
+                new ControlType{ Title = nameof(Stepper), GroupIndex = 2},
+                new ControlType{ Title = nameof(BoxView), GroupIndex = 2},
+                new ControlType{ Title = nameof(Switch), GroupIndex = 2},
+                new ControlType{ Title = nameof(ProgressBar), GroupIndex = 2},
+                new ControlType{ Title = nameof(Label), GroupIndex = 2},
+                new ControlType{ Title = nameof(Image), GroupIndex = 2},
+                new ControlType{ Title = nameof(ImageButton), GroupIndex = 2},
+                new ControlType{ Title = nameof(SearchBar), GroupIndex = 2},
+                new ControlType{ Title = nameof(WebView), GroupIndex = 2}
 
 
             });
@@ -98,226 +98,17 @@ namespace Xappy.ControlGallery
 
     public class ControlGroup : List<ControlType>
     {
-        public ControlGroup(string name, Color color, List<ControlType> members) : base(members)
-        {
-            Name = name;
-            GroupColor = color;
-        }
-
-        public string Name { get; set; }
-
-        public Color GroupColor { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-
-    [Preserve(AllMembers = true)]
-    public class Team : List<Member>
-    {
-        public Team(string name, List<Member> members) : base(members)
+        public ControlGroup(string name, List<ControlType> members) : base(members)
         {
             Name = name;
         }
 
         public string Name { get; set; }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-
-    [Preserve(AllMembers = true)]
-    public class Member
-    {
-        public Member(string name) => Name = name;
-
-        public string Name { get; set; }
 
         public override string ToString()
         {
             return Name;
-        }
-    }
-
-    [Preserve(AllMembers = true)]
-    public class SuperTeams : List<Team>
-    {
-        public SuperTeams()
-        {
-            Add(new Team("Avengers",
-                new List<Member>
-                {
-                    new Member("Thor"),
-                    new Member("Captain America"),
-                    new Member("Iron Man"),
-                    new Member("The Hulk"),
-                    new Member("Ant-Man"),
-                    new Member("Wasp"),
-                    new Member("Hawkeye"),
-                    new Member("Black Panther"),
-                    new Member("Black Widow"),
-                    new Member("Doctor Druid"),
-                    new Member("She-Hulk"),
-                    new Member("Mockingbird"),
-                }
-            ));
-
-            Add(new Team("Fantastic Four",
-                new List<Member>
-                {
-                    new Member("The Thing"),
-                    new Member("The Human Torch"),
-                    new Member("The Invisible Woman"),
-                    new Member("Mr. Fantastic"),
-                }
-            ));
-
-            Add(new Team("Defenders",
-                new List<Member>
-                {
-                    new Member("Doctor Strange"),
-                    new Member("Namor"),
-                    new Member("Hulk"),
-                    new Member("Silver Surfer"),
-                    new Member("Hellcat"),
-                    new Member("Nighthawk"),
-                    new Member("Yellowjacket"),
-                }
-            ));
-
-            Add(new Team("Heroes for Hire",
-                new List<Member>
-                {
-                    new Member("Luke Cage"),
-                    new Member("Iron Fist"),
-                    new Member("Misty Knight"),
-                    new Member("Colleen Wing"),
-                    new Member("Shang-Chi"),
-                }
-            ));
-
-            Add(new Team("West Coast Avengers",
-                new List<Member>
-                {
-                    new Member("Hawkeye"),
-                    new Member("Mockingbird"),
-                    new Member("War Machine"),
-                    new Member("Wonder Man"),
-                    new Member("Tigra"),
-                }
-            ));
-
-            Add(new Team("Great Lakes Avengers",
-                new List<Member>
-                {
-                    new Member("Squirrel Girl"),
-                    new Member("Dinah Soar"),
-                    new Member("Mr. Immortal"),
-                    new Member("Flatman"),
-                    new Member("Doorman"),
-                }
-            ));
-        }
-    }
-
-    [Preserve(AllMembers = true)]
-    public class ObservableTeam : ObservableCollection<Member>
-    {
-        public ObservableTeam(string name, List<Member> members) : base(members)
-        {
-            Name = name;
-        }
-
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-
-    [Preserve(AllMembers = true)]
-    public class ObservableSuperTeams : ObservableCollection<ObservableTeam>
-    {
-        public ObservableSuperTeams()
-        {
-            Add(new ObservableTeam("Avengers",
-                new List<Member>
-                {
-                    new Member("Thor"),
-                    new Member("Captain America"),
-                    new Member("Iron Man"),
-                    new Member("The Hulk"),
-                    new Member("Ant-Man"),
-                    new Member("Wasp"),
-                    new Member("Hawkeye"),
-                    new Member("Black Panther"),
-                    new Member("Black Widow"),
-                    new Member("Doctor Druid"),
-                    new Member("She-Hulk"),
-                    new Member("Mockingbird"),
-                }
-            ));
-
-            Add(new ObservableTeam("Fantastic Four",
-                new List<Member>
-                {
-                    new Member("The Thing"),
-                    new Member("The Human Torch"),
-                    new Member("The Invisible Woman"),
-                    new Member("Mr. Fantastic"),
-                }
-            ));
-
-            Add(new ObservableTeam("Defenders",
-                new List<Member>
-                {
-                    new Member("Doctor Strange"),
-                    new Member("Namor"),
-                    new Member("Hulk"),
-                    new Member("Silver Surfer"),
-                    new Member("Hellcat"),
-                    new Member("Nighthawk"),
-                    new Member("Yellowjacket"),
-                }
-            ));
-
-            Add(new ObservableTeam("Heroes for Hire",
-                new List<Member>
-                {
-                    new Member("Luke Cage"),
-                    new Member("Iron Fist"),
-                    new Member("Misty Knight"),
-                    new Member("Colleen Wing"),
-                    new Member("Shang-Chi"),
-                }
-            ));
-
-            Add(new ObservableTeam("West Coast Avengers",
-                new List<Member>
-                {
-                    new Member("Hawkeye"),
-                    new Member("Mockingbird"),
-                    new Member("War Machine"),
-                    new Member("Wonder Man"),
-                    new Member("Tigra"),
-                }
-            ));
-
-            Add(new ObservableTeam("Great Lakes Avengers",
-                new List<Member>
-                {
-                    new Member("Squirrel Girl"),
-                    new Member("Dinah Soar"),
-                    new Member("Mr. Immortal"),
-                    new Member("Flatman"),
-                    new Member("Doorman"),
-                }
-            ));
         }
     }
 
@@ -325,6 +116,7 @@ namespace Xappy.ControlGallery
     {
         public string Title { get; set; }
         public string ControlTemplate { get; set; }
+        public int GroupIndex { get; set; } = 0;
     }
 
 
