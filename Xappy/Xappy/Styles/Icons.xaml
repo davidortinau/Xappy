@@ -9,6 +9,11 @@
                 Android="fa-solid-900.ttf#Font Awesome 5 Free"
                 iOS="Font Awesome 5 Free" />
 
+    <OnPlatform x:Key="Fabric"
+                x:TypeArguments="x:String"
+                Android="FabMDL2.ttf#Fabric MDL2 Assets"
+                iOS="Fabric MDL2 Assets" />
+
     <Color x:Key="ColorTabIcon">Gray</Color>
     <x:Double x:Key="SizeTabIcon">24</x:Double>
 

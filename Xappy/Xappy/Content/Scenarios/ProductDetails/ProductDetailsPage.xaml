@@ -10,7 +10,7 @@
     xmlns:this="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
-    ios:Page.UseSafeArea="True"
+    ios:Page.UseSafeArea="False"
     mc:Ignorable="d"
     BackgroundColor="#f1f1f1"
     Shell.TabBarIsVisible="false"
@@ -58,7 +58,7 @@
 -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="64"/>
+            <RowDefinition Height="88"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 <!--
@@ -84,6 +84,7 @@
 
             <!-- header carousel -->
             <CarouselView x:Name="Carousel"
+                          Margin="0,-42,0,0"
                           BackgroundColor="#1d1d1d"
                           Grid.Row="0" HorizontalOptions="FillAndExpand"
                           
@@ -149,12 +150,15 @@
                                             </anim:StoryBoard>
                                         </StackLayout.Resources>
                                         <StackLayout.Triggers>
-                                            <EventTrigger Event="Focused">
-                                                <EventTrigger.EnterActions>
+                                            <DataTrigger TargetType="StackLayout"
+                                                 Binding="{Binding IsBusy}"
+                                                 Value="true">
+                                                <DataTrigger.EnterActions>
                                                     <anim:BeginAnimation
                                                         Animation="{StaticResource LoadingBoard}" />                                                          
-                                                </EventTrigger.EnterActions>
-                                            </EventTrigger>
+                                                </DataTrigger.EnterActions>
+
+                                            </DataTrigger>
                                         </StackLayout.Triggers>
                                         <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
 
@@ -209,7 +213,28 @@
                             ll:LoadingLayout.IsLoading="{Binding IsBusy}">
                             <ll:LoadingLayout.LoadingTemplate>
                                 <DataTemplate>
-                                    <StackLayout>
+                                    <StackLayout x:Name="DetailsLoader">
+                                        <StackLayout.Resources>
+                                            <anim:StoryBoard x:Key="LoadingDetails" Target="{x:Reference DetailsLoader}">
+                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                            </anim:StoryBoard>
+                                        </StackLayout.Resources>
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout"
+                                                 Binding="{Binding IsBusy}"
+                                                 Value="true">
+                                                <DataTrigger.EnterActions>
+                                                    <anim:BeginAnimation
+                                                        Animation="{StaticResource LoadingDetails}" />                                                          
+                                                </DataTrigger.EnterActions>
+
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
                                         <BoxView BackgroundColor="#CCCCCC" HeightRequest="20" HorizontalOptions="Fill" />
                                         <BoxView HeightRequest="1"
                                      BackgroundColor="#f1f1f1" />
@@ -555,7 +580,8 @@
         </Grid>
 
         <FlexLayout Direction="Row"
-                    Padding="15">
+                    Padding="15,42,15,15"
+                    >
             <ImageButton FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
@@ -568,27 +594,27 @@
             <ImageButton FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
-                        Glyph="{x:Static local:IconFont.ExpandArrowsAlt}"
+                        FontFamily="{StaticResource Fabric}"
+                        Glyph="{x:Static local:FabIconFont.ShareiOS}"
                         Color="{StaticResource white}" />
                 </ImageButton.Source>
             </ImageButton>
             <ImageButton Margin="15,0,0,0" FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
-                        Glyph="{x:Static local:IconFont.ShoppingCart}"
+                        FontFamily="{StaticResource Fabric}"
+                        Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
                         Color="{StaticResource white}" />
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
 
         <!-- fake navbar -->
-        <FlexLayout x:Name="FakeNavBar" 
+        <FlexLayout x:Name="FakeNavBar"
                     BackgroundColor="White"
                     Direction="Row"
                     Opacity="0"
-                    Padding="15">
+                    Padding="15,42,15,15">
             <FlexLayout.Triggers>
                 <DataTrigger TargetType="FlexLayout"
                              Binding="{Binding ScrollPosition, 
@@ -626,16 +652,16 @@
             <ImageButton FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
-                        Glyph="{x:Static local:IconFont.ExpandArrowsAlt}"
+                        FontFamily="{StaticResource Fabric}"
+                        Glyph="{x:Static local:FabIconFont.ShareiOS}"
                         Color="{StaticResource almost_black}" />
                 </ImageButton.Source>
             </ImageButton>
             <ImageButton Margin="15,0,0,0" FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
-                        Glyph="{x:Static local:IconFont.ShoppingCart}"
+                        FontFamily="{StaticResource Fabric}"
+                        Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
                         Color="{StaticResource almost_black}" />
                 </ImageButton.Source>
             </ImageButton>

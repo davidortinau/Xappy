@@ -1,19 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:blog="clr-namespace:Xappy.Content.Blog"
              xmlns:controls="clr-namespace:Xappy.Content.Scenarios.OtherLogin.Controls"
-             x:Class="Xappy.Content.Blog.BlogView" 
+             x:Class="Xappy.Content.Blog.BlogView"
              x:DataType="blog:BlogItem"
              HeightRequest="{Binding Height}">
     <ContentView.Content>
-        <Frame BackgroundColor="Gray" Padding="0" Margin="5" CornerRadius="3" HasShadow="True">
+        <Frame BackgroundColor="Gray"
+               Padding="0"
+               Margin="5"
+               CornerRadius="3"
+               HasShadow="True"
+               Visual="Material">
             <Grid>
-                <Image Source="{Binding ImageUri}" Aspect="AspectFill" />
-                <controls:GradientView StartColor="{StaticResource flyoutGradientStart}"
-                               EndColor="{StaticResource flyoutGradientEnd}" />
-                <Label Text="{Binding Title}" TextColor="White" FontSize="Large" Margin="5" HorizontalOptions="Center" VerticalOptions="End"/>
-            </Grid> 
+
+                <Image Source="{Binding ImageUri}"
+                       Aspect="AspectFill" />
+                <controls:GradientView
+                    StartColor="#66000000"
+                    EndColor="#FF000000" />
+                <Label Text="{Binding Title}"
+                       TextColor="White"
+                       FontSize="Large"
+                       Margin="5"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End" />
+            </Grid>
         </Frame>
 
     </ContentView.Content>

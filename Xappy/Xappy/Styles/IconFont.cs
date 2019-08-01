@@ -4,6 +4,7 @@ namespace Xappy
 
     static class IconFont
     {
+        // FontAwesome
         public const string Ad = "\uf641";
         public const string AddressBook = "\uf2b9";
         public const string AddressCard = "\uf2bb";

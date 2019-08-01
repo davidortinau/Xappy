@@ -15,22 +15,12 @@ namespace Xappy.Content.Blog
 
         public BlogViewModel()
         {
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    var modifier = (i % 5) + 1;
-            //    bool wholeScreen = i % 5 == 4;
-            //    Items.Add(new BlogItem
-            //    {
-            //        Title = i + "Test Test Test Test" + (wholeScreen ? " whole " : " half "),
-            //        Height = modifier * 20 + 40,
-            //        WholeScreen = wholeScreen
-            //    });
-            //}
+            SelectCommand = new Command(async () => await Selected());
 
             Task.Run(LoadData);
         }
 
-        public ICommand SelectCommand => new Command(async () => await Selected());
+        public ICommand SelectCommand { get; set; }
 
         private async Task Selected()
         {

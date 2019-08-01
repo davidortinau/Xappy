@@ -15,7 +15,6 @@ namespace Xappy.Content.Blog
         public BlogPage()
         {
             InitializeComponent();
-            this.BindingContext = new BlogViewModel();
         }
     }
 }

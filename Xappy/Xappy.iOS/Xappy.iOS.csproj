@@ -155,6 +155,7 @@
     <BundleResource Include="Resources\3bar%402x.png" />
     <BundleResource Include="Resources\3bar.png" />
     <BundleResource Include="Resources\login.json" />
+    <BundleResource Include="Resources\FabMDL2.ttf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\fa-solid-900.ttf" />

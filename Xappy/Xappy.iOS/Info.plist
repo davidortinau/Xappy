@@ -43,6 +43,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>fa-solid-900.ttf</string>
+		<string>FabMDL2.ttf</string>
 	</array>
 </dict>
 </plist>

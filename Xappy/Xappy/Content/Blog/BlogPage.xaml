@@ -4,18 +4,24 @@
              Shell.TabBarIsVisible="false"
              xmlns:blog="clr-namespace:Xappy.Content.Blog"
              x:Class="Xappy.Content.Blog.BlogPage">
+    <ContentPage.BindingContext>
+        <blog:BlogViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding Items}" 
-                                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                    SelectionChangedCommand="{Binding SelectCommand}"
-                    SelectionMode="Single">
+        <CollectionView
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            SelectionChangedCommand="{Binding SelectCommand}"
+            SelectionMode="Single">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                        Span="2" />
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="2" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="blog:BlogItem">
-                    <blog:BlogView />
+                    <blog:BlogView/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
