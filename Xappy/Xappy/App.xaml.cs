@@ -50,5 +50,10 @@ namespace Xappy
             }
         }
 
+        public static string AppTheme
+        {
+            get;set;
+        }
+
     }
 }

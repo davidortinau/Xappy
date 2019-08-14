@@ -15,7 +15,7 @@
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBehavior="Flyout"
     x:Class="Xappy.AppShell">
-        
+
     <Shell.FlyoutIcon>
         <FontImageSource
             FontFamily="{StaticResource FontAwesome}"
@@ -23,13 +23,13 @@
             Color="{StaticResource AccentColor}"
             Size="24" />
     </Shell.FlyoutIcon>
-    
+
     <FlyoutItem
         Title="Main"
         Style="{DynamicResource CurrentTheme}"
         FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="Working File">
-            <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}"/>
+            <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}" />
         </Tab>
         <Tab
             Title="Latest News">
@@ -84,11 +84,11 @@
                                  Size="14" />
             </Tab.Icon>
             <ShellContent Title="General"
-                ContentTemplate="{DataTemplate about:IndexPage}" />
+                          ContentTemplate="{DataTemplate about:IndexPage}" />
             <ShellContent Title="Contributors"
-                ContentTemplate="{DataTemplate about:GitHubPage}" />
+                          ContentTemplate="{DataTemplate about:GitHubPage}" />
         </Tab>
     </FlyoutItem>
-    
-    
+
+
 </Shell>

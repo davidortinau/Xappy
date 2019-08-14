@@ -30,7 +30,6 @@ namespace Xappy.iOS
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();
             Lottie.Forms.iOS.Renderers.AnimationViewRenderer.Init();
-
             ImageCircleRenderer.Init();
             Xamarin.FormsMaps.Init();
 

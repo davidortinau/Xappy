@@ -96,21 +96,8 @@
 
                 <Button Text="Default"/>
 
-                <Label Text="Segmented Control (iOS Only)"
-                       Style="{DynamicResource TextHeadline}" />
-                <BoxView Style="{DynamicResource HRule}"/>
-
-                <ios:UISegmentedControl>
-                    <x:Arguments>
-                        <x:String>Flyout Menu</x:String>
-                        <x:String>Bottom Tabs</x:String>
-                        <x:String>Top Tabs</x:String>
-                        <x:String>Bananas</x:String>
-                      </x:Arguments>
-                </ios:UISegmentedControl>
-
-                <Switch ThumbColor="{StaticResource cerulean_three}"
-                        OnColor="{StaticResource dusty_orange}"/>
+                <Button Text="Background" BackgroundColor="{StaticResource cerulean}"
+                        TextColor="White"/>
 
             </StackLayout>
         </ScrollView>

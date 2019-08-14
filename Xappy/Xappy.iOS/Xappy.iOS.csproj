@@ -72,6 +72,7 @@
     <Compile Include="Renderers\XappyShellRenderer.cs" />
     <Compile Include="Renderers\GradientViewRenderer.cs" />
     <Compile Include="Renderers\PressableViewRenderer.cs" />
+    <Compile Include="Renderers\PageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

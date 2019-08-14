@@ -7,9 +7,10 @@
              x:Class="Xappy.Content.Resources.IndexPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="List of Resources Here!"
-                VerticalOptions="CenterAndExpand" 
+            <Label Text="List of Resources Here!" 
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

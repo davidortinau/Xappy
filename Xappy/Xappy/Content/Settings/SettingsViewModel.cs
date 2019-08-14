@@ -23,6 +23,8 @@ namespace Xappy.Content.Settings
                 {
                     Application.Current.Resources = new WhiteTheme();
                 }
+
+                App.AppTheme = SelectedTheme.ToLower();
             });
         }
 
