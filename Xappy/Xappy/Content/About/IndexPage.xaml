@@ -5,6 +5,7 @@
              xmlns:global="clr-namespace:Xappy.Domain.Global"             
              x:Class="Xappy.About.IndexPage"
              Title="About"
+             BackgroundColor="{DynamicResource backgroundColor}"
              Shell.TabBarIsVisible="false">
     <ContentPage.Resources>
         <ResourceDictionary>
