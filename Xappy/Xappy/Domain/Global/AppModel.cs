@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 using Xappy.Content;
 
 namespace Xappy.Domain.Global
@@ -19,6 +20,7 @@ namespace Xappy.Domain.Global
             {
                 navigationStyle = value;
                 IsTabBarVisible = (navigationStyle == NavigationStyle.Tabs);
+                Shell.Current.FlyoutBehavior = IsTabBarVisible ? FlyoutBehavior.Disabled : FlyoutBehavior.Flyout;
             }
         }
         protected bool isTabBarVisible;
