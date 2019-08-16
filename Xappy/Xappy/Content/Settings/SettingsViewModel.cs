@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xappy.Domain.Global;
+using Xappy.Services;
 using Xappy.Styles;
 
 namespace Xappy.Content.Settings
@@ -8,6 +10,8 @@ namespace Xappy.Content.Settings
     public class SettingsViewModel : BaseViewModel
     {
         public ICommand ChangeThemeCommand { get; set; }
+
+        public ICommand ChangeNavigationCommand { get; set; }
 
         public string SelectedTheme { get; set; }
 
@@ -25,6 +29,22 @@ namespace Xappy.Content.Settings
                 }
 
                 App.AppTheme = SelectedTheme.ToLower();
+            });
+
+            ChangeNavigationCommand = new Command<string>((nav) =>
+            {
+                var am = DependencyService.Resolve<AppModel>();
+                if(nav == "flyout")
+                {
+                    am.NavigationStyle = NavigationStyle.Flyout;
+                }
+                else
+                {
+                    am.NavigationStyle = NavigationStyle.Tabs;
+                }
+
+                OnPropertyChanged(nameof(UseFlyout));
+                OnPropertyChanged(nameof(UseTabs));
             });
         }
 
@@ -49,6 +69,16 @@ namespace Xappy.Content.Settings
                 isVisualMaterial = !isVisualDefault;
                 OnPropertyChanged(nameof(IsVisualMaterial));
             }
+        }
+
+        public int UseFlyout
+        {
+            get { return (AppModel.NavigationStyle == Domain.Global.NavigationStyle.Flyout) ? 1 : 0; }
+        }
+
+        public int UseTabs
+        {
+            get { return (AppModel.NavigationStyle == Domain.Global.NavigationStyle.Tabs) ? 1 : 0; }
         }
 
         private bool isVisualDefault;

@@ -8,14 +8,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:views="clr-namespace:Xappy.Content.Settings"
-    x:Class="Xappy.Content.Settings.SettingsPages"
+    x:Class="Xappy.Content.Settings.SettingsPage"
     Title="Craft Your Experience"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
+    Shell.TabBarIsVisible="{Binding IsTabBarVisible}"
     BackgroundColor="{DynamicResource backgroundColor}">
 
     <ContentPage.BindingContext>
-        <views:SettingsViewModel />
+        <views:SettingsViewModel x:Name="vm" />
     </ContentPage.BindingContext>
 
     <ScrollView>
@@ -117,19 +118,33 @@ ItemSpacing="10"/>
             <FlexLayout Direction="Row"
                         Wrap="Wrap">
                 <Button
-                    BackgroundColor="{StaticResource cerulean}"
+                    BackgroundColor="{Binding UseFlyout,
+                        Converter={StaticResource IndexToColorConverter},
+                        ConverterParameter='white;cerulean'}"
+                    TextColor="{Binding UseFlyout,
+                        Converter={StaticResource IndexToColorConverter},
+                        ConverterParameter='cerulean;white'}"
                     Text="Flyout"
-                    TextColor="White"
+                    Command="{Binding ChangeNavigationCommand}"
+                    CommandParameter="flyout"
                     FlexLayout.Basis="50%"
                     BorderColor="{StaticResource cerulean}"
                     BorderWidth="1"
+                    Clicked="UseFlyout_Clicked"
                     CornerRadius="0" />
                 <Button
-                    BackgroundColor="Transparent"
+                    BackgroundColor="{Binding UseTabs,
+                        Converter={StaticResource IndexToColorConverter},
+                        ConverterParameter='white;cerulean'}"
+                    TextColor="{Binding UseTabs,
+                        Converter={StaticResource IndexToColorConverter},
+                        ConverterParameter='cerulean;white'}"
                     Text="Bottom Tabs"
-                    TextColor="{StaticResource cerulean}"
+                    Command="{Binding ChangeNavigationCommand}"
+                    CommandParameter="tabs"
                     BorderColor="{StaticResource cerulean}"
                     BorderWidth="1"
+                    Clicked="UseTabs_Clicked"
                     FlexLayout.Basis="50%"
                     CornerRadius="0" />
             </FlexLayout>

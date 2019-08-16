@@ -4,13 +4,19 @@
              xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Xappy.Content.Settings"
              mc:Ignorable="d"
              Title="Style Guide"
              Shell.BackgroundColor="{DynamicResource backgroundColor}"
              BackgroundColor="{DynamicResource backgroundColor}"
              Shell.TitleColor="{StaticResource cerulean}"
-             Shell.TabBarIsVisible="False"
+             Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
+             Shell.FlyoutBehavior="Disabled"
              x:Class="Xappy.Content.Settings.StyleGuidePage">
+    <ContentPage.BindingContext>
+        <vm:StyleGuideViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="15" Spacing="10">

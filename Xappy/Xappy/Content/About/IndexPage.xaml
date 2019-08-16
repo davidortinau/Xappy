@@ -5,8 +5,9 @@
              xmlns:global="clr-namespace:Xappy.Domain.Global"             
              x:Class="Xappy.About.IndexPage"
              Title="About"
-             Shell.TabBarIsVisible="false"
+             Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
              BackgroundColor="{StaticResource ColorAppBackground}">
+    <!--#region resources -->
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="HeaderTemplate">
@@ -46,6 +47,7 @@
                                                     BugFixTemplate="{StaticResource BugFixTemplate}" />            
         </ResourceDictionary>
     </ContentPage.Resources>
+    <!--#endregion-->
     <ContentPage.BindingContext>
         <viewModels:IndexViewModel />
     </ContentPage.BindingContext>

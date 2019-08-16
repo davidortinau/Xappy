@@ -2,9 +2,14 @@
 <ContentPage x:Class="Xappy.Scenarios.IndexPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Scenarios"
-             Shell.TabBarIsVisible="false"
+             xmlns:vm="clr-namespace:Xappy.Scenarios"
+             Title="Scenario"
+             Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
              BackgroundColor="{DynamicResource backgroundColor}">
+
+    <ContentPage.BindingContext>
+        <vm:IndexPageViewModel/>
+    </ContentPage.BindingContext>
 
     <CollectionView x:Name="ScenariosCV"
                     Margin="15,0"

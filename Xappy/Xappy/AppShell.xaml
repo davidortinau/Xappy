@@ -13,7 +13,6 @@
     xmlns:resources="clr-namespace:Xappy.Content.Resources"
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
-    FlyoutBehavior="Flyout"
     x:Class="Xappy.AppShell">
 
     <Shell.FlyoutIcon>
@@ -24,7 +23,7 @@
             Size="24" />
     </Shell.FlyoutIcon>
 
-    <FlyoutItem
+    <ShellItem
         Title="Main"
         Style="{DynamicResource CurrentTheme}"
         FlyoutDisplayOptions="AsMultipleItems">
@@ -88,7 +87,7 @@
             <ShellContent Title="Contributors"
                           ContentTemplate="{DataTemplate about:GitHubPage}" />
         </Tab>
-    </FlyoutItem>
+    </ShellItem>
 
 
 </Shell>

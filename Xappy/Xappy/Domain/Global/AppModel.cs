@@ -2,48 +2,39 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
-using Xappy.Domain.Global;
+using Xappy.Content;
 
-namespace Xappy.Content
+namespace Xappy.Domain.Global
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class AppModel : INotifyPropertyChanged
     {
-        public AppModel AppModel { get; set; } = DependencyService.Resolve<AppModel>();
-
-        bool isBusy = false;
-        public bool IsBusy
+        public AppModel()
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
         }
 
-        string title = string.Empty;
-        public string Title
+        public NavigationStyle NavigationStyle
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get => navigationStyle;
+            set
+            {
+                navigationStyle = value;
+                IsTabBarVisible = (navigationStyle == NavigationStyle.Tabs);
+            }
         }
+        protected bool isTabBarVisible;
+        private NavigationStyle navigationStyle = NavigationStyle.Flyout;
 
-        public ICommand SkeletonCommand { get; set; }
-
-        public ICommand BackCommand { get; set; }
-
-        public BaseViewModel()
+        public bool IsTabBarVisible
         {
-            SkeletonCommand = new Command(async (x) =>
+            get
             {
-                IsBusy = true;
-                await Task.Delay(4000);
-                IsBusy = false;
-            });
+                return isTabBarVisible;
+            }
 
-            BackCommand = new Command((x) =>
+            set
             {
-                Shell.Current.SendBackButtonPressed();
-            });
+                SetProperty(ref isTabBarVisible, value);
+            }
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
@@ -70,5 +61,12 @@ namespace Xappy.Content
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+    }
+
+    public enum NavigationStyle
+    {
+        Flyout,
+        Tabs
     }
 }
