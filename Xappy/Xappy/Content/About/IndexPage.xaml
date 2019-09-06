@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Xappy.About.ViewModels"
-             xmlns:global="clr-namespace:Xappy.Domain.Global"             
+             xmlns:global="clr-namespace:Xappy.Domain.Global"
              x:Class="Xappy.About.IndexPage"
              Title="About"
              Shell.TabBarIsVisible="false"
-             BackgroundColor="{StaticResource ColorAppBackground}">
+             BackgroundColor="{DynamicResource backgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="HeaderTemplate">
@@ -26,7 +26,7 @@
                 <ViewCell>
                     <StackLayout Orientation="Horizontal"
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                                 Margin="12,0,12,0">                    
+                                 Margin="12,0,12,0">
                         <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
                     </StackLayout>
                 </ViewCell>
@@ -35,7 +35,7 @@
                 <ViewCell>
                     <StackLayout Orientation="Horizontal"
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                                 Margin="12,0,12,0">                    
+                                 Margin="12,0,12,0">
                         <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
                     </StackLayout>
                 </ViewCell>
@@ -43,13 +43,13 @@
             <global:VersionInfoDataTemplateSelector x:Key="VersionInfoDataTemplateSelector"
                                                     HeaderTemplate="{StaticResource HeaderTemplate}"
                                                     FeatureTemplate="{StaticResource FeatureTemplate}"
-                                                    BugFixTemplate="{StaticResource BugFixTemplate}" />            
+                                                    BugFixTemplate="{StaticResource BugFixTemplate}" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
         <viewModels:IndexViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <ListView x:Name="VersionsList"
                   ItemsSource="{Binding Versions}"
