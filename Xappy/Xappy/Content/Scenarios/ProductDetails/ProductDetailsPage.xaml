@@ -28,13 +28,13 @@
             <![CDATA[
 
               .btn {
-               height: 44;
-            font-size: 16;
+                height: 44;
+                font-size: 16;
               }
             
-            ^ImageButton {
-            background-color: transparent;
-            }
+              ^ImageButton {
+                background-color: transparent;
+              }
             
 
               ]]>
@@ -85,9 +85,10 @@
             <!-- header carousel -->
             <CarouselView x:Name="Carousel"
                           Margin="0,-42,0,0"
+                          PeekAreaInsets="30,0,30,0"
+                          Position="4"
                           BackgroundColor="#1d1d1d"
                           Grid.Row="0" HorizontalOptions="FillAndExpand"
-                          
                           TranslationY="{Binding ScrollPercentage, 
                                             Source={x:Reference sv}, 
                                             Converter={StaticResource ScrollValueConverter}, 
@@ -116,6 +117,9 @@
                         <x:String>https://reverb-res.cloudinary.com/image/upload/s--iVfX_zrI--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1469146616/jjr3tm36lrgbyyfesp9p.jpg</x:String>
                         <x:String>https://reverb-res.cloudinary.com/image/upload/s--p91cyv0u--/a_exif,c_limit,f_auto,fl_progressive,g_south,h_620,q_auto:eco,w_620/v1445701470/fe7fxrxliah4gtfj4jd0.jpg</x:String>
                         <x:String>https://reverb-res.cloudinary.com/image/upload/s--tAxNbGkO--/a_exif,c_limit,f_auto,fl_progressive,h_620,q_75,w_620/v1445703522/x7jyrcq7dikac9hmkeew.jpg</x:String>
+                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--iVfX_zrI--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1469146616/jjr3tm36lrgbyyfesp9p.jpg</x:String>
+                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--p91cyv0u--/a_exif,c_limit,f_auto,fl_progressive,g_south,h_620,q_auto:eco,w_620/v1445701470/fe7fxrxliah4gtfj4jd0.jpg</x:String>
+                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--tAxNbGkO--/a_exif,c_limit,f_auto,fl_progressive,h_620,q_75,w_620/v1445703522/x7jyrcq7dikac9hmkeew.jpg</x:String>
                     </x:Array>
                 </CarouselView.ItemsSource>
                 <CarouselView.ItemTemplate>
@@ -128,7 +132,7 @@
 
             </CarouselView>
 
-            <c:ScrollerView x:Name="sv" Grid.RowSpan="2">
+            <c:ScrollerView x:Name="sv" Grid.RowSpan="2" InputTransparent="True">
                 <StackLayout Margin="15,310,15,15"
                              Spacing="20">
 

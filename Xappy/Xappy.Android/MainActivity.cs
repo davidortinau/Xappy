@@ -8,6 +8,8 @@ using Android.Widget;
 using Android.OS;
 
 using ImageCircle.Forms.Plugin.Droid;
+using Android.Content.Res;
+using Xappy.Styles;
 
 [assembly: Android.App.MetaData("com.google.android.maps.v2.API_KEY", Value = Xappy.ApiConstants.GoogleMapsKey)]
 namespace Xappy.Droid
@@ -40,5 +42,32 @@ namespace Xappy.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        public override void OnConfigurationChanged(Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+            //var configuration = this.Resources.Configuration;
+            //int currentNightMode = ((int)configuration.UiMode) & ((int)Configuration.UiModeNightMask);
+            switch (newConfig.UiMode)
+            {
+                case UiMode.NightNo:
+                    // Night mode is not active, we're using the light theme
+                    if (App.AppTheme != "dark")
+                        return;
+                    App.Current.Resources = new WhiteTheme();
+                    App.AppTheme = "light";
+                    break;
+                case UiMode.NightYes:
+                    // Night mode is active, we're using dark theme
+                    if (App.AppTheme == "dark")
+                        return;
+                    //Add a Check for App Theme since this is called even when not changed really
+                    App.Current.Resources = new DarkTheme();
+
+                    App.AppTheme = "dark";
+                    break;
+            }
+        }
+
     }
 }

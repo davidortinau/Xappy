@@ -1288,9 +1288,9 @@ namespace Xappy.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.listMode = global::Xappy.Droid.Resource.Id.listMode;
 			global::Xamarin.Forms.Material.Android.Resource.Id.list_item = global::Xappy.Droid.Resource.Id.list_item;
 			global::Xamarin.Forms.Material.Android.Resource.Id.main_appbar = global::Xappy.Droid.Resource.Id.main_appbar;
-			global::Xamarin.Forms.Material.Android.Resource.Id.main_scrollview = global::Xappy.Droid.Resource.Id.main_scrollview;
 			global::Xamarin.Forms.Material.Android.Resource.Id.main_tablayout = global::Xappy.Droid.Resource.Id.main_tablayout;
 			global::Xamarin.Forms.Material.Android.Resource.Id.main_toolbar = global::Xappy.Droid.Resource.Id.main_toolbar;
+			global::Xamarin.Forms.Material.Android.Resource.Id.main_viewpager = global::Xappy.Droid.Resource.Id.main_viewpager;
 			global::Xamarin.Forms.Material.Android.Resource.Id.masked = global::Xappy.Droid.Resource.Id.masked;
 			global::Xamarin.Forms.Material.Android.Resource.Id.materialformsedittext = global::Xappy.Droid.Resource.Id.materialformsedittext;
 			global::Xamarin.Forms.Material.Android.Resource.Id.media_actions = global::Xappy.Droid.Resource.Id.media_actions;
@@ -1340,7 +1340,6 @@ namespace Xappy.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.select_dialog_listview = global::Xappy.Droid.Resource.Id.select_dialog_listview;
 			global::Xamarin.Forms.Material.Android.Resource.Id.selected = global::Xappy.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Material.Android.Resource.Id.shellcontent_appbar = global::Xappy.Droid.Resource.Id.shellcontent_appbar;
-			global::Xamarin.Forms.Material.Android.Resource.Id.shellcontent_scrollview = global::Xappy.Droid.Resource.Id.shellcontent_scrollview;
 			global::Xamarin.Forms.Material.Android.Resource.Id.shellcontent_toolbar = global::Xappy.Droid.Resource.Id.shellcontent_toolbar;
 			global::Xamarin.Forms.Material.Android.Resource.Id.shortcut = global::Xappy.Droid.Resource.Id.shortcut;
 			global::Xamarin.Forms.Material.Android.Resource.Id.showCustom = global::Xappy.Droid.Resource.Id.showCustom;
@@ -2045,6 +2044,7 @@ namespace Xappy.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.XamarinFormsMaterialProgressBarHorizontal = global::Xappy.Droid.Resource.Style.XamarinFormsMaterialProgressBarHorizontal;
 			global::Xamarin.Forms.Material.Android.Resource.Style.XamarinFormsMaterialSlider = global::Xappy.Droid.Resource.Style.XamarinFormsMaterialSlider;
 			global::Xamarin.Forms.Material.Android.Resource.Style.XamarinFormsMaterialTheme = global::Xappy.Droid.Resource.Style.XamarinFormsMaterialTheme;
+			global::Xamarin.Forms.Material.Android.Resource.Style.collectionViewStyle = global::Xappy.Droid.Resource.Style.collectionViewStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar = global::Xappy.Droid.Resource.Styleable.ActionBar;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_background = global::Xappy.Droid.Resource.Styleable.ActionBar_background;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_backgroundSplit = global::Xappy.Droid.Resource.Styleable.ActionBar_backgroundSplit;
@@ -3868,9 +3868,9 @@ namespace Xappy.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.listMode = global::Xappy.Droid.Resource.Id.listMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.list_item = global::Xappy.Droid.Resource.Id.list_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.main_appbar = global::Xappy.Droid.Resource.Id.main_appbar;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.main_scrollview = global::Xappy.Droid.Resource.Id.main_scrollview;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.main_tablayout = global::Xappy.Droid.Resource.Id.main_tablayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.main_toolbar = global::Xappy.Droid.Resource.Id.main_toolbar;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.main_viewpager = global::Xappy.Droid.Resource.Id.main_viewpager;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.masked = global::Xappy.Droid.Resource.Id.masked;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.media_actions = global::Xappy.Droid.Resource.Id.media_actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.message = global::Xappy.Droid.Resource.Id.message;
@@ -3919,7 +3919,6 @@ namespace Xappy.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.select_dialog_listview = global::Xappy.Droid.Resource.Id.select_dialog_listview;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.selected = global::Xappy.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_appbar = global::Xappy.Droid.Resource.Id.shellcontent_appbar;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_scrollview = global::Xappy.Droid.Resource.Id.shellcontent_scrollview;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_toolbar = global::Xappy.Droid.Resource.Id.shellcontent_toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shortcut = global::Xappy.Droid.Resource.Id.shortcut;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showCustom = global::Xappy.Droid.Resource.Id.showCustom;
@@ -4613,6 +4612,7 @@ namespace Xappy.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = global::Xappy.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Toolbar = global::Xappy.Droid.Resource.Style.Widget_MaterialComponents_Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Support_CoordinatorLayout = global::Xappy.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewStyle = global::Xappy.Droid.Resource.Style.collectionViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar = global::Xappy.Droid.Resource.Styleable.ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_background = global::Xappy.Droid.Resource.Styleable.ActionBar_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_backgroundSplit = global::Xappy.Droid.Resource.Styleable.ActionBar_backgroundSplit;
@@ -9003,17 +9003,17 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0e00d6
 			public const int main_appbar = 2131624150;
 			
-			// aapt resource value: 0x7f0e00d9
-			public const int main_scrollview = 2131624153;
-			
 			// aapt resource value: 0x7f0e00d8
 			public const int main_tablayout = 2131624152;
 			
 			// aapt resource value: 0x7f0e00d7
 			public const int main_toolbar = 2131624151;
 			
-			// aapt resource value: 0x7f0e00e0
-			public const int masked = 2131624160;
+			// aapt resource value: 0x7f0e00d9
+			public const int main_viewpager = 2131624153;
+			
+			// aapt resource value: 0x7f0e00df
+			public const int masked = 2131624159;
 			
 			// aapt resource value: 0x7f0e00c2
 			public const int materialformsedittext = 2131624130;
@@ -9168,9 +9168,6 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0e00da
 			public const int shellcontent_appbar = 2131624154;
 			
-			// aapt resource value: 0x7f0e00dc
-			public const int shellcontent_scrollview = 2131624156;
-			
 			// aapt resource value: 0x7f0e00db
 			public const int shellcontent_toolbar = 2131624155;
 			
@@ -9186,8 +9183,8 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0e0051
 			public const int showTitle = 2131624017;
 			
-			// aapt resource value: 0x7f0e00dd
-			public const int sliding_tabs = 2131624157;
+			// aapt resource value: 0x7f0e00dc
+			public const int sliding_tabs = 2131624156;
 			
 			// aapt resource value: 0x7f0e00b4
 			public const int smallLabel = 2131624116;
@@ -9294,8 +9291,8 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0e008e
 			public const int title_template = 2131624078;
 			
-			// aapt resource value: 0x7f0e00de
-			public const int toolbar = 2131624158;
+			// aapt resource value: 0x7f0e00dd
+			public const int toolbar = 2131624157;
 			
 			// aapt resource value: 0x7f0e0038
 			public const int top = 2131623992;
@@ -9336,8 +9333,8 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0e0007
 			public const int view_offset_helper = 2131623943;
 			
-			// aapt resource value: 0x7f0e00df
-			public const int visible = 2131624159;
+			// aapt resource value: 0x7f0e00de
+			public const int visible = 2131624158;
 			
 			// aapt resource value: 0x7f0e0071
 			public const int wide = 2131624049;
@@ -9945,8 +9942,8 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0b000c
 			public const int Animation_Design_BottomSheetDialog = 2131427340;
 			
-			// aapt resource value: 0x7f0b01ff
-			public const int AppCompatDialogStyle = 2131427839;
+			// aapt resource value: 0x7f0b0200
+			public const int AppCompatDialogStyle = 2131427840;
 			
 			// aapt resource value: 0x7f0b0124
 			public const int Base_AlertDialog_AppCompat = 2131427620;
@@ -10521,14 +10518,14 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0b01eb
 			public const int CardView_Light = 2131427819;
 			
-			// aapt resource value: 0x7f0b01fd
-			public const int MainTheme = 2131427837;
-			
 			// aapt resource value: 0x7f0b01fe
-			public const int MainTheme_Base = 2131427838;
+			public const int MainTheme = 2131427838;
 			
-			// aapt resource value: 0x7f0b0200
-			public const int MainTheme_Launcher = 2131427840;
+			// aapt resource value: 0x7f0b01ff
+			public const int MainTheme_Base = 2131427839;
+			
+			// aapt resource value: 0x7f0b0201
+			public const int MainTheme_Launcher = 2131427841;
 			
 			// aapt resource value: 0x7f0b0105
 			public const int Platform_AppCompat = 2131427589;
@@ -11391,8 +11388,8 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0b0086
 			public const int Widget_MaterialComponents_ChipGroup = 2131427462;
 			
-			// aapt resource value: 0x7f0b01fb
-			public const int Widget_MaterialComponents_CompoundButton_CheckBox = 2131427835;
+			// aapt resource value: 0x7f0b01fc
+			public const int Widget_MaterialComponents_CompoundButton_CheckBox = 2131427836;
 			
 			// aapt resource value: 0x7f0b0087
 			public const int Widget_MaterialComponents_FloatingActionButton = 2131427463;
@@ -11442,29 +11439,32 @@ namespace Xappy.Droid
 			// aapt resource value: 0x7f0b01ec
 			public const int Widget_Support_CoordinatorLayout = 2131427820;
 			
-			// aapt resource value: 0x7f0b01f8
-			public const int XamarinFormsMaterialButton = 2131427832;
-			
 			// aapt resource value: 0x7f0b01f9
-			public const int XamarinFormsMaterialButtonOutlined = 2131427833;
-			
-			// aapt resource value: 0x7f0b01fc
-			public const int XamarinFormsMaterialCheckBox = 2131427836;
+			public const int XamarinFormsMaterialButton = 2131427833;
 			
 			// aapt resource value: 0x7f0b01fa
-			public const int XamarinFormsMaterialEntryFilled = 2131427834;
+			public const int XamarinFormsMaterialButtonOutlined = 2131427834;
+			
+			// aapt resource value: 0x7f0b01fd
+			public const int XamarinFormsMaterialCheckBox = 2131427837;
+			
+			// aapt resource value: 0x7f0b01fb
+			public const int XamarinFormsMaterialEntryFilled = 2131427835;
+			
+			// aapt resource value: 0x7f0b01f8
+			public const int XamarinFormsMaterialProgressBarCircular = 2131427832;
 			
 			// aapt resource value: 0x7f0b01f7
-			public const int XamarinFormsMaterialProgressBarCircular = 2131427831;
+			public const int XamarinFormsMaterialProgressBarHorizontal = 2131427831;
 			
 			// aapt resource value: 0x7f0b01f6
-			public const int XamarinFormsMaterialProgressBarHorizontal = 2131427830;
+			public const int XamarinFormsMaterialSlider = 2131427830;
 			
 			// aapt resource value: 0x7f0b01f5
-			public const int XamarinFormsMaterialSlider = 2131427829;
+			public const int XamarinFormsMaterialTheme = 2131427829;
 			
 			// aapt resource value: 0x7f0b01f4
-			public const int XamarinFormsMaterialTheme = 2131427828;
+			public const int collectionViewStyle = 2131427828;
 			
 			static Style()
 			{
