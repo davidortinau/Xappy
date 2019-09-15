@@ -4,40 +4,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
              Shell.TabBarIsVisible="false"
-             BackgroundColor="{DynamicResource backgroundColor}">
+             BackgroundColor="{DynamicResource backgroundColor}"
+             
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:Xappy.Scenarios"
+             BindingContext="{Static local:ViewModelLocator.IndexPageViewModelDesignTime}">
 
     <CollectionView x:Name="ScenariosCV"
                     Margin="15,0"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    ItemsSource="{Binding ScenarioCards}">
+        
         <CollectionView.ItemsLayout>
             <ListItemsLayout Orientation="Vertical"
                               ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
 
-        <CollectionView.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
-                <x:String>Product Details</x:String>
-                <x:String>Map</x:String>
-                <x:String>Conversational</x:String>
-                <x:String>Login</x:String>
-                <x:String>Other Login</x:String>
-                <x:String>To Do List</x:String>
-            </x:Array>
-        </CollectionView.ItemsSource>
-
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame HeightRequest="30"
-                           CornerRadius="3"
-                           BackgroundColor="{StaticResource cerulean_three}"
+                <Frame CornerRadius="3"
+                           BackgroundColor="{Binding BackgroundColor}"
                            Visual="Material">
-                    <Label VerticalOptions="Center"
-                               InputTransparent="True"
-                               Style="{StaticResource TextHeadline}"
-                               FontAttributes="Bold"
-                               Text="{Binding .}" />
+                    <StackLayout>
+                        <Label VerticalOptions="Center"
+                                   InputTransparent="True"
+                                   TextColor="White"
+                                   FontSize="Title"
+                                   FontAttributes="Bold"
+                                   Text="{Binding Title}" />
+
+                        <Label VerticalOptions="Center"
+                                   InputTransparent="True"
+                                   TextColor="White"
+                                   FontSize="Subtitle"
+                                   Text="{Binding Description}" />
+                    </StackLayout>
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
