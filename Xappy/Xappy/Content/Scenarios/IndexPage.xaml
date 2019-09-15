@@ -10,7 +10,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:Xappy.Scenarios"
-             BindingContext="{Static local:ViewModelLocator.IndexPageViewModelDesignTime}">
+             d:BindingContext="{Static local:ViewModelLocator.IndexPageViewModelDesignTime}">
 
     <CollectionView x:Name="ScenariosCV"
                     Margin="15,0"

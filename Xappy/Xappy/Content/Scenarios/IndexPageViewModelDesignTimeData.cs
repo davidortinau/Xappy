@@ -5,13 +5,9 @@ using Xappy.Content;
 
 namespace Xappy.Scenarios
 {
-    public class IndexPageViewModelDesignTime : BaseViewModel
+    public class IndexPageViewModelDesignTime 
     {
-        private ScenarioCard _selectedItem;
-        private List<ScenarioCard> _scenarioCards;
-
-        public ICommand SelectCommand { get; set; }
-
+        
         public IndexPageViewModelDesignTime()
         {
             ScenarioCards = new List<ScenarioCard>()
@@ -61,58 +57,9 @@ namespace Xappy.Scenarios
             SelectedItem = ScenarioCards[0];
         }
 
-        /*private async void Selected()
-        {
-            if (SelectedItem == null)
-                return;
+        public List<ScenarioCard> ScenarioCards { get; set; }
 
-            string targetPage = "map";
-            switch (SelectedItem.ScenarioType)
-            {
-                case ScenarioType.ProductDetails:
-                    targetPage = "productdetails";
-                    break;
-
-                case ScenarioType.Map:
-                    targetPage = "map";
-                    break;
-
-                case ScenarioType.Login:
-                    targetPage = "login";
-                    break;
-
-                case ScenarioType.OtherLogin:
-                    targetPage = "otherlogin";
-                    break;
-
-                case ScenarioType.ToDoList:
-                    targetPage = "todo";
-                    break;
-
-                case ScenarioType.Conversational:
-                    targetPage = "conversation";
-                    break;
-
-                default:
-                    break;
-            }
-
-            SelectedItem = null;
-            await Shell.Current.GoToAsync($"{targetPage}");
-        }
-        */
-
-        public List<ScenarioCard> ScenarioCards
-        {
-            get => _scenarioCards;
-            set => SetProperty(ref _scenarioCards, value);
-        }
-
-        public ScenarioCard SelectedItem
-        {
-            get => _selectedItem;
-            set => SetProperty(ref _selectedItem, value);
-        }
+        public ScenarioCard SelectedItem { get; set; }
     }
 
     public static class ViewModelLocator
