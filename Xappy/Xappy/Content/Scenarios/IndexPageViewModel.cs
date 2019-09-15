@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CSharpForMarkup;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xappy.Content;
@@ -14,6 +15,7 @@ namespace Xappy.Scenarios
 
         public IndexPageViewModel()
         {
+            ScenarioCards = BuildScenarioCards();
             SelectCommand = new Command(Selected);
         }
 
@@ -67,6 +69,53 @@ namespace Xappy.Scenarios
         {
             get => _selectedItem;
             set => SetProperty(ref _selectedItem, value);
+        }
+
+        private List<ScenarioCard> BuildScenarioCards()
+        {
+            return new List<ScenarioCard>()
+                {
+                    new ScenarioCard()
+                    {
+                        BackgroundColor = App.LookupColor("dusty_orange"),
+                        Description = "Rockin' product details layout",
+                        ScenarioType = ScenarioType.ProductDetails,
+                        Title = "Product Details",
+                        Icon = FabIconFont.GiftboxOpen.ToXamlIconStr()
+                    },
+                    new ScenarioCard()
+                    {
+                        BackgroundColor = App.LookupColor("dark_lime_green"),
+                        Description = "Standard login and registration page with professional animations and circle avatar",
+                        ScenarioType = ScenarioType.Login,
+                        Title = "Login",
+                        Icon = FabIconFont.UserFollowed.ToXamlIconStr()
+                    },
+                    new ScenarioCard()
+                    {
+                        BackgroundColor = App.LookupColor("very_light_pink"),
+                        Description = "Beautiful GitHub themed login and registration page with lottie animation",
+                        ScenarioType = ScenarioType.OtherLogin,
+                        Title = "Other Login",
+                        Icon = FabIconFont.UserFollowed.ToXamlIconStr()
+                    },
+                    new ScenarioCard()
+                    {
+                        BackgroundColor = App.LookupColor("soft_blue"),
+                        Description = "Map example, requires Google Play Services.",
+                        ScenarioType = ScenarioType.Map,
+                        Title = "Map",
+                        Icon = FabIconFont.MapPin.ToXamlIconStr()
+                    },
+                    new ScenarioCard()
+                    {
+                        BackgroundColor = App.LookupColor("dark_peach"),
+                        Description = "Super-slick Messaging UI",
+                        ScenarioType = ScenarioType.Conversational,
+                        Title = "Conversational",
+                        Icon = FabIconFont.SkypeMessage.ToXamlIconStr()
+                    }
+                };
         }
     }
 

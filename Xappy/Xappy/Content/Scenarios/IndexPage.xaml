@@ -4,13 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
              Shell.TabBarIsVisible="false"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              BackgroundColor="{DynamicResource backgroundColor}"
-             
+             xmlns:local="clr-namespace:Xappy"
+             xmlns:scenarios="clr-namespace:Xappy.Scenarios"
+
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:Xappy.Scenarios"
-             d:BindingContext="{Static local:ViewModelLocator.IndexPageViewModelDesignTime}">
+             d:BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTime}">
+    <!--BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTime}">-->
 
     <CollectionView x:Name="ScenariosCV"
                     Margin="15,0"
@@ -18,24 +21,31 @@
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single"
                     ItemsSource="{Binding ScenarioCards}">
-        
+
         <CollectionView.ItemsLayout>
             <ListItemsLayout Orientation="Vertical"
-                              ItemSpacing="10"/>
+                              ItemSpacing="10" />
         </CollectionView.ItemsLayout>
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Frame CornerRadius="3"
-                           BackgroundColor="{Binding BackgroundColor}"
-                           Visual="Material">
+                       BackgroundColor="{Binding BackgroundColor}"
+                       Visual="Material">
                     <StackLayout>
-                        <Label VerticalOptions="Center"
+                        <StackLayout Orientation="Horizontal">
+                            <Label VerticalOptions="Center" Margin="5,0"
+                                FontFamily="{StaticResource Fabric}"
+                                FontSize="Title"
+                                Text="{Binding Icon}"
+                                TextColor="{StaticResource white}" />
+                            <Label VerticalOptions="Center"
                                    InputTransparent="True"
                                    TextColor="White"
                                    FontSize="Title"
                                    FontAttributes="Bold"
                                    Text="{Binding Title}" />
+                        </StackLayout>
 
                         <Label VerticalOptions="Center"
                                    InputTransparent="True"
@@ -48,16 +58,22 @@
         </CollectionView.ItemTemplate>
 
         <CollectionView.EmptyView>
-
-            <Grid>
-                <Label Text="Hmm, where are the scenarios?"
-                       VerticalOptions="Center"
+            <Frame CornerRadius="3"
+                   BackgroundColor="{StaticResource dusty_orange}"
+                   Visual="Material">
+                <StackLayout VerticalOptions="Center"
+                       HorizontalOptions="Center">
+                    <lottie:AnimationView Animation="emptybox.json"
+                                      AutoPlay="true"
+                                      HeightRequest="120"
+                                      Loop="true" />
+                    <Label Text="Hmm, where are the scenarios?"
+                       VerticalOptions="Start"
                        HorizontalOptions="Center"
-                       FontSize="Large"
-                       TextColor="black" />
-            </Grid>
-
+                       FontSize="Medium"
+                       TextColor="White" />
+                </StackLayout>
+            </Frame>
         </CollectionView.EmptyView>
     </CollectionView>
-
 </ContentPage>

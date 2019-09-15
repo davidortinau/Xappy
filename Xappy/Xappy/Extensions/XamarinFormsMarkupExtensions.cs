@@ -238,6 +238,11 @@ namespace CSharpForMarkup // Guidance at https://github.com/VincentH-Net/CSharpF
             return view;
         }
 
+        public static string ToXamlIconStr(this string str)
+        {
+            return str.Replace("\\u", "&x");
+        }
+
         public static TView Col<TView>(this TView view, int col, int span = 1) where TView : View
         {
             if (col != 0) view.SetValue(Grid.ColumnProperty, col);

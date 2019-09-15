@@ -72,6 +72,7 @@
     <Compile Include="Renderers\XappyShellRenderer.cs" />
     <Compile Include="Renderers\GradientViewRenderer.cs" />
     <Compile Include="Renderers\PressableViewRenderer.cs" />
+    <BundleResource Include="Resources\emptybox.json" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
