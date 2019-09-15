@@ -22,7 +22,7 @@
     <ContentPage.BindingContext>
         <this:ProductDetailsViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <StyleSheet>
             <![CDATA[
@@ -40,549 +40,717 @@
               ]]>
         </StyleSheet>
 
+        <!-- ANIMATIONS -->
         <anim:FadeToAnimation x:Key="CarouselFadeOut" Target="{x:Reference Carousel}" Opacity="0" Duration="500"/>
-        <anim:FadeToAnimation x:Key="FakeNavBarFadeOut" Target="{x:Reference FakeNavBar}" Opacity="0" Duration="500"/>
         <anim:FadeToAnimation x:Key="CarouselFadeIn" Target="{x:Reference Carousel}" Opacity="1" Duration="500" />
+        <anim:FadeToAnimation x:Key="FakeNavBarFadeOut" Target="{x:Reference FakeNavBar}" Opacity="0" Duration="500"/>
         <anim:FadeToAnimation x:Key="FakeNavBarFadeIn" Target="{x:Reference FakeNavBar}" Opacity="1" Duration="500" />
-        
 
-        
     </ContentPage.Resources>
-<!--
-    <ContentPage.Triggers>
-        <DataTrigger TargetType="ContentPage" Binding="{Binding Opacity, Source={x:Reference boxView}}"
-                     Value="1">
-            <Setter Property="Shell.NavBarIsVisible" Value="True"/>
-        </DataTrigger>
-    </ContentPage.Triggers>
--->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="88"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-<!--
-        <Grid.Triggers>
-            <DataTrigger TargetType="Grid" 
-                         Binding="{Binding Opacity, Source={x:Reference Carousel}}"
-                     Value="1">
-            </DataTrigger>
-        </Grid.Triggers>
--->
-
         <Grid Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="360" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
-            <BoxView BackgroundColor="White" HorizontalOptions="Fill"
-                     TranslationY="{Binding ScrollPercentage, 
-                                            Source={x:Reference sv}, 
-                                            Converter={StaticResource ScrollValueConverter}, 
-                                            ConverterParameter='-10;0;200;false;0'}"/>
-
-            <!-- header carousel -->
-            <CarouselView x:Name="Carousel"
-                          Margin="0,-42,0,0"
-                          BackgroundColor="#1d1d1d"
-                          Grid.Row="0" HorizontalOptions="FillAndExpand"
-                          
-                          TranslationY="{Binding ScrollPercentage, 
-                                            Source={x:Reference sv}, 
-                                            Converter={StaticResource ScrollValueConverter}, 
-                                            ConverterParameter='-10;0;200;false;0'}"
-                          >
+            <!-- HEADER BACKGROUND -->
+            <BoxView 
+                BackgroundColor="White" HorizontalOptions="Fill"
+                TranslationY="{Binding ScrollPercentage, 
+                                    Source={x:Reference sv}, 
+                                    Converter={StaticResource ScrollValueConverter}, 
+                                    ConverterParameter='-10;0;200;false;0'}"/>
+            <!-- HEADER CAROUSEL -->
+            <CarouselView 
+                x:Name="Carousel"
+                ItemsSource="{Binding Images}"
+                Position="{Binding CurrentImage, Mode=TwoWay}"
+                Margin="0,-42,0,0"
+                BackgroundColor="#1d1d1d"
+                Grid.Row="0" HorizontalOptions="FillAndExpand"      
+                TranslationY="{Binding ScrollPercentage, 
+                                Source={x:Reference sv}, 
+                                Converter={StaticResource ScrollValueConverter}, 
+                                ConverterParameter='-10;0;200;false;0'}">
+                <CarouselView.Behaviors>
+                    <anim:AnimateProgressDouble 
+                        TargetProperty="VisualElement.Opacity"
+                        Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                        Minimum="0"
+                        Maximum="180"
+                        From="1"
+                        To="0"/>
+                </CarouselView.Behaviors>
                 <CarouselView.Triggers>
-                    <DataTrigger TargetType="CarouselView"
-                             Binding="{Binding ScrollPosition, 
-                    Source={x:Reference sv}, 
-                    Converter={StaticResource ComparisonConverter},
-                    ConverterParameter='180;>'}"
-                             Value="true"
-                             >
+                    <DataTrigger 
+                        TargetType="CarouselView"
+                        Binding="{Binding ScrollPosition,       
+                        Source={x:Reference sv}, 
+                        Converter={StaticResource ComparisonConverter},
+                        ConverterParameter='180;>'}"
+                        Value="true">
                         <DataTrigger.EnterActions>
                             <anim:BeginAnimation
-                                    Animation="{StaticResource CarouselFadeOut}" />
+                                Animation="{StaticResource CarouselFadeOut}" />
+                            <!--
+                            <anim:AnimateDouble
+                                TargetProperty="VisualElement.Opacity"
+                                To="0"
+                                Duration="500"/>
+                            -->
                         </DataTrigger.EnterActions>
                         <DataTrigger.ExitActions>
                             <anim:BeginAnimation
-                                    Animation="{StaticResource CarouselFadeIn}" />
+                                Animation="{StaticResource CarouselFadeIn}" />
+                            <!--
+                            <anim:AnimateDouble
+                                TargetProperty="VisualElement.Opacity"
+                                To="1"
+                                Duration="500"/>
+                            -->
                         </DataTrigger.ExitActions>
                     </DataTrigger>
                 </CarouselView.Triggers>
-                <CarouselView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--iVfX_zrI--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1469146616/jjr3tm36lrgbyyfesp9p.jpg</x:String>
-                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--p91cyv0u--/a_exif,c_limit,f_auto,fl_progressive,g_south,h_620,q_auto:eco,w_620/v1445701470/fe7fxrxliah4gtfj4jd0.jpg</x:String>
-                        <x:String>https://reverb-res.cloudinary.com/image/upload/s--tAxNbGkO--/a_exif,c_limit,f_auto,fl_progressive,h_620,q_75,w_620/v1445703522/x7jyrcq7dikac9hmkeew.jpg</x:String>
-                    </x:Array>
-                </CarouselView.ItemsSource>
+                <CarouselView.ItemsLayout>
+                    <ListItemsLayout 
+                        Orientation="Horizontal"
+                        SnapPointsType="Mandatory"
+                        SnapPointsAlignment="Start"/>
+                </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding .}" 
-                               WidthRequest="420"
-                               Aspect="AspectFill"/>
+                        <Image 
+                            Source="{Binding .}" 
+                            WidthRequest="420"
+                            Aspect="AspectFill"/>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
-
             </CarouselView>
-
-            <c:ScrollerView x:Name="sv" Grid.RowSpan="2">
-                <StackLayout Margin="15,310,15,15"
-                             Spacing="20">
-
-                    <Frame Visual="Material"
-                           d:IsVisible="False">
-                        <StackLayout Spacing="15" 
-                                     ll:LoadingLayout.IsLoading="{Binding IsBusy}">
-                            <ll:LoadingLayout.LoadingTemplate>
-                                <DataTemplate>
-                                    <StackLayout Spacing="15" x:Name="Loader">
-                                        <StackLayout.Resources>
-                                            <anim:StoryBoard x:Key="LoadingBoard" Target="{x:Reference Loader}">
-                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
-                                            </anim:StoryBoard>
-                                        </StackLayout.Resources>
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout"
-                                                 Binding="{Binding IsBusy}"
-                                                 Value="true">
-                                                <DataTrigger.EnterActions>
-                                                    <anim:BeginAnimation
-                                                        Animation="{StaticResource LoadingBoard}" />                                                          
-                                                </DataTrigger.EnterActions>
-
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
-                                        <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
-
-                                        <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
-                                        <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
-                                        <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>                                       
-                                       
-                                    </StackLayout>
-                                </DataTemplate>
-                            </ll:LoadingLayout.LoadingTemplate>
-
-                            <Label HorizontalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span FontSize="Large">$1,929</Span>
-                                        <Span Text=" + Shipping"
-                                              TextColor="#999999" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <Button class="btn"
+            <RefreshView
+                RefreshColor="#FF9900"
+                Grid.RowSpan="2"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                Command="{Binding RefreshCommand}">
+                <c:ScrollerView 
+                    x:Name="sv">
+                    <ScrollView.Behaviors>
+                        <anim:ScrollViewScrollBehavior x:Name="Scroll" />
+                    </ScrollView.Behaviors>
+                    <StackLayout 
+                        Margin="15,310,15,15"
+                        Spacing="20">
+                        <!-- FIRST SECTION -->
+                        <Frame 
+                            Visual="Material"
+                            d:IsVisible="False">
+                            <Frame.Behaviors>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.75"
+                                    Minimum="320"
+                                    Maximum="400"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Opacity"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.9"
+                                    Minimum="0"
+                                    Maximum="320"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Opacity"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="0.9"
+                                    To="0"
+                                    Minimum="320"
+                                    Maximum="400"/>
+                            </Frame.Behaviors>
+                            <StackLayout 
+                                Spacing="15" 
+                                ll:LoadingLayout.IsLoading="{Binding IsBusy}">
+                                <ll:LoadingLayout.LoadingTemplate>
+                                    <DataTemplate>
+                                        <StackLayout 
+                                            Spacing="15" x:Name="Loader">
+                                            <StackLayout.Resources>
+                                                <anim:StoryBoard x:Key="LoadingBoard" Target="{x:Reference Loader}">
+                                                    <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                </anim:StoryBoard>
+                                            </StackLayout.Resources>
+                                            <StackLayout.Behaviors>
+                                                <anim:EntranceTransition
+	                                                Duration="1500"/>
+                                            </StackLayout.Behaviors>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger
+                                                    TargetType="StackLayout"
+                                                     Binding="{Binding IsBusy}"
+                                                     Value="true">
+                                                    <DataTrigger.EnterActions>
+                                                        <anim:BeginAnimation
+                                                        Animation="{StaticResource LoadingBoard}" />
+                                                    </DataTrigger.EnterActions>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                            <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                            <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                            <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                            <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </ll:LoadingLayout.LoadingTemplate>
+                                <Label 
+                                    HorizontalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                FontSize="Large">$1,929</Span>
+                                            <Span 
+                                                Text=" + Shipping"
+                                                TextColor="#999999" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button 
+                                    class="btn"
                                     Visual="Default"
                                     TextColor="White"
                                     Text="Add to Cart"
                                     Command="{Binding SkeletonCommand}"
                                     BackgroundColor="#FF9900" />
-                            <Button class="btn"
+                                <Button class="btn"
                                     Visual="Default"
                                     Text="Watch"
                                     BackgroundColor="#f1f1f1"
                                     TextColor="#1d1d1d">
-                                <Button.ImageSource>
-                                    <FontImageSource
-                                        FontFamily="{StaticResource FontAwesome}"
-                                        Glyph="{x:Static local:IconFont.Star}"
-                                        Size="12"
-                                        Color="#1d1d1d" />
-                                </Button.ImageSource>
-                            </Button>
-                            <Button class="btn"
+                                    <Button.ImageSource>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Glyph="{x:Static local:IconFont.Star}"
+                                            Size="12"
+                                            Color="#1d1d1d" />
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button 
+                                    class="btn"
                                     Visual="Default"
                                     Text="Message Seller"
                                     BackgroundColor="#f1f1f1"
                                     TextColor="#1d1d1d" />
-                        </StackLayout>
-                    </Frame>
+                            </StackLayout>
+                        </Frame>
+                        <!-- SECOND SECTION -->
+                        <Frame
+                            Visual="Material"
+                            d:IsVisible="false">
+                            <Frame.Behaviors>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.5"
+                                    Minimum="600"
+                                    Maximum="700"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Opacity"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0"
+                                    Minimum="600"
+                                    Maximum="700"/>
+                            </Frame.Behaviors>
+                            <StackLayout
+                                ll:LoadingLayout.IsLoading="{Binding IsBusy}">
+                                <ll:LoadingLayout.LoadingTemplate>
+                                    <DataTemplate>
+                                        <StackLayout x:Name="DetailsLoader">
+                                            <StackLayout.Resources>
+                                                <anim:StoryBoard x:Key="LoadingDetails" Target="{x:Reference DetailsLoader}">
+                                                    <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
+                                                    <anim:FadeToAnimation Opacity="1" Duration="500"/>
+                                                </anim:StoryBoard>
+                                            </StackLayout.Resources>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="StackLayout"
+                                                     Binding="{Binding IsBusy}"
+                                                     Value="true">
+                                                    <DataTrigger.EnterActions>
+                                                        <anim:BeginAnimation
+                                                        Animation="{StaticResource LoadingDetails}" />
+                                                    </DataTrigger.EnterActions>
 
-                    <Frame Visual="Material"
-                           d:IsVisible="false">
-                        <StackLayout
-                            ll:LoadingLayout.IsLoading="{Binding IsBusy}">
-                            <ll:LoadingLayout.LoadingTemplate>
-                                <DataTemplate>
-                                    <StackLayout x:Name="DetailsLoader">
-                                        <StackLayout.Resources>
-                                            <anim:StoryBoard x:Key="LoadingDetails" Target="{x:Reference DetailsLoader}">
-                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="0.5" Duration="500"/>
-                                                <anim:FadeToAnimation Opacity="1" Duration="500"/>
-                                            </anim:StoryBoard>
-                                        </StackLayout.Resources>
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout"
-                                                 Binding="{Binding IsBusy}"
-                                                 Value="true">
-                                                <DataTrigger.EnterActions>
-                                                    <anim:BeginAnimation
-                                                        Animation="{StaticResource LoadingDetails}" />                                                          
-                                                </DataTrigger.EnterActions>
-
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
-                                        <BoxView BackgroundColor="#CCCCCC" HeightRequest="20" HorizontalOptions="Fill" />
-                                        <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-                                        <BoxView HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
-                                        <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-                                        <Button Text="Read More" IsEnabled="False"
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                            <BoxView 
+                                                BackgroundColor="#CCCCCC" HeightRequest="20" HorizontalOptions="Fill" />
+                                            <BoxView 
+                                                HeightRequest="1"
+                                                BackgroundColor="#f1f1f1" />
+                                            <BoxView 
+                                                HeightRequest="20" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
+                                            <BoxView 
+                                                HeightRequest="1"
+                                                BackgroundColor="#f1f1f1" />
+                                            <Button 
+                                                Text="Read More" IsEnabled="False"
+                                                FontSize="18"
+                                                TextColor="#FF9900"
+                                                Visual="Default"
+                                                BackgroundColor="transparent" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </ll:LoadingLayout.LoadingTemplate>
+                                <Label 
+                                    HorizontalTextAlignment="Center"
+                                    FontSize="16"
+                                    TextColor="#1d1d1d"
+                                    FontAttributes="Bold"
+                                    Text="Cole Clark Angel 2 Series Redwood Blackwood Acoustic-Electric Guitar (With Case), Blemished" />
+                                <BoxView
+                                    HeightRequest="1"
+                                    BackgroundColor="#f1f1f1" />
+                                <Label
+                                    Text="With a Queensland maple neck, Tasmanian blackwood back and sides and Australian redwood top, this Angel 2 is decked-out in beautiful, sustainable tonewoods."
+                                    FontSize="16"
+                                    TextColor="#333333"
+                                    LineHeight="1.2" />
+                                <BoxView 
+                                    HeightRequest="1"
+                                    BackgroundColor="#f1f1f1" />
+                                <Button 
+                                    Text="Read More"
                                     FontSize="18"
                                     TextColor="#FF9900"
                                     Visual="Default"
                                     BackgroundColor="transparent" />
-                                    </StackLayout>
-                                </DataTemplate>
-                            </ll:LoadingLayout.LoadingTemplate>
-                            <Label HorizontalTextAlignment="Center"
-                                   FontSize="16"
-                                   TextColor="#1d1d1d"
-                                   FontAttributes="Bold"
-                                   Text="Cole Clark Angel 2 Series Redwood Blackwood Acoustic-Electric Guitar (With Case), Blemished" />
-                            <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-                            <Label Text="With a Queensland maple neck, Tasmanian blackwood back and sides and Australian redwood top, this Angel 2 is decked-out in beautiful, sustainable tonewoods."
-                                   FontSize="16"
-                                   TextColor="#333333"
-                                   LineHeight="1.2" />
-                            <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-                            <Button Text="Read More"
-                                    FontSize="18"
-                                    TextColor="#FF9900"
-                                    Visual="Default"
-                                    BackgroundColor="transparent" />
-                        </StackLayout>
-                    </Frame>
-
-                    <Frame Visual="Material"
-                           d:IsVisible="False">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="44" />
-                            </Grid.ColumnDefinitions>
-                            <Label FontFamily="{StaticResource FontAwesome}"
-                                   FontSize="24"
-                                   TextColor="Blue"
-                                   VerticalOptions="Center"
-                                   Text="{x:Static local:IconFont.ShieldAlt}" />
-
-                            <Label Grid.Column="1">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Buy with Confidence &#x0a;"
-                                              TextColor="#1d1d1d"
-                                              FontAttributes="Bold"
-                                              FontSize="16" />
-                                        <Span TextColor="#999999"
-                                              FontSize="14"
-                                              Text="Reverb Protection has you covered. We provide a safe, secure community for finding the gear you want." />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </Grid>
-                    </Frame>
-
-                    <Frame Visual="Material"
-                           d:IsVisible="false">
-                        <StackLayout Spacing="15">
-                            <Label Text="Details"
-                                   FontSize="18"
-                                   FontAttributes="Bold" />
-
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="This item is sold " />
-                                        <Span Text="As-Described. "
-                                              FontAttributes="Bold" />
-                                        <Span Text="It cannot be returned unless it arrives in a condition different from how it was described or photographed." />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
+                            </StackLayout>
+                        </Frame>
+                        <!-- THIRD SECTION -->
+                        <Frame
+                            Visual="Material"
+                            d:IsVisible="False">
+                            <Frame.Behaviors>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.5"
+                                    Minimum="820"
+                                    Maximum="900"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Opacity"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0"
+                                    Minimum="820"
+                                    Maximum="900"/>
+                            </Frame.Behaviors>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="44" />
                                 </Grid.ColumnDefinitions>
-
-                                <Label Text="Make&#x0a;Model&#x0a;Condition"
-                                       TextColor="#666666"
-                                       LineHeight="1.5"
-                                       Grid.Column="0" />
-                                <Label TextColor="#1d1d1d"
-                                       LineHeight="1.5"
-                                       Grid.Column="1">
+                                <Label
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    FontSize="24"
+                                    TextColor="Blue"
+                                    VerticalOptions="Center"
+                                    Text="{x:Static local:IconFont.ShieldAlt}" />
+                                <Label 
+                                    Grid.Column="1">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span TextColor="#FF9900"
-                                                  Text="Cole Clark&#x0a;">
-
-                                            </Span>
-                                            <Span Text="AN2EC-RDBL&#x0a;Mint" />
+                                            <Span 
+                                                Text="Buy with Confidence &#x0a;"
+                                                TextColor="#1d1d1d"
+                                                FontAttributes="Bold"
+                                                FontSize="16" />
+                                            <Span 
+                                                TextColor="#999999"
+                                                FontSize="14"
+                                                Text="Reverb Protection has you covered. We provide a safe, secure community for finding the gear you want." />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
                             </Grid>
-                            <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-
-                            <Label Text="Listed 5 days ago" />
-                            <FlexLayout Wrap="Wrap">
-                                <Label FlexLayout.Basis="50%"
-                                       Margin="0,0,0,15">
+                        </Frame>
+                        <!-- FOURTH SECTION -->
+                        <Frame 
+                            Visual="Material"
+                            d:IsVisible="false">
+                            <Frame.Behaviors>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.5"
+                                    Minimum="1100"
+                                    Maximum="1400"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Opacity"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0"
+                                    Minimum="1100"
+                                    Maximum="1400"/>
+                            </Frame.Behaviors>
+                            <StackLayout 
+                                Spacing="15">
+                                <Label 
+                                    Text="Details"
+                                    FontSize="18"
+                                    FontAttributes="Bold" />
+                                <Label>
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  Text="{x:Static local:IconFont.Star} " />
-                                            <Span Text=" 0 Watchers" />
+                                            <Span Text="This item is sold " />
+                                            <Span Text="As-Described. "
+                                              FontAttributes="Bold" />
+                                            <Span Text="It cannot be returned unless it arrives in a condition different from how it was described or photographed." />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label FlexLayout.Basis="50%"
-                                       Margin="0,0,0,15">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  Text="{x:Static local:IconFont.Eye} " />
-                                            <Span Text=" 41 Views" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FlexLayout.Basis="50%"
-                                       Margin="0,0,0,15">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  Text="{x:Static local:IconFont.BowlingBall} " />
-                                            <Span Text=" 0 Offers" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </FlexLayout>
-
-                            <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-                            <Label TextColor="#999999"
-                                   Text="Accepted Payment Methods"
-                                   HorizontalTextAlignment="Center" />
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label HorizontalTextAlignment="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  FontSize="40"
-                                                  Text="{x:Static local:IconFont.CreditCard}" />
-                                            <Span Text="&#x0a;Credit Card"
-                                                  FontSize="10"
-                                                  TextColor="#666666" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label HorizontalTextAlignment="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  FontSize="40"
-                                                  Text="{x:Static local:IconFont.CreditCard}" />
-                                            <Span Text="&#x0a;Gift Card"
-                                                  FontSize="10"
-                                                  TextColor="#666666" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label HorizontalTextAlignment="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  FontSize="40"
-                                                  Text="{x:Static local:IconFont.CreditCard}" />
-                                            <Span Text="&#x0a;PayPal"
-                                                  FontSize="10"
-                                                  TextColor="#666666" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label HorizontalTextAlignment="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontFamily="{StaticResource FontAwesome}"
-                                                  FontSize="40"
-                                                  Text="{x:Static local:IconFont.CreditCard}" />
-                                            <Span Text="&#x0a;Affirm"
-                                                  FontSize="10"
-                                                  TextColor="#666666" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </FlexLayout>
-                        </StackLayout>
-                    </Frame>
-
-                    <Frame Visual="Material">
-                        <StackLayout>
-                            <Label HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span TextColor="Blue"
-                                              Text="Music Works&#x0a;"
-                                              FontSize="24" />
-                                        <Span FontFamily="{x:StaticResource FontAwesome}"
-                                              Text="{x:Static local:IconFont.MapMarker}"
-                                              TextColor="#999999" />
-                                        <Span Text=" Saint George, UT, United States&#x0a;"
-                                              TextColor="#999999" />
-                                        <Span Text="&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;"
-                                              FontFamily="{x:StaticResource FontAwesome}"
-                                              FontSize="12"
-                                              TextColor="Gold" />
-                                        <Span Text=" (60)"
-                                              TextColor="#999999"
-                                              FontSize="12" />
-
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <BoxView HeightRequest="1"
-                                     BackgroundColor="#f1f1f1" />
-                            <Label HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="SELLER ACHIEVEMENTS&#x0a;"
-                                              TextColor="#999999" />
-                                        <Span FontFamily="{x:StaticResource FontAwesome}"
-                                              Text="{x:Static local:IconFont.Headphones}"
-                                              TextColor="Blue" />
-                                        <Span FontFamily="{x:StaticResource FontAwesome}"
-                                              Text="{x:Static local:IconFont.Microphone}"
-                                              TextColor="Blue" />
-                                        <Span FontFamily="{x:StaticResource FontAwesome}"
-                                              Text="{x:Static local:IconFont.SpaceShuttle}"
-                                              TextColor="Blue" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-
-
-                            </Label>
-                            <Button
-                                Visual="Default"
-                                Text="Message Seller"
-                                BackgroundColor="#f1f1f1"
-                                TextColor="#1d1d1d" />
-                            <Button
-                                Visual="Default"
-                                Text="Shop Policies"
-                                BackgroundColor="#f1f1f1"
-                                TextColor="#1d1d1d" />
-                        </StackLayout>
-                    </Frame>
-
-                    <Label Text="Similar Products" FontSize="Large" FontAttributes="Bold" />
-                    <CollectionView ItemsLayout="HorizontalList" HeightRequest="300" Margin="0,-15,0,0">
-                        <CollectionView.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Map</x:String>
-                                <x:String>Conversational</x:String>
-                                <x:String>Login</x:String>
-                                <x:String>To Do List</x:String>
-                                <x:String>Map</x:String>
-                                <x:String>Conversational</x:String>
-                                <x:String>Login</x:String>
-                                <x:String>To Do List</x:String>
-                            </x:Array>
-                        </CollectionView.ItemsSource>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <ContentView WidthRequest="180">
-                                    <Frame Visual="Material" Padding="0" Margin="15">
-                                        <StackLayout Orientation="Vertical" BackgroundColor="White">
-                                            <Image Source="https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg"
-                                           Aspect="AspectFill"
-                                           HeightRequest="180"
-                                           WidthRequest="180"/>
-                                            <Label Margin="15" LineHeight="1.2" FontSize="12">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
-                                                        <Span Text="$2,069.99" TextColor="#FF9900"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        </StackLayout>
-
-                                    </Frame>
-                                </ContentView>
-                            </DataTemplate>
-
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-                    <Label Text="Treat Yourself" FontSize="Large" FontAttributes="Bold" />
-                    <CollectionView ItemsLayout="HorizontalList" HeightRequest="300" Margin="0,-15,0,0">
-                        <CollectionView.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Map</x:String>
-                                <x:String>Conversational</x:String>
-                                <x:String>Login</x:String>
-                                <x:String>To Do List</x:String>
-                                <x:String>Map</x:String>
-                                <x:String>Conversational</x:String>
-                                <x:String>Login</x:String>
-                                <x:String>To Do List</x:String>
-                            </x:Array>
-                        </CollectionView.ItemsSource>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <ContentView WidthRequest="180">
-                                    <Frame Visual="Material" Padding="0" Margin="15">
-                                        <StackLayout Orientation="Vertical" BackgroundColor="White">
-                                            <Image Source="https://www.worldofmusic.com.au/wp-content/uploads/2018/08/Prod_4708_Orig.jpg"
-                                           Aspect="AspectFill"
-                                           HeightRequest="180"
-                                           WidthRequest="180"/>
-                                            <Label Margin="15" LineHeight="1.2" FontSize="12">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
-                                                        <Span Text="$2,069.99" TextColor="#1d1d1d" FontAttributes="Bold"
+                                <BoxView
+                                    HeightRequest="1"
+                                    BackgroundColor="#f1f1f1" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                        Text="Make&#x0a;Model&#x0a;Condition"
+                                        TextColor="#666666"
+                                        LineHeight="1.5"
+                                        Grid.Column="0" />
+                                    <Label 
+                                        TextColor="#1d1d1d"
+                                        LineHeight="1.5"
+                                        Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span TextColor="#FF9900"
+                                                  Text="Cole Clark&#x0a;">
+                                                </Span>
+                                                <Span Text="AN2EC-RDBL&#x0a;Mint" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                                <BoxView
+                                    HeightRequest="1"
+                                    BackgroundColor="#f1f1f1" />
+                                <Label Text="Listed 5 days ago" />
+                                <FlexLayout
+                                    Wrap="Wrap">
+                                    <StackLayout  
+                                        Orientation="Horizontal"
+                                        FlexLayout.Basis="50%"
+                                        Margin="0,0,0,15">
+                                        <Label 
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.Star}"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            Text=" 0 Watchers"
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout  
+                                        Orientation="Horizontal"
+                                        FlexLayout.Basis="50%"
+                                        Margin="0,0,0,15">
+                                        <Label 
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.Eye}"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            Text=" 41 Views"
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout  
+                                        Orientation="Horizontal"
+                                        FlexLayout.Basis="50%"
+                                        Margin="0,0,0,15">
+                                        <Label 
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.BowlingBall}"
+                                            VerticalOptions="Center"/>
+                                        <Label 
+                                            Text=" 0 Offers"
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </FlexLayout>
+                                <BoxView 
+                                    HeightRequest="1"
+                                    BackgroundColor="#f1f1f1" />
+                                <Label 
+                                    TextColor="#999999"
+                                    Text="Accepted Payment Methods"
+                                    HorizontalTextAlignment="Center" />
+                                <FlexLayout JustifyContent="SpaceBetween">
+                                    <StackLayout>
+                                        <Label 
+                                            FontSize="40"
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.CreditCard}"
+                                            HorizontalTextAlignment="Center"/>
+                                        <Label 
+                                            Text="&#x0a;Credit Card"
+                                            FontSize="10"
+                                            TextColor="#666666" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label 
+                                            FontSize="40"
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.CreditCard}"
+                                            HorizontalTextAlignment="Center"/>
+                                        <Label 
+                                            Text="&#x0a;Gift Card"
+                                            FontSize="10"
+                                            TextColor="#666666" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label 
+                                            FontSize="40"
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.CreditCard}"
+                                            HorizontalTextAlignment="Center"/>
+                                        <Label 
+                                            Text="&#x0a;PayPal"
+                                            FontSize="10"
+                                            TextColor="#666666" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label 
+                                            FontSize="40"
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.CreditCard}"
+                                            HorizontalTextAlignment="Center"/>
+                                        <Label 
+                                            Text="&#x0a;Affirm"
+                                            FontSize="10"
+                                            TextColor="#666666" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </FlexLayout>
+                            </StackLayout>
+                        </Frame>
+                        <!-- FIFTH SECTION -->
+                        <Frame 
+                            Visual="Material"
+                            d:IsVisible="false">
+                            <Frame.Behaviors>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.5"
+                                    Minimum="1600"
+                                    Maximum="1800"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Opacity"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0"
+                                    Minimum="1600"
+                                    Maximum="1800"/>
+                            </Frame.Behaviors>
+                            <StackLayout>
+                                <StackLayout                                                    
+                                    Orientation="Horizontal"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontSize="24"
+                                        Text="Music Works&#x0a;"
+                                        VerticalOptions="Center"/>
+                                    <Label 
+                                        FontSize="24"
+                                        FontFamily="{x:StaticResource FontAwesome}"
+                                        Text="{x:Static local:IconFont.MapMarker}"
+                                        VerticalOptions="Center"
+                                        Margin="24, 0, 0, 24"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="{x:StaticResource FontAwesome}"
+                                        Text="{x:Static local:IconFont.MapMarker}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Center"/>
+                                    <Label 
+                                        FontSize="10"
+                                        Text=" Saint George, UT, United States&#x0a;"
+                                        TextColor="#999999"
+                                        VerticalOptions="Center"/>
+                                    <Label 
+                                        Text="&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;"
+                                        FontFamily="{x:StaticResource FontAwesome}"
+                                        FontSize="10"
+                                        TextColor="Gold"
+                                        VerticalOptions="Center"/>
+                                    <Label 
+                                        Text=" (60)"
+                                        TextColor="#999999"
+                                        FontSize="12"
+                                        VerticalOptions="Center"/>
+                                </StackLayout>
+                                <BoxView 
+                                    HeightRequest="1"
+                                    BackgroundColor="#f1f1f1" />
+                                <StackLayout
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        Text="SELLER ACHIEVEMENTS&#x0a;"
+                                        TextColor="#999999" 
+                                        HorizontalTextAlignment="Center"/>
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Start"
+                                        Margin="0, 0, 0, 12">
+                                        <Label 
+                                            FontFamily="{x:StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.Headphones}"
+                                            TextColor="Blue" />
+                                        <Label 
+                                            FontFamily="{x:StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.Microphone}"
+                                            TextColor="Blue" />
+                                        <Label
+                                            FontFamily="{x:StaticResource FontAwesome}"
+                                            Text="{x:Static local:IconFont.SpaceShuttle}"
+                                            TextColor="Blue" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <Button
+                                    Visual="Default"
+                                    Text="Message Seller"
+                                    BackgroundColor="#f1f1f1"
+                                    TextColor="#1d1d1d" />
+                                <Button
+                                    Visual="Default"
+                                    Text="Shop Policies"
+                                    BackgroundColor="#f1f1f1"
+                                    TextColor="#1d1d1d" />
+                            </StackLayout>
+                        </Frame>
+                        <Label 
+                            Text="Similar Products" FontSize="Large"
+                            FontAttributes="Bold" />
+                        <CollectionView 
+                            ItemsLayout="HorizontalList" 
+                            HeightRequest="300" Margin="0,-15,0,0">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Map</x:String>
+                                    <x:String>Conversational</x:String>
+                                    <x:String>Login</x:String>
+                                    <x:String>To Do List</x:String>
+                                    <x:String>Map</x:String>
+                                    <x:String>Conversational</x:String>
+                                    <x:String>Login</x:String>
+                                    <x:String>To Do List</x:String>
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ContentView
+                                        WidthRequest="180">
+                                        <Frame 
+                                            Visual="Material" Padding="0" Margin="15">
+                                            <StackLayout 
+                                                Orientation="Vertical" BackgroundColor="White">
+                                                <Image 
+                                                    Source="guitar2.jpg"
+                                                    Aspect="AspectFill"
+                                                    HeightRequest="180"
+                                                    WidthRequest="180"/>
+                                                <Label 
+                                                    Margin="15" LineHeight="1.2" FontSize="12">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
+                                                            <Span Text="$2,069.99" TextColor="#FF9900"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Label 
+                            Text="Treat Yourself" FontSize="Large"
+                            FontAttributes="Bold" />
+                        <CollectionView 
+                            ItemsLayout="HorizontalList" HeightRequest="300" 
+                            Margin="0,-15,0,0">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Map</x:String>
+                                    <x:String>Conversational</x:String>
+                                    <x:String>Login</x:String>
+                                    <x:String>To Do List</x:String>
+                                    <x:String>Map</x:String>
+                                    <x:String>Conversational</x:String>
+                                    <x:String>Login</x:String>
+                                    <x:String>To Do List</x:String>
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <ContentView 
+                                        WidthRequest="180">
+                                        <Frame Visual="Material" Padding="0" Margin="15">
+                                            <StackLayout Orientation="Vertical" BackgroundColor="White">
+                                                <Image Source="guitar3.jpg"
+                                                    Aspect="AspectFill"
+                                                    HeightRequest="180"
+                                                    WidthRequest="180"/>
+                                                <Label Margin="15" LineHeight="1.2" FontSize="12">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Cole Clark Angel 2 Series 2018&#x0a;"/>
+                                                            <Span Text="$2,069.99" TextColor="#1d1d1d" FontAttributes="Bold"
                                                               FontSize="12"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        </StackLayout>
-
-                                    </Frame>
-                                </ContentView>
-                            </DataTemplate>
-
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </c:ScrollerView>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ContentView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </c:ScrollerView>
+            </RefreshView>
         </Grid>
-
-        <FlexLayout Direction="Row"
-                    Padding="15,42,15,15">
-            <ImageButton FlexLayout.Shrink="0" Command="{Binding BackCommand}">
+        <FlexLayout
+            Direction="Row"
+            Padding="15,42,15,15">
+            <ImageButton 
+                FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
                         FontFamily="{StaticResource FontAwesome}"
@@ -608,21 +776,20 @@
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
-
-        <!-- fake navbar -->
-        <FlexLayout x:Name="FakeNavBar"
-                    BackgroundColor="White"
-                    Direction="Row"
-                    Opacity="0"
-                    Padding="15,42,15,15">
+        <!-- FAKE NAVIGATIONBAR -->
+        <FlexLayout 
+            x:Name="FakeNavBar"
+            BackgroundColor="White"
+            Direction="Row"
+            Opacity="0"
+            Padding="15,42,15,15">
             <FlexLayout.Triggers>
                 <DataTrigger TargetType="FlexLayout"
                              Binding="{Binding ScrollPosition, 
                                         Source={x:Reference sv}, 
                                         Converter={StaticResource ComparisonConverter},
                                         ConverterParameter='180;>'}"
-                             Value="true"
-                             >
+                             Value="true">
                     <DataTrigger.EnterActions>
                         <anim:BeginAnimation
                                     Animation="{StaticResource FakeNavBarFadeIn}" />
@@ -633,7 +800,8 @@
                     </DataTrigger.ExitActions>
                 </DataTrigger>
             </FlexLayout.Triggers>
-            <ImageButton FlexLayout.Shrink="0" Command="{Binding BackCommand}">
+            <ImageButton
+                FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
                         FontFamily="{StaticResource FontAwesome}"
@@ -641,15 +809,17 @@
                         Color="{StaticResource almost_black}" />
                 </ImageButton.Source>
             </ImageButton>
-            <Label Text="Cole Clark Fat Lady 2 Blackwood Blackwood" 
-                   FontSize="18"
-                   Margin="10,0"
-                   VerticalOptions="Center"
-                   TextColor="{StaticResource almost_black}"
-                   LineBreakMode="TailTruncation"
-                   FlexLayout.AlignSelf="Center"
-                   FlexLayout.Grow="1" />
-            <ImageButton FlexLayout.Shrink="0">
+            <Label
+                Text="Cole Clark Fat Lady 2 Blackwood Blackwood" 
+                FontSize="18"
+                Margin="10,0"
+                VerticalOptions="Center"
+                TextColor="{StaticResource almost_black}"
+                LineBreakMode="TailTruncation"
+                FlexLayout.AlignSelf="Center"
+                FlexLayout.Grow="1" />
+            <ImageButton
+                FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
                         FontFamily="{StaticResource Fabric}"
@@ -657,7 +827,8 @@
                         Color="{StaticResource almost_black}" />
                 </ImageButton.Source>
             </ImageButton>
-            <ImageButton Margin="15,0,0,0" FlexLayout.Shrink="0">
+            <ImageButton 
+                Margin="15,0,0,0" FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
                         FontFamily="{StaticResource Fabric}"
@@ -666,6 +837,21 @@
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
+        <!-- DEBUG INFO -->
+        <!--
+        <StackLayout
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            BackgroundColor="Black">
+            <Label
+                FontSize="8"
+                TextColor="White"
+                Text="{Binding ScrollY, Source={x:Reference Scroll}, StringFormat='{0:F2}'}"/>
+            <Label 
+                FontSize="8"
+                TextColor="White"
+                Text="{Binding PercentageScrollY, Source={x:Reference Scroll},  StringFormat='{0:F2}%'}"/>
+        </StackLayout>
+        -->
     </Grid>
-
 </ContentPage>
