@@ -28,12 +28,13 @@ namespace Xappy.iOS.Renderers
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Code Notifications", "XI0003:Notifies you when using a deprecated, obsolete or unavailable Apple API", Justification = "Needed for iOS before 13.0")]
         public override void TraitCollectionDidChange(UITraitCollection previousTraitCollection)
         {
             base.TraitCollectionDidChange(previousTraitCollection);
-            Console.WriteLine($"TraitCollectionDidChange: {TraitCollection.UserInterfaceStyle} != {previousTraitCollection.UserInterfaceStyle}");
+            Console.WriteLine($"TraitCollectionDidChange: {TraitCollection.UserInterfaceStyle} != {previousTraitCollection?.UserInterfaceStyle}");
 
-            if(this.TraitCollection.UserInterfaceStyle != previousTraitCollection.UserInterfaceStyle)
+            if(this.TraitCollection.UserInterfaceStyle != previousTraitCollection?.UserInterfaceStyle)
             {
                 SetAppTheme();
             }
