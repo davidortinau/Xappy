@@ -6,14 +6,13 @@
              Shell.TabBarIsVisible="false"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              BackgroundColor="{DynamicResource backgroundColor}"
-             xmlns:local="clr-namespace:Xappy"
              xmlns:scenarios="clr-namespace:Xappy.Scenarios"
 
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              d:BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTime}">
-    <!--BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTime}">-->
+         <!--d:BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTimeEmpty}">-->
 
     <CollectionView x:Name="ScenariosCV"
                     Margin="15,0"
