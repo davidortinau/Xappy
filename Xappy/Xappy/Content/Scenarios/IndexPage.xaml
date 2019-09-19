@@ -4,14 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Scenarios"
              Shell.TabBarIsVisible="false"
+             xmlns:local="clr-namespace:Xappy;assembly=Xappy"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              BackgroundColor="{DynamicResource backgroundColor}"
              xmlns:scenarios="clr-namespace:Xappy.Scenarios"
-
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              d:BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTime}">
+         <!-- Use this one to view the empty listview -->
          <!--d:BindingContext="{x:Static scenarios:ViewModelLocator.IndexPageViewModelDesignTimeEmpty}">-->
 
     <CollectionView x:Name="ScenariosCV"
@@ -62,10 +63,19 @@
                    Visual="Material">
                 <StackLayout VerticalOptions="Center"
                        HorizontalOptions="Center">
-                    <lottie:AnimationView Animation="emptybox.json"
+                    <Label Margin="10"
+                                FontFamily="{StaticResource Fabric}"
+                                FontSize="50"
+                                HorizontalOptions="Center"
+                                Text="{x:Static local:FabIconFont.Sad}"
+                                TextColor="{StaticResource white}" />
+                    <!-- Using a lottie animation here would be really fun, 
+                    but lottie animations don't show up in sample data
+                    and the scarios are hard coded here... -->
+                    <!--<lottie:AnimationView Animation="emptybox.json"
                                       AutoPlay="true"
                                       HeightRequest="120"
-                                      Loop="true" />
+                                      Loop="true" />-->
                     <Label Text="Hmm, where are the scenarios?"
                        VerticalOptions="Start"
                        HorizontalOptions="Center"
