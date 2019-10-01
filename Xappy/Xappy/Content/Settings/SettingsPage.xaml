@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xaml-comp compile="false" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -130,7 +129,6 @@ ItemSpacing="10"/>
                     FlexLayout.Basis="50%"
                     BorderColor="{StaticResource cerulean}"
                     BorderWidth="1"
-                    Clicked="UseFlyout_Clicked"
                     CornerRadius="0" />
                 <Button
                     BackgroundColor="{Binding UseTabs,
@@ -144,7 +142,6 @@ ItemSpacing="10"/>
                     CommandParameter="tabs"
                     BorderColor="{StaticResource cerulean}"
                     BorderWidth="1"
-                    Clicked="UseTabs_Clicked"
                     FlexLayout.Basis="50%"
                     CornerRadius="0" />
             </FlexLayout>

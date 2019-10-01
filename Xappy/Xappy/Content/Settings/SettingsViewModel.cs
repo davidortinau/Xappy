@@ -45,6 +45,8 @@ namespace Xappy.Content.Settings
 
                 OnPropertyChanged(nameof(UseFlyout));
                 OnPropertyChanged(nameof(UseTabs));
+
+                Shell.Current.Navigation.PopModalAsync();
             });
         }
 

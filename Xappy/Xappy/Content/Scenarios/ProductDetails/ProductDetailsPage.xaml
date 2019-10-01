@@ -132,7 +132,7 @@
 
             </CarouselView>
 
-            <c:ScrollerView x:Name="sv" Grid.RowSpan="2" InputTransparent="True">
+            <c:ScrollerView x:Name="sv" Grid.RowSpan="2" InputTransparent="False">
                 <StackLayout Margin="15,310,15,15"
                              Spacing="20">
 

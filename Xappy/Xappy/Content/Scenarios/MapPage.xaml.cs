@@ -41,7 +41,7 @@ namespace Xappy.Scenarios
                 switch (e.StatusType)
                 {
                     case GestureStatus.Running:
-                        InfoPanel.TranslationY = Math.Max(_safeInsets.Top, Math.Min(AdditionalContent.HeightRequest, InfoPanel.TranslationY + e.TotalY));
+                        InfoPanel.TranslationY = Math.Max(80, Math.Min(AdditionalContent.HeightRequest, InfoPanel.TranslationY + e.TotalY));
                         break;
                 }
             });

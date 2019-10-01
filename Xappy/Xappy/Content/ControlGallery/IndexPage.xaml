@@ -16,10 +16,7 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <Label Text="{Binding AppModel.NavigationStyle}"
-               FontSize="64" />
-
-
+        
         <CollectionView
             Margin="15"
             x:Name="LayoutsCV"
