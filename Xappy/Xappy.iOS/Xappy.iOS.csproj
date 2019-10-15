@@ -146,7 +146,7 @@
       <Version>4.2.0.748113</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.2.0.748113</Version>
+      <Version>4.3.0.778476-pre1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>4.2.0.748113</Version>
@@ -171,9 +171,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\fa-solid-900.ttf" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Folder Include="Assets.xcassets\MicrosoftLogo.imageset\" />
+  <ItemGroup>
+    <BundleResource Include="Resources\guitar3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\guitar2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\guitar1.jpg" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

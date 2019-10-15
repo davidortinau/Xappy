@@ -17,9 +17,10 @@ namespace Xappy.Content.Settings
             InitializeComponent();
         }
 
-        async void Handle_CloseClicked(object sender, System.EventArgs e)
+        void Handle_CloseClicked(object sender, System.EventArgs e)
         {
-            await Shell.Current.Navigation.PopModalAsync();
+            //awaiting this causes a crash in android
+            Shell.Current.Navigation.PopModalAsync();
         }
 
         void Handle_Clicked_2(object sender, System.EventArgs e)
