@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Xappy.ControlGallery"
     mc:Ignorable="d"
-    Shell.TabBarIsVisible="false"
+    Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
     Style="{DynamicResource backgroundStyle}"
     Title="UI Controls"
     x:Class="Xappy.ControlGallery.IndexPage">
@@ -15,61 +15,64 @@
         <local:IndexPageViewModel />
     </ContentPage.BindingContext>
 
-    <CollectionView
-        Margin="15"
-        x:Name="LayoutsCV"
-        ItemsSource="{Binding XamarinAll}"
-        IsGrouped="True"
-        ItemSizingStrategy="MeasureFirstItem"
-        SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
-        SelectionMode="Single"
-        SelectionChangedCommand="{Binding SelectCommand}">
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout
-                Span="2"
-                HorizontalItemSpacing="10"
-                VerticalItemSpacing="10"
-                Orientation="Vertical" />
-        </CollectionView.ItemsLayout>
-        <CollectionView.GroupHeaderTemplate>
-            <DataTemplate>
+    <StackLayout>
+        
+        <CollectionView
+            Margin="15"
+            x:Name="LayoutsCV"
+            ItemsSource="{Binding XamarinAll}"
+            IsGrouped="True"
+            ItemSizingStrategy="MeasureFirstItem"
+            SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding SelectCommand}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Span="2"
+                    HorizontalItemSpacing="10"
+                    VerticalItemSpacing="10"
+                    Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
 
-                <Label Text="{Binding Name}"
-                       Margin="0,0,0,15"
-                       Style="{StaticResource TextTitle}" />
+                    <Label Text="{Binding Name}"
+                           Margin="0,0,0,15"
+                           Style="{StaticResource TextTitle}" />
 
-            </DataTemplate>
-        </CollectionView.GroupHeaderTemplate>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Frame
-                    WidthRequest="140"
-                    HeightRequest="50"
-                    Padding="8"
-                    CornerRadius="3"
-                    BackgroundColor="{Binding GroupIndex,
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        WidthRequest="140"
+                        HeightRequest="50"
+                        Padding="8"
+                        CornerRadius="3"
+                        BackgroundColor="{Binding GroupIndex,
                         Converter={StaticResource IndexToColorConverter},
                         ConverterParameter='dusty_orange;cerulean;tomato'}"
-                    Visual="Material">
-                    <Label
-                        InputTransparent="true"
-                        FontSize="14"
-                        TextColor="Black"
-                        LineBreakMode="NoWrap"
-                        VerticalOptions="End"
-                        Text="{Binding Title}"
-                        d:Text="Something Else" />
-                </Frame>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
+                        Visual="Material">
+                        <Label
+                            InputTransparent="true"
+                            FontSize="14"
+                            TextColor="Black"
+                            LineBreakMode="NoWrap"
+                            VerticalOptions="End"
+                            Text="{Binding Title}"
+                            d:Text="Something Else" />
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
 
-        <CollectionView.GroupFooterTemplate>
-            <DataTemplate>
-                <ContentView HeightRequest="30"/>
-            </DataTemplate>
-        </CollectionView.GroupFooterTemplate>
+            <CollectionView.GroupFooterTemplate>
+                <DataTemplate>
+                    <ContentView HeightRequest="30" />
+                </DataTemplate>
+            </CollectionView.GroupFooterTemplate>
 
-    </CollectionView>
+        </CollectionView>
+    </StackLayout>
 
 </ContentPage>

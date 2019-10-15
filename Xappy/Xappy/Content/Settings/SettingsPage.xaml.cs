@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xappy.Services;
+using Xappy.Domain.Global;
 
 
 namespace Xappy.Content.Settings
 {
     [XamlCompilation(XamlCompilationOptions.Skip)]
-    public partial class SettingsPages : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public SettingsPages()
+        public SettingsPage()
         {
             InitializeComponent();
         }
@@ -20,16 +21,6 @@ namespace Xappy.Content.Settings
         {
             //awaiting this causes a crash in android
             Shell.Current.Navigation.PopModalAsync();
-        }
-
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            SettingsService.UseFlyout(this);
-        }
-
-        void Handle_Clicked_1(object sender, System.EventArgs e)
-        {
-            SettingsService.UseTabs(this);
         }
 
         void Handle_Clicked_2(object sender, System.EventArgs e)

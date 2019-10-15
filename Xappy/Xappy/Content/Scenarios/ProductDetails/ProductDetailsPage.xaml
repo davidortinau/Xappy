@@ -28,13 +28,13 @@
             <![CDATA[
 
               .btn {
-               height: 44;
-            font-size: 16;
+                height: 44;
+                font-size: 16;
               }
             
-            ^ImageButton {
-            background-color: transparent;
-            }
+              ^ImageButton {
+                background-color: transparent;
+              }
             
 
               ]]>

@@ -4,27 +4,33 @@
              xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Xappy.Content.Settings"
              mc:Ignorable="d"
              Title="Style Guide"
              Shell.BackgroundColor="{DynamicResource backgroundColor}"
              BackgroundColor="{DynamicResource backgroundColor}"
              Shell.TitleColor="{StaticResource cerulean}"
-             Shell.TabBarIsVisible="False"
+             Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
              x:Class="Xappy.Content.Settings.StyleGuidePage">
+    <ContentPage.BindingContext>
+        <vm:StyleGuideViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="15" Spacing="10">
+            <StackLayout Margin="15"
+                         Spacing="10">
+                <Image Source="MicrosoftLogo" />
                 <Label Text="Colors"
                        Style="{DynamicResource TextHeadline}" />
-                <BoxView Style="{DynamicResource HRule}"/>
+                <BoxView Style="{DynamicResource HRule}" />
 
                 <CollectionView HeightRequest="460">
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout VerticalItemSpacing="10" 
+                        <GridItemsLayout VerticalItemSpacing="10"
                                          HorizontalItemSpacing="10"
                                          Orientation="Horizontal"
-                                         Span="4"
-                                         />
+                                         Span="4" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
@@ -49,32 +55,46 @@
                     </CollectionView.ItemsSource>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                        <Frame HasShadow="False"
-                               WidthRequest="150"
-                               BackgroundColor="{DynamicResource backgroundColor}"
-                               BorderColor="#CCCCCC" CornerRadius="0" Padding="0">
-                            <StackLayout>
-                                    <BoxView BackgroundColor="{Binding ., Converter={x:StaticResource StringToColorResourceConverter}}"/>
-                                <Label Margin="8"  Style="{DynamicResource TextTitle}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                                <Span Text="{Binding .}"/>
-                                                <Span Text="&#x0a;"/>
-                                                <Span Text="{Binding ., Converter={x:StaticResource ResourceToHexStringConverter}}" FontSize="{DynamicResource TextSizeCaption}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                        </Frame>
+                            <Frame HasShadow="False"
+                                   WidthRequest="150"
+                                   BackgroundColor="{DynamicResource backgroundColor}"
+                                   BorderColor="#CCCCCC"
+                                   CornerRadius="0"
+                                   Padding="0">
+                                <StackLayout>
+                                    <BoxView BackgroundColor="{Binding ., Converter={x:StaticResource StringToColorResourceConverter}}" />
+                                    <Label Margin="8"
+                                           Style="{DynamicResource TextTitle}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding .}" />
+                                                <Span Text="&#x0a;" />
+                                                <Span Text="{Binding ., Converter={x:StaticResource ResourceToHexStringConverter}}"
+                                                      FontSize="{DynamicResource TextSizeCaption}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
-                
-                
-                <Label Text="Text"
-                       Style="{DynamicResource TextHeadline}" />
-                <BoxView Style="{DynamicResource HRule}"/>
+
+
+
+                <Label TextType="Html"
+                       Style="{DynamicResource TextHeadline}">
+                    <Label.Text>
+                        <x:String>
+                            <![CDATA[
+                            FirstLine<br/>SecondLine
+                            ]]>
+                        </x:String>
+                    </Label.Text>
+                </Label>
+
+
+                <BoxView Style="{DynamicResource HRule}" />
 
                 <Label Text="Headline"
                        Style="{DynamicResource TextHeadline}" />
@@ -92,25 +112,13 @@
 
                 <Label Text="Buttons"
                        Style="{DynamicResource TextHeadline}" />
-                <BoxView Style="{DynamicResource HRule}"/>
+                <BoxView Style="{DynamicResource HRule}" />
 
-                <Button Text="Default"/>
+                <Button Text="Default" />
 
-                <Label Text="Segmented Control (iOS Only)"
-                       Style="{DynamicResource TextHeadline}" />
-                <BoxView Style="{DynamicResource HRule}"/>
-
-                <ios:UISegmentedControl>
-                    <x:Arguments>
-                        <x:String>Flyout Menu</x:String>
-                        <x:String>Bottom Tabs</x:String>
-                        <x:String>Top Tabs</x:String>
-                        <x:String>Bananas</x:String>
-                      </x:Arguments>
-                </ios:UISegmentedControl>
-
-                <Switch ThumbColor="{StaticResource cerulean_three}"
-                        OnColor="{StaticResource dusty_orange}"/>
+                <Button Text="Background"
+                        BackgroundColor="{StaticResource cerulean}"
+                        TextColor="White" />
 
             </StackLayout>
         </ScrollView>

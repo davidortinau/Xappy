@@ -19,6 +19,8 @@ namespace Xappy
         {
             InitializeComponent();
 
+            DependencyService.Register<AppModel>();
+
             MainPage = new AppShell();
         }
 
@@ -48,6 +50,11 @@ namespace Xappy
             {
                 return Color.White;
             }
+        }
+
+        public static string AppTheme
+        {
+            get;set;
         }
 
     }

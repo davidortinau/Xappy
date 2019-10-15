@@ -3,13 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Xappy.Content"
              mc:Ignorable="d"
+             Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
              x:Class="Xappy.Content.Resources.IndexPage">
+
+    <ContentPage.BindingContext>
+        <vm:BaseViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="List of Resources Here!"
-                VerticalOptions="CenterAndExpand" 
+            <Label Text="List of Resources Here!" 
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
