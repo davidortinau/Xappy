@@ -118,16 +118,36 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnDark.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnDark%402x.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnDark%403x.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%402x.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%403x.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight-1.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%403x-1.png" />
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnDark.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnDark%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnDark%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MicrosoftLogo.imageset\MicrosoftOnLight%403x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -173,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\MicrosoftLogo.imageset\" />
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\guitar3.jpg" />
   </ItemGroup>
