@@ -47,6 +47,9 @@
     <Compile Update="Content\Scenarios\Conversation\ConversationPage.xaml.cs">
       <DependentUpon>ConversationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Styles\LightTheme.xaml.cs">
+      <DependentUpon>LightTheme.xaml</DependentUpon>
+    </Compile>
     <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
   </ItemGroup>
   <ItemGroup>

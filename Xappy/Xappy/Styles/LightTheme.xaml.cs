@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Xappy.Styles
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WhiteTheme : ResourceDictionary
+    public partial class LightTheme : ResourceDictionary
     {
-        public WhiteTheme()
+        public LightTheme()
         {
             InitializeComponent();
         }

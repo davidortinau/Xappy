@@ -25,7 +25,7 @@ namespace Xappy.Content.Settings
                 }
                 else
                 {
-                    Application.Current.Resources = new WhiteTheme();
+                    Application.Current.Resources = new LightTheme();
                 }
 
                 App.AppTheme = SelectedTheme.ToLower();

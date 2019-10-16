@@ -56,7 +56,7 @@ namespace Xappy.iOS.Renderers
             {
                 if (App.AppTheme != "dark")
                     return;
-                App.Current.Resources = new WhiteTheme();
+                App.Current.Resources = new LightTheme();
                 App.AppTheme = "light";
             }
         }

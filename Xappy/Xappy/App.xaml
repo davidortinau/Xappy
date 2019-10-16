@@ -3,6 +3,6 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
-        <ResourceDictionary Source="/Styles/WhiteTheme.xaml" />
+        <ResourceDictionary Source="/Styles/LightTheme.xaml" />
     </Application.Resources>
 </Application>
