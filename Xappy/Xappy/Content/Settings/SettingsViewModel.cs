@@ -73,6 +73,36 @@ namespace Xappy.Content.Settings
             }
         }
 
+        public bool UseDarkMode
+        {
+            get => DependencyService.Get<AppModel>().UseDarkMode;
+            set
+            {
+                DependencyService.Get<AppModel>().UseDarkMode = value;
+                OnPropertyChanged(nameof(UseDarkMode));
+
+                if(UseDarkMode && App.AppTheme != "dark")
+                {
+                    App.Current.Resources = new DarkTheme();
+                    App.AppTheme = "dark";
+                }else if(!UseDarkMode && App.AppTheme == "dark")
+                {
+                    App.Current.Resources = new LightTheme();
+                    App.AppTheme = "light";
+                }
+            }
+        }
+
+        public bool UseDeviceThemeSettings
+        {
+            get => DependencyService.Get<AppModel>().UseDeviceThemeSettings;
+            set
+            {
+                DependencyService.Get<AppModel>().UseDeviceThemeSettings = value;
+                OnPropertyChanged(nameof(UseDeviceThemeSettings));
+            }
+        }
+
         public int UseFlyout
         {
             get { return (AppModel.NavigationStyle == Domain.Global.NavigationStyle.Flyout) ? 1 : 0; }

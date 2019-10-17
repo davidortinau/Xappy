@@ -71,4 +71,5 @@
     <converters:StringToColorResourceConverter x:Key="StringToColorResourceConverter"/>
     <converters:ResourceToHexStringConverter x:Key="ResourceToHexStringConverter"/>
     <converters:IndexToColorConverter x:Key="IndexToColorConverter"/>
+    <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
 </ResourceDictionary>

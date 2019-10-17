@@ -55,14 +55,13 @@
                     <FormattedString>
                         <Span FontSize="17"
                               FontAttributes="Bold"
-                              TextColor="{DynamicResource TextPrimaryColor}">Theme:
+                              TextColor="{DynamicResource TextPrimaryColor}">Display Settings
                         </Span>
-                        <Span Text=" Default" TextColor="{DynamicResource TextPrimaryColor}"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
-            <CollectionView
+            <!--<CollectionView
                 SelectionChangedCommand="{Binding ChangeThemeCommand}"
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedTheme}"
@@ -84,7 +83,24 @@ ItemSpacing="10"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
-            </CollectionView>
+            </CollectionView>-->
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <CheckBox IsChecked="{Binding UseDeviceThemeSettings}" VerticalOptions="Center" />
+                <Label Text="Use device settings"
+                       Style="{StaticResource TextBody}" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout
+                IsVisible="{Binding UseDeviceThemeSettings, Converter={StaticResource InvertedBoolConverter}}"
+                Orientation="Horizontal"
+                Spacing="10">
+                <CheckBox IsChecked="{Binding UseDarkMode}" VerticalOptions="Center"/>
+                <Label Text="Dark mode"
+                       Style="{StaticResource TextBody}" VerticalOptions="Center"/>
+            </StackLayout>
+
+            
 
             <Label Margin="0,15,0,0" Style="{StaticResource TextTitle}" Text="Visual"/>
 

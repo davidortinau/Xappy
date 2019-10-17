@@ -2,6 +2,7 @@
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Xappy.Domain.Global;
 using Xappy.Styles;
 
 [assembly: ExportRenderer(typeof(ContentPage), typeof(Xappy.iOS.Renderers.PageRenderer))]
@@ -43,21 +44,46 @@ namespace Xappy.iOS.Renderers
 
         void SetAppTheme()
         {
-            if (this.TraitCollection.UserInterfaceStyle == UIUserInterfaceStyle.Dark)
-            {
-                if (App.AppTheme == "dark")
-                    return;
-                //Add a Check for App Theme since this is called even when not changed really
-                App.Current.Resources = new DarkTheme();
+            var useDeviceSettings = DependencyService.Get<AppModel>().UseDeviceThemeSettings;
+            var useDarkMode = DependencyService.Get<AppModel>().UseDarkMode;
 
-                App.AppTheme = "dark";
+            if (!useDeviceSettings)
+            {
+                if (useDarkMode)
+                {
+                    if (App.AppTheme == "dark")
+                        return;
+                    //Add a Check for App Theme since this is called even when not changed really
+                    App.Current.Resources = new DarkTheme();
+
+                    App.AppTheme = "dark";
+                }
+                else
+                {
+                    if (App.AppTheme != "dark")
+                        return;
+                    App.Current.Resources = new LightTheme();
+                    App.AppTheme = "light";
+                }
             }
             else
             {
-                if (App.AppTheme != "dark")
-                    return;
-                App.Current.Resources = new LightTheme();
-                App.AppTheme = "light";
+                if (this.TraitCollection.UserInterfaceStyle == UIUserInterfaceStyle.Dark)
+                {
+                    if (App.AppTheme == "dark")
+                        return;
+                    //Add a Check for App Theme since this is called even when not changed really
+                    App.Current.Resources = new DarkTheme();
+
+                    App.AppTheme = "dark";
+                }
+                else
+                {
+                    if (App.AppTheme != "dark")
+                        return;
+                    App.Current.Resources = new LightTheme();
+                    App.AppTheme = "light";
+                }
             }
         }
     }

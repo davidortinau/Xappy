@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using AsyncAwaitBestPractices;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xappy.Content;
 
@@ -11,6 +14,16 @@ namespace Xappy.Domain.Global
     {
         public AppModel()
         {
+            InitAsync().SafeFireAndForget();
+        }
+
+        async Task InitAsync()
+        {
+            var useDarkModeValue = await SecureStorage.GetAsync(nameof(UseDarkMode)).ConfigureAwait(false);
+            UseDarkMode = Convert.ToBoolean(useDarkModeValue);
+
+            var useDeviceThemeValue = await SecureStorage.GetAsync(nameof(UseDeviceThemeSettings)).ConfigureAwait(false);
+            UseDeviceThemeSettings = Convert.ToBoolean(useDeviceThemeValue);
         }
 
         public NavigationStyle NavigationStyle
@@ -36,6 +49,35 @@ namespace Xappy.Domain.Global
             set
             {
                 SetProperty(ref isTabBarVisible, value);
+            }
+        }
+
+        private bool useDeviceThemeSettings;
+        public bool UseDeviceThemeSettings
+        {
+            get
+            {
+                return useDeviceThemeSettings;
+            }
+
+            set
+            {
+                SetProperty(ref useDeviceThemeSettings, value);
+            }
+        }
+
+        private bool useDarkMode;
+        public bool UseDarkMode
+        {
+            get
+            {
+                return useDarkMode;
+            }
+
+            set
+            {
+                SecureStorage.SetAsync(nameof(UseDarkMode), value.ToString());
+                SetProperty(ref useDarkMode, value);
             }
         }
 
