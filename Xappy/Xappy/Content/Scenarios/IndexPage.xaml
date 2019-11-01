@@ -17,7 +17,7 @@
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">
         <CollectionView.ItemsLayout>
-            <ListItemsLayout Orientation="Vertical"
+            <LinearItemsLayout Orientation="Vertical"
                               ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
 

@@ -94,7 +94,7 @@
             SelectionMode="Single"
             SelectionChanged="Handle_SelectionChanged"
             ItemsSource="{Binding ColorViewModels}"
-            ItemsLayout="{x:Static ListItemsLayout.Horizontal}">
+            ItemsLayout="{x:Static LinearItemsLayout.Horizontal}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView

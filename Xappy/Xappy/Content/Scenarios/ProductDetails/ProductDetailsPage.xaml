@@ -116,7 +116,7 @@
                     </DataTrigger>
                 </CarouselView.Triggers>
                 <CarouselView.ItemsLayout>
-                    <ListItemsLayout 
+                    <LinearItemsLayout 
                         Orientation="Horizontal"
                         SnapPointsType="Mandatory"
                         SnapPointsAlignment="Start"/>

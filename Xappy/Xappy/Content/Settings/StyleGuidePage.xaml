@@ -7,7 +7,6 @@
              xmlns:vm="clr-namespace:Xappy.Content.Settings"
              mc:Ignorable="d"
              Title="Style Guide"
-             Shell.BackgroundColor="{DynamicResource backgroundColor}"
              BackgroundColor="{DynamicResource backgroundColor}"
              Shell.TitleColor="{StaticResource cerulean}"
              Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"

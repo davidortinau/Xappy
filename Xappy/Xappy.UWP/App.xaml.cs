@@ -52,6 +52,7 @@ namespace Xappy.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+                Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental", "CarouselView_Experimental");
                 Xamarin.Forms.Forms.Init(e);
                 // TODO enable this for Maps
                 //Xamarin.FormsMaps.Init("INSERT_AUTHENTICATION_TOKEN_HERE");
