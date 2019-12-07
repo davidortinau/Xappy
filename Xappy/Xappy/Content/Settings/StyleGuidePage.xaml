@@ -8,7 +8,6 @@
              mc:Ignorable="d"
              Title="Style Guide"
              BackgroundColor="{DynamicResource backgroundColor}"
-             Shell.TitleColor="{StaticResource cerulean}"
              Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
              x:Class="Xappy.Content.Settings.StyleGuidePage">
     <ContentPage.BindingContext>
