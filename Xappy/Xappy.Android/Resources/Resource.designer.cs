@@ -9643,58 +9643,61 @@ namespace Xappy.Droid
 			public const int uiScrollGestures = 2130903560;
 			
 			// aapt resource value: 0x7F030209
-			public const int uiTiltGestures = 2130903561;
+			public const int uiScrollGesturesDuringRotateOrZoom = 2130903561;
 			
 			// aapt resource value: 0x7F03020A
-			public const int uiZoomControls = 2130903562;
+			public const int uiTiltGestures = 2130903562;
 			
 			// aapt resource value: 0x7F03020B
-			public const int uiZoomGestures = 2130903563;
+			public const int uiZoomControls = 2130903563;
 			
 			// aapt resource value: 0x7F03020C
-			public const int useCompatPadding = 2130903564;
+			public const int uiZoomGestures = 2130903564;
 			
 			// aapt resource value: 0x7F03020D
-			public const int useViewLifecycle = 2130903565;
+			public const int useCompatPadding = 2130903565;
 			
 			// aapt resource value: 0x7F03020E
-			public const int viewInflaterClass = 2130903566;
+			public const int useViewLifecycle = 2130903566;
 			
 			// aapt resource value: 0x7F03020F
-			public const int voiceIcon = 2130903567;
+			public const int viewInflaterClass = 2130903567;
 			
 			// aapt resource value: 0x7F030210
-			public const int windowActionBar = 2130903568;
+			public const int voiceIcon = 2130903568;
 			
 			// aapt resource value: 0x7F030211
-			public const int windowActionBarOverlay = 2130903569;
+			public const int windowActionBar = 2130903569;
 			
 			// aapt resource value: 0x7F030212
-			public const int windowActionModeOverlay = 2130903570;
+			public const int windowActionBarOverlay = 2130903570;
 			
 			// aapt resource value: 0x7F030213
-			public const int windowFixedHeightMajor = 2130903571;
+			public const int windowActionModeOverlay = 2130903571;
 			
 			// aapt resource value: 0x7F030214
-			public const int windowFixedHeightMinor = 2130903572;
+			public const int windowFixedHeightMajor = 2130903572;
 			
 			// aapt resource value: 0x7F030215
-			public const int windowFixedWidthMajor = 2130903573;
+			public const int windowFixedHeightMinor = 2130903573;
 			
 			// aapt resource value: 0x7F030216
-			public const int windowFixedWidthMinor = 2130903574;
+			public const int windowFixedWidthMajor = 2130903574;
 			
 			// aapt resource value: 0x7F030217
-			public const int windowMinWidthMajor = 2130903575;
+			public const int windowFixedWidthMinor = 2130903575;
 			
 			// aapt resource value: 0x7F030218
-			public const int windowMinWidthMinor = 2130903576;
+			public const int windowMinWidthMajor = 2130903576;
 			
 			// aapt resource value: 0x7F030219
-			public const int windowNoTitle = 2130903577;
+			public const int windowMinWidthMinor = 2130903577;
 			
 			// aapt resource value: 0x7F03021A
-			public const int zOrderOnTop = 2130903578;
+			public const int windowNoTitle = 2130903578;
+			
+			// aapt resource value: 0x7F03021B
+			public const int zOrderOnTop = 2130903579;
 			
 			static Attribute()
 			{
@@ -12629,70 +12632,73 @@ namespace Xappy.Droid
 			public const int common_google_play_services_install_title = 2131558436;
 			
 			// aapt resource value: 0x7F0D0025
-			public const int common_google_play_services_notification_ticker = 2131558437;
+			public const int common_google_play_services_notification_channel_name = 2131558437;
 			
 			// aapt resource value: 0x7F0D0026
-			public const int common_google_play_services_unknown_issue = 2131558438;
+			public const int common_google_play_services_notification_ticker = 2131558438;
 			
 			// aapt resource value: 0x7F0D0027
-			public const int common_google_play_services_unsupported_text = 2131558439;
+			public const int common_google_play_services_unknown_issue = 2131558439;
 			
 			// aapt resource value: 0x7F0D0028
-			public const int common_google_play_services_update_button = 2131558440;
+			public const int common_google_play_services_unsupported_text = 2131558440;
 			
 			// aapt resource value: 0x7F0D0029
-			public const int common_google_play_services_update_text = 2131558441;
+			public const int common_google_play_services_update_button = 2131558441;
 			
 			// aapt resource value: 0x7F0D002A
-			public const int common_google_play_services_update_title = 2131558442;
+			public const int common_google_play_services_update_text = 2131558442;
 			
 			// aapt resource value: 0x7F0D002B
-			public const int common_google_play_services_updating_text = 2131558443;
+			public const int common_google_play_services_update_title = 2131558443;
 			
 			// aapt resource value: 0x7F0D002C
-			public const int common_google_play_services_wear_update_text = 2131558444;
+			public const int common_google_play_services_updating_text = 2131558444;
 			
 			// aapt resource value: 0x7F0D002D
-			public const int common_open_on_phone = 2131558445;
+			public const int common_google_play_services_wear_update_text = 2131558445;
 			
 			// aapt resource value: 0x7F0D002E
-			public const int common_signin_button_text = 2131558446;
+			public const int common_open_on_phone = 2131558446;
 			
 			// aapt resource value: 0x7F0D002F
-			public const int common_signin_button_text_long = 2131558447;
+			public const int common_signin_button_text = 2131558447;
 			
 			// aapt resource value: 0x7F0D0030
-			public const int fab_transformation_scrim_behavior = 2131558448;
+			public const int common_signin_button_text_long = 2131558448;
 			
 			// aapt resource value: 0x7F0D0031
-			public const int fab_transformation_sheet_behavior = 2131558449;
+			public const int fab_transformation_scrim_behavior = 2131558449;
 			
 			// aapt resource value: 0x7F0D0032
-			public const int hide_bottom_view_on_scroll_behavior = 2131558450;
+			public const int fab_transformation_sheet_behavior = 2131558450;
 			
 			// aapt resource value: 0x7F0D0033
-			public const int mtrl_chip_close_icon_content_description = 2131558451;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558451;
 			
 			// aapt resource value: 0x7F0D0034
-			public const int password_toggle_content_description = 2131558452;
+			public const int mtrl_chip_close_icon_content_description = 2131558452;
 			
 			// aapt resource value: 0x7F0D0035
-			public const int path_password_eye = 2131558453;
+			public const int password_toggle_content_description = 2131558453;
 			
 			// aapt resource value: 0x7F0D0036
-			public const int path_password_eye_mask_strike_through = 2131558454;
+			public const int path_password_eye = 2131558454;
 			
 			// aapt resource value: 0x7F0D0037
-			public const int path_password_eye_mask_visible = 2131558455;
+			public const int path_password_eye_mask_strike_through = 2131558455;
 			
 			// aapt resource value: 0x7F0D0038
-			public const int path_password_strike_through = 2131558456;
+			public const int path_password_eye_mask_visible = 2131558456;
 			
 			// aapt resource value: 0x7F0D0039
-			public const int search_menu_title = 2131558457;
+			public const int path_password_strike_through = 2131558457;
 			
 			// aapt resource value: 0x7F0D003A
-			public const int status_bar_notification_info_overflow = 2131558458;
+			public const int search_menu_title = 2131558458;
+			
+			// aapt resource value: 0x7F0D003B
+			public const int status_bar_notification_info_overflow = 2131558459;
 			
 			static String()
 			{
@@ -14757,7 +14763,7 @@ namespace Xappy.Droid
 			// aapt resource value: 20
 			public const int AppCompatTextView_textLocale = 20;
 			
-			// aapt resource value: { 0x1010057,0x10100AE,0x7F030000,0x7F030001,0x7F030002,0x7F030003,0x7F030004,0x7F030005,0x7F030006,0x7F030007,0x7F030008,0x7F030009,0x7F03000A,0x7F03000B,0x7F03000C,0x7F03000E,0x7F03000F,0x7F030010,0x7F030011,0x7F030012,0x7F030013,0x7F030014,0x7F030015,0x7F030016,0x7F030017,0x7F030018,0x7F030019,0x7F03001A,0x7F03001B,0x7F03001C,0x7F03001D,0x7F03001E,0x7F030021,0x7F030022,0x7F030023,0x7F030024,0x7F030025,0x7F03002C,0x7F03003F,0x7F03004D,0x7F03004E,0x7F03004F,0x7F030050,0x7F030051,0x7F030057,0x7F030058,0x7F030069,0x7F03006E,0x7F03008F,0x7F030090,0x7F030091,0x7F030092,0x7F030093,0x7F030094,0x7F030095,0x7F030096,0x7F030097,0x7F03009A,0x7F0300A9,0x7F0300B2,0x7F0300B3,0x7F0300B4,0x7F0300B7,0x7F0300B9,0x7F0300C4,0x7F0300C5,0x7F0300C6,0x7F0300C7,0x7F0300C8,0x7F0300FD,0x7F03010B,0x7F030132,0x7F030133,0x7F030134,0x7F030135,0x7F030138,0x7F030139,0x7F03013A,0x7F03013B,0x7F03013C,0x7F03013D,0x7F03013E,0x7F03013F,0x7F030140,0x7F03016A,0x7F03016B,0x7F03016C,0x7F030172,0x7F030174,0x7F03017B,0x7F03017C,0x7F03017D,0x7F03017E,0x7F030187,0x7F030188,0x7F030189,0x7F03018A,0x7F030197,0x7F030198,0x7F0301AE,0x7F0301D5,0x7F0301D6,0x7F0301D7,0x7F0301D8,0x7F0301DA,0x7F0301DB,0x7F0301DC,0x7F0301DD,0x7F0301E0,0x7F0301E1,0x7F0301FC,0x7F0301FD,0x7F0301FE,0x7F0301FF,0x7F03020E,0x7F030210,0x7F030211,0x7F030212,0x7F030213,0x7F030214,0x7F030215,0x7F030216,0x7F030217,0x7F030218,0x7F030219 }
+			// aapt resource value: { 0x1010057,0x10100AE,0x7F030000,0x7F030001,0x7F030002,0x7F030003,0x7F030004,0x7F030005,0x7F030006,0x7F030007,0x7F030008,0x7F030009,0x7F03000A,0x7F03000B,0x7F03000C,0x7F03000E,0x7F03000F,0x7F030010,0x7F030011,0x7F030012,0x7F030013,0x7F030014,0x7F030015,0x7F030016,0x7F030017,0x7F030018,0x7F030019,0x7F03001A,0x7F03001B,0x7F03001C,0x7F03001D,0x7F03001E,0x7F030021,0x7F030022,0x7F030023,0x7F030024,0x7F030025,0x7F03002C,0x7F03003F,0x7F03004D,0x7F03004E,0x7F03004F,0x7F030050,0x7F030051,0x7F030057,0x7F030058,0x7F030069,0x7F03006E,0x7F03008F,0x7F030090,0x7F030091,0x7F030092,0x7F030093,0x7F030094,0x7F030095,0x7F030096,0x7F030097,0x7F03009A,0x7F0300A9,0x7F0300B2,0x7F0300B3,0x7F0300B4,0x7F0300B7,0x7F0300B9,0x7F0300C4,0x7F0300C5,0x7F0300C6,0x7F0300C7,0x7F0300C8,0x7F0300FD,0x7F03010B,0x7F030132,0x7F030133,0x7F030134,0x7F030135,0x7F030138,0x7F030139,0x7F03013A,0x7F03013B,0x7F03013C,0x7F03013D,0x7F03013E,0x7F03013F,0x7F030140,0x7F03016A,0x7F03016B,0x7F03016C,0x7F030172,0x7F030174,0x7F03017B,0x7F03017C,0x7F03017D,0x7F03017E,0x7F030187,0x7F030188,0x7F030189,0x7F03018A,0x7F030197,0x7F030198,0x7F0301AE,0x7F0301D5,0x7F0301D6,0x7F0301D7,0x7F0301D8,0x7F0301DA,0x7F0301DB,0x7F0301DC,0x7F0301DD,0x7F0301E0,0x7F0301E1,0x7F0301FC,0x7F0301FD,0x7F0301FE,0x7F0301FF,0x7F03020F,0x7F030211,0x7F030212,0x7F030213,0x7F030214,0x7F030215,0x7F030216,0x7F030217,0x7F030218,0x7F030219,0x7F03021A }
 			public static int[] AppCompatTheme = new int[] {
 					16842839,
 					16842926,
@@ -14873,8 +14879,7 @@ namespace Xappy.Droid
 					2130903549,
 					2130903550,
 					2130903551,
-					2130903566,
-					2130903568,
+					2130903567,
 					2130903569,
 					2130903570,
 					2130903571,
@@ -14883,7 +14888,8 @@ namespace Xappy.Droid
 					2130903574,
 					2130903575,
 					2130903576,
-					2130903577};
+					2130903577,
+					2130903578};
 			
 			// aapt resource value: 2
 			public const int AppCompatTheme_actionBarDivider = 2;
@@ -15777,7 +15783,7 @@ namespace Xappy.Droid
 			// aapt resource value: 7
 			public const int DrawerArrowToggle_thickness = 7;
 			
-			// aapt resource value: { 0x7F030035,0x7F030036,0x7F03003E,0x7F0300C9,0x7F0300DB,0x7F0300DC,0x7F0300F7,0x7F0300FF,0x7F03015C,0x7F030176,0x7F030180,0x7F03018D,0x7F03020C }
+			// aapt resource value: { 0x7F030035,0x7F030036,0x7F03003E,0x7F0300C9,0x7F0300DB,0x7F0300DC,0x7F0300F7,0x7F0300FF,0x7F03015C,0x7F030176,0x7F030180,0x7F03018D,0x7F03020D }
 			public static int[] FloatingActionButton = new int[] {
 					2130903093,
 					2130903094,
@@ -15791,7 +15797,7 @@ namespace Xappy.Droid
 					2130903414,
 					2130903424,
 					2130903437,
-					2130903564};
+					2130903565};
 			
 			// aapt resource value: 0
 			public const int FloatingActionButton_backgroundTint = 0;
@@ -16140,7 +16146,7 @@ namespace Xappy.Droid
 			// aapt resource value: 13
 			public const int LottieAnimationView_lottie_url = 13;
 			
-			// aapt resource value: { 0x7F030029,0x7F03005B,0x7F03005C,0x7F03005D,0x7F03005E,0x7F03005F,0x7F030060,0x7F030061,0x7F03011F,0x7F030120,0x7F030121,0x7F030122,0x7F030141,0x7F030152,0x7F030205,0x7F030206,0x7F030207,0x7F030208,0x7F030209,0x7F03020A,0x7F03020B,0x7F03020D,0x7F03021A }
+			// aapt resource value: { 0x7F030029,0x7F03005B,0x7F03005C,0x7F03005D,0x7F03005E,0x7F03005F,0x7F030060,0x7F030061,0x7F03011F,0x7F030120,0x7F030121,0x7F030122,0x7F030141,0x7F030152,0x7F030205,0x7F030206,0x7F030207,0x7F030208,0x7F030209,0x7F03020A,0x7F03020B,0x7F03020C,0x7F03020E,0x7F03021B }
 			public static int[] MapAttrs = new int[] {
 					2130903081,
 					2130903131,
@@ -16163,8 +16169,9 @@ namespace Xappy.Droid
 					2130903561,
 					2130903562,
 					2130903563,
-					2130903565,
-					2130903578};
+					2130903564,
+					2130903566,
+					2130903579};
 			
 			// aapt resource value: 0
 			public const int MapAttrs_ambientEnabled = 0;
@@ -16221,19 +16228,22 @@ namespace Xappy.Droid
 			public const int MapAttrs_uiScrollGestures = 17;
 			
 			// aapt resource value: 18
-			public const int MapAttrs_uiTiltGestures = 18;
+			public const int MapAttrs_uiScrollGesturesDuringRotateOrZoom = 18;
 			
 			// aapt resource value: 19
-			public const int MapAttrs_uiZoomControls = 19;
+			public const int MapAttrs_uiTiltGestures = 19;
 			
 			// aapt resource value: 20
-			public const int MapAttrs_uiZoomGestures = 20;
+			public const int MapAttrs_uiZoomControls = 20;
 			
 			// aapt resource value: 21
-			public const int MapAttrs_useViewLifecycle = 21;
+			public const int MapAttrs_uiZoomGestures = 21;
 			
 			// aapt resource value: 22
-			public const int MapAttrs_zOrderOnTop = 22;
+			public const int MapAttrs_useViewLifecycle = 22;
+			
+			// aapt resource value: 23
+			public const int MapAttrs_zOrderOnTop = 23;
 			
 			// aapt resource value: { 0x10101B7,0x10101B8,0x10101B9,0x10101BA,0x7F030035,0x7F030036,0x7F0300AB,0x7F030100,0x7F030102,0x7F030103,0x7F030104,0x7F030106,0x7F030107,0x7F030180,0x7F0301A3,0x7F0301A4 }
 			public static int[] MaterialButton = new int[] {
@@ -16750,7 +16760,7 @@ namespace Xappy.Droid
 			// aapt resource value: 0
 			public const int ScrollingViewBehavior_Layout_behavior_overlapTop = 0;
 			
-			// aapt resource value: { 0x10100DA,0x101011F,0x1010220,0x1010264,0x7F030082,0x7F03009B,0x7F0300B1,0x7F0300F1,0x7F030108,0x7F030123,0x7F030179,0x7F03017A,0x7F030185,0x7F030186,0x7F0301A6,0x7F0301AB,0x7F03020F }
+			// aapt resource value: { 0x10100DA,0x101011F,0x1010220,0x1010264,0x7F030082,0x7F03009B,0x7F0300B1,0x7F0300F1,0x7F030108,0x7F030123,0x7F030179,0x7F03017A,0x7F030185,0x7F030186,0x7F0301A6,0x7F0301AB,0x7F030210 }
 			public static int[] SearchView = new int[] {
 					16842970,
 					16843039,
@@ -16768,7 +16778,7 @@ namespace Xappy.Droid
 					2130903430,
 					2130903462,
 					2130903467,
-					2130903567};
+					2130903568};
 			
 			// aapt resource value: 0
 			public const int SearchView_android_focusable = 0;

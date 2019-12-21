@@ -12,6 +12,7 @@ using Android.Content.Res;
 using Xappy.Styles;
 
 [assembly: Android.App.MetaData("com.google.android.maps.v2.API_KEY", Value = Xappy.ApiConstants.GoogleMapsKey)]
+[assembly: UsesLibrary("org.apache.http.legacy", false)]
 namespace Xappy.Droid
 {
     [Activity(

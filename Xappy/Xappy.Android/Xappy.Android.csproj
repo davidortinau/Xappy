@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -69,6 +72,9 @@
     <PackageReference Include="Xamarin.AndroidX.Media" Version="1.1.0-preview06" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0-preview06" />
     <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.1.0-preview06" />
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>71.1610.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
