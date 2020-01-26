@@ -58,7 +58,7 @@ namespace Xappy.iOS.Renderers
                 var v = flyout.ViewController.View;
 
                 _flyoutBackground = new CAGradientLayer();
-                _flyoutBackground.Frame = new CGRect(0, 0, v.Bounds.Width, v.Bounds.Height); ;
+                _flyoutBackground.Frame = new CGRect(-83, 0, v.Bounds.Width, v.Bounds.Height);// why is the width not accurate?
                 _flyoutBackground.Colors = new CoreGraphics.CGColor[]
                 {
                     ((Color)App.LookupColor("flyoutGradientStart")).ToCGColor(),

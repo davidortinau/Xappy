@@ -3,6 +3,7 @@ using Android.Graphics.Drawables;
 using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Google.Android.Material.AppBar;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

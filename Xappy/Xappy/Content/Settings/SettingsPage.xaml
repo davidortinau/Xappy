@@ -27,7 +27,7 @@
                 </Grid.ColumnDefinitions>
                 <ImageButton
                     Aspect="AspectFit"
-                    BackgroundColor="transparent"
+                    BackgroundColor="Transparent"
                     VerticalOptions="Center"
                     Grid.Column="0"
                     Padding="5"
@@ -108,7 +108,6 @@ ItemSpacing="10"/>
                         Wrap="Wrap">
                 <CheckBox x:Name="ChkDefault"
                           IsChecked="{Binding IsVisualDefault}"
-                          Visual="Default"
                           FlexLayout.Basis="10%"
                           FlexLayout.AlignSelf="Center" />
                 <Label Text="Default"
@@ -116,7 +115,6 @@ ItemSpacing="10"/>
                        FlexLayout.Basis="90%"
                        FlexLayout.AlignSelf="Center" />
                 <CheckBox x:Name="ChkMaterial"
-                          Visual="Material"
                           IsChecked="{Binding IsVisualMaterial}"
                           FlexLayout.Basis="10%"
                           FlexLayout.AlignSelf="Center" />
