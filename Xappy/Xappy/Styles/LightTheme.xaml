@@ -5,6 +5,8 @@
              Source="DefaultTheme.xaml">
 
     <Color x:Key="backgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="NavBarColor">#FF0078D4</Color>
+    <Color x:Key="NavTitleColor">#FFFFFFFF</Color>
 
     <Color x:Key="TextPrimaryColor">#B0000000</Color>
     <Color x:Key="TextSecondaryColor">#80000000</Color>

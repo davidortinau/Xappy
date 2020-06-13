@@ -1,32 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
-             xmlns:blog="clr-namespace:Xappy.Content.Blog"
-            Style="{DynamicResource backgroundStyle}"
-            Title="Latest News"
-             x:Class="Xappy.Content.Blog.BlogPage">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
+    xmlns:blog="clr-namespace:Xappy.Content.Blog"
+    xmlns:dual="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
+    Style="{DynamicResource backgroundStyle}"
+    Title="Latest News"
+    x:Class="Xappy.Content.Blog.BlogPage">
 
     <ContentPage.BindingContext>
-        <blog:BlogViewModel/>
+        <blog:BlogViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <CollectionView
-            ItemsSource="{Binding Items}"
-            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-            SelectionChangedCommand="{Binding SelectCommand}"
-            SelectionMode="Single">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout
-                    Orientation="Vertical"
-                    Span="2" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="blog:BlogItem">
-                    <blog:BlogView/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <dual:TwoPaneView>
+            <dual:TwoPaneView.Pane1>
+                <CollectionView
+                    ItemsSource="{Binding Items}"
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            Orientation="Vertical"
+                            Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                            x:DataType="blog:BlogItem">
+                            <blog:BlogView />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </dual:TwoPaneView.Pane1>
+        </dual:TwoPaneView>
+
     </ContentPage.Content>
 </ContentPage>

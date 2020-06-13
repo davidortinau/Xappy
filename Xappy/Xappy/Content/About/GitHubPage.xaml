@@ -6,6 +6,7 @@
     xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
     x:Class="Xappy.About.GitHubPage"
     Title="About"
+    BackgroundColor="{DynamicResource backgroundColor}"
     Shell.TabBarIsVisible="false">
     <ContentPage.BindingContext>
         <viewModels:GitHubViewModel />
@@ -27,8 +28,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid
-                        Padding="12"
-                        BackgroundColor="White"
+                        Padding="12"                        
                         ColumnSpacing="0"
                         RowSpacing="2">
                         <Grid.RowDefinitions>
@@ -49,7 +49,7 @@
                             Grid.Row="0" />
                         <Label
                             Text="{Binding Login}"
-                            Style="{StaticResource TextBody}"
+                            Style="{DynamicResource TextBody}"
                             LineBreakMode="NoWrap"
                             HorizontalOptions="FillAndExpand"
                             HorizontalTextAlignment="Center"

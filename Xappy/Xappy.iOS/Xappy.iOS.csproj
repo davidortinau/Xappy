@@ -169,11 +169,14 @@
       <Version>3.1.1.1-beta</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials" Version="1.4.0-pre2" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.5.0.187-pre2" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.187-pre2" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.5.0.187-pre2" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.314-nightly" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.314-nightly" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.6.0.314-nightly" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
-      <Version>3.0.3</Version>
+      <Version>3.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.DualScreen">
+      <Version>4.6.0.314-nightly</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
