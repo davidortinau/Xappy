@@ -28,9 +28,21 @@
     <Color x:Key="flyoutGradientEnd">#FF14D9D9</Color>
     <Color x:Key="navBarTitleColor" />
 
+    <!-- Theme Colors -->
+    <Color x:Key="BackgroundColor_Dark">#FF000000</Color>
+    <Color x:Key="TextPrimaryColor_Dark">#B0FFFFFF</Color>
+    <Color x:Key="TextSecondaryColor_Dark">#B0FFFFFF</Color>
+    <Color x:Key="TextTernaryColor_Dark">#C8C8C8</Color>
+    <Color x:Key="BackgroundColor_Light">#FFFFFFFF</Color>
+    <Color x:Key="TextPrimaryColor_Light">#B0000000</Color>
+    <Color x:Key="TextSecondaryColor_Light">#B0000000</Color>
+    <Color x:Key="TextTernaryColor_Light">#C8C8C8</Color>
+
+
     <Style x:Key="backgroundStyle" TargetType="VisualElement">
         <Setter Property="BackgroundColor" 
-                Value="{DynamicResource backgroundColor}" />
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
+            Light={StaticResource BackgroundColor_Light}}" />
     </Style>
     
     <Color x:Key="AccentColor">DodgerBlue</Color>
@@ -39,7 +51,8 @@
     <Style x:Key="BaseStyle"
            TargetType="Element">
         <Setter Property="Shell.BackgroundColor"
-                Value="{DynamicResource backgroundColor}" />
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
+            Light={StaticResource BackgroundColor_Light}}" />
         <Setter Property="Shell.ForegroundColor"
                 Value="#1d1d1d" />
         <Setter Property="Shell.TitleColor"
@@ -59,6 +72,69 @@
         <Setter Property="HeightRequest" Value="1"/>
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         <Setter Property="BackgroundColor" Value="#CCCCCC"/>
+    </Style>
+
+    <x:Double x:Key="TextSizeHeadline">20</x:Double>
+    <x:Double x:Key="TextSizeTitle">18</x:Double>
+    <x:Double x:Key="TextSizeSubhead">16</x:Double>
+    <x:Double x:Key="TextSizeBody">14</x:Double>
+    <x:Double x:Key="TextSizeCaption">12</x:Double>
+    <x:Double x:Key="TextSizeSmallCaption">11</x:Double>
+
+    
+
+    <Style x:Key="TextHeadline" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
+            Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
+    </Style>
+
+    <Style x:Key="TextTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
+            Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeTitle}" />
+    </Style>
+
+    <Style x:Key="TextSubhead" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
+            Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
+    </Style>
+
+    <Style x:Key="TextSubheadSecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark},
+            Light={StaticResource TextSecondaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
+    </Style>
+
+    <Style x:Key="TextBody" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
+            Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+    </Style>
+
+    <Style x:Key="TextBodySecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
+            Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+    </Style>
+
+    <Style x:Key="TextCaption" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
+            Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
+    </Style>
+
+    <Style x:Key="TextSmallCaption"
+           BasedOn="{StaticResource TextCaption}"
+           TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeSmallCaption}" />
+    </Style>
+
+    <Style x:Key="TextCaptionSecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark},
+            Light={StaticResource TextSecondaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
     </Style>
 
     <converters:TypeToIconConverter x:Key="TypeToIconConverter" />

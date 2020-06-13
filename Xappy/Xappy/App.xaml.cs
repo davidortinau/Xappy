@@ -17,6 +17,13 @@ namespace Xappy
 
         public App()
         {
+            Device.SetFlags(new string[]
+            {
+                "CarouselView_Experimental",
+                "AppTheme_Experimental",
+                "Shapes_Experimental"
+            });
+
             InitializeComponent();
 
             DependencyService.Register<AppModel>();
