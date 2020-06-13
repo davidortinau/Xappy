@@ -56,11 +56,12 @@
         <Setter Property="Shell.ForegroundColor"
                 Value="#1d1d1d" />
         <Setter Property="Shell.TitleColor"
-                Value="{DynamicResource cerulean}" />
+                Value="{DynamicResource NavTitleColor}" />
         <Setter Property="Shell.DisabledColor"
                 Value="#B4FFFFFF" />
         <Setter Property="Shell.UnselectedColor"
                 Value="#CC0000" />
+        
     </Style>
 
     <Style BasedOn="{StaticResource BaseStyle}"

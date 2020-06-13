@@ -17,8 +17,11 @@
                                  Margin="12,0,12,0">
                         <Label Text="{Binding Icon}"
                                FontFamily="{StaticResource FontAwesome}"
+                               Style="{DynamicResource TextHeadline}"
                                VerticalOptions="Center" />
-                        <Label Text="{Binding Version}" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding Version}"
+                               Style="{DynamicResource TextHeadline}"
+                               VerticalOptions="Center" HorizontalOptions="Start" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
@@ -27,7 +30,9 @@
                     <StackLayout Orientation="Horizontal"
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                                  Margin="12,0,12,0">
-                        <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding Description}"
+                               Style="{DynamicResource TextTitle}"
+                               VerticalOptions="Center" HorizontalOptions="Start" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
@@ -36,7 +41,9 @@
                     <StackLayout Orientation="Horizontal"
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                                  Margin="12,0,12,0">
-                        <Label Text="{Binding Description}" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="{Binding Description}"
+                               Style="{DynamicResource TextBody}"
+                               VerticalOptions="Center" HorizontalOptions="Start" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

@@ -10,8 +10,9 @@ using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
 using Android.Content.Res;
 using Xappy.Styles;
+using Xamarin.Forms.DualScreen;
 
-[assembly: Android.App.MetaData("com.google.android.maps.v2.API_KEY", Value = Xappy.ApiConstants.GoogleMapsKey)]
+[assembly: Android.App.MetaData("com.google.android.maps.v2.API_KEY", Value = Xappy.ApiConstants.GoogleMapsKey),]
 namespace Xappy.Droid
 {
     [Activity(
@@ -19,13 +20,15 @@ namespace Xappy.Droid
         Icon = "@mipmap/icon", 
         Theme = "@style/MainTheme.Launcher", 
         MainLauncher = true, 
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode)]
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static MainActivity Instance { get; private set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            DualScreenService.Init(this);
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
