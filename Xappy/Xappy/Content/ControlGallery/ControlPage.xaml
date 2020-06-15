@@ -95,7 +95,7 @@
                     <Label
                         Grid.Column="0"
                         VerticalOptions="Center"
-                        FontFamily="{StaticResource FontAwesome}"
+                        FontFamily="FontAwesome"
                         Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
                         TextColor="Black"
                         FontSize="18" />
@@ -141,7 +141,7 @@
                     <Label
                         Grid.Column="0"
                         VerticalOptions="Center"
-                        FontFamily="{StaticResource FontAwesome}"
+                        FontFamily="FontAwesome"
                         Text="{Binding PropertyType, Converter={StaticResource TypeToIconConverter}}"
                         TextColor="Black"
                         FontSize="18" />

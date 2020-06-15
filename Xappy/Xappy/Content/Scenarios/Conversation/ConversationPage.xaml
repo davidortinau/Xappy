@@ -22,13 +22,13 @@
             </Style>
 
             <FontImageSource x:Key="ButtonSent"
-                             FontFamily="{StaticResource FontAwesome}"
+                             FontFamily="FontAwesome"
                              Glyph="{x:Static xappy:IconFont.PaperPlane}"
                              Size="24"
                              Color="{StaticResource white}" />
 
             <FontImageSource x:Key="ButtonSentDisabled"
-                             FontFamily="{StaticResource FontAwesome}"
+                             FontFamily="FontAwesome"
                              Glyph="{x:Static xappy:IconFont.PaperPlane}"
                              Size="24"
                              Color="{StaticResource brown_grey}" />

@@ -235,7 +235,7 @@
                                     TextColor="#1d1d1d">
                                     <Button.ImageSource>
                                         <FontImageSource
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Glyph="{x:Static local:IconFont.Star}"
                                             Size="12"
                                             Color="#1d1d1d" />
@@ -365,7 +365,7 @@
                                     <ColumnDefinition Width="44" />
                                 </Grid.ColumnDefinitions>
                                 <Label
-                                    FontFamily="{StaticResource FontAwesome}"
+                                    FontFamily="FontAwesome"
                                     FontSize="24"
                                     TextColor="Blue"
                                     VerticalOptions="Center"
@@ -462,7 +462,7 @@
                                         FlexLayout.Basis="50%"
                                         Margin="0,0,0,15">
                                         <Label 
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.Star}"
                                             VerticalOptions="Center"/>
                                         <Label 
@@ -474,7 +474,7 @@
                                         FlexLayout.Basis="50%"
                                         Margin="0,0,0,15">
                                         <Label 
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.Eye}"
                                             VerticalOptions="Center"/>
                                         <Label 
@@ -486,7 +486,7 @@
                                         FlexLayout.Basis="50%"
                                         Margin="0,0,0,15">
                                         <Label 
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.BowlingBall}"
                                             VerticalOptions="Center"/>
                                         <Label 
@@ -505,7 +505,7 @@
                                     <StackLayout>
                                         <Label 
                                             FontSize="40"
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.CreditCard}"
                                             HorizontalTextAlignment="Center"/>
                                         <Label 
@@ -517,7 +517,7 @@
                                     <StackLayout>
                                         <Label 
                                             FontSize="40"
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.CreditCard}"
                                             HorizontalTextAlignment="Center"/>
                                         <Label 
@@ -529,7 +529,7 @@
                                     <StackLayout>
                                         <Label 
                                             FontSize="40"
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.CreditCard}"
                                             HorizontalTextAlignment="Center"/>
                                         <Label 
@@ -541,7 +541,7 @@
                                     <StackLayout>
                                         <Label 
                                             FontSize="40"
-                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.CreditCard}"
                                             HorizontalTextAlignment="Center"/>
                                         <Label 
@@ -753,7 +753,7 @@
                 FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
+                        FontFamily="FontAwesome"
                         Glyph="{x:Static local:IconFont.ChevronLeft}"
                         Color="{StaticResource white}" />
                 </ImageButton.Source>
@@ -804,7 +804,7 @@
                 FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
+                        FontFamily="FontAwesome"
                         Glyph="{x:Static local:IconFont.ChevronLeft}"
                         Color="{StaticResource almost_black}" />
                 </ImageButton.Source>

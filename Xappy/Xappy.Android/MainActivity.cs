@@ -50,31 +50,5 @@ namespace Xappy.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-
-
-        public override void OnConfigurationChanged(Configuration newConfig)
-        {
-            base.OnConfigurationChanged(newConfig);
-
-            if ((newConfig.UiMode & UiMode.NightNo) != 0)
-            {
-                if (App.AppTheme != "dark")
-                    return;
-                App.Current.Resources = new LightTheme();
-                App.AppTheme = "light";
-
-            }
-            else
-            {
-                // Night mode is active, we're using dark theme
-                if (App.AppTheme == "dark")
-                    return;
-                //Add a Check for App Theme since this is called even when not changed really
-
-                App.Current.Resources = new DarkTheme();
-                App.AppTheme = "dark";
-            }
-        }
-
     }
 }

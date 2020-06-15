@@ -75,6 +75,9 @@
     <PackageReference Include="Xamarin.DuoSdk">
       <Version>0.0.3.2</Version>
     </PackageReference>
+    <PackageReference Include="Resizetizer.NT">
+      <Version>0.1.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -113,27 +116,16 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\xamagon_preview.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\guitar3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Xappy\Xappy.csproj">
       <Project>{AB03FC9C-B52B-4D35-A442-FBF2EF30F85D}</Project>
       <Name>Xappy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\fa-solid-900.ttf" />
     <AndroidAsset Include="Assets\login.json" />
-    <AndroidAsset Include="Assets\FabMDL2.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\network_security_config.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\guitar2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\guitar1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\ApiConstants.targets" />

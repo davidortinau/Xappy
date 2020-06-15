@@ -77,7 +77,6 @@
     <Compile Include="Renderers\XappyShellRenderer.cs" />
     <Compile Include="Renderers\GradientViewRenderer.cs" />
     <Compile Include="Renderers\PressableViewRenderer.cs" />
-    <Compile Include="Renderers\PageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -174,7 +173,10 @@
       <Version>3.0.4</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.DualScreen">
-      <Version>4.6.0.314-nightly</Version>
+      <Version>4.7.0.937-pre4</Version>
+    </PackageReference>
+    <PackageReference Include="Resizetizer.NT">
+      <Version>0.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -185,25 +187,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\3bar%402x.png" />
-    <BundleResource Include="Resources\3bar.png" />
     <BundleResource Include="Resources\login.json" />
-    <BundleResource Include="Resources\FabMDL2.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\fa-solid-900.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\MicrosoftLogo.imageset\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\guitar3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\guitar2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\guitar1.jpg" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

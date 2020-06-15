@@ -17,8 +17,14 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <dual:TwoPaneView>
-
+        <dual:TwoPaneView
+            PanePriority="Pane1"
+            TallModeConfiguration="SinglePane"
+            WideModeConfiguration="LeftRight"
+            MinWideModeWidth="800"
+            Pane1Length="3*"
+            Pane2Length="1*"
+            >
             <dual:TwoPaneView.Pane1>
                 <ScrollView>
                     <StackLayout

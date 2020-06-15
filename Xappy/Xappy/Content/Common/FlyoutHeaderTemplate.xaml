@@ -27,7 +27,7 @@
         HorizontalOptions="End">
         <Image.Source>
             <FontImageSource
-                FontFamily="{StaticResource FontAwesome}"
+                FontFamily="FontAwesome"
                 Glyph="{x:Static local:IconFont.PaintBrush}"
                 Color="White"
                 Size="16" />

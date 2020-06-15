@@ -34,7 +34,7 @@
                     Clicked="Handle_CloseClicked">
                     <ImageButton.Source>
                         <FontImageSource
-                            FontFamily="{StaticResource FontAwesome}"
+                            FontFamily="FontAwesome"
                             Glyph="{x:Static local:IconFont.Times}"
                             Color="{StaticResource cerulean}" />
                     </ImageButton.Source>

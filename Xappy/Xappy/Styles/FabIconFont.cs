@@ -1,4 +1,7 @@
 ﻿
+using Xamarin.Forms;
+
+[assembly:ExportFont("FabMDL2.ttf", Alias = "Fabric")]
 namespace Xappy
 {
 

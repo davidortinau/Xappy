@@ -21,11 +21,11 @@ namespace Xappy.Content.Settings
             {
                 if (SelectedTheme.ToLower() == "dark")
                 {
-                    Application.Current.Resources = new DarkTheme();
+                    Application.Current.UserAppTheme = OSAppTheme.Dark;
                 }
                 else
                 {
-                    Application.Current.Resources = new LightTheme();
+                    Application.Current.UserAppTheme = OSAppTheme.Light;
                 }
 
                 App.AppTheme = SelectedTheme.ToLower();
@@ -83,11 +83,11 @@ namespace Xappy.Content.Settings
 
                 if(UseDarkMode && App.AppTheme != "dark")
                 {
-                    App.Current.Resources = new DarkTheme();
+                    Application.Current.UserAppTheme = OSAppTheme.Dark;
                     App.AppTheme = "dark";
                 }else if(!UseDarkMode && App.AppTheme == "dark")
                 {
-                    App.Current.Resources = new LightTheme();
+                    Application.Current.UserAppTheme = OSAppTheme.Light;
                     App.AppTheme = "light";
                 }
             }

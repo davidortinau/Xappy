@@ -150,7 +150,7 @@
                      HorizontalOptions="Start" VerticalOptions="Start">
             <ImageButton.Source>
                 <FontImageSource
-                        FontFamily="{StaticResource FontAwesome}"
+                        FontFamily="FontAwesome"
                         Glyph="{x:Static app:IconFont.ChevronLeft}"
                         Color="{DynamicResource backgroundColor}" />
             </ImageButton.Source>

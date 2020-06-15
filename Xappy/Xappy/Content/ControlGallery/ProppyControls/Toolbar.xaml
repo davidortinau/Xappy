@@ -39,7 +39,7 @@
                 Clicked="ImageButton_OnClicked"
                 >
                 <ImageButton.Source>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                    <FontImageSource FontFamily="FontAwesome"
                                      Color="#f1f1f1"
                                      Glyph="{x:Static local:IconFont.FileCode}" />
                 </ImageButton.Source>
@@ -51,7 +51,7 @@
                 HeightRequest="45"
                 BackgroundColor="Transparent">
                 <ImageButton.Source>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                    <FontImageSource FontFamily="FontAwesome"
                                      Color="#f1f1f1"
                                      Glyph="{x:Static local:IconFont.Undo}" />
                 </ImageButton.Source>
@@ -63,7 +63,7 @@
                 HeightRequest="45"
                 BackgroundColor="Transparent">
                 <ImageButton.Source>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                    <FontImageSource FontFamily="FontAwesome"
                                      Color="#f1f1f1"
                                      Glyph="{x:Static local:IconFont.Redo}" />
                 </ImageButton.Source>
@@ -75,7 +75,7 @@
                 HeightRequest="45"
                 BackgroundColor="Transparent">
                 <ImageButton.Source>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                    <FontImageSource FontFamily="FontAwesome"
                                      Color="#f1f1f1"
                                      Glyph="{x:Static local:IconFont.Reply}" />
                 </ImageButton.Source>
@@ -100,7 +100,7 @@
                 BackgroundColor="Transparent"
                 InputTransparent="true">
                 <ImageButton.Source>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                    <FontImageSource FontFamily="FontAwesome"
                                      Glyph="{x:Static local:IconFont.ChevronLeft}"
                                      Size="16"
                                      Color="#000000"
@@ -132,7 +132,7 @@
             HorizontalOptions="Center"
             >
             <ImageButton.Source>
-                <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                <FontImageSource FontFamily="FontAwesome"
                                  Color="#000000"
                                  Size="16"
                                  Glyph="{x:Static local:IconFont.ChevronUp}" />
