@@ -44,6 +44,12 @@
                 Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
             Light={StaticResource BackgroundColor_Light}}" />
     </Style>
+
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
+            Light={StaticResource BackgroundColor_Light}}" />
+    </Style>
     
     <Color x:Key="AccentColor">DodgerBlue</Color>
     <Color x:Key="ColorPrimary">#F1F1F1</Color>

@@ -11,8 +11,7 @@
     Title="Craft Your Experience"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
-    Shell.TabBarIsVisible="{Binding IsTabBarVisible}"
-    BackgroundColor="{DynamicResource backgroundColor}">
+    Shell.TabBarIsVisible="{Binding IsTabBarVisible}">
 
     <ContentPage.BindingContext>
         <views:SettingsViewModel x:Name="vm" />
@@ -20,11 +19,7 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="44" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <Grid ColumnDefinitions="44,*">
                 <ImageButton
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
@@ -96,7 +91,16 @@ ItemSpacing="10"/>
                 Orientation="Horizontal"
                 Spacing="10">
                 <CheckBox IsChecked="{Binding UseDarkMode}" VerticalOptions="Center"/>
-                <Label Text="Dark mode"
+                <Label Text="Dark Theme"
+                       Style="{StaticResource TextBody}" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout
+                IsVisible="{Binding UseDeviceThemeSettings, Converter={StaticResource InvertedBoolConverter}}"
+                Orientation="Horizontal"
+                Spacing="10">
+                <CheckBox IsChecked="{Binding UseLightMode}" VerticalOptions="Center"/>
+                <Label Text="Light Theme"
                        Style="{StaticResource TextBody}" VerticalOptions="Center"/>
             </StackLayout>
 

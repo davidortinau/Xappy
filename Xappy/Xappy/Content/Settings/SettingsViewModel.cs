@@ -79,17 +79,34 @@ namespace Xappy.Content.Settings
             set
             {
                 DependencyService.Get<AppModel>().UseDarkMode = value;
-                OnPropertyChanged(nameof(UseDarkMode));
+                UpdateThemeMode();
+            }
+        }
 
-                if(UseDarkMode && App.AppTheme != "dark")
-                {
-                    Application.Current.UserAppTheme = OSAppTheme.Dark;
-                    App.AppTheme = "dark";
-                }else if(!UseDarkMode && App.AppTheme == "dark")
-                {
-                    Application.Current.UserAppTheme = OSAppTheme.Light;
-                    App.AppTheme = "light";
-                }
+        public bool UseLightMode
+        {
+            get => DependencyService.Get<AppModel>().UseDarkMode == false;
+            set
+            {
+                DependencyService.Get<AppModel>().UseDarkMode = !value;
+                UpdateThemeMode();
+            }
+        }
+
+        private void UpdateThemeMode()
+        {
+            OnPropertyChanged(nameof(UseDarkMode));
+            OnPropertyChanged(nameof(UseLightMode));
+
+            if (UseDarkMode && App.AppTheme != "dark")
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Dark;
+                App.AppTheme = "dark";
+            }
+            else if (!UseDarkMode && App.AppTheme == "dark")
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Light;
+                App.AppTheme = "light";
             }
         }
 
@@ -99,6 +116,7 @@ namespace Xappy.Content.Settings
             set
             {
                 DependencyService.Get<AppModel>().UseDeviceThemeSettings = value;
+                Application.Current.UserAppTheme = OSAppTheme.Unspecified;
                 OnPropertyChanged(nameof(UseDeviceThemeSettings));
             }
         }
