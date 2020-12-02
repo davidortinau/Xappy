@@ -67,7 +67,7 @@
                 <lottie:AnimationView Animation="login.json"
                                       AutoPlay="true"
                                       HeightRequest="120"
-                                      Loop="true" />
+                                      RepeatMode="Infinite" />
 
                 <!-- Form Selector -->
                 <Grid Margin="40,0"

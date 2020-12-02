@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lottie.Forms.Platforms.Ios;
 
 using Foundation;
 
@@ -29,7 +30,8 @@ namespace Xappy.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();
-            Lottie.Forms.iOS.Renderers.AnimationViewRenderer.Init();
+            //Lottie.Forms.Platforms.Ios.AnimationViewRenderer.
+            //Lottie.Forms.iOS.Renderers.AnimationViewRenderer.Init();
             ImageCircleRenderer.Init();
             Xamarin.FormsMaps.Init();
 

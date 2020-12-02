@@ -165,18 +165,18 @@
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.1.1.1-beta</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Essentials" Version="1.4.0-pre2" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.7.0.937-pre4" />
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.937-pre4" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.937-pre4" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.1709-pre4" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.1709-pre4" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
-      <Version>3.0.4</Version>
+      <Version>4.0.7</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.DualScreen">
-      <Version>4.7.0.937-pre4</Version>
+      <Version>5.0.0.1709-pre4</Version>
     </PackageReference>
     <PackageReference Include="Resizetizer.NT">
-      <Version>0.1.0</Version>
+      <Version>0.2.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

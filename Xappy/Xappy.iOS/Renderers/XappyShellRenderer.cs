@@ -31,20 +31,20 @@ namespace Xappy.iOS.Renderers
             return (IShellSectionRenderer)renderer;
         }
 
-        protected override IShellFlyoutContentRenderer CreateShellFlyoutContentRenderer()
-        {
+        //protected override IShellFlyoutContentRenderer CreateShellFlyoutContentRenderer()
+        //{
 
-            var flyout = base.CreateShellFlyoutContentRenderer();
-            flyout.WillAppear += OnFlyoutWillAppear;
+        //    var flyout = base.CreateShellFlyoutContentRenderer();
+        //    flyout.WillAppear += OnFlyoutWillAppear;
 
-            var tv = (UITableView)flyout.ViewController.View.Subviews[0];
-            tv.ScrollEnabled = false;
+        //    var tv = (UITableView)flyout.ViewController.View.Subviews[0];
+        //    tv.ScrollEnabled = false;
 
-            var tvs = (ShellTableViewSource)tv.Source;
-            tvs.Groups.RemoveAt(1); // this is a total hack to hide the separator that appears when there are multiple groups
+        //    var tvs = (ShellTableViewSource)tv.Source;
+        //    tvs.Groups.RemoveAt(1); // this is a total hack to hide the separator that appears when there are multiple groups
 
-            return flyout;
-        }
+        //    return flyout;
+        //}
 
         /// <summary>
         /// Only grab the bounds of the View when View rendering calculations are already done
