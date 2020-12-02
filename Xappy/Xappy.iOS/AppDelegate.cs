@@ -4,9 +4,6 @@ using System.Linq;
 using Lottie.Forms.Platforms.Ios;
 
 using Foundation;
-
-using ImageCircle.Forms.Plugin.iOS;
-
 using UIKit;
 
 namespace Xappy.iOS
@@ -26,13 +23,9 @@ namespace Xappy.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CarouselView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();
-            //Lottie.Forms.Platforms.Ios.AnimationViewRenderer.
-            //Lottie.Forms.iOS.Renderers.AnimationViewRenderer.Init();
-            ImageCircleRenderer.Init();
             Xamarin.FormsMaps.Init();
 
             return base.FinishedLaunching(app, options);

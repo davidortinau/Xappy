@@ -1,5 +1,4 @@
-﻿using ImageCircle.Forms.Plugin.Abstractions;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Xappy.Content.Scenarios.Login
@@ -9,7 +8,7 @@ namespace Xappy.Content.Scenarios.Login
     {
         private Grid MainGrid;
         private StackLayout LoginControls, SignupControls;
-        private CircleImage AvatarImage;
+        private Image AvatarImage;
 
         public LoginViewModel ViewModel = new LoginViewModel();
 

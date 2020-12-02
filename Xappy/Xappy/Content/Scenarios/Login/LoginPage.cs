@@ -1,6 +1,6 @@
 ﻿using CSharpForMarkup;
-using ImageCircle.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
+using Xamarin.Forms.Shapes;
 using static CSharpForMarkup.EnumsForGridRowsAndColumns;
 using static Xappy.Content.Scenarios.Login.LoginPageExtensions;
 
@@ -22,7 +22,7 @@ namespace Xappy.Content.Scenarios.Login
                 ),
 
                 Children = {
-                    new CircleImage { }
+                    new Image { Clip = new EllipseGeometry(new Point(70,70),70,70) }
                         .Assign (out AvatarImage)
                         .Row (Row.Avatar) .Center () .Size (140)
                         .Bind (nameof(ViewModel.AvatarUri)),

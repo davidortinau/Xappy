@@ -162,9 +162,6 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
-      <Version>3.1.1.1-beta</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.1709-pre4" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
