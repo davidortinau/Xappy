@@ -76,7 +76,7 @@
                       Rotation="180">
                     <Frame Margin="20,0,10,0"
                            Padding="5"
-                           BackgroundColor="{StaticResource AccentColor}"
+                           BackgroundColor="{StaticResource ThemeTertiary}"
                            HorizontalOptions="End"
                            VerticalOptions="Fill"
                            CornerRadius="20"

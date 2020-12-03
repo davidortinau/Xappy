@@ -29,7 +29,7 @@
     <Color x:Key="navBarTitleColor" />
 
     <!-- Theme Colors -->
-    <Color x:Key="BackgroundColor_Dark">#FF000000</Color>
+    <!--<Color x:Key="BackgroundColor_Dark">#FF000000</Color>
     <Color x:Key="TextPrimaryColor_Dark">#B0FFFFFF</Color>
     <Color x:Key="TextSecondaryColor_Dark">#B0FFFFFF</Color>
     <Color x:Key="TextTernaryColor_Dark">#C8C8C8</Color>
@@ -38,59 +38,117 @@
     <Color x:Key="TextSecondaryColor_Light">#B0000000</Color>
     <Color x:Key="TextTernaryColor_Light">#C8C8C8</Color>
 
+    <SolidColorBrush x:Key="DarkBrush" Color="#605E5D" />
+    <SolidColorBrush x:Key="LightBrush" Color="White" />
+    <SolidColorBrush x:Key="ThemePrimaryBrush" Color="{StaticResource ThemePrimary}" />
+    <SolidColorBrush x:Key="ThemeTertiaryBrush" Color="{StaticResource ThemeTertiary}" />
+    <SolidColorBrush x:Key="ThemeSecondaryBrush" Color="{StaticResource ThemeSecondary}" />-->
 
-    <Style x:Key="backgroundStyle" TargetType="VisualElement">
-        <Setter Property="BackgroundColor" 
-                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
-            Light={StaticResource BackgroundColor_Light}}" />
-    </Style>
+    <!-- COLORS -->
+    <Color x:Key="ThemePrimary">#fd7b38</Color>
+    <Color x:Key="ThemeLighterAlt">#fff7f5</Color>
+    <Color x:Key="ThemeLighter">#ffded6</Color>
+    <Color x:Key="ThemeTertiary">#ffc200</Color>
+    <Color x:Key="ThemeSecondary">#2e2545</Color>
+    <Color x:Key="ThemeDarkAlt">#e62e00</Color>
+    <Color x:Key="ThemeDark">#c22700</Color>
+    <Color x:Key="ThemeDarker">#8f1d00</Color>
 
-    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor" 
-                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
-            Light={StaticResource BackgroundColor_Light}}" />
-    </Style>
-    
-    <Color x:Key="AccentColor">DodgerBlue</Color>
-    <Color x:Key="ColorPrimary">#F1F1F1</Color>
+    <Color x:Key="NeutralLighterAlt">#f8f8f8</Color>
+    <Color x:Key="NeutralLighter">#f4f4f4</Color>
+    <Color x:Key="NeutralLight">#eaeaea</Color>
+    <Color x:Key="NeutralQuaternaryAlt">#dadada</Color>
+    <Color x:Key="NeutralQuaternary">#d0d0d0</Color>
+    <Color x:Key="NeutralTertiaryAlt">#c8c8c8</Color>
+    <Color x:Key="NeutralTertiary">#bab8b7</Color>
+    <Color x:Key="NeutralSecondaryAlt">#a3a2a0</Color>
+    <Color x:Key="NeutralSecondary">#a3a2a0</Color>
+    <Color x:Key="NeutralPrimaryAlt">#8d8b8a</Color>
+    <Color x:Key="NeutralPrimary">#323130</Color>
+    <Color x:Key="NeutralDark">#605e5d</Color>
+    <Color x:Key="Black">#494847</Color>
+    <Color x:Key="White">#ffffff</Color>
 
-    <Style x:Key="BaseStyle"
-           TargetType="Element">
-        <Setter Property="Shell.BackgroundColor"
-                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark},
-            Light={StaticResource BackgroundColor_Light}}" />
-        <Setter Property="Shell.ForegroundColor"
-                Value="#1d1d1d" />
-        <Setter Property="Shell.TitleColor"
-                Value="{DynamicResource NavTitleColor}" />
-        <Setter Property="Shell.DisabledColor"
-                Value="#B4FFFFFF" />
-        <Setter Property="Shell.UnselectedColor"
-                Value="#CC0000" />
-        
-    </Style>
+    <!-- THEME COLORS -->
+    <Color x:Key="BackgroundColorDark">#212121</Color>
+    <Color x:Key="BackgroundColorLight">#ffffff</Color>
+    <Color x:Key="TextPrimaryColor_Dark">#939393</Color>
+    <Color x:Key="TextPrimaryColor_Light">#000000</Color>
+    <Color x:Key="TextSecondaryColor_Dark">#FFFFFF</Color>
+    <Color x:Key="TextSecondaryColor_Light">#a3a2a0</Color>
+    <Color x:Key="TaskCompleted_Light">#767676</Color>
+    <Color x:Key="TaskCompleted_Dark">#767676</Color>
 
-    <Style BasedOn="{StaticResource BaseStyle}"
-           ApplyToDerivedTypes="True"
-           TargetType="FlyoutItem" />
+    <!-- SEMANTIC COLORS -->
+    <Color x:Key="Success">#FF3300</Color>
+    <Color x:Key="Info">#ffded6</Color>
+    <Color x:Key="Warning">#ff4b1f</Color>
 
-    <Style x:Key="HRule"
-           TargetType="BoxView">
-        <Setter Property="HeightRequest" Value="1"/>
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-        <Setter Property="BackgroundColor" Value="#CCCCCC"/>
-    </Style>
+    <Color x:Key="FlyoutGradientStart">#FF017ED8</Color>
+    <Color x:Key="FlyoutGradientEnd">#FF14D9D9</Color>
+    <Color x:Key="NavBarTitleColor">#FFFFFF</Color>
 
-    <x:Double x:Key="TextSizeHeadline">20</x:Double>
-    <x:Double x:Key="TextSizeTitle">18</x:Double>
-    <x:Double x:Key="TextSizeSubhead">16</x:Double>
+    <Color x:Key="TitleColor">#FFFFFF</Color>
+
+    <!-- BRUSHES -->
+    <Color
+        x:Key="Yellow">#FDEE3D</Color>
+    <Color
+        x:Key="Teal">#76B3AF</Color>
+
+    <SolidColorBrush x:Key="DarkBrush" Color="#605E5D" />
+    <SolidColorBrush x:Key="LightBrush" Color="White" />
+    <SolidColorBrush x:Key="ThemePrimaryBrush" Color="{StaticResource ThemePrimary}" />
+    <SolidColorBrush x:Key="ThemeTertiaryBrush" Color="{StaticResource ThemeTertiary}" />
+    <SolidColorBrush x:Key="ThemeSecondaryBrush" Color="{StaticResource ThemeSecondary}" />
+
+    <LinearGradientBrush
+      x:Key="FlyoutGradient"
+      StartPoint="0,1"
+      EndPoint="1,0">
+        <GradientStop
+        Color="{StaticResource flyoutGradientStart}"
+        Offset="1.0" />
+        <GradientStop
+        Color="{StaticResource flyoutGradientEnd}"
+        Offset="0.1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush
+      x:Key="ShadowGradient"
+      StartPoint="0,1"
+      EndPoint="1,0">
+        <GradientStop
+        Color="#66000000"
+        Offset="1.0" />
+        <GradientStop
+        Color="#FF000000"
+        Offset="0.1" />
+    </LinearGradientBrush>
+
+    <!-- SIZES -->
+    <x:Double x:Key="SpacingSmall">5</x:Double>
+    <x:Double x:Key="SpacingMedium">10</x:Double>
+    <x:Double x:Key="SpacingLarge">15</x:Double>
+
+    <OnPlatform x:Key="GridLengthNavigationBarHeight"
+                x:TypeArguments="GridLength"
+                Android="56"
+                iOS="44" />
+
+    <x:Double x:Key="NavigationBar">15</x:Double>
+
+    <x:Double x:Key="TextSizeHeadline">28</x:Double>
+    <x:Double x:Key="TextSizeTitle">20</x:Double>
+    <x:Double x:Key="TextSizeHeading">18</x:Double>
+    <x:Double x:Key="TextSizeSubHeading">16</x:Double>
     <x:Double x:Key="TextSizeBody">14</x:Double>
     <x:Double x:Key="TextSizeCaption">12</x:Double>
     <x:Double x:Key="TextSizeSmallCaption">11</x:Double>
-
     
+       
 
-    <Style x:Key="TextHeadline" TargetType="Label">
+    <!--<Style x:Key="TextHeadline" TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
             Light={StaticResource TextPrimaryColor_Light}}" />
         <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
@@ -142,7 +200,371 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark},
             Light={StaticResource TextSecondaryColor_Light}}" />
         <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
+    </Style>-->
+
+    
+
+    
+
+
+    
+
+    <!-- SHELL -->
+    <Style x:Key="BaseStyle"
+           TargetType="Element">
+        <Setter Property="Shell.BackgroundColor"
+                Value="{DynamicResource ThemePrimary}" />
+        <Setter Property="Shell.ForegroundColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+        <Setter Property="Shell.TitleColor"
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+        <Setter Property="Shell.DisabledColor"
+                Value="#B4000000" />
+        <Setter Property="Shell.UnselectedColor"
+                Value="#CC0000" />
+        <Setter Property="Shell.NavBarHasShadow"
+                Value="False"/>
     </Style>
+
+    <Style BasedOn="{StaticResource BaseStyle}"
+           ApplyToDerivedTypes="True"
+           TargetType="FlyoutItem" />
+
+    <Style
+        TargetType="Label"
+        Class="FlyoutItemLabelStyle">
+        <Setter
+            Property="FontSize"
+            Value="16" />
+        <Setter
+            Property="TextColor"
+            Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}" />
+        <Setter
+            Property="FontFamily"
+            Value="DSans"/>
+        <Setter
+            Property="HeightRequest"
+            Value="44" />
+    </Style>
+
+    <Style
+        TargetType="Layout"
+        ApplyToDerivedTypes="True"
+        Class="FlyoutItemGridStyle">
+        <Setter
+            Property="HeightRequest"
+            Value="44" />
+        <Setter
+            Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup
+                    x:Name="CommonStates">
+                    <VisualState
+                        x:Name="Normal">
+                        <VisualState.Setters>
+
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState
+                        x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter
+                                Property="BackgroundColor"
+                                Value="#FF3300" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState
+                        x:Name="Disabled">
+                        <VisualState.Setters>
+
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- CONTENTPAGE -->
+    <Style TargetType="Page" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}"/>
+    </Style>
+
+     <!-- NAVIGATIONPAGE -->
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarTextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+    </Style>
+
+    <!-- TEXT / LABEL -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+        <Setter Property="FontFamily" Value="DMSans"/>
+    </Style>
+
+    <Style x:Key="BaseLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+    </Style>
+
+    <Style x:Key="TextHeadline" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
+        <Setter Property="FontFamily" Value="DMSans"/>
+    </Style>
+
+    <Style x:Key="TextTitle" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeTitle}" />
+    </Style>
+
+    <Style x:Key="TextSubHead" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeSubHeading}" />
+    </Style>
+
+    <Style x:Key="TextSubheadSecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark}, Light={StaticResource TextSecondaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeSubHeading}" />
+    </Style>
+
+    <Style x:Key="TextBody" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+    </Style>
+
+    <Style x:Key="TextBodySecondary" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+    </Style>
+
+    <Style x:Key="TextCaption" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
+    </Style>
+
+    <Style x:Key="TextSmallCaption"
+           BasedOn="{StaticResource TextCaption}"
+           TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeSmallCaption}" />
+    </Style>
+
+    <Style x:Key="TextCaptionSecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark}, Light={StaticResource TextSecondaryColor_Light}}" />
+        <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
+    </Style>
+
+    <Style x:Key="TextLink" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource ThemePrimary}" />
+    </Style>
+
+    <!-- BUTTON -->
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource ThemePrimary}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource ThemeDark}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource NeutralLighter}" />
+                            <Setter Property="TextColor" Value="{StaticResource NeutralQuaternary}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralPrimary}" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralSecondaryAlt}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource NeutralLight}" />
+                            <Setter Property="TextColor" Value="{StaticResource NeutralDark}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource NeutralLighter}" />
+                            <Setter Property="TextColor" Value="{StaticResource NeutralQuaternary}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- CHECKBOX -->
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource TextPrimaryColor_Dark}"/>
+      <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="Color" Value="{StaticResource TextPrimaryColor_Dark}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Checked">
+                        <VisualState.Setters>
+                            <Setter Property="Color" Value="{StaticResource ThemePrimary}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CheckBoxLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+    </Style>
+
+    <!-- RADIOBUTTON -->
+    <Style TargetType="RadioButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+        <Setter Property="BorderColor" Value="{StaticResource ThemePrimary}"/>
+    </Style>
+
+    <!-- ENTRY -->
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource NeutralSecondary}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+    </Style>
+
+    <!-- SWITCH -->
+    <Style TargetType="Switch">
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="OnColor" Value="{StaticResource ThemePrimary}"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="ThumbColor" Value="{StaticResource NeutralPrimaryAlt}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="ThumbColor" Value="{StaticResource ThemePrimary}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="OnColor" Value="{StaticResource NeutralLighter}"/>
+                            <Setter Property="ThumbColor" Value="{StaticResource NeutralLight}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- SLIDER -->
+    <Style TargetType="Slider">
+        <Setter Property="MinimumTrackColor" Value="{StaticResource ThemePrimary}"/>
+        <Setter Property="MaximumTrackColor" Value="{StaticResource ThemePrimary }"/>
+        <Setter Property="ThumbColor" Value="{StaticResource ThemePrimary}"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="MinimumTrackColor" Value="{StaticResource NeutralPrimary}"/>
+                            <Setter Property="MaximumTrackColor" Value="{StaticResource NeutralPrimary }"/>
+                            <Setter Property="ThumbColor" Value="{StaticResource NeutralPrimary}"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EntryWrapper" TargetType="Frame">
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="Padding" Value='{OnPlatform Android="10,1", Default=1}'/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="BorderColor" Value="{StaticResource NeutralSecondary}"/>
+    </Style>
+
+    <!-- ACTIVITYINDICATOR -->
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource ThemePrimary}"/>
+    </Style>
+
+    <!-- PROGRESSBAR -->
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource ThemePrimary}"/>
+    </Style>
+
+    <!-- INDICATORVIEW -->
+    <Style TargetType="IndicatorView">
+        <Setter Property="IndicatorColor" Value="{StaticResource NeutralLight}"/>
+        <Setter Property="SelectedIndicatorColor" Value="{StaticResource ThemePrimary}"/>
+    </Style>
+
+    <!-- SWIPEITEM -->
+    <Style TargetType="SwipeItemView" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource NeutralLight}"/>
+    </Style>
+
+    <!-- MISC -->
+    <Style x:Key="HRule"
+           TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource NeutralLighter}"/>
+    </Style>
+
+    <x:String x:Key="LineBreak">&#x0a;</x:String>
+    
+    <!-- Icons -->
+    <!--<FontImageSource
+        x:Key="PlayIcon"
+        FontFamily="FontAwesome"
+        Glyph="{x:Static common:IconFont.Play}"
+        Color="White"
+        Size="18"/>
+    
+    <FontImageSource
+        x:Key="ResetIcon"
+        FontFamily="FontAwesome"
+        Glyph="{x:Static common:IconFont.Backward}"
+        Color="White"
+        Size="18"/>
+    
+    <FontImageSource
+        x:Key="LoopIcon"
+        FontFamily="FontAwesome"
+        Glyph="{x:Static common:IconFont.Redo}"
+        Color="White"
+        Size="18"/>
+    
+    <FontImageSource
+        x:Key="PauseIcon"
+        FontFamily="FontAwesome"
+        Glyph="{x:Static common:IconFont.Pause}"
+        Color="White"
+        Size="18"/>-->
 
     <converters:TypeToIconConverter x:Key="TypeToIconConverter" />
     <converters:DoubleToIntConverter x:Key="DoubleToIntConverter" />

@@ -17,9 +17,7 @@
 
                 <Image Source="{Binding ImageUri}"
                        Aspect="AspectFill" />
-                <controls:GradientView
-                    StartColor="#66000000"
-                    EndColor="#FF000000" />
+                <BoxView Background="{StaticResource ShadowGradient}"/>
                 <Label Text="{Binding Title}"
                        TextColor="White"
                        FontSize="Large"

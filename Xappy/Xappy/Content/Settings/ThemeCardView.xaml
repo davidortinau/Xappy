@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.Settings.ThemeCardView"
     Visual="Material"
-    BorderColor="{StaticResource AccentColor}"
+    BorderColor="{StaticResource ThemeTertiary}"
     HasShadow="True"
     BackgroundColor="{DynamicResource backgroundColor}"
     Padding="8,10">

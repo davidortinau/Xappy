@@ -48,10 +48,10 @@
                     Value="10,8" />
         </Style>
     </ContentPage.Resources>
-    <Grid>
-        <controls:GradientView StartColor="{StaticResource flyoutGradientStart}"
-                               EndColor="{StaticResource flyoutGradientEnd}" />
-
+    <Grid
+        Background="{StaticResource FlyoutGradient}"
+        >
+        
         <ScrollView>
             <Grid x:Name="Root"
                   Margin="0,12"

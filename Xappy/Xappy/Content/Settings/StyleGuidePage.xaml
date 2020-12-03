@@ -50,7 +50,7 @@
                             <CollectionView.ItemsSource>
                                 <x:Array
                                     Type="{x:Type x:String}">
-                                    <x:String>AccentColor</x:String>
+                                    
                                     <x:String>aqua_marine</x:String>
                                     <x:String>almost_black</x:String>
                                     <x:String>dusty_orange</x:String>

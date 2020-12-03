@@ -15,9 +15,10 @@
                    BackgroundColor="Transparent"
                    IsClippedToBounds="true"
                    Padding="0">
-                <Grid>
-                    <controls:GradientView StartColor="{StaticResource AccentColor}"
-                                           EndColor="{StaticResource flyoutGradientStart}"/>
+                <Grid
+                    Background="{StaticResource FlyoutGradient}"
+                    >
+
                     <Label Text="{Binding Text, Source={x:Reference This}}"
                            TextColor="White"
                            Margin="24,20"

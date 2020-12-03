@@ -13,81 +13,77 @@
     xmlns:resources="clr-namespace:Xappy.Content.Resources"
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
+    FlyoutBackground="{StaticResource FlyoutGradient}"
     x:Class="Xappy.AppShell">
 
     <Shell.FlyoutIcon>
         <FontImageSource
             FontFamily="FontAwesome"
             Glyph="{x:Static local:IconFont.Bars}"
-            Color="{StaticResource AccentColor}"
+            Color="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Light}, Light={StaticResource TextSecondaryColor_Dark}}"
             Size="24" />
     </Shell.FlyoutIcon>
 
-    <ShellItem
-        Title="Main"
-        Style="{DynamicResource CurrentTheme}"
-        FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Working File">
-            <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}" />
-        </Tab>
-        <Tab
-            Title="Latest News">
-            <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Newspaper}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate blog:BlogPage}" />
-        </Tab>
-        <Tab
-            Title="UI Controls">
-            <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Toolbox}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
-        </Tab>
-        <Tab
-            Title="Scenarios">
-            <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Monument}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate scenarios:IndexPage}" />
-        </Tab>
-        <Tab
-            Title="Resource">
-            <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Boxes}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent
-                ContentTemplate="{DataTemplate resources:IndexPage}" />
-        </Tab>
-        <Tab
-            Title="About">
-            <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.InfoCircle}"
-                                 Color="White"
-                                 Size="14" />
-            </Tab.Icon>
-            <ShellContent Title="General"
-                          ContentTemplate="{DataTemplate about:IndexPage}" />
-            <ShellContent Title="Contributors"
-                          ContentTemplate="{DataTemplate about:GitHubPage}" />
-        </Tab>
-    </ShellItem>
 
+    <FlyoutItem Title="Working File">
+        <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}" />
+    </FlyoutItem>
+    <FlyoutItem
+            Title="Latest News">
+        <FlyoutItem.FlyoutIcon>
+            <FontImageSource FontFamily="FontAwesome"
+                                 Glyph="{x:Static local:IconFont.Newspaper}"
+                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
+                                 Size="14" />
+        </FlyoutItem.FlyoutIcon>
+        <ShellContent
+                ContentTemplate="{DataTemplate blog:BlogPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+            Title="UI Controls">
+        <FlyoutItem.FlyoutIcon>
+            <FontImageSource FontFamily="FontAwesome"
+                                 Glyph="{x:Static local:IconFont.Toolbox}"
+                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
+                                 Size="14" />
+        </FlyoutItem.FlyoutIcon>
+        <ShellContent
+                ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+            Title="Scenarios">
+        <FlyoutItem.FlyoutIcon>
+            <FontImageSource FontFamily="FontAwesome"
+                                 Glyph="{x:Static local:IconFont.Monument}"
+                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
+                                 Size="14" />
+        </FlyoutItem.FlyoutIcon>
+        <ShellContent
+                ContentTemplate="{DataTemplate scenarios:IndexPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+            Title="Resource">
+        <FlyoutItem.FlyoutIcon>
+            <FontImageSource FontFamily="FontAwesome"
+                                 Glyph="{x:Static local:IconFont.Boxes}"
+                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
+                                 Size="14" />
+        </FlyoutItem.FlyoutIcon>
+        <ShellContent
+                ContentTemplate="{DataTemplate resources:IndexPage}" />
+    </FlyoutItem>
+    <FlyoutItem
+            Title="About">
+        <FlyoutItem.FlyoutIcon>
+            <FontImageSource FontFamily="FontAwesome"
+                                 Glyph="{x:Static local:IconFont.InfoCircle}"
+                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
+                                 Size="14" />
+        </FlyoutItem.FlyoutIcon>
+        <ShellContent Title="General"
+                          ContentTemplate="{DataTemplate about:IndexPage}" />
+        <ShellContent Title="Contributors"
+                          ContentTemplate="{DataTemplate about:GitHubPage}" />
+    </FlyoutItem>
 
 </Shell>
