@@ -24,13 +24,13 @@
                              FontFamily="FontAwesome"
                              Glyph="{x:Static xappy:IconFont.PaperPlane}"
                              Size="24"
-                             Color="{StaticResource white}" />
+                             Color="{StaticResource White}" />
 
             <FontImageSource x:Key="ButtonSentDisabled"
                              FontFamily="FontAwesome"
                              Glyph="{x:Static xappy:IconFont.PaperPlane}"
                              Size="24"
-                             Color="{StaticResource brown_grey}" />
+                             Color="{StaticResource NeutralPrimary}" />
 
             <DataTemplate x:Key="MessageFromOthers">
                 <Grid Padding="10"

@@ -5,7 +5,7 @@
                     xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
 
     <!-- Default -->
-    <Color x:Key="aqua_marine">#FF36D1DC</Color>
+    <!--<Color x:Key="aqua_marine">#FF36D1DC</Color>
     <Color x:Key="almost_black">#FF333333</Color>
     <Color x:Key="brown_grey">#FF888888</Color>
     <Color x:Key="cerulean">#FF0078D4</Color>
@@ -21,13 +21,10 @@
     <Color x:Key="white">#FFFFFFFF</Color>
     <Color x:Key="teal">#FF14D9D9</Color>
     <Color x:Key="dark_peach">#FFFF4B4B</Color>
-    <Color x:Key="light_peach">#87FF7B7B</Color>
+    <Color x:Key="light_peach">#87FF7B7B</Color>-->
 
     <!-- Dynamic Colors (these are applied in styles) -->
-    <Color x:Key="flyoutGradientStart">#FF017ED8</Color>
-    <Color x:Key="flyoutGradientEnd">#FF14D9D9</Color>
-    <Color x:Key="navBarTitleColor" />
-
+    
     <!-- Theme Colors -->
     <!--<Color x:Key="BackgroundColor_Dark">#FF000000</Color>
     <Color x:Key="TextPrimaryColor_Dark">#B0FFFFFF</Color>
@@ -70,8 +67,8 @@
     <Color x:Key="White">#ffffff</Color>
 
     <!-- THEME COLORS -->
-    <Color x:Key="BackgroundColorDark">#212121</Color>
-    <Color x:Key="BackgroundColorLight">#ffffff</Color>
+    <Color x:Key="BackgroundColor_Dark">#212121</Color>
+    <Color x:Key="BackgroundColor_Light">#ffffff</Color>
     <Color x:Key="TextPrimaryColor_Dark">#939393</Color>
     <Color x:Key="TextPrimaryColor_Light">#000000</Color>
     <Color x:Key="TextSecondaryColor_Dark">#FFFFFF</Color>
@@ -84,17 +81,17 @@
     <Color x:Key="Info">#ffded6</Color>
     <Color x:Key="Warning">#ff4b1f</Color>
 
-    <Color x:Key="FlyoutGradientStart">#FF017ED8</Color>
-    <Color x:Key="FlyoutGradientEnd">#FF14D9D9</Color>
+    <Color x:Key="FlyoutGradientStart">#fd7b38</Color>
+    <Color x:Key="FlyoutGradientEnd">#ffc200</Color>
     <Color x:Key="NavBarTitleColor">#FFFFFF</Color>
 
     <Color x:Key="TitleColor">#FFFFFF</Color>
 
     <!-- BRUSHES -->
-    <Color
+    <!--<Color
         x:Key="Yellow">#FDEE3D</Color>
     <Color
-        x:Key="Teal">#76B3AF</Color>
+        x:Key="Teal">#76B3AF</Color>-->
 
     <SolidColorBrush x:Key="DarkBrush" Color="#605E5D" />
     <SolidColorBrush x:Key="LightBrush" Color="White" />
@@ -107,11 +104,11 @@
       StartPoint="0,1"
       EndPoint="1,0">
         <GradientStop
-        Color="{StaticResource flyoutGradientStart}"
-        Offset="1.0" />
+            Color="{StaticResource FlyoutGradientEnd}"
+            Offset="0" />
         <GradientStop
-        Color="{StaticResource flyoutGradientEnd}"
-        Offset="0.1" />
+            Color="{StaticResource FlyoutGradientStart}"
+            Offset="0" />
     </LinearGradientBrush>
 
     <LinearGradientBrush
@@ -288,7 +285,8 @@
     <!-- CONTENTPAGE -->
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}"/>
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark}, Light={StaticResource BackgroundColor_Light}}"/>
+            
     </Style>
 
      <!-- NAVIGATIONPAGE -->
@@ -446,7 +444,7 @@
     <!-- ENTRY -->
     <Style TargetType="Entry">
         <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}"/>
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark}, Light={StaticResource BackgroundColor_Light}}"/>
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralSecondary}"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
     </Style>

@@ -23,6 +23,8 @@ namespace Xappy.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            UINavigationBar.Appearance.Translucent = false; // no alpha fade nonsense
+            
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();

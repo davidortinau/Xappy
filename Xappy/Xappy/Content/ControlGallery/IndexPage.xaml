@@ -43,7 +43,7 @@
                         CornerRadius="3"
                         BackgroundColor="{Binding GroupIndex,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='dusty_orange;cerulean;tomato'}"
+                        ConverterParameter='NeutralPrimary;NeutralSeconday;NeutralTertiary'}"
                         Visual="Material">
                         <Label
                             InputTransparent="true"

@@ -31,7 +31,7 @@
                         <FontImageSource
                             FontFamily="FontAwesome"
                             Glyph="{x:Static local:IconFont.Times}"
-                            Color="{StaticResource cerulean}" />
+                            Color="{StaticResource ThemePrimary}" />
                     </ImageButton.Source>
                 </ImageButton>
 
@@ -41,7 +41,7 @@
                        HorizontalOptions="Fill"
                        HorizontalTextAlignment="Center"
                        Style="{StaticResource TextHeadline}"
-                       TextColor="{StaticResource cerulean}"
+                       TextColor="{StaticResource ThemePrimary}"
                        Text="Craft Your Experience" />
             </Grid>
 
@@ -137,28 +137,28 @@ ItemSpacing="10"/>
                 <Button
                     BackgroundColor="{Binding UseFlyout,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='white;cerulean'}"
+                        ConverterParameter='White;ThemePrimary'}"
                     TextColor="{Binding UseFlyout,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='cerulean;white'}"
+                        ConverterParameter='ThemePrimary;White'}"
                     Text="Flyout"
                     Command="{Binding ChangeNavigationCommand}"
                     CommandParameter="flyout"
                     FlexLayout.Basis="50%"
-                    BorderColor="{StaticResource cerulean}"
+                    BorderColor="{StaticResource ThemePrimary}"
                     BorderWidth="1"
                     CornerRadius="0" />
                 <Button
                     BackgroundColor="{Binding UseTabs,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='white;cerulean'}"
+                        ConverterParameter='White;ThemePrimary'}"
                     TextColor="{Binding UseTabs,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='cerulean;white'}"
+                        ConverterParameter='ThemePrimary;White'}"
                     Text="Bottom Tabs"
                     Command="{Binding ChangeNavigationCommand}"
                     CommandParameter="tabs"
-                    BorderColor="{StaticResource cerulean}"
+                    BorderColor="{StaticResource ThemePrimary}"
                     BorderWidth="1"
                     FlexLayout.Basis="50%"
                     CornerRadius="0" />

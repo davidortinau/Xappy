@@ -2,7 +2,6 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Xappy.Content.Settings"
@@ -51,22 +50,22 @@
                                 <x:Array
                                     Type="{x:Type x:String}">
                                     
-                                    <x:String>aqua_marine</x:String>
-                                    <x:String>almost_black</x:String>
-                                    <x:String>dusty_orange</x:String>
-                                    <x:String>cerulean</x:String>
-                                    <x:String>cerulean_two</x:String>
-                                    <x:String>cerulean_three</x:String>
-                                    <x:String>dark_lime_green</x:String>
-                                    <x:String>green_blue</x:String>
-                                    <x:String>tomato</x:String>
-                                    <x:String>soft_blue</x:String>
-                                    <x:String>very_light_pink</x:String>
-                                    <x:String>very_light_pink_two</x:String>
-                                    <x:String>white</x:String>
-                                    <x:String>teal</x:String>
-                                    <x:String>dark_peach</x:String>
-                                    <x:String>light_peach</x:String>
+                                    <x:String>ThemePrimary</x:String>
+                                    <x:String>ThemeSecondary</x:String>
+                                    <x:String>ThemeTertiary</x:String>
+                                    <x:String>ThemeDark</x:String>
+                                    <x:String>ThemeDarker</x:String>
+                                    <x:String>ThemeDarkerAlt</x:String>
+                                    <x:String>ThemeLighter</x:String>
+                                    <x:String>ThemeLighterAlt</x:String>
+                                    <x:String>NeutralPrimary</x:String>
+                                    <x:String>NeutralSecondary</x:String>
+                                    <x:String>NeutralTertiary</x:String>
+                                    <x:String>NeutralQuaternary</x:String>
+                                    <x:String>NeutralLight</x:String>
+                                    <x:String>NeutralLighter</x:String>
+                                    <x:String>NeutralDark</x:String>
+                                    <x:String>NeutralDarker</x:String>s
                                 </x:Array>
                             </CollectionView.ItemsSource>
                             <CollectionView.ItemTemplate>
@@ -145,8 +144,8 @@
 
                         <Button
                             Text="Background"
-                            BackgroundColor="{StaticResource cerulean}"
-                            TextColor="White" />
+                            StyleClass="PrimaryButton"
+                            />
 
                     </StackLayout>
                 </ScrollView>

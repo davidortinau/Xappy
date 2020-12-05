@@ -18,13 +18,13 @@
     <StackLayout Orientation="Vertical">
         <Label Text="{Binding .}" Style="{StaticResource TextTitle}" />
         <BoxView
-            BackgroundColor="{StaticResource cerulean}" />
+            BackgroundColor="{StaticResource ThemePrimary}" />
         <BoxView
-            BackgroundColor="{StaticResource cerulean_two}" />
+            BackgroundColor="{StaticResource ThemeSecondary}" />
         <BoxView
-            BackgroundColor="{StaticResource cerulean_three}" />
+            BackgroundColor="{StaticResource ThemeTertiary}" />
         <BoxView
-            BackgroundColor="{StaticResource dark_lime_green}" />
+            BackgroundColor="{StaticResource NeutralPrimary}" />
 
 
     </StackLayout>

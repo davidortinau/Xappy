@@ -36,7 +36,7 @@
             <DataTemplate>
                 <Frame HeightRequest="30"
                            CornerRadius="3"
-                           BackgroundColor="{StaticResource cerulean_three}"
+                           BackgroundColor="{StaticResource ThemeTertiary}"
                            Visual="Material">
                     <Label VerticalOptions="Center"
                                InputTransparent="True"

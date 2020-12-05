@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xappy.Content.Scenarios.ToDo.ItemDetailPage"
     BackgroundColor="{DynamicResource backgroundColor}"
-    Shell.ForegroundColor="{StaticResource cerulean}"
+    Shell.ForegroundColor="{StaticResource ThemePrimary}"
     Shell.TabBarIsVisible="False"
     Title="{Binding Title}">
     <StackLayout

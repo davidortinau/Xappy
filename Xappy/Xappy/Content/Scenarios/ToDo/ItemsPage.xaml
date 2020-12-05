@@ -5,7 +5,7 @@
     x:Class="Xappy.Content.Scenarios.ToDo.ItemsPage"
     Shell.TabBarIsVisible="False"
     Title="{Binding Title}"
-    Shell.ForegroundColor="{StaticResource cerulean}"
+    Shell.ForegroundColor="{StaticResource ThemePrimary}"
     BackgroundColor="{DynamicResource backgroundColor}"
     x:Name="BrowseItemsPage">
     <ContentPage.ToolbarItems>

@@ -2,6 +2,7 @@
 <Shell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    
     xmlns:local="clr-namespace:Xappy"
     xmlns:common="clr-namespace:Xappy.Content.Common"
     xmlns:scenarios="clr-namespace:Xappy.Scenarios"
@@ -14,7 +15,10 @@
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBackground="{StaticResource FlyoutGradient}"
+    FlyoutBehavior="{OnIdiom Tablet=Locked, Desktop=Locked, Default=Flyout}"
+    FlyoutWidth="{OnIdiom Phone=-1, Default=275}"
     x:Class="Xappy.AppShell">
+
 
     <Shell.FlyoutIcon>
         <FontImageSource

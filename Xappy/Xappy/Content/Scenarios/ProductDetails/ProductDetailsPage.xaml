@@ -16,7 +16,7 @@
     Shell.TabBarIsVisible="false"
     Shell.NavBarIsVisible="false"
     Shell.BackgroundColor="White"
-    Shell.ForegroundColor="{StaticResource cerulean}"
+    Shell.ForegroundColor="{StaticResource ThemePrimary}"
     x:Class="Xappy.Content.Scenarios.ProductDetails.ProductDetailsPage">
 
     <ContentPage.BindingContext>
@@ -755,7 +755,7 @@
                     <FontImageSource
                         FontFamily="FontAwesome"
                         Glyph="{x:Static local:IconFont.ChevronLeft}"
-                        Color="{StaticResource white}" />
+                        Color="{StaticResource White}" />
                 </ImageButton.Source>
             </ImageButton>
             <BoxView FlexLayout.Grow="1" />
@@ -764,7 +764,7 @@
                     <FontImageSource
                         FontFamily="{StaticResource Fabric}"
                         Glyph="{x:Static local:FabIconFont.ShareiOS}"
-                        Color="{StaticResource white}" />
+                        Color="{StaticResource White}" />
                 </ImageButton.Source>
             </ImageButton>
             <ImageButton Margin="15,0,0,0" FlexLayout.Shrink="0">
@@ -772,7 +772,7 @@
                     <FontImageSource
                         FontFamily="{StaticResource Fabric}"
                         Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
-                        Color="{StaticResource white}" />
+                        Color="{StaticResource White}" />
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
@@ -806,7 +806,7 @@
                     <FontImageSource
                         FontFamily="FontAwesome"
                         Glyph="{x:Static local:IconFont.ChevronLeft}"
-                        Color="{StaticResource almost_black}" />
+                        Color="{StaticResource NeutralDark}" />
                 </ImageButton.Source>
             </ImageButton>
             <Label
@@ -814,7 +814,7 @@
                 FontSize="18"
                 Margin="10,0"
                 VerticalOptions="Center"
-                TextColor="{StaticResource almost_black}"
+                TextColor="{StaticResource NeutralDark}"
                 LineBreakMode="TailTruncation"
                 FlexLayout.AlignSelf="Center"
                 FlexLayout.Grow="1" />
@@ -824,7 +824,7 @@
                     <FontImageSource
                         FontFamily="{StaticResource Fabric}"
                         Glyph="{x:Static local:FabIconFont.ShareiOS}"
-                        Color="{StaticResource almost_black}" />
+                        Color="{StaticResource NeutralDark}" />
                 </ImageButton.Source>
             </ImageButton>
             <ImageButton 
@@ -833,7 +833,7 @@
                     <FontImageSource
                         FontFamily="{StaticResource Fabric}"
                         Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
-                        Color="{StaticResource almost_black}" />
+                        Color="{StaticResource NeutralDark}" />
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
