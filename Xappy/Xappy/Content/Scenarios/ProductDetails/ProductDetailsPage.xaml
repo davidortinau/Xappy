@@ -583,7 +583,7 @@
                                         VerticalOptions="Center"/>
                                     <Label 
                                         FontSize="24"
-                                        FontFamily="{x:StaticResource FontAwesome}"
+                                        FontFamily="FontAwesome"
                                         Text="{x:Static local:IconFont.MapMarker}"
                                         VerticalOptions="Center"
                                         Margin="24, 0, 0, 24"/>
@@ -592,7 +592,7 @@
                                     Orientation="Horizontal"
                                     HorizontalOptions="Center">
                                     <Label 
-                                        FontFamily="{x:StaticResource FontAwesome}"
+                                        FontFamily="FontAwesome"
                                         Text="{x:Static local:IconFont.MapMarker}"
                                         TextColor="#999999"
                                         VerticalOptions="Center"/>
@@ -603,7 +603,7 @@
                                         VerticalOptions="Center"/>
                                     <Label 
                                         Text="&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;"
-                                        FontFamily="{x:StaticResource FontAwesome}"
+                                        FontFamily="FontAwesome"
                                         FontSize="10"
                                         TextColor="Gold"
                                         VerticalOptions="Center"/>
@@ -628,15 +628,15 @@
                                         VerticalOptions="Start"
                                         Margin="0, 0, 0, 12">
                                         <Label 
-                                            FontFamily="{x:StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.Headphones}"
                                             TextColor="Blue" />
                                         <Label 
-                                            FontFamily="{x:StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.Microphone}"
                                             TextColor="Blue" />
                                         <Label
-                                            FontFamily="{x:StaticResource FontAwesome}"
+                                            FontFamily="FontAwesome"
                                             Text="{x:Static local:IconFont.SpaceShuttle}"
                                             TextColor="Blue" />
                                     </StackLayout>
@@ -762,7 +762,7 @@
             <ImageButton FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource Fabric}"
+                        FontFamily="Fabric"
                         Glyph="{x:Static local:FabIconFont.ShareiOS}"
                         Color="{StaticResource White}" />
                 </ImageButton.Source>
@@ -770,7 +770,7 @@
             <ImageButton Margin="15,0,0,0" FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource Fabric}"
+                        FontFamily="Fabric"
                         Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
                         Color="{StaticResource White}" />
                 </ImageButton.Source>
@@ -822,7 +822,7 @@
                 FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource Fabric}"
+                        FontFamily="Fabric"
                         Glyph="{x:Static local:FabIconFont.ShareiOS}"
                         Color="{StaticResource NeutralDark}" />
                 </ImageButton.Source>
@@ -831,7 +831,7 @@
                 Margin="15,0,0,0" FlexLayout.Shrink="0">
                 <ImageButton.Source>
                     <FontImageSource
-                        FontFamily="{StaticResource Fabric}"
+                        FontFamily="Fabric"
                         Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
                         Color="{StaticResource NeutralDark}" />
                 </ImageButton.Source>

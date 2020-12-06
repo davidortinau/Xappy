@@ -11,7 +11,7 @@
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:settings="clr-namespace:Xappy.Content.Settings"
-    xmlns:resources="clr-namespace:Xappy.Content.Resources"
+    xmlns:resources="clr-namespace:Xappy.Content.Resources" 
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
     FlyoutFooterTemplate="{DataTemplate common:FlyoutFooterTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
@@ -21,13 +21,13 @@
     x:Class="Xappy.AppShell">
 
 
-    <Shell.FlyoutIcon>
-        <FontImageSource
-            FontFamily="FontAwesome"
-            Glyph="{x:Static local:IconFont.Bars}"
-            Color="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Light}, Light={StaticResource TextSecondaryColor_Dark}}"
-            Size="24" />
-    </Shell.FlyoutIcon>
+    <!-- <Shell.FlyoutIcon> -->
+    <!--     <FontImageSource -->
+    <!--         FontFamily="FontAwesome" -->
+    <!--         Glyph="{x:Static local:IconFont.Bars}" -->
+    <!--         Color="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Light}, Light={StaticResource TextSecondaryColor_Dark}}" -->
+    <!--         Size="24" /> -->
+    <!-- </Shell.FlyoutIcon> -->
 
 
     <FlyoutItem Title="Working File">

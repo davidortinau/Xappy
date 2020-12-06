@@ -12,7 +12,7 @@
     </ContentPage.BindingContext>
 
     <CollectionView x:Name="ScenariosCV"
-                    Margin="15,0"
+                    Margin="15"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">

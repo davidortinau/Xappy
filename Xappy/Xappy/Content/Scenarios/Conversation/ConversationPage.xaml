@@ -59,7 +59,7 @@
                            Margin="5,0,20,0"
                            Padding="5"
                            HorizontalOptions="Start"
-                           BackgroundColor="{StaticResource ColorPrimary}"
+                           BackgroundColor="{StaticResource ThemePrimary}"
                            CornerRadius="20"
                            HasShadow="False">
                         <Label Margin="10,5"
@@ -113,7 +113,7 @@
                    Padding="0"
                    Margin="0,0,0,0"
                    CornerRadius="4"
-                   BorderColor="{StaticResource ColorPrimary}"
+                   BorderColor="{StaticResource ThemePrimary}"
                    HasShadow="false">
             <StackLayout Orientation="Horizontal" 
                              BindableLayout.ItemsSource="{Binding Participants}"
@@ -162,7 +162,7 @@
                    HorizontalOptions="FillAndExpand"
                    HasShadow="True"
                    BackgroundColor="#cccccc"
-                   BorderColor="{StaticResource ColorPrimary}"
+                   BorderColor="{StaticResource ThemePrimary}"
                    CornerRadius="30">
                 <Frame.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Left" Swiped="EntryFrameOnSwipedLeft"/>

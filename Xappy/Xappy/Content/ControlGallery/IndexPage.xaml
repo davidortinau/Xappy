@@ -16,7 +16,7 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        
+        <!-- add a gesture to the item instead of using the selection command -->
         <CollectionView
             Margin="15"
             x:Name="LayoutsCV"
@@ -28,7 +28,7 @@
             SelectionChangedCommand="{Binding SelectCommand}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
-                    Span="2"
+                    Span="4"
                     HorizontalItemSpacing="10"
                     VerticalItemSpacing="10"
                     Orientation="Vertical" />
@@ -37,26 +37,43 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame
-                        WidthRequest="140"
                         HeightRequest="60"
                         Padding="8"
                         CornerRadius="3"
-                        BackgroundColor="{Binding GroupIndex,
+                        BackgroundColor="White"
+                        BorderColor="{Binding GroupIndex,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='NeutralPrimary;NeutralSeconday;NeutralTertiary'}"
+                        ConverterParameter='ThemePrimary;ThemeSecondary;NeutralTertiary'}"
                         Visual="Material">
-                        <Label
-                            InputTransparent="true"
-                            FontSize="14"
-                            TextColor="Black"
-                            LineBreakMode="NoWrap"
-                            VerticalOptions="End"
-                            Text="{Binding Title}"
-                            d:Text="Something Else" />
+                        <Grid ColumnDefinitions="64,*">
+                            <Image Source="{Binding Icon}"
+                                   HeightRequest="32"
+                                   WidthRequest="32"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   />
+                            <Label
+                                Grid.Column="1"
+                                InputTransparent="true"
+                                FontSize="14"
+                                TextColor="{AppThemeBinding 
+                                    Dark={StaticResource TextPrimaryColor_Dark},
+                                    Light={StaticResource TextPrimaryColor_Light}}"
+                                LineBreakMode="NoWrap"
+                                VerticalOptions="Center"
+                                Text="{Binding Title}"
+                                d:Text="Something Else" />
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Name}"
+                           FontSize="18"
+                           />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
         </CollectionView>
     </StackLayout>
 
