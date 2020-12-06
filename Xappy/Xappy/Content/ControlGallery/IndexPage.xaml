@@ -16,16 +16,14 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <!-- add a gesture to the item instead of using the selection command -->
+        
         <CollectionView
             Margin="15"
             x:Name="LayoutsCV"
             ItemsSource="{Binding XamarinAll}"
             IsGrouped="True"
             ItemSizingStrategy="MeasureFirstItem"
-            SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
-            SelectionMode="Single"
-            SelectionChangedCommand="{Binding SelectCommand}">
+            SelectionMode="None">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     Span="4"
@@ -64,6 +62,12 @@
                                 Text="{Binding Title}"
                                 d:Text="Something Else" />
                         </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding SelectCommand,Source={RelativeSource AncestorType={x:Type local:IndexPageViewModel}}}"
+                                CommandParameter="{Binding .}"
+                                />
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

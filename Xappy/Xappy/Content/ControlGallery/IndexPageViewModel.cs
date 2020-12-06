@@ -93,16 +93,16 @@ namespace Xappy.ControlGallery
             XamarinAll.Add(pages);
 
 
-            SelectCommand = new Command(ControlSelected);
+            SelectCommand = new Command<ControlType>(ControlSelected);
         }
 
-        private async void ControlSelected()
+        private async void ControlSelected(ControlType control)
         {
             // navigate to the control page
-            if (SelectedControl == null)
+            if (control == null)
                 return;
 
-            await Shell.Current.GoToAsync($"control?control={SelectedControl.Title}&template={SelectedControl.ControlTemplate}");
+            await Shell.Current.GoToAsync($"control?control={control.Title}&template={control.ControlTemplate}");
 
             SelectedControl = null;
         }
