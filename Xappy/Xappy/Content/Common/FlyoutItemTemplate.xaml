@@ -2,20 +2,19 @@
 <Grid
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Class="Xappy.Content.Common.FlyoutItemTemplate"
     Padding="20,10,0,10"
-    ColumnSpacing="20">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition
-            Width="20" />
-        <ColumnDefinition
-            Width="*" />
-    </Grid.ColumnDefinitions>
+    ColumnSpacing="20"
+    ColumnDefinitions="20,*">
+    
     <Image
         Grid.Column="0"
         HorizontalOptions="End"
         VerticalOptions="Center"
-        Source="{Binding Icon}" />
+        xct:IconTintColorEffect.TintColor="White"
+        Source="{Binding Icon}"/>
+        
     <Label
         Grid.Column="1"
         VerticalOptions="Center"

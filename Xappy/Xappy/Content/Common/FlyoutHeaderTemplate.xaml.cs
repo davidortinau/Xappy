@@ -14,9 +14,6 @@ namespace Xappy.Content.Common
 
         }
 
-        async void Handle_Tapped(object sender, System.EventArgs e)
-        {
-            await Shell.Current.Navigation.PushModalAsync(new SettingsPage(), true);
-        }
+        
     }
 }

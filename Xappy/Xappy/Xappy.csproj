@@ -15,6 +15,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-preview1112" />
     <PackageReference Include="Xamarin.Forms.EasyLoading" Version="1.0.6-beta" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.6328" />
@@ -95,6 +96,8 @@
     <SharedImage Include="Resources\Images\guitar1.jpg" />
     <SharedImage Include="Resources\Images\guitar2.jpg" />
     <SharedImage Include="Resources\Images\guitar3.jpg" />
+    <None Remove="Resources\Images\xamarin-forms-ui.svg" />
+    <SharedImage Include="Resources\Images\xamarin-forms-ui.svg" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
 </Project>

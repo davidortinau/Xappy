@@ -13,10 +13,11 @@
     xmlns:settings="clr-namespace:Xappy.Content.Settings"
     xmlns:resources="clr-namespace:Xappy.Content.Resources"
     FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
+    FlyoutFooterTemplate="{DataTemplate common:FlyoutFooterTemplate}"
     ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
     FlyoutBackground="{StaticResource FlyoutGradient}"
     FlyoutBehavior="{OnIdiom Tablet=Locked, Desktop=Locked, Default=Flyout}"
-    FlyoutWidth="{OnIdiom Phone=-1, Default=275}"
+    FlyoutWidth="{OnIdiom Phone=-1, Default=225}"
     x:Class="Xappy.AppShell">
 
 
@@ -32,58 +33,63 @@
     <FlyoutItem Title="Working File">
         <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}" />
     </FlyoutItem>
+    
     <FlyoutItem
             Title="Latest News">
-        <FlyoutItem.FlyoutIcon>
+        <FlyoutItem.Icon>
             <FontImageSource FontFamily="FontAwesome"
                                  Glyph="{x:Static local:IconFont.Newspaper}"
                                  Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="14" />
-        </FlyoutItem.FlyoutIcon>
+                                 Size="16" />
+        </FlyoutItem.Icon>
         <ShellContent
                 ContentTemplate="{DataTemplate blog:BlogPage}" />
     </FlyoutItem>
+    
     <FlyoutItem
             Title="UI Controls">
-        <FlyoutItem.FlyoutIcon>
+        <FlyoutItem.Icon>
             <FontImageSource FontFamily="FontAwesome"
                                  Glyph="{x:Static local:IconFont.Toolbox}"
                                  Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="14" />
-        </FlyoutItem.FlyoutIcon>
+                                 Size="16" />
+        </FlyoutItem.Icon>
         <ShellContent
                 ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
     </FlyoutItem>
+    
     <FlyoutItem
             Title="Scenarios">
-        <FlyoutItem.FlyoutIcon>
+        <FlyoutItem.Icon>
             <FontImageSource FontFamily="FontAwesome"
                                  Glyph="{x:Static local:IconFont.Monument}"
                                  Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="14" />
-        </FlyoutItem.FlyoutIcon>
+                                 Size="16" />
+        </FlyoutItem.Icon>
         <ShellContent
                 ContentTemplate="{DataTemplate scenarios:IndexPage}" />
     </FlyoutItem>
+    
     <FlyoutItem
             Title="Resource">
-        <FlyoutItem.FlyoutIcon>
+        <FlyoutItem.Icon>
             <FontImageSource FontFamily="FontAwesome"
                                  Glyph="{x:Static local:IconFont.Boxes}"
                                  Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="14" />
-        </FlyoutItem.FlyoutIcon>
+                                 Size="16" />
+        </FlyoutItem.Icon>
         <ShellContent
                 ContentTemplate="{DataTemplate resources:IndexPage}" />
     </FlyoutItem>
+    
     <FlyoutItem
             Title="About">
-        <FlyoutItem.FlyoutIcon>
+        <FlyoutItem.Icon>
             <FontImageSource FontFamily="FontAwesome"
                                  Glyph="{x:Static local:IconFont.InfoCircle}"
                                  Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="14" />
-        </FlyoutItem.FlyoutIcon>
+                                 Size="16" />
+        </FlyoutItem.Icon>
         <ShellContent Title="General"
                           ContentTemplate="{DataTemplate about:IndexPage}" />
         <ShellContent Title="Contributors"
