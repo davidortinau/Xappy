@@ -29,8 +29,6 @@
                     <StackLayout
                         Margin="15"
                         Spacing="10">
-                        <Image
-                            Source="MicrosoftLogo" />
                         <Label
                             Text="Colors"
                             Style="{DynamicResource TextHeadline}" />

@@ -4,6 +4,7 @@ using Xappy.Content.Scenarios.Conversation;
 using Xappy.Content.Scenarios.Login;
 using Xappy.Content.Scenarios.ProductDetails;
 using Xappy.Content.Scenarios.ToDo;
+using Xappy.Content.Settings;
 using Xappy.ControlGallery;
 using Xappy.Scenarios;
 
@@ -29,6 +30,7 @@ namespace Xappy
             Routing.RegisterRoute("productdetails", typeof(ProductDetailsPage));
             Routing.RegisterRoute("blog", typeof(BlogPage));
             Routing.RegisterRoute("blogDetail", typeof(BlogDetailPage));
+            Routing.RegisterRoute("settings", typeof(SettingsPage));
         }
     }
 }

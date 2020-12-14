@@ -4,43 +4,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
 
-    <!-- Default -->
-    <!--<Color x:Key="aqua_marine">#FF36D1DC</Color>
-    <Color x:Key="almost_black">#FF333333</Color>
-    <Color x:Key="brown_grey">#FF888888</Color>
-    <Color x:Key="cerulean">#FF0078D4</Color>
-    <Color x:Key="cerulean_three">#FF017ED8</Color>
-    <Color x:Key="cerulean_two">#FF006CCF</Color>
-    <Color x:Key="dark_lime_green">#FF88C800</Color>
-    <Color x:Key="dusty_orange">#FFFF6230</Color>
-    <Color x:Key="green_blue">#FF00BF79</Color>
-    <Color x:Key="soft_blue">#FF5B86E5</Color>
-    <Color x:Key="tomato">#FFE52E15</Color>
-    <Color x:Key="very_light_pink">#FFCCCCCC</Color>
-    <Color x:Key="very_light_pink_two">#FFC4C4C4</Color>
-    <Color x:Key="white">#FFFFFFFF</Color>
-    <Color x:Key="teal">#FF14D9D9</Color>
-    <Color x:Key="dark_peach">#FFFF4B4B</Color>
-    <Color x:Key="light_peach">#87FF7B7B</Color>-->
-
-    <!-- Dynamic Colors (these are applied in styles) -->
-    
-    <!-- Theme Colors -->
-    <!--<Color x:Key="BackgroundColor_Dark">#FF000000</Color>
-    <Color x:Key="TextPrimaryColor_Dark">#B0FFFFFF</Color>
-    <Color x:Key="TextSecondaryColor_Dark">#B0FFFFFF</Color>
-    <Color x:Key="TextTernaryColor_Dark">#C8C8C8</Color>
-    <Color x:Key="BackgroundColor_Light">#FFFFFFFF</Color>
-    <Color x:Key="TextPrimaryColor_Light">#B0000000</Color>
-    <Color x:Key="TextSecondaryColor_Light">#B0000000</Color>
-    <Color x:Key="TextTernaryColor_Light">#C8C8C8</Color>
-
-    <SolidColorBrush x:Key="DarkBrush" Color="#605E5D" />
-    <SolidColorBrush x:Key="LightBrush" Color="White" />
-    <SolidColorBrush x:Key="ThemePrimaryBrush" Color="{StaticResource ThemePrimary}" />
-    <SolidColorBrush x:Key="ThemeTertiaryBrush" Color="{StaticResource ThemeTertiary}" />
-    <SolidColorBrush x:Key="ThemeSecondaryBrush" Color="{StaticResource ThemeSecondary}" />-->
-
     <!-- COLORS -->
     <Color x:Key="ThemePrimary">#fd7b38</Color>
     <Color x:Key="ThemeLighterAlt">#fff7f5</Color>
@@ -82,7 +45,7 @@
     <Color x:Key="Warning">#ff4b1f</Color>
 
     <Color x:Key="FlyoutGradientStart">#fd7b38</Color>
-    <Color x:Key="FlyoutGradientEnd">#ffc200</Color>
+    <Color x:Key="FlyoutGradientEnd">#FD8835</Color>
     <Color x:Key="NavBarTitleColor">#FFFFFF</Color>
 
     <Color x:Key="TitleColor">#FFFFFF</Color>
@@ -100,15 +63,14 @@
     <SolidColorBrush x:Key="ThemeSecondaryBrush" Color="{StaticResource ThemeSecondary}" />
 
     <LinearGradientBrush
-      x:Key="FlyoutGradient"
-      StartPoint="0,1"
-      EndPoint="1,0">
+      x:Key="PrimaryGradient"
+      EndPoint="0,1">
         <GradientStop
             Color="{StaticResource FlyoutGradientEnd}"
-            Offset="0" />
+            Offset="0.1" />
         <GradientStop
             Color="{StaticResource FlyoutGradientStart}"
-            Offset="0" />
+            Offset="0.8" />
     </LinearGradientBrush>
 
     <LinearGradientBrush
@@ -199,18 +161,11 @@
         <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
     </Style>-->
 
-    
-
-    
-
-
-    
-
     <!-- SHELL -->
     <Style x:Key="BaseStyle"
            TargetType="Element">
         <Setter Property="Shell.BackgroundColor"
-                Value="{DynamicResource ThemePrimary}" />
+                Value="{StaticResource ThemePrimary}" />
         <Setter Property="Shell.ForegroundColor"
                 Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
         <Setter Property="Shell.TitleColor"
@@ -285,7 +240,7 @@
     <!-- CONTENTPAGE -->
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark}, Light={StaticResource BackgroundColor_Light}}"/>
+                Value="{AppThemeBinding Dark={StaticResource NeutralDark}, Light={StaticResource NeutralLighter}}"/>
             
     </Style>
 

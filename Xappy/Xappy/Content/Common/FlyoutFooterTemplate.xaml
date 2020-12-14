@@ -23,14 +23,15 @@
             <FontImageSource
                 FontFamily="FontAwesome"
                 Glyph="{x:Static local:IconFont.PaintBrush}"
-                Color="White"
+                Color="{AppThemeBinding Dark=White, Light=Black}"
                 Size="16" />
         </Image.Source>
     </Image>
+
     <Label
         Grid.Column="1"
         VerticalOptions="Center"
         FontSize="17"
         Text="Visual Settings"
-        TextColor="White" />
+        TextColor="{AppThemeBinding Dark=White, Light=Black}" />
 </Grid>

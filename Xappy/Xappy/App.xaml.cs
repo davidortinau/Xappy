@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xappy.Content.Settings;
 using Xappy.Domain.Global;
 
 namespace Xappy
@@ -17,13 +18,6 @@ namespace Xappy
 
         public App()
         {
-            Device.SetFlags(new string[]
-            {
-                "CarouselView_Experimental",
-                "AppTheme_Experimental",
-                "Shapes_Experimental"
-            });
-
             InitializeComponent();
 
             DependencyService.Register<AppModel>();

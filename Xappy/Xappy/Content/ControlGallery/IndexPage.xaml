@@ -6,8 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Xappy.ControlGallery"
     mc:Ignorable="d"
-    Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
-    Style="{DynamicResource backgroundStyle}"
     Title="UI Controls"
     x:Class="Xappy.ControlGallery.IndexPage">
 
@@ -21,21 +19,21 @@
             Margin="15"
             x:Name="LayoutsCV"
             ItemsSource="{Binding XamarinAll}"
-            IsGrouped="True"
-            ItemSizingStrategy="MeasureFirstItem"
+            IsGrouped="True" 
             SelectionMode="None">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     Span="4"
                     HorizontalItemSpacing="10"
                     VerticalItemSpacing="10"
-                    Orientation="Vertical" />
+                    Orientation="Horizontal" />
             </CollectionView.ItemsLayout>
-            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame
+                        HorizontalOptions="Center"
                         HeightRequest="60"
+                        WidthRequest="220"
                         Padding="8"
                         CornerRadius="3"
                         BackgroundColor="White"

@@ -9,7 +9,6 @@ using Xappy.Domain.Global;
 
 namespace Xappy.Content.Settings
 {
-    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class SettingsPage : ContentPage
     {
         public SettingsPage()
@@ -31,6 +30,15 @@ namespace Xappy.Content.Settings
         void Handle_Clicked_3(object sender, System.EventArgs e)
         {
             Application.Current.Resources["CurrentTheme"] = Application.Current.Resources["SecondaryShell"];
+        }
+
+        void RadioButton_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
+        {
+            OSAppTheme val = (OSAppTheme)((RadioButton)sender).Value;
+            if (App.Current.UserAppTheme == val)
+                return;
+
+            App.Current.UserAppTheme = val;
         }
     }
 }

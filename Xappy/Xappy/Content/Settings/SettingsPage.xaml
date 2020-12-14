@@ -11,11 +11,98 @@
     Title="Craft Your Experience"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
-    Shell.TabBarIsVisible="{Binding IsTabBarVisible}">
+    Shell.PresentationMode="ModalAnimated"
+    >
 
     <ContentPage.BindingContext>
         <views:SettingsViewModel x:Name="vm" />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="ThemeRadioTemplate">
+            <Frame
+                          BorderColor="{StaticResource NeutralLight}"
+                          BackgroundColor="{StaticResource NeutralLight}"
+                          HasShadow="False"
+                          HeightRequest="100"
+                          WidthRequest="100"
+                          HorizontalOptions="Start"
+                          VerticalOptions="Start"
+                          Padding="0">
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup
+                                        x:Name="CheckedStates">
+
+                            <VisualState
+                                            x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter
+                                                  Property="BorderColor"
+                                                  Value="{StaticResource ThemePrimary}" />
+                                    <Setter
+                                                  TargetName="Check"
+                                                  Property="Opacity"
+                                                  Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState
+                                            x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="{StaticResource NeutralLight}" />
+                                    <Setter
+                                                    Property="BorderColor"
+                                                    Value="#f3f2f1" />
+                                    <Setter
+                                                    TargetName="Check"
+                                                    Property="Opacity"
+                                                    Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+
+                <Grid
+                                Margin="4"
+                                WidthRequest="100">
+                    <Grid
+                                      WidthRequest="18"
+                                      HeightRequest="18"
+                                      HorizontalOptions="End"
+                                      VerticalOptions="Start">
+                        <Ellipse
+                                            Stroke="{StaticResource DarkBrush}"
+                                            WidthRequest="16"
+                                            HeightRequest="16"
+                                            StrokeThickness="0.5"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            Fill="White" />
+                        <Ellipse
+                                            x:Name="Check"
+                                            WidthRequest="8"
+                                            HeightRequest="8"
+                                            Stroke="{StaticResource ThemePrimaryBrush}"
+                                            Fill="{StaticResource ThemePrimaryBrush}"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center" />
+                    </Grid>
+                    <ContentPresenter></ContentPresenter>
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate"
+                    Value="{StaticResource ThemeRadioTemplate}"/>
+        </Style>
+    </ContentPage.Resources>
 
     <ScrollView>
         <StackLayout Padding="20">
@@ -45,66 +132,78 @@
                        Text="Craft Your Experience" />
             </Grid>
 
-            <Label>
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span FontSize="17"
-                              FontAttributes="Bold"
-                              TextColor="{DynamicResource TextPrimaryColor}">Display Settings
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+            <!-- Display Settings -->
 
-            <!--<CollectionView
-                SelectionChangedCommand="{Binding ChangeThemeCommand}"
-                SelectionMode="Single"
-                SelectedItem="{Binding SelectedTheme}"
-                HeightRequest="120">
-                <CollectionView.ItemsLayout>
-                    <ListItemsLayout Orientation="Horizontal"
+            <Label Style="{StaticResource TextTitle}" Text="Display Settings"/>
 
-ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Light</x:String>
-                        <x:String>Dark</x:String>
-                    </x:Array>
-                </CollectionView.ItemsSource>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <views:ThemeCardView WidthRequest="125" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-
-            </CollectionView>-->
-
-            <StackLayout Orientation="Horizontal" Spacing="10">
-                <CheckBox IsChecked="{Binding UseDeviceThemeSettings}" VerticalOptions="Center" />
-                <Label Text="Use device settings"
-                       Style="{StaticResource TextBody}" VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal"
+                         RadioButtonGroup.GroupName="AppTheme"
+                         RadioButtonGroup.SelectedValue="{Binding SelectedTheme}">
+                <RadioButton Value="{x:Static OSAppTheme.Unspecified}"
+                             CheckedChanged="RadioButton_CheckedChanged"
+                             >
+                    <RadioButton.Content>
+                        <Grid RowDefinitions="4*,1*">
+                            <Image
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Source="{FontImage
+                                FontFamily=FontAwesome,
+                                Glyph={x:Static local:IconFont.Mobile},
+                                Color={StaticResource NeutralDark},
+                                Size=42}"/>
+                            <Label
+                                Text="Default"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Grid.Row="1"/>
+                        </Grid>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="{x:Static OSAppTheme.Dark}"
+                             CheckedChanged="RadioButton_CheckedChanged">
+                    <RadioButton.Content>
+                        <Grid RowDefinitions="4*,1*">
+                            <Image
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Source="{FontImage
+                                FontFamily=FontAwesome,
+                                Glyph={x:Static local:IconFont.Lightbulb},
+                                Color=Black,
+                                Size=42}"/>
+                            <Label
+                                Text="Dark"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Grid.Row="1"/>
+                        </Grid>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="{x:Static OSAppTheme.Light}"
+                             CheckedChanged="RadioButton_CheckedChanged"
+                             >
+                    <RadioButton.Content>
+                        <Grid RowDefinitions="4*,1*">
+                            <Image
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Source="{FontImage
+                                FontFamily=FontAwesome,
+                                Glyph={x:Static local:IconFont.Lightbulb},
+                                Color=White,
+                                Size=42}"/>
+                            <Label
+                                Text="Default"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Grid.Row="1"/>
+                        </Grid>
+                    </RadioButton.Content>
+                </RadioButton>
             </StackLayout>
 
-            <StackLayout
-                IsVisible="{Binding UseDeviceThemeSettings, Converter={StaticResource InvertedBoolConverter}}"
-                Orientation="Horizontal"
-                Spacing="10">
-                <CheckBox IsChecked="{Binding UseDarkMode}" VerticalOptions="Center"/>
-                <Label Text="Dark Theme"
-                       Style="{StaticResource TextBody}" VerticalOptions="Center"/>
-            </StackLayout>
-
-            <StackLayout
-                IsVisible="{Binding UseDeviceThemeSettings, Converter={StaticResource InvertedBoolConverter}}"
-                Orientation="Horizontal"
-                Spacing="10">
-                <CheckBox IsChecked="{Binding UseLightMode}" VerticalOptions="Center"/>
-                <Label Text="Light Theme"
-                       Style="{StaticResource TextBody}" VerticalOptions="Center"/>
-            </StackLayout>
-
-            
+            <!-- Visual -->
 
             <Label Margin="0,15,0,0" Style="{StaticResource TextTitle}" Text="Visual"/>
 

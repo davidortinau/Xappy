@@ -13,28 +13,35 @@ namespace Xappy.Content.Settings
 
         public ICommand ChangeNavigationCommand { get; set; }
 
-        public string SelectedTheme { get; set; }
+        public OSAppTheme SelectedTheme
+        {
+            get { return selectedTheme; }
+            set
+            {
+                SetProperty(ref selectedTheme, value);
+            }
+        }
 
         public SettingsViewModel()
         {
-            ChangeThemeCommand = new Command((x) =>
-            {
-                if (SelectedTheme.ToLower() == "dark")
-                {
-                    Application.Current.UserAppTheme = OSAppTheme.Dark;
-                }
-                else
-                {
-                    Application.Current.UserAppTheme = OSAppTheme.Light;
-                }
+            //ChangeThemeCommand = new Command((x) =>
+            //{
+            //    if (SelectedTheme.ToLower() == "dark")
+            //    {
+            //        Application.Current.UserAppTheme = OSAppTheme.Dark;
+            //    }
+            //    else
+            //    {
+            //        Application.Current.UserAppTheme = OSAppTheme.Light;
+            //    }
 
-                App.AppTheme = SelectedTheme.ToLower();
-            });
+            //    App.AppTheme = SelectedTheme.ToLower();
+            //});
 
             ChangeNavigationCommand = new Command<string>((nav) =>
             {
                 var am = DependencyService.Resolve<AppModel>();
-                if(nav == "flyout")
+                if (nav == "flyout")
                 {
                     am.NavigationStyle = NavigationStyle.Flyout;
                 }
@@ -132,5 +139,7 @@ namespace Xappy.Content.Settings
         }
 
         private bool isVisualDefault;
+        private OSAppTheme selectedTheme = App.Current.UserAppTheme;
+
     }
 }
