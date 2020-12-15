@@ -107,9 +107,19 @@
     <ScrollView>
         <StackLayout Padding="20">
             <Grid ColumnDefinitions="44,*">
+                
+
+                <Label Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       Style="{StaticResource TextHeadline}"
+                       TextColor="{StaticResource ThemePrimary}"
+                       Text="Craft Your Experience" />
+
                 <ImageButton
                     Aspect="AspectFit"
-                    BackgroundColor="Transparent"
                     VerticalOptions="Center"
                     Grid.Column="0"
                     Padding="5"
@@ -121,15 +131,6 @@
                             Color="{StaticResource ThemePrimary}" />
                     </ImageButton.Source>
                 </ImageButton>
-
-                <Label Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Fill"
-                       HorizontalTextAlignment="Center"
-                       Style="{StaticResource TextHeadline}"
-                       TextColor="{StaticResource ThemePrimary}"
-                       Text="Craft Your Experience" />
             </Grid>
 
             <!-- Display Settings -->

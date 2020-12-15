@@ -78,10 +78,10 @@
       StartPoint="0,1"
       EndPoint="1,0">
         <GradientStop
-        Color="#66000000"
+        Color="#66FFFFFF"
         Offset="1.0" />
         <GradientStop
-        Color="#FF000000"
+        Color="{StaticResource ThemePrimary}"
         Offset="0.1" />
     </LinearGradientBrush>
 

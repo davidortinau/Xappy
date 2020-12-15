@@ -17,21 +17,10 @@
     
     <ContentPage.Content>
         <Grid
+            RowSpacing="0"
+            RowDefinitions="2*, 1*"
+            ColumnDefinitions="*,*"
             x:Name="ContentGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="2*" />
-                <!-- Content container -->
-                <RowDefinition
-                    Height="1*" />
-                <!-- Selection panel -->
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
             <ScrollView
                 Grid.Row="0"
                 Grid.ColumnSpan="2">
@@ -42,14 +31,9 @@
             </ScrollView>
             <Grid
                 x:Name="PropertyContainer"
+                RowDefinitions="Auto, *"
                 Grid.Row="1"
                 Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="*" />
-                </Grid.RowDefinitions>
                 <controls:Toolbar
                     Grid.Row="0"
                     x:Name="PropertyToolbar"

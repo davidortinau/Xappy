@@ -85,7 +85,7 @@
                                                 TextColor="{AppThemeBinding
                                                     Dark={StaticResource TextPrimaryColor_Dark},
                                                     Light={StaticResource TextPrimaryColor_Light}}"
-                                                Style="{DynamicResource TextTitle}">
+                                                Style="{DynamicResource TextSubTitle}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span

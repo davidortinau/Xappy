@@ -9,13 +9,10 @@
     ColumnDefinitions="20,*"
 >
     
-    <Grid.GestureRecognizers>
-        <TapGestureRecognizer
-            Tapped="Handle_Tapped"
-        />
-    </Grid.GestureRecognizers>
+    
     
     <Image
+        InputTransparent="True"
         Grid.Column="0"
         VerticalOptions="Center"
         HorizontalOptions="End">
@@ -26,12 +23,24 @@
                 Color="{AppThemeBinding Dark=White, Light=Black}"
                 Size="16" />
         </Image.Source>
+        <Image.GestureRecognizers>
+        <TapGestureRecognizer
+            Tapped="Handle_Tapped"
+        />
+    </Image.GestureRecognizers>
     </Image>
 
     <Label
+        InputTransparent="True"
         Grid.Column="1"
         VerticalOptions="Center"
         FontSize="17"
         Text="Visual Settings"
-        TextColor="{AppThemeBinding Dark=White, Light=Black}" />
+        TextColor="{AppThemeBinding Dark=White, Light=Black}">
+        <Label.GestureRecognizers>
+        <TapGestureRecognizer
+            Tapped="Handle_Tapped"
+        />
+    </Label.GestureRecognizers>
+        </Label>
 </Grid>
