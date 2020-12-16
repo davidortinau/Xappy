@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\MicrosoftLogo.imageset\" />
+  </ItemGroup>  
   <ItemGroup>
     <BundleResource Include="Resources\guitar3.jpg" />
   </ItemGroup>
