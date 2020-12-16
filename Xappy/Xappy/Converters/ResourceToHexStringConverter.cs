@@ -35,7 +35,7 @@ namespace Xappy.Converters
             try
             {
                 Application.Current.Resources.TryGetValue(key, out var newColor);
-                return (Color)newColor;
+                return (newColor == null) ? Color.Black : (Color)newColor;
             }
             catch
             {

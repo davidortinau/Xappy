@@ -32,6 +32,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidSupportedAbis>x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,16 +54,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-preview1112" />
-    
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.6452" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.6452" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.6452" />    
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.1.6507" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.1.6507" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.1.6507" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.7.0.937-pre4" />
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.937-pre4" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.937-pre4" />    
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.937-pre4" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.7" />
     <PackageReference Include="Xamarin.Android.Support.Compat" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.Core.UI" Version="28.0.0.3" />
@@ -71,7 +70,7 @@
     <PackageReference Include="Xamarin.Android.Support.Annotations" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.VersionedParcelable" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Forms.DualScreen">
-      <Version>5.0.0.6452</Version>
+      <Version>5.0.1.6507</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.DuoSdk">
       <Version>0.0.3.4</Version>
@@ -128,4 +127,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\ApiConstants.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TriggeredFromHotReload="False" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

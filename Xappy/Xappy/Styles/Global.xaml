@@ -488,6 +488,11 @@
         <Setter Property="BackgroundColor" Value="{StaticResource NeutralLighter}"/>
     </Style>
 
+    <Style TargetType="ImageButton">
+        <Setter Property="BackgroundColor"
+                Value="Transparent"/>
+    </Style>
+
     <x:String x:Key="LineBreak">&#x0a;</x:String>
     
     <!-- Icons -->

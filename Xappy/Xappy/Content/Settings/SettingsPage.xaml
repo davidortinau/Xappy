@@ -98,10 +98,7 @@
             </Frame>
         </ControlTemplate>
 
-        <Style TargetType="RadioButton">
-            <Setter Property="ControlTemplate"
-                    Value="{StaticResource ThemeRadioTemplate}"/>
-        </Style>
+        
     </ContentPage.Resources>
 
     <ScrollView>
@@ -140,6 +137,12 @@
             <StackLayout Orientation="Horizontal"
                          RadioButtonGroup.GroupName="AppTheme"
                          RadioButtonGroup.SelectedValue="{Binding SelectedTheme}">
+                <StackLayout.Resources>
+                    <Style TargetType="RadioButton">
+                        <Setter Property="ControlTemplate"
+                    Value="{StaticResource ThemeRadioTemplate}"/>
+                    </Style>
+                </StackLayout.Resources>
                 <RadioButton Value="{x:Static OSAppTheme.Unspecified}"
                              CheckedChanged="RadioButton_CheckedChanged"
                              >
@@ -195,7 +198,7 @@
                                 Color=White,
                                 Size=42}"/>
                             <Label
-                                Text="Default"
+                                Text="Light"
                                 VerticalOptions="Center"
                                 HorizontalOptions="Center"
                                 Grid.Row="1"/>
@@ -208,26 +211,10 @@
 
             <Label Margin="0,15,0,0" Style="{StaticResource TextTitle}" Text="Visual"/>
 
-            <FlexLayout Direction="Row"
-                        Wrap="Wrap">
-                <CheckBox x:Name="ChkDefault"
-                          IsChecked="{Binding IsVisualDefault}"
-                          FlexLayout.Basis="10%"
-                          FlexLayout.AlignSelf="Center" />
-                <Label Text="Default"
-                       Style="{StaticResource TextBody}"
-                       FlexLayout.Basis="90%"
-                       FlexLayout.AlignSelf="Center" />
-                <CheckBox x:Name="ChkMaterial"
-                          IsChecked="{Binding IsVisualMaterial}"
-                          FlexLayout.Basis="10%"
-                          FlexLayout.AlignSelf="Center" />
-                <Label Text="Material"
-                       
-                       Style="{StaticResource TextBody}"
-                       FlexLayout.Basis="90%"
-                       FlexLayout.AlignSelf="Center" />
-            </FlexLayout>
+            <StackLayout RadioButtonGroup.GroupName="VisualStyle" Spacing="0">
+                <RadioButton Content="Default"/>
+                <RadioButton Content="Material"/>
+            </StackLayout>
 
             <Label Margin="0,15,0,0"
                    Style="{StaticResource TextTitle}"

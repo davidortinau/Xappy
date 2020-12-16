@@ -8,13 +8,15 @@
     ColumnSpacing="20"
     ColumnDefinitions="20,*"
 >
-    
-    
-    
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer
+            Tapped="Handle_Tapped"
+        />
+    </Grid.GestureRecognizers>
     <Image
         InputTransparent="True"
         Grid.Column="0"
-        VerticalOptions="Center"
+        VerticalOptions="Start"
         HorizontalOptions="End">
         <Image.Source>
             <FontImageSource
@@ -33,7 +35,7 @@
     <Label
         InputTransparent="True"
         Grid.Column="1"
-        VerticalOptions="Center"
+        VerticalOptions="Start"
         FontSize="17"
         Text="Visual Settings"
         TextColor="{AppThemeBinding Dark=White, Light=Black}">

@@ -23,35 +23,34 @@
             SelectionMode="None">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
-                    Span="4"
+                    Span="3"
                     HorizontalItemSpacing="10"
                     VerticalItemSpacing="10"
                     Orientation="Vertical" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame
+                    <Frame 
                         HorizontalOptions="Center"
-                        HeightRequest="60"
-                        WidthRequest="220"
                         Padding="8"
-                        CornerRadius="3"
+                        CornerRadius="8"
                         BackgroundColor="White"
                         BorderColor="{Binding GroupIndex,
                         Converter={StaticResource IndexToColorConverter},
                         ConverterParameter='ThemePrimary;ThemeSecondary;NeutralTertiary'}"
-                        Visual="Material">
+                        Visual="Default">
                         <Grid ColumnDefinitions="1*,5*">
                             <Image Source="{Binding Icon}"
-                                   HeightRequest="32"
-                                   WidthRequest="32"
+                                   HeightRequest="48"
+                                   WidthRequest="48"
+                                   Aspect="AspectFit"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
                                    />
                             <Label
                                 Grid.Column="1"
                                 InputTransparent="true"
-                                FontSize="14"
+                                FontSize="12"
                                 TextColor="{AppThemeBinding 
                                     Dark={StaticResource TextPrimaryColor_Dark},
                                     Light={StaticResource TextPrimaryColor_Light}}"
@@ -62,9 +61,10 @@
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding SelectCommand,Source={RelativeSource AncestorType={x:Type local:IndexPageViewModel}}}"
-                                CommandParameter="{Binding .}"
-                                />
+                                Command="{Binding NavToDetailCommand, Source={
+                                    RelativeSource AncestorType={x:Type local:IndexPageViewModel}
+                                }}"
+                                CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
@@ -73,6 +73,7 @@
                 <DataTemplate>
                     <Label Text="{Binding Name}"
                            FontSize="18"
+                           Padding="0,10"
                            />
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>

@@ -7,10 +7,10 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-using ImageCircle.Forms.Plugin.Droid;
 using Android.Content.Res;
 using Xappy.Styles;
 using Xamarin.Forms.DualScreen;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: Android.App.MetaData("com.google.android.maps.v2.API_KEY", Value = Xappy.ApiConstants.GoogleMapsKey),]
 namespace Xappy.Droid
@@ -32,6 +32,8 @@ namespace Xappy.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            this.SetStatusBarColor(Xamarin.Forms.Color.FromHex("#fd7b38").ToAndroid());
+
             base.OnCreate(savedInstanceState);
             Instance = this;
 
@@ -39,7 +41,6 @@ namespace Xappy.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
-            ImageCircleRenderer.Init();
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

@@ -9,8 +9,8 @@ using Xappy.Content.ControlGallery;
 
 namespace Xappy.ControlGallery
 {
-    [QueryProperty("ControlTemplate", "template")]
-    [QueryProperty("ControlTitle", "control")]
+    [QueryProperty("ControlTemplate","template")]
+    [QueryProperty("ControlTitle", "title")]
     public class ControlPageViewModel : BaseViewModel
     {
         public ControlType SelectedControl { get; set; }

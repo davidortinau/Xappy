@@ -1,11 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using Xamarin.Forms.Maps;
 using Xappy.Content;
 using Xappy.Content.ControlGallery.ControlTemplates;
@@ -14,9 +9,9 @@ namespace Xappy.ControlGallery
 {
     public class IndexPageViewModel : BaseViewModel
     {
-        public ControlType SelectedControl { get; set; }
+        public Command NavToDetailCommand { get;set;}
 
-        public ICommand SelectCommand { get; set; }
+        public ControlType SelectedControl { get; set; }
 
         public List<ControlType> Layouts { get; set; }
 
@@ -40,10 +35,8 @@ namespace Xappy.ControlGallery
                 new ControlType{ Title = nameof(FlexLayout), Icon = "layout-FlexLayout"},
                 new ControlType{ Title = nameof(AbsoluteLayout), Icon = "layout-AbsoluteLayout"},
                 new ControlType{ Title = nameof(RelativeLayout), Icon = "layout-RelativeLayout"},
-                // new ControlType{ Title = nameof(ContentPresenter)},
-                // new ControlType{ Title = nameof(ContentView)},
                 new ControlType{ Title = nameof(ScrollView), Icon = "layout-ScrollView"},
-                // new ControlType{ Title = nameof(TemplatedView)}
+                
             });;
 
             var pages = new ControlGroup("Pages", new List<ControlType>
@@ -92,19 +85,16 @@ namespace Xappy.ControlGallery
             XamarinAll.Add(views);
             XamarinAll.Add(pages);
 
-
-            SelectCommand = new Command<ControlType>(ControlSelected);
+            NavToDetailCommand = new Command<ControlType>(OnNav);
+            
         }
 
-        private async void ControlSelected(ControlType control)
+        private async void OnNav(ControlType control)
         {
-            // navigate to the control page
-            if (control == null)
+            if(control == null)
                 return;
 
             await Shell.Current.GoToAsync($"control?control={control.Title}&template={control.ControlTemplate}");
-
-            SelectedControl = null;
         }
     }
 
