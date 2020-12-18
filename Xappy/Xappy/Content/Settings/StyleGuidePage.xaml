@@ -42,7 +42,7 @@
                                     VerticalItemSpacing="10"
                                     HorizontalItemSpacing="10"
                                     Orientation="Horizontal"
-                                    Span="4" />
+                                    Span="3" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemsSource>
                                 <x:Array
@@ -63,7 +63,7 @@
                                     <x:String>NeutralLight</x:String>
                                     <x:String>NeutralLighter</x:String>
                                     <x:String>NeutralDark</x:String>
-                                    <x:String>NeutralDarker</x:String>s
+                                    <x:String>NeutralDarker</x:String>
                                 </x:Array>
                             </CollectionView.ItemsSource>
                             <CollectionView.ItemTemplate>

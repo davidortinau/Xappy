@@ -20,8 +20,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.15</string>
 	<key>CFBundleDisplayName</key>
 	<string>Xappy</string>
 	<key>CFBundleIdentifier</key>
