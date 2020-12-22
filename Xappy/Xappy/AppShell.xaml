@@ -10,116 +10,41 @@
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
     xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:settings="clr-namespace:Xappy.Content.Settings"
+    xmlns:todo="clr-namespace:Xappy.Content.Scenarios.ToDo"
     xmlns:resources="clr-namespace:Xappy.Content.Resources" 
-    FlyoutHeaderTemplate="{DataTemplate common:FlyoutHeaderTemplate}"
-    FlyoutFooterTemplate="{DataTemplate common:FlyoutFooterTemplate}"
-    ItemTemplate="{DataTemplate common:FlyoutItemTemplate}"
-    FlyoutBackground="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark}, Light={StaticResource BackgroundColor_Light}}"
-    FlyoutBehavior="{OnIdiom Tablet=Locked, Desktop=Locked, Default=Flyout}"
-    FlyoutWidth="{OnIdiom Phone=-1, Default=225}"
     x:Class="Xappy.AppShell">
+
     
-    <Shell.Resources>
-        <Style TargetType="Shell">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Portrait">
-                            <VisualState.StateTriggers>
-                                <OrientationStateTrigger Orientation="Portrait" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Property="FlyoutBehavior"
-                                        Value="Flyout" />
-                                <Setter Property="BackgroundColor" Value="Red"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Landscape">
-                            <VisualState.StateTriggers>
-                                <OrientationStateTrigger Orientation="Landscape" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Property="FlyoutBehavior"
-                                        Value="{OnIdiom Tablet=Locked, Desktop=Locked, Default=Flyout}" />
-                                <Setter Property="BackgroundColor" Value="Orange"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-    </Shell.Resources>
 
-
-     <Shell.FlyoutIcon> 
-         <FontImageSource 
-             FontFamily="FontAwesome" 
-             Glyph="{x:Static local:IconFont.Bars}" 
-             Color="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Light}, Light={StaticResource TextSecondaryColor_Dark}}" 
-             Size="24" /> 
-     </Shell.FlyoutIcon> 
-
-
-    <FlyoutItem Title="Working File">
-        <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}" />
+    
+    <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
+        <ShellContent ContentTemplate="{DataTemplate todo:ItemsPage}" />
     </FlyoutItem>
     
-    <FlyoutItem
-            Title="Latest News">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Newspaper}"
-                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="16" />
-        </FlyoutItem.Icon>
+    <FlyoutItem Title="Latest News" Icon="{StaticResource IconLatestNews}">
         <ShellContent
                 ContentTemplate="{DataTemplate blog:BlogPage}" />
     </FlyoutItem>
     
-    <FlyoutItem
-            Title="UI Controls">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Toolbox}"
-                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="16" />
-        </FlyoutItem.Icon>
+    <FlyoutItem Title="UI Controls" Icon="{StaticResource IconControls}">
         <ShellContent
                 ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
     </FlyoutItem>
     
-    <FlyoutItem
-            Title="Scenarios">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Monument}"
-                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="16" />
-        </FlyoutItem.Icon>
+    <FlyoutItem Title="Scenarios"
+                Icon="{StaticResource IconScenarios}">
         <ShellContent
                 ContentTemplate="{DataTemplate scenarios:IndexPage}" />
     </FlyoutItem>
     
-    <FlyoutItem
-            Title="Resource">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.Boxes}"
-                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="16" />
-        </FlyoutItem.Icon>
+    <FlyoutItem Title="Resources"
+                Icon="{StaticResource IconResources}">
         <ShellContent
                 ContentTemplate="{DataTemplate resources:IndexPage}" />
     </FlyoutItem>
     
-    <FlyoutItem
-            Title="About">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:IconFont.InfoCircle}"
-                                 Color="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-                                 Size="16" />
-        </FlyoutItem.Icon>
+    <FlyoutItem Title="About"
+                Icon="{StaticResource IconAbout}">
         <ShellContent Title="General"
                           ContentTemplate="{DataTemplate about:IndexPage}" />
         <ShellContent Title="Contributors"

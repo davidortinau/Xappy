@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xappy.Content.Settings;
 
 namespace Xappy.Content.Common
 {
@@ -17,10 +16,10 @@ namespace Xappy.Content.Common
         {
             InitializeComponent();
         }
-        
-        async void Handle_Tapped(object sender, System.EventArgs e)
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("settings", true);
+            await Shell.Current.GoToAsync("settings");
         }
     }
 }

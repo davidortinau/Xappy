@@ -189,4 +189,9 @@
     <Folder Include="Assets.xcassets\MicrosoftLogo.imageset\" />
   </ItemGroup>
   <Import Project="..\ApiConstants.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TriggeredFromHotReload="False" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

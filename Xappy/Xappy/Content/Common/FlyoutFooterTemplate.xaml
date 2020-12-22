@@ -1,48 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Grid
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:local="clr-namespace:Xappy"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.Common.FlyoutFooterTemplate"
-    Padding="20,66,0,40"
-    ColumnSpacing="20"
     ColumnDefinitions="20,*"
->
+    Padding="20"
+    HeightRequest="100">
     <Grid.GestureRecognizers>
         <TapGestureRecognizer
-            Tapped="Handle_Tapped"
-        />
+            Tapped="TapGestureRecognizer_Tapped"/>
     </Grid.GestureRecognizers>
-    <Image
-        InputTransparent="True"
-        Grid.Column="0"
-        VerticalOptions="Start"
-        HorizontalOptions="End">
-        <Image.Source>
-            <FontImageSource
-                FontFamily="FontAwesome"
-                Glyph="{x:Static local:IconFont.PaintBrush}"
-                Color="{AppThemeBinding Dark=White, Light=Black}"
-                Size="16" />
-        </Image.Source>
-        <Image.GestureRecognizers>
-        <TapGestureRecognizer
-            Tapped="Handle_Tapped"
-        />
-    </Image.GestureRecognizers>
-    </Image>
 
-    <Label
+    <Image
+        Grid.Column="0"
         InputTransparent="True"
+        VerticalOptions="Center"
+        HorizontalOptions="End"
+        Source="{StaticResource IconTheme}"/>
+    <Label 
         Grid.Column="1"
-        VerticalOptions="Start"
+        InputTransparent="True"
         FontSize="17"
-        Text="Visual Settings"
-        TextColor="{AppThemeBinding Dark=White, Light=Black}">
-        <Label.GestureRecognizers>
-        <TapGestureRecognizer
-            Tapped="Handle_Tapped"
-        />
-    </Label.GestureRecognizers>
-        </Label>
+        VerticalOptions="Center"
+        Text="Visual Settings"/>
 </Grid>

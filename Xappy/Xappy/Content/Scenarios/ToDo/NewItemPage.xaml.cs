@@ -16,8 +16,7 @@ namespace Xappy.Content.Scenarios.ToDo
 
             Item = new Item
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                
             };
 
             BindingContext = this;
@@ -26,12 +25,13 @@ namespace Xappy.Content.Scenarios.ToDo
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
+            //await Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("..");
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

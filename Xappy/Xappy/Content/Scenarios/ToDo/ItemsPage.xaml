@@ -3,10 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Xappy.Content.Scenarios.ToDo.ItemsPage"
-    Shell.TabBarIsVisible="False"
     Title="{Binding Title}"
-    Shell.ForegroundColor="{StaticResource ThemePrimary}"
-    BackgroundColor="{DynamicResource backgroundColor}"
     x:Name="BrowseItemsPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -33,7 +30,7 @@
                                 Text="{Binding Text}"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource TextHeadline}"
-                                FontSize="16" />
+                                FontSize="18" />
                             <Label
                                 Text="{Binding Description}"
                                 LineBreakMode="NoWrap"

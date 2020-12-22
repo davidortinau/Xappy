@@ -35,7 +35,8 @@ namespace Xappy.Content.Scenarios.ToDo
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            //await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Shell.Current.GoToAsync("add");
         }
 
         protected override void OnAppearing()

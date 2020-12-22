@@ -2,6 +2,8 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:Xappy"
+                    xmlns:common="clr-namespace:Xappy.Content.Common"
                     xmlns:converters="clr-namespace:Xappy.Converters;assembly=Xappy">
 
     <!-- COLORS -->
@@ -105,62 +107,6 @@
     <x:Double x:Key="TextSizeCaption">12</x:Double>
     <x:Double x:Key="TextSizeSmallCaption">11</x:Double>
     
-       
-
-    <!--<Style x:Key="TextHeadline" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
-            Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
-    </Style>
-
-    <Style x:Key="TextTitle" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
-            Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeTitle}" />
-    </Style>
-
-    <Style x:Key="TextSubhead" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
-            Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
-    </Style>
-
-    <Style x:Key="TextSubheadSecondary" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark},
-            Light={StaticResource TextSecondaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
-    </Style>
-
-    <Style x:Key="TextBody" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
-            Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
-    </Style>
-
-    <Style x:Key="TextBodySecondary" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
-            Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
-    </Style>
-
-    <Style x:Key="TextCaption" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark},
-            Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
-    </Style>
-
-    <Style x:Key="TextSmallCaption"
-           BasedOn="{StaticResource TextCaption}"
-           TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource TextSizeSmallCaption}" />
-    </Style>
-
-    <Style x:Key="TextCaptionSecondary" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextSecondaryColor_Dark},
-            Light={StaticResource TextSecondaryColor_Light}}" />
-        <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
-    </Style>-->
-
     <!-- SHELL -->
     <Style x:Key="BaseStyle"
            TargetType="Element">
@@ -178,31 +124,86 @@
                 Value="False"/>
     </Style>
 
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <Setter Property="FlyoutHeaderTemplate"
+                Value="{DataTemplate common:FlyoutHeaderTemplate}"/>
+        <Setter Property="FlyoutFooterTemplate"
+                Value="{DataTemplate common:FlyoutFooterTemplate}"/>
+        <Setter Property="ItemTemplate"
+                Value="{DataTemplate common:FlyoutItemTemplate}"/>
+    </Style>
+
     <Style BasedOn="{StaticResource BaseStyle}"
            ApplyToDerivedTypes="True"
            TargetType="FlyoutItem" />
 
-    <Style
-        TargetType="Label"
-        Class="FlyoutItemLabelStyle">
-        <Setter
-            Property="FontSize"
-            Value="16" />
-        <Setter
-            Property="TextColor"
-            Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}" />
-        <Setter
-            Property="FontFamily"
-            Value="DSans"/>
-        <Setter
-            Property="HeightRequest"
-            Value="44" />
-    </Style>
+    <FontImageSource
+        x:Key="IconMenuBars"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Bars}"
+            Color="White"
+            Size="24"/>
+
+    <FontImageSource
+        x:Key="IconBack"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Backward}"
+            Color="White"
+            Size="24"/>
+
+    <FontImageSource
+        x:Key="IconWorkingFile"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Toolbox}"
+            Color="Black"
+            Size="16"/>
+
+    <FontImageSource
+        x:Key="IconLatestNews"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Newspaper}"
+            Color="Black"
+            Size="16"/>
+
+    <FontImageSource
+        x:Key="IconControls"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Tools}"
+            Color="Black"
+            Size="16"/>
+
+    <FontImageSource
+        x:Key="IconScenarios"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Monument}"
+            Color="Black"
+            Size="16"/>
+
+    <FontImageSource
+        x:Key="IconResources"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.Boxes}"
+            Color="Black"
+            Size="16"/>
+
+    <FontImageSource
+        x:Key="IconAbout"
+            FontFamily="FontAwesome"
+            Glyph="{x:Static local:IconFont.InfoCircle}"
+            Color="Black"
+            Size="16"/>
+
+    <FontImageSource
+        x:Key="IconTheme"
+        FontFamily="FontAwesome"
+        Glyph="{x:Static local:IconFont.PaintBrush}"
+        Color="{AppThemeBinding Dark=White, Light=Black}"
+        Size="16" />
 
     <Style
-        TargetType="Layout"
-        ApplyToDerivedTypes="True"
-        Class="FlyoutItemGridStyle">
+            TargetType="Layout"
+            ApplyToDerivedTypes="True"
+            Class="FlyoutItemLayoutStyle">
         <Setter
             Property="HeightRequest"
             Value="44" />
@@ -235,6 +236,7 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
+
     </Style>
 
     <!-- CONTENTPAGE -->
@@ -398,6 +400,14 @@
 
     <!-- ENTRY -->
     <Style TargetType="Entry">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark}, Light={StaticResource BackgroundColor_Light}}"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource NeutralSecondary}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"/>
+    </Style>
+
+    <!-- EDITOR -->
+    <Style TargetType="Editor">
         <Setter Property="BackgroundColor"
                 Value="{AppThemeBinding Dark={StaticResource BackgroundColor_Dark}, Light={StaticResource BackgroundColor_Light}}"/>
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralSecondary}"/>

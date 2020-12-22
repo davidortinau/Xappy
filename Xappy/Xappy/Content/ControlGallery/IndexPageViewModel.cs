@@ -28,16 +28,16 @@ namespace Xappy.ControlGallery
                 new ControlType
                 {
                     Title = nameof(StackLayout), ControlTemplate = nameof(StackLayoutControlTemplate),
-                    Icon = "layout-StackLayout"
+                    Icon = "layout-StackLayout.png"
                 },
-                new ControlType{ Title = nameof(Frame), Icon = "layout-Frame"},
-                new ControlType{ Title = nameof(Grid), Icon = "layout-Grid"},
-                new ControlType{ Title = nameof(FlexLayout), Icon = "layout-FlexLayout"},
-                new ControlType{ Title = nameof(AbsoluteLayout), Icon = "layout-AbsoluteLayout"},
-                new ControlType{ Title = nameof(RelativeLayout), Icon = "layout-RelativeLayout"},
-                new ControlType{ Title = nameof(ScrollView), Icon = "layout-ScrollView"},
+                new ControlType{ Title = nameof(Frame), Icon = "layout-Frame.png"},
+                new ControlType{ Title = nameof(Grid), Icon = "layout-Grid.png"},
+                new ControlType{ Title = nameof(FlexLayout), Icon = "layout-FlexLayout.png"},
+                new ControlType{ Title = nameof(AbsoluteLayout), Icon = "layout-AbsoluteLayout.png"},
+                new ControlType{ Title = nameof(RelativeLayout), Icon = "layout-RelativeLayout.png"},
+                new ControlType{ Title = nameof(ScrollView), Icon = "layout-ScrollView.png"},
                 
-            });;
+            });
 
             var pages = new ControlGroup("Pages", new List<ControlType>
             {
@@ -51,25 +51,25 @@ namespace Xappy.ControlGallery
 
             var views = new ControlGroup("Views", new List<ControlType>
             {
-                new ControlType{ Title = nameof(ActivityIndicator), GroupIndex = 2, Icon = "view-ActivityIndicator"},
-                new ControlType{ Title = nameof(Button), GroupIndex = 2, Icon = "view-Button"},
-                new ControlType{ Title = nameof(Editor), GroupIndex = 2, Icon = "view-Editor"},
-                new ControlType{ Title = nameof(Entry), GroupIndex = 2, Icon = "view-Entry"},
-                new ControlType{ Title = nameof(ListView), GroupIndex = 2, Icon = "view-ListView"},
-                new ControlType{ Title = nameof(CollectionView), GroupIndex = 2, Icon = "view-ListView"},
-                new ControlType{ Title = nameof(DatePicker), GroupIndex = 2, Icon = "view-DatePicker"},
-                new ControlType{ Title = nameof(TimePicker), GroupIndex = 2, Icon = "view-TimePicker"},
-                new ControlType{ Title = nameof(Picker), GroupIndex = 2, Icon = "view-Picker"},
-                new ControlType{ Title = nameof(Stepper), GroupIndex = 2, Icon = "view-Stepper"},
-                new ControlType{ Title = nameof(BoxView), GroupIndex = 2, Icon = "view-BoxView"},
-                new ControlType{ Title = nameof(Switch), GroupIndex = 2, Icon = "view-Switch"},
-                new ControlType{ Title = nameof(ProgressBar), GroupIndex = 2, Icon = "view-ProgressBar"},
-                new ControlType{ Title = nameof(Label), GroupIndex = 2, Icon = "view-Label"},
-                new ControlType{ Title = nameof(Image), GroupIndex = 2, Icon = "view-Image"},
+                new ControlType{ Title = nameof(ActivityIndicator), GroupIndex = 2, Icon = "view-ActivityIndicator.png"},
+                new ControlType{ Title = nameof(Button), GroupIndex = 2, Icon = "view-Button.png"},
+                new ControlType{ Title = nameof(Editor), GroupIndex = 2, Icon = "view-Editor.png"},
+                new ControlType{ Title = nameof(Entry), GroupIndex = 2, Icon = "view-Entry.png"},
+                new ControlType{ Title = nameof(ListView), GroupIndex = 2, Icon = "view-ListView.png"},
+                new ControlType{ Title = nameof(CollectionView), GroupIndex = 2, Icon = "view-ListView.png"},
+                new ControlType{ Title = nameof(DatePicker), GroupIndex = 2, Icon = "view-DatePicker.png"},
+                new ControlType{ Title = nameof(TimePicker), GroupIndex = 2, Icon = "view-TimePicker.png"},
+                new ControlType{ Title = nameof(Picker), GroupIndex = 2, Icon = "view-Picker.png"},
+                new ControlType{ Title = nameof(Stepper), GroupIndex = 2, Icon = "view-Stepper.png"},
+                new ControlType{ Title = nameof(BoxView), GroupIndex = 2, Icon = "view-BoxView.png"},
+                new ControlType{ Title = nameof(Switch), GroupIndex = 2, Icon = "view-Switch.png"},
+                new ControlType{ Title = nameof(ProgressBar), GroupIndex = 2, Icon = "view-ProgressBar.png"},
+                new ControlType{ Title = nameof(Label), GroupIndex = 2, Icon = "view-Label.png"},
+                new ControlType{ Title = nameof(Image), GroupIndex = 2, Icon = "view-Image.png"},
                 new ControlType{ Title = nameof(ImageButton), GroupIndex = 2},
-                new ControlType{ Title = nameof(SearchBar), GroupIndex = 2, Icon = "view-SearchBar"},
-                new ControlType{ Title = nameof(WebView), GroupIndex = 2, Icon = "view-WebView"},
-                new ControlType{ Title = nameof(Map), GroupIndex = 2, Icon = "view-Map"},
+                new ControlType{ Title = nameof(SearchBar), GroupIndex = 2, Icon = "view-SearchBar.png"},
+                new ControlType{ Title = nameof(WebView), GroupIndex = 2, Icon = "view-WebView.png"},
+                new ControlType{ Title = nameof(Map), GroupIndex = 2, Icon = "view-Map.png"},
                 new ControlType{ Title = nameof(RadioButton), GroupIndex = 2},
                 new ControlType{ Title = nameof(CheckBox), GroupIndex = 2},
                 new ControlType{ Title = nameof(CarouselView), GroupIndex = 2},
@@ -79,6 +79,10 @@ namespace Xappy.ControlGallery
 
 
             });
+
+            Layouts = layouts;
+            Views = views;
+            Pages = pages;
 
             XamarinAll = new List<ControlGroup>();
             XamarinAll.Add(layouts);

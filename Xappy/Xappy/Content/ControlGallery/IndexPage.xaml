@@ -13,41 +13,28 @@
         <local:IndexPageViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout>
-        
-        <CollectionView
-            Margin="15"
-            x:Name="LayoutsCV"
-            ItemsSource="{Binding XamarinAll}"
-            IsGrouped="True" 
-            SelectionMode="None">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout
-                    Span="3"
-                    HorizontalItemSpacing="10"
-                    VerticalItemSpacing="10"
-                    Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame 
-                        HorizontalOptions="Center"
+    <ContentPage.Resources>
+        <DataTemplate x:Key="ControlTemplate">
+            <Frame 
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
                         Padding="8"
                         CornerRadius="8"
+                        WidthRequest="200"
+                        HeightRequest="60"
                         BackgroundColor="White"
                         BorderColor="{Binding GroupIndex,
                         Converter={StaticResource IndexToColorConverter},
-                        ConverterParameter='ThemePrimary;ThemeSecondary;NeutralTertiary'}"
-                        Visual="Default">
-                        <Grid ColumnDefinitions="1*,5*">
-                            <Image Source="{Binding Icon}"
-                                   HeightRequest="48"
-                                   WidthRequest="48"
+                        ConverterParameter='ThemePrimary;ThemeSecondary;NeutralTertiary'}">
+                <Grid ColumnDefinitions="1*,5*">
+                    <Image Source="{Binding Icon}" 
+                                   HeightRequest="16"
+                                   WidthRequest="16"
                                    Aspect="AspectFit"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
                                    />
-                            <Label
+                    <Label
                                 Grid.Column="1"
                                 InputTransparent="true"
                                 FontSize="12"
@@ -58,26 +45,58 @@
                                 VerticalOptions="Center"
                                 Text="{Binding Title}"
                                 d:Text="Something Else" />
-                        </Grid>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
                                 Command="{Binding NavToDetailCommand, Source={
                                     RelativeSource AncestorType={x:Type local:IndexPageViewModel}
                                 }}"
                                 CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.GroupHeaderTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding Name}"
-                           FontSize="18"
-                           Padding="0,10"
-                           />
-                </DataTemplate>
-            </CollectionView.GroupHeaderTemplate>
-        </CollectionView>
-    </StackLayout>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </DataTemplate>
 
+        <Style TargetType="CollectionView">
+            <Setter Property="HeightRequest" Value="280"/>
+            <Setter Property="SelectionMode" Value="None"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+            <Setter Property="ItemsLayout">
+                <Setter.Value>
+                    <GridItemsLayout
+                        Span="2" 
+                        HorizontalItemSpacing="10"
+                        VerticalItemSpacing="10"
+                        Orientation="Horizontal" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="15">
+            
+            <Label Text="Layouts" Style="{StaticResource TextTitle}"/>
+
+            <CollectionView
+                x:Name="LayoutsCV"
+                ItemsSource="{Binding Layouts}"
+                ItemTemplate="{StaticResource ControlTemplate}"
+                />
+
+
+            <Label Text="Views" Style="{StaticResource TextTitle}"/>
+
+            <CollectionView
+                ItemsSource="{Binding Views}"
+                ItemTemplate="{StaticResource ControlTemplate}"/>
+
+            <Label Text="Pages" Style="{StaticResource TextTitle}"/>
+
+            <CollectionView
+                ItemsSource="{Binding Pages}"
+                ItemTemplate="{StaticResource ControlTemplate}"/>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

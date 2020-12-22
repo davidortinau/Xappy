@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Grid
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="Xappy.Content.Common.FlyoutItemTemplate"
-    Padding="20,10,0,10"
-    ColumnSpacing="20"
-    ColumnDefinitions="20,*">
-    
-    <Image
-        Grid.Column="0"
-        HorizontalOptions="End"
-        VerticalOptions="Center"
-        xct:IconTintColorEffect.TintColor="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-        Source="{Binding Icon}"/>
-        
-    <Label
-        Grid.Column="1"
-        VerticalOptions="Center"
-        Text="{Binding Title}"
-        TextColor="{AppThemeBinding Dark={StaticResource TextPrimaryColor_Dark}, Light={StaticResource TextPrimaryColor_Light}}"
-        FontSize="17" />
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xappy.Content.Common.FlyoutItemTemplate"
+                ColumnDefinitions="20,*"
+                  Padding="20,10,0,10"
+                  ColumnSpacing="20"
+                  >
+
+    <Image Grid.Column="0" 
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"                       
+                       Source="{Binding Icon}"/>
+    <Label Grid.Column="1" 
+                       VerticalOptions="Center"
+                       FontSize="17"
+           TextColor="Black"
+                       Text="{Binding Title}"/>
+
 </Grid>
