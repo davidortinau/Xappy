@@ -55,9 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-preview1112" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.1.6507" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.1.6507" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.1.6507" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.1.1825-nightly" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.1.1825-nightly" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.1.1825-nightly" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.7.0.937-pre4" />
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.937-pre4" />
@@ -70,7 +70,7 @@
     <PackageReference Include="Xamarin.Android.Support.Annotations" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.VersionedParcelable" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Forms.DualScreen">
-      <Version>5.0.1.6507</Version>
+      <Version>5.0.1.1825-nightly</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.DuoSdk">
       <Version>0.0.3.4</Version>

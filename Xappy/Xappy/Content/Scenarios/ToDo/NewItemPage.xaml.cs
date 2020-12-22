@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Xappy.Content.Scenarios.ToDo
 {
@@ -14,24 +12,50 @@ namespace Xappy.Content.Scenarios.ToDo
         {
             InitializeComponent();
 
-            Item = new Item
-            {
-                
-            };
+            Item = new Item();
 
             BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            MessagingCenter.Send(this, "AddItem", Item);
-            //await Navigation.PopModalAsync();
-            await Shell.Current.GoToAsync("..");
+            base.OnAppearing();
+            Shell.Current.Navigating += Current_Navigating;
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        protected override void OnDisappearing()
         {
-            await Shell.Current.GoToAsync("..");
+            base.OnDisappearing();
+            Shell.Current.Navigating -= Current_Navigating;
+        }
+
+        private async void Current_Navigating(object sender, ShellNavigatingEventArgs e)
+        {
+            var deferral = e.GetDeferral(); // hey shell, wait a moment
+
+            if(!string.IsNullOrEmpty(Item.Text) || !string.IsNullOrEmpty(Item.Description))
+            {
+                var answer = await DisplayAlert(
+                    "Are you sure?",
+                    "Looks like you made changes. If you leave, ALL will be lost.",
+                    "Leave",
+                    "Cancel"
+                    );
+
+                if(answer == false)
+                {
+                    e.Cancel();// don't navigate away
+                }
+            }
+
+            deferral.Complete();
+        }
+
+        async void Save_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.Navigating -= Current_Navigating;// don't need to check, we are saving
+            MessagingCenter.Send(this, "AddItem", Item);
+            await Shell.Current.GoToAsync("..?saved");
         }
     }
 }
