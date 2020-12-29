@@ -38,10 +38,15 @@
         <item
             name="colorAccent">#FF4081</item>
     </style>
-    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
-    <style
-        name="MainTheme.Launcher">
-        <item
-            name="android:windowBackground">@drawable/launch_screen</item>
-    </style>
+  <style name="MainTheme.Launcher">
+    <item name="android:windowBackground">@drawable/launch_screen</item>
+  </style>
+  <style name="MainTheme.Splash">
+    <item name="android:windowBackground">@android:color/white</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowActionBar">true</item>
+  </style>
+  
 </resources>

@@ -18,8 +18,7 @@ namespace Xappy.Droid
     [Activity(
         Label = "Xappy", 
         Icon = "@mipmap/icon", 
-        Theme = "@style/MainTheme.Launcher", 
-        MainLauncher = true, 
+        Theme = "@style/MainTheme.Launcher",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
