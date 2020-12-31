@@ -45,5 +45,7 @@
 		<string>fa-solid-900.ttf</string>
 		<string>FabMDL2.ttf</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

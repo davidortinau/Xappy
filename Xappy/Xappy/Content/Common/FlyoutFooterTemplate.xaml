@@ -5,10 +5,10 @@
     ColumnDefinitions="20,*"
     Padding="20"
     HeightRequest="100">
-    <Grid.GestureRecognizers>
+    <!--<Grid.GestureRecognizers>
         <TapGestureRecognizer
             Tapped="TapGestureRecognizer_Tapped"/>
-    </Grid.GestureRecognizers>
+    </Grid.GestureRecognizers>-->
 
     <Image
         Grid.Column="0"
