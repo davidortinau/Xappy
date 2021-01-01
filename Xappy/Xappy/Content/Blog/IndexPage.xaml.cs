@@ -9,10 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xappy.Content.Blog
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BlogPage : ContentPage
+    public partial class IndexPage : ContentPage
     {
-        public BlogPage()
+        public IndexPage()
         {
             InitializeComponent();
         }

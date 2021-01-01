@@ -18,12 +18,12 @@
 
     
     <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
-        <ShellContent ContentTemplate="{DataTemplate todo:ItemsPage}" />
+        <ShellContent ContentTemplate="{DataTemplate blog:IndexPage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Latest News" Icon="{StaticResource IconLatestNews}">
         <ShellContent
-                ContentTemplate="{DataTemplate blog:BlogPage}" />
+                ContentTemplate="{DataTemplate blog:IndexPage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="UI Controls" Icon="{StaticResource IconControls}">

@@ -78,13 +78,13 @@
     <LinearGradientBrush
       x:Key="ShadowGradient"
       StartPoint="0,1"
-      EndPoint="1,0">
+      EndPoint="0,0">
         <GradientStop
         Color="#66FFFFFF"
         Offset="1.0" />
         <GradientStop
-        Color="{StaticResource ThemePrimary}"
-        Offset="0.1" />
+        Color="{StaticResource NeutralPrimary}"
+        Offset="0.3" />
     </LinearGradientBrush>
 
     <!-- SIZES -->
