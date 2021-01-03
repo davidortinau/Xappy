@@ -13,9 +13,6 @@
     xmlns:todo="clr-namespace:Xappy.Content.Scenarios.ToDo"
     xmlns:resources="clr-namespace:Xappy.Content.Resources" 
     x:Class="Xappy.AppShell">
-
-    
-
     
     <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
         <ShellContent ContentTemplate="{DataTemplate blog:IndexPage}" />

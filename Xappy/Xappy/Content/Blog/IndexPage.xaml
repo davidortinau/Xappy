@@ -27,10 +27,10 @@
                     IsRefreshing="{Binding IsRefreshing}"
                     >
                     <CollectionView
-                    ItemsSource="{Binding Items}"
-                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                    SelectionChangedCommand="{Binding SelectCommand}"
-                    SelectionMode="Single">
+                        ItemsSource="{Binding Items}"
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                        SelectionChangedCommand="{Binding SelectCommand}"
+                        SelectionMode="Single">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
                             Orientation="Vertical"
@@ -42,6 +42,22 @@
                                 <blog:BlogView />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <FlexLayout Padding="30"
+                                        Direction="Column"
+                                        JustifyContent="Center"
+                                        VerticalOptions="Fill"
+                                        BackgroundColor="AliceBlue"
+                                         >
+                                <Label
+                                    Text="Oops, we don't have any blogs to show. Try refreshing."
+                                    FontSize="24"
+                                    Margin="0,0,0,20"
+                                    />
+                                <Button Text="Refresh"
+                                        Command="{Binding RefreshCommand}"/>
+                            </FlexLayout>
+                        </CollectionView.EmptyView>
                     </CollectionView>
                 </RefreshView>
             </dual:TwoPaneView.Pane1>

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Xappy.Content.Blog
@@ -49,22 +50,28 @@ namespace Xappy.Content.Blog
 
         public async Task LoadData()
         {
-            IsRefreshing = true;
-            var dataProvider = new BlogDataProvider();
-            var items = await dataProvider.GetItems();
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                var random = new Random();
-                items = items.OrderByDescending(x => x.PublishDate).ToList();
-                Items.Clear();
-                items.ForEach(x =>
+            Items.Clear();
+            var current = Connectivity.NetworkAccess;
+            if(current == NetworkAccess.Internet)
+            { 
+                IsRefreshing = true;
+                var dataProvider = new BlogDataProvider();
+                var items = await dataProvider.GetItems();
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    x.Height = 200 + random.Next(0, 2) * 60;
-                    Items.Add(x);
-                });
+                    var random = new Random();
+                    items = items.OrderByDescending(x => x.PublishDate).ToList();
+                    Items.Clear();
+                    items.ForEach(x =>
+                    {
+                        x.Height = 200 + random.Next(0, 2) * 60;
+                        Items.Add(x);
+                    });
+                }
+                );
             }
-            );
             IsRefreshing = false;
+            
         }
     }
 }
