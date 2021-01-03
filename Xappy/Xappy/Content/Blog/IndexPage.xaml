@@ -7,7 +7,7 @@
     xmlns:dual="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
     Style="{DynamicResource backgroundStyle}"
     Title="Latest News"
-    x:Class="Xappy.Content.Blog.BlogPage">
+    x:Class="Xappy.Content.Blog.IndexPage">
 
     <ContentPage.BindingContext>
         <blog:BlogViewModel />
@@ -22,23 +22,28 @@
             Pane1Length="3*"
             Pane2Length="1*">
             <dual:TwoPaneView.Pane1>
-                <CollectionView
+                <RefreshView
+                    Command="{Binding RefreshCommand}"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    >
+                    <CollectionView
                     ItemsSource="{Binding Items}"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout
                             Orientation="Vertical"
                             Span="2" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
                             x:DataType="blog:BlogItem">
-                            <blog:BlogView />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                <blog:BlogView />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
             </dual:TwoPaneView.Pane1>
         </dual:TwoPaneView>
 
