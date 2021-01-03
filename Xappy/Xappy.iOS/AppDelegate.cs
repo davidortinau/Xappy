@@ -5,6 +5,7 @@ using Lottie.Forms.Platforms.Ios;
 
 using Foundation;
 using UIKit;
+using Xamarin.Essentials;
 
 namespace Xappy.iOS
 {
@@ -24,7 +25,7 @@ namespace Xappy.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             UINavigationBar.Appearance.Translucent = false; // no alpha fade nonsense
-            
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             global::Xamarin.Forms.FormsMaterial.Init();
@@ -32,5 +33,7 @@ namespace Xappy.iOS
 
             return base.FinishedLaunching(app, options);
         }
+
+        
     }
 }
