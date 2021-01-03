@@ -18,7 +18,7 @@
 
     
     <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
-        <ShellContent ContentTemplate="{DataTemplate todo:ItemsPage}" />
+        <ShellContent ContentTemplate="{DataTemplate controlGallery:IndexPage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Latest News" Icon="{StaticResource IconLatestNews}">

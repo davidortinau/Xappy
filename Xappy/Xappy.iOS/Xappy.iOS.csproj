@@ -160,7 +160,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-preview1112" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-pre6" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.1.1825-nightly" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.1.1825-nightly" />
