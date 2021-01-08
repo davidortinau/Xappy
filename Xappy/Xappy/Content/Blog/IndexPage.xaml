@@ -28,9 +28,7 @@
                     >
                     <CollectionView
                         ItemsSource="{Binding Items}"
-                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                        SelectionChangedCommand="{Binding SelectCommand}"
-                        SelectionMode="Single">
+                        SelectionMode="None">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
                             Orientation="Vertical"
@@ -39,7 +37,15 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate
                             x:DataType="blog:BlogItem">
-                                <blog:BlogView />
+                                <blog:BlogView>
+                                    <blog:BlogView.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding NavigationCommand, Source={
+                                    RelativeSource AncestorType={x:Type blog:BlogViewModel}
+                                }}"
+                                            CommandParameter="{Binding .}"/>
+                                    </blog:BlogView.GestureRecognizers>
+                                </blog:BlogView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                         <CollectionView.EmptyView>

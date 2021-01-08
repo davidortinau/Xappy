@@ -19,14 +19,22 @@ namespace Xappy.Content.Blog
 
         public Command RefreshCommand { get; set; }
 
+        public Command NavigationCommand { get;set; }
+
         public ObservableCollection<BlogItem> Items { get; } = new ObservableCollection<BlogItem>();
 
         public BlogViewModel()
         {
             SelectCommand = new Command(async () => await Selected());
             RefreshCommand = new Command(() => OnRefresh());
+            NavigationCommand = new Command<BlogItem>((b)=>OnNavigation(b));
         
             Task.Run(LoadData);
+        }
+
+        private async void OnNavigation(BlogItem b)
+        {
+            await Shell.Current.GoToAsync($"blogDetail?id={b.Id}");
         }
 
         private void OnRefresh()

@@ -6,10 +6,9 @@
     xmlns:local="clr-namespace:Xappy"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:c="clr-namespace:Xappy.Content.Common"
-    xmlns:ll="clr-namespace:Xamarin.Forms.EasyLoading;assembly=Xamarin.Forms.EasyLoading" 
     xmlns:this="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
+    xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     ios:Page.UseSafeArea="False"
     mc:Ignorable="d"
     BackgroundColor="#f1f1f1"
@@ -60,8 +59,8 @@
             <!-- HEADER BACKGROUND -->
             <BoxView 
                 BackgroundColor="White" HorizontalOptions="Fill"
-                TranslationY="{Binding ScrollPercentage, 
-                                    Source={x:Reference sv}, 
+                TranslationY="{Binding RelativeScrollY, 
+                                    Source={x:Reference Scroll}, 
                                     Converter={StaticResource ScrollValueConverter}, 
                                     ConverterParameter='-10;0;200;false;0'}"/>
             <!-- HEADER CAROUSEL -->
@@ -72,8 +71,8 @@
                 Margin="0,-42,0,0"
                 BackgroundColor="#1d1d1d"
                 Grid.Row="0" HorizontalOptions="FillAndExpand"      
-                TranslationY="{Binding ScrollPercentage, 
-                                Source={x:Reference sv}, 
+                TranslationY="{Binding RelativeScrollY, 
+                                Source={x:Reference Scroll}, 
                                 Converter={StaticResource ScrollValueConverter}, 
                                 ConverterParameter='-10;0;200;false;0'}">
                 <CarouselView.Behaviors>
@@ -88,30 +87,18 @@
                 <CarouselView.Triggers>
                     <DataTrigger 
                         TargetType="CarouselView"
-                        Binding="{Binding ScrollPosition,       
-                        Source={x:Reference sv}, 
-                        Converter={StaticResource ComparisonConverter},
-                        ConverterParameter='180;>'}"
+                        Binding="{Binding ScrollY,       
+                            Source={x:Reference Scroll}, 
+                            Converter={StaticResource ComparisonConverter},
+                            ConverterParameter='180;>'}"
                         Value="true">
                         <DataTrigger.EnterActions>
                             <anim:BeginAnimation
                                 Animation="{StaticResource CarouselFadeOut}" />
-                            <!--
-                            <anim:AnimateDouble
-                                TargetProperty="VisualElement.Opacity"
-                                To="0"
-                                Duration="500"/>
-                            -->
                         </DataTrigger.EnterActions>
                         <DataTrigger.ExitActions>
                             <anim:BeginAnimation
                                 Animation="{StaticResource CarouselFadeIn}" />
-                            <!--
-                            <anim:AnimateDouble
-                                TargetProperty="VisualElement.Opacity"
-                                To="1"
-                                Duration="500"/>
-                            -->
                         </DataTrigger.ExitActions>
                     </DataTrigger>
                 </CarouselView.Triggers>
@@ -135,8 +122,7 @@
                 Grid.RowSpan="2"
                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                 Command="{Binding RefreshCommand}">
-                <c:ScrollerView 
-                    x:Name="sv">
+                <ScrollView>
                     <ScrollView.Behaviors>
                         <anim:ScrollViewScrollBehavior x:Name="Scroll" />
                     </ScrollView.Behaviors>
@@ -172,9 +158,11 @@
                             </Frame.Behaviors>
                             <StackLayout 
                                 Spacing="15" 
-                                ll:LoadingLayout.IsLoading="{Binding IsBusy}">
-                                <ll:LoadingLayout.LoadingTemplate>
-                                    <DataTemplate>
+                                xct:StateLayout.CurrentState="{Binding MainState}"
+                                xct:StateLayout.AnimateStateChanges="True"
+                                >
+                                <xct:StateLayout.StateViews>
+                                    <xct:StateView StateKey="Loading">
                                         <StackLayout 
                                             Spacing="15" x:Name="Loader">
                                             <StackLayout.Resources>
@@ -207,8 +195,8 @@
                                             <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
                                             <BoxView HeightRequest="44" BackgroundColor="#CCCCCC" HorizontalOptions="Fill"/>
                                         </StackLayout>
-                                    </DataTemplate>
-                                </ll:LoadingLayout.LoadingTemplate>
+                                    </xct:StateView>
+                                </xct:StateLayout.StateViews>
                                 <Label 
                                     HorizontalOptions="Center">
                                     <Label.FormattedText>
@@ -270,9 +258,10 @@
                                     Maximum="700"/>
                             </Frame.Behaviors>
                             <StackLayout
-                                ll:LoadingLayout.IsLoading="{Binding IsBusy}">
-                                <ll:LoadingLayout.LoadingTemplate>
-                                    <DataTemplate>
+                                xct:StateLayout.CurrentState="{Binding MainState}"
+                                xct:StateLayout.AnimateStateChanges="True">
+                                <xct:StateLayout.StateViews>
+                                    <xct:StateView StateKey="Loading">
                                         <StackLayout x:Name="DetailsLoader">
                                             <StackLayout.Resources>
                                                 <anim:StoryBoard x:Key="LoadingDetails" Target="{x:Reference DetailsLoader}">
@@ -313,8 +302,9 @@
                                                 Visual="Default"
                                                 BackgroundColor="transparent" />
                                         </StackLayout>
-                                    </DataTemplate>
-                                </ll:LoadingLayout.LoadingTemplate>
+
+                                    </xct:StateView>
+                                </xct:StateLayout.StateViews>
                                 <Label 
                                     HorizontalTextAlignment="Center"
                                     FontSize="16"
@@ -743,7 +733,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </StackLayout>
-                </c:ScrollerView>
+                </ScrollView>
             </RefreshView>
         </Grid>
         <FlexLayout
@@ -776,6 +766,7 @@
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
+        
         <!-- FAKE NAVIGATIONBAR -->
         <FlexLayout 
             x:Name="FakeNavBar"
@@ -785,8 +776,8 @@
             Padding="15,42,15,15">
             <FlexLayout.Triggers>
                 <DataTrigger TargetType="FlexLayout"
-                             Binding="{Binding ScrollPosition, 
-                                        Source={x:Reference sv}, 
+                             Binding="{Binding ScrollY, 
+                                        Source={x:Reference Scroll}, 
                                         Converter={StaticResource ComparisonConverter},
                                         ConverterParameter='180;>'}"
                              Value="true">

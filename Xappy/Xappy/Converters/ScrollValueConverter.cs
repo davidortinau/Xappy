@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
@@ -14,7 +15,9 @@ namespace Xappy.Converters
             var fmt = new NumberFormatInfo();
             fmt.NegativeSign = "-";
 
-            var percentage = (double)value;
+            var percentage = ((double)value);
+
+            Debug.WriteLine(percentage);
 
             var allParams = ((string)parameter).Split((';'));
             var factor = Double.Parse(allParams[0], fmt);

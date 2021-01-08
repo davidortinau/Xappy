@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 
 namespace Xappy.Content.Scenarios.ProductDetails
@@ -10,6 +11,13 @@ namespace Xappy.Content.Scenarios.ProductDetails
     {
         private ObservableCollection<string> _images;
         private int _currentImage;
+        private LayoutState _mainState;
+
+        public LayoutState MainState
+        {
+            get => _mainState;
+            set => SetProperty(ref _mainState, value);
+        }
 
         public ProductDetailsViewModel()
         {
@@ -41,9 +49,11 @@ namespace Xappy.Content.Scenarios.ProductDetails
 
         private async Task OnRefreshAsync()
         {
+            MainState = LayoutState.Loading;
             IsBusy = true;
             await Task.Delay(3000);
             IsBusy = false;
+            MainState = LayoutState.None;
         }
 
         void LoadImages()
