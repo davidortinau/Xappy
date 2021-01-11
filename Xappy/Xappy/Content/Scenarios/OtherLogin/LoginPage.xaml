@@ -49,7 +49,7 @@
         </Style>
     </ContentPage.Resources>
     <Grid
-        Background="{StaticResource FlyoutGradient}"
+        Background="{StaticResource PrimaryGradient}"
         >
         
         <ScrollView>

@@ -7,23 +7,27 @@
              x:DataType="blog:BlogItem"
              HeightRequest="{Binding Height}">
     <ContentView.Content>
-        <Frame BackgroundColor="Gray"
+        <Frame BorderColor="Gray"
+               BackgroundColor="{StaticResource NeutralLight}"
                Padding="0"
                Margin="5"
                CornerRadius="3"
                HasShadow="True"
                Visual="Material">
-            <Grid>
+            <Grid RowDefinitions="2*,1*">
 
-                <Image Source="{Binding ImageUri}"
+                <Image 
+                    Grid.Row="0"
+                    BackgroundColor="{StaticResource ThemeDark}"
+                    Source="{Binding ImageUri}"
                        Aspect="AspectFill" />
-                <BoxView Background="{StaticResource ShadowGradient}"/>
-                <Label Text="{Binding Title}"
-                       TextColor="White"
-                       FontSize="Large"
-                       Margin="5"
-                       HorizontalOptions="Center"
-                       VerticalOptions="End" />
+                <Label 
+                    Grid.Row="1"
+                    Text="{Binding Title}"
+                       FontSize="14"
+                       Margin="15"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center" />
             </Grid>
         </Frame>
 

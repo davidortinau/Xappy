@@ -40,8 +40,6 @@
         </StyleSheet>
 
         <!-- ANIMATIONS -->
-        <anim:FadeToAnimation x:Key="CarouselFadeOut" Target="{x:Reference Carousel}" Opacity="0" Duration="500"/>
-        <anim:FadeToAnimation x:Key="CarouselFadeIn" Target="{x:Reference Carousel}" Opacity="1" Duration="500" />
         <anim:FadeToAnimation x:Key="FakeNavBarFadeOut" Target="{x:Reference FakeNavBar}" Opacity="0" Duration="500"/>
         <anim:FadeToAnimation x:Key="FakeNavBarFadeIn" Target="{x:Reference FakeNavBar}" Opacity="1" Duration="500" />
 
@@ -60,9 +58,10 @@
             <BoxView 
                 BackgroundColor="White" HorizontalOptions="Fill"
                 TranslationY="{Binding RelativeScrollY, 
-                                    Source={x:Reference Scroll}, 
-                                    Converter={StaticResource ScrollValueConverter}, 
-                                    ConverterParameter='-10;0;200;false;0'}"/>
+                                Source={x:Reference Scroll}, 
+                                Converter={StaticResource ScrollValueConverter}, 
+                                ConverterParameter='-5;0;200;false;0'}"
+                />
             <!-- HEADER CAROUSEL -->
             <CarouselView 
                 x:Name="Carousel"
@@ -70,11 +69,12 @@
                 Position="{Binding CurrentImage, Mode=TwoWay}"
                 Margin="0,-42,0,0"
                 BackgroundColor="#1d1d1d"
-                Grid.Row="0" HorizontalOptions="FillAndExpand"      
+                Grid.Row="0" HorizontalOptions="FillAndExpand"   
                 TranslationY="{Binding RelativeScrollY, 
                                 Source={x:Reference Scroll}, 
                                 Converter={StaticResource ScrollValueConverter}, 
-                                ConverterParameter='-10;0;200;false;0'}">
+                                ConverterParameter='-5;0;200;false;0'}"
+                >
                 <CarouselView.Behaviors>
                     <anim:AnimateProgressDouble 
                         TargetProperty="VisualElement.Opacity"
@@ -83,25 +83,7 @@
                         Maximum="180"
                         From="1"
                         To="0"/>
-                </CarouselView.Behaviors>
-                <CarouselView.Triggers>
-                    <DataTrigger 
-                        TargetType="CarouselView"
-                        Binding="{Binding ScrollY,       
-                            Source={x:Reference Scroll}, 
-                            Converter={StaticResource ComparisonConverter},
-                            ConverterParameter='180;>'}"
-                        Value="true">
-                        <DataTrigger.EnterActions>
-                            <anim:BeginAnimation
-                                Animation="{StaticResource CarouselFadeOut}" />
-                        </DataTrigger.EnterActions>
-                        <DataTrigger.ExitActions>
-                            <anim:BeginAnimation
-                                Animation="{StaticResource CarouselFadeIn}" />
-                        </DataTrigger.ExitActions>
-                    </DataTrigger>
-                </CarouselView.Triggers>
+                    </CarouselView.Behaviors>
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout 
                         Orientation="Horizontal"
@@ -135,19 +117,19 @@
                             d:IsVisible="False">
                             <Frame.Behaviors>
                                 <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Scale"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0.75"
-                                    Minimum="320"
-                                    Maximum="400"/>
-                                <anim:AnimateProgressDouble 
                                     TargetProperty="VisualElement.Opacity"
                                     Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
                                     From="1"
                                     To="0.9"
                                     Minimum="0"
                                     Maximum="320"/>
+                                <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.75"
+                                    Minimum="320"
+                                    Maximum="400"/>                                
                                 <anim:AnimateProgressDouble 
                                     TargetProperty="VisualElement.Opacity"
                                     Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
@@ -349,7 +331,7 @@
                                     To="0"
                                     Minimum="820"
                                     Maximum="900"/>
-                            </Frame.Behaviors>
+                             </Frame.Behaviors>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="44" />
@@ -766,7 +748,7 @@
                 </ImageButton.Source>
             </ImageButton>
         </FlexLayout>
-        
+
         <!-- FAKE NAVIGATIONBAR -->
         <FlexLayout 
             x:Name="FakeNavBar"
@@ -776,31 +758,31 @@
             Padding="15,42,15,15">
             <FlexLayout.Triggers>
                 <DataTrigger TargetType="FlexLayout"
-                             Binding="{Binding ScrollY, 
-                                        Source={x:Reference Scroll}, 
-                                        Converter={StaticResource ComparisonConverter},
-                                        ConverterParameter='180;>'}"
-                             Value="true">
+                            Binding="{Binding ScrollY, 
+                                    Source={x:Reference Scroll}, 
+                                    Converter={StaticResource ComparisonConverter},
+                                    ConverterParameter='180;>'}"
+                            Value="true">
                     <DataTrigger.EnterActions>
                         <anim:BeginAnimation
-                                    Animation="{StaticResource FakeNavBarFadeIn}" />
+                                Animation="{StaticResource FakeNavBarFadeIn}" />
                     </DataTrigger.EnterActions>
                     <DataTrigger.ExitActions>
                         <anim:BeginAnimation
-                                    Animation="{StaticResource FakeNavBarFadeOut}" />
+                                Animation="{StaticResource FakeNavBarFadeOut}" />
                     </DataTrigger.ExitActions>
                 </DataTrigger>
             </FlexLayout.Triggers>
             <ImageButton
                 FlexLayout.Shrink="0" Command="{Binding BackCommand}">
-                <ImageButton.Source>
-                    <FontImageSource
+                        <ImageButton.Source>
+                            <FontImageSource
                         FontFamily="FontAwesome"
                         Glyph="{x:Static local:IconFont.ChevronLeft}"
                         Color="{StaticResource NeutralDark}" />
-                </ImageButton.Source>
-            </ImageButton>
-            <Label
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label
                 Text="Cole Clark Fat Lady 2 Blackwood Blackwood" 
                 FontSize="18"
                 Margin="10,0"
@@ -809,25 +791,27 @@
                 LineBreakMode="TailTruncation"
                 FlexLayout.AlignSelf="Center"
                 FlexLayout.Grow="1" />
-            <ImageButton
+                    <ImageButton
                 FlexLayout.Shrink="0">
-                <ImageButton.Source>
-                    <FontImageSource
+                        <ImageButton.Source>
+                            <FontImageSource
                         FontFamily="Fabric"
                         Glyph="{x:Static local:FabIconFont.ShareiOS}"
                         Color="{StaticResource NeutralDark}" />
-                </ImageButton.Source>
-            </ImageButton>
-            <ImageButton 
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton 
                 Margin="15,0,0,0" FlexLayout.Shrink="0">
-                <ImageButton.Source>
-                    <FontImageSource
+                        <ImageButton.Source>
+                            <FontImageSource
                         FontFamily="Fabric"
                         Glyph="{x:Static local:FabIconFont.ShoppingCartSolid}"
                         Color="{StaticResource NeutralDark}" />
-                </ImageButton.Source>
-            </ImageButton>
-        </FlexLayout>
+                        </ImageButton.Source>
+                    </ImageButton>
+                </FlexLayout>
+
+
         <!-- DEBUG INFO -->
         <!--
         <StackLayout
