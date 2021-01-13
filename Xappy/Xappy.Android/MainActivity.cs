@@ -28,9 +28,6 @@ namespace Xappy.Droid
         {
             DualScreenService.Init(this);
 
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
-
             this.SetStatusBarColor(Xamarin.Forms.Color.FromHex("#fd7b38").ToAndroid());
 
             base.OnCreate(savedInstanceState);
