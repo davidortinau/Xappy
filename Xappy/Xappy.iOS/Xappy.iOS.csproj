@@ -165,14 +165,14 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1-preview1" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.1.1861-nightly" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.1.1861-nightly" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.1.1861-nightly" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.1874" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
       <Version>4.0.8</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.DualScreen">
-      <Version>5.0.1.1861-nightly</Version>
+      <Version>5.0.0.1874</Version>
     </PackageReference>
     <PackageReference Include="Resizetizer.NT">
       <Version>0.2.0</Version>

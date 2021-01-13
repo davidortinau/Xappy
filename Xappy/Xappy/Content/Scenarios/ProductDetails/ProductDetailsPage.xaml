@@ -8,13 +8,14 @@
     xmlns:c="clr-namespace:Xappy.Content.Common"
     xmlns:this="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation" 
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     ios:Page.UseSafeArea="False"
     mc:Ignorable="d"
     BackgroundColor="#f1f1f1"
     Shell.TabBarIsVisible="false"
     Shell.NavBarIsVisible="false"
-    Shell.BackgroundColor="White"
+    Shell.BackgroundColor="white"
     Shell.ForegroundColor="{StaticResource ThemePrimary}"
     x:Class="Xappy.Content.Scenarios.ProductDetails.ProductDetailsPage">
 
@@ -42,7 +43,6 @@
         <!-- ANIMATIONS -->
         <anim:FadeToAnimation x:Key="FakeNavBarFadeOut" Target="{x:Reference FakeNavBar}" Opacity="0" Duration="500"/>
         <anim:FadeToAnimation x:Key="FakeNavBarFadeIn" Target="{x:Reference FakeNavBar}" Opacity="1" Duration="500" />
-
     </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -82,8 +82,8 @@
                         Minimum="0"
                         Maximum="180"
                         From="1"
-                        To="0"/>
-                    </CarouselView.Behaviors>
+                        To="0"/>        
+                </CarouselView.Behaviors>
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout 
                         Orientation="Horizontal"
@@ -117,26 +117,26 @@
                             d:IsVisible="False">
                             <Frame.Behaviors>
                                 <anim:AnimateProgressDouble 
+                                    TargetProperty="VisualElement.Scale"
+                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
+                                    From="1"
+                                    To="0.75"
+                                    Minimum="320"
+                                    Maximum="400"/>
+                                 <anim:AnimateProgressDouble 
                                     TargetProperty="VisualElement.Opacity"
                                     Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
                                     From="1"
                                     To="0.9"
                                     Minimum="0"
                                     Maximum="320"/>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Scale"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0.75"
-                                    Minimum="320"
-                                    Maximum="400"/>                                
-                                <anim:AnimateProgressDouble 
+                                  <anim:AnimateProgressDouble 
                                     TargetProperty="VisualElement.Opacity"
                                     Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
                                     From="0.9"
                                     To="0"
                                     Minimum="320"
-                                    Maximum="400"/>
+                                    Maximum="400"/>         
                             </Frame.Behaviors>
                             <StackLayout 
                                 Spacing="15" 
@@ -223,22 +223,7 @@
                         <Frame
                             Visual="Material"
                             d:IsVisible="false">
-                            <Frame.Behaviors>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Scale"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0.5"
-                                    Minimum="600"
-                                    Maximum="700"/>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Opacity"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0"
-                                    Minimum="600"
-                                    Maximum="700"/>
-                            </Frame.Behaviors>
+                            
                             <StackLayout
                                 xct:StateLayout.CurrentState="{Binding MainState}"
                                 xct:StateLayout.AnimateStateChanges="True">
@@ -316,22 +301,7 @@
                         <Frame
                             Visual="Material"
                             d:IsVisible="False">
-                            <Frame.Behaviors>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Scale"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0.5"
-                                    Minimum="820"
-                                    Maximum="900"/>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Opacity"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0"
-                                    Minimum="820"
-                                    Maximum="900"/>
-                             </Frame.Behaviors>
+                            
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="44" />
@@ -364,22 +334,7 @@
                         <Frame 
                             Visual="Material"
                             d:IsVisible="false">
-                            <Frame.Behaviors>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Scale"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0.5"
-                                    Minimum="1100"
-                                    Maximum="1400"/>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Opacity"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0"
-                                    Minimum="1100"
-                                    Maximum="1400"/>
-                            </Frame.Behaviors>
+                            
                             <StackLayout 
                                 Spacing="15">
                                 <Label 
@@ -529,22 +484,7 @@
                         <Frame 
                             Visual="Material"
                             d:IsVisible="false">
-                            <Frame.Behaviors>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Scale"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0.5"
-                                    Minimum="1600"
-                                    Maximum="1800"/>
-                                <anim:AnimateProgressDouble 
-                                    TargetProperty="VisualElement.Opacity"
-                                    Progress="{Binding ScrollY, Source={x:Reference Scroll}}"
-                                    From="1"
-                                    To="0"
-                                    Minimum="1600"
-                                    Maximum="1800"/>
-                            </Frame.Behaviors>
+                            
                             <StackLayout>
                                 <StackLayout                                                    
                                     Orientation="Horizontal"
@@ -756,24 +696,24 @@
             Direction="Row"
             Opacity="0"
             Padding="15,42,15,15">
-            <FlexLayout.Triggers>
-                <DataTrigger TargetType="FlexLayout"
-                            Binding="{Binding ScrollY, 
-                                    Source={x:Reference Scroll}, 
-                                    Converter={StaticResource ComparisonConverter},
-                                    ConverterParameter='180;>'}"
-                            Value="true">
-                    <DataTrigger.EnterActions>
-                        <anim:BeginAnimation
-                                Animation="{StaticResource FakeNavBarFadeIn}" />
-                    </DataTrigger.EnterActions>
-                    <DataTrigger.ExitActions>
-                        <anim:BeginAnimation
-                                Animation="{StaticResource FakeNavBarFadeOut}" />
-                    </DataTrigger.ExitActions>
-                </DataTrigger>
-            </FlexLayout.Triggers>
-            <ImageButton
+                    <FlexLayout.Triggers>
+                        <DataTrigger TargetType="FlexLayout"
+                                Binding="{Binding ScrollY, 
+                                        Source={x:Reference Scroll}, 
+                                        Converter={StaticResource ComparisonConverter},
+                                        ConverterParameter='180;>'}"
+                                Value="true">
+                            <DataTrigger.EnterActions>
+                                <anim:BeginAnimation
+                                    Animation="{StaticResource FakeNavBarFadeIn}" />
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <anim:BeginAnimation
+                                    Animation="{StaticResource FakeNavBarFadeOut}" />
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </FlexLayout.Triggers>
+                    <ImageButton
                 FlexLayout.Shrink="0" Command="{Binding BackCommand}">
                         <ImageButton.Source>
                             <FontImageSource
@@ -810,6 +750,7 @@
                         </ImageButton.Source>
                     </ImageButton>
                 </FlexLayout>
+
 
 
         <!-- DEBUG INFO -->
