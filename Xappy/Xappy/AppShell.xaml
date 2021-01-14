@@ -8,6 +8,7 @@
     xmlns:blog="clr-namespace:Xappy.Content.Blog"
     xmlns:about="clr-namespace:Xappy.About"
     xmlns:controlGallery="clr-namespace:Xappy.ControlGallery"
+    xmlns:photoGallery="clr-namespace:Xappy.Content.Scenarios.PhotoGallery"
     xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:settings="clr-namespace:Xappy.Content.Settings"
     xmlns:todo="clr-namespace:Xappy.Content.Scenarios.ToDo"
@@ -15,7 +16,7 @@
     x:Class="Xappy.AppShell">
     
     <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
-        <ShellContent ContentTemplate="{DataTemplate blog:IndexPage}" />
+        <ShellContent ContentTemplate="{DataTemplate photoGallery:IndexPage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Latest News" Icon="{StaticResource IconLatestNews}">

@@ -24,7 +24,7 @@
         <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
         <item
-            name="colorAccent">#FF4081</item>
+            name="colorAccent">#fd7b38</item>
         <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
         <item
@@ -36,7 +36,7 @@
         name="AppCompatDialogStyle"
         parent="Theme.AppCompat.Light.Dialog">
         <item
-            name="colorAccent">#FF4081</item>
+            name="colorAccent">#fd7b38</item>
     </style>
   <style name="MainTheme.Launcher">
     <item name="android:windowBackground">@drawable/launch_screen</item>
