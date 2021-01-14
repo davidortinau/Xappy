@@ -17,7 +17,7 @@ namespace Xappy.Content.Scenarios.PhotoGallery
 
         public ObservableCollection<Photo> Photos { get => _photos; set => _photos = value; }
 
-        public ObservableCollection<Photo> SelectedPhotos { get => _selectedPhotos; set => _selectedPhotos = value; }
+        public ObservableCollection<object> SelectedPhotos { get => _selectedPhotos; set => _selectedPhotos = value; }
 
         public Command ShareCommand { get;set;}
 
@@ -38,6 +38,14 @@ namespace Xappy.Content.Scenarios.PhotoGallery
 
         private async void OnShare()
         {
+            foreach (var obj in SelectedPhotos) 
+            {
+                if (obj is Photo photo) 
+                {
+                    System.Diagnostics.Debug.WriteLine($">>>>>>photo {photo.Id} {photo.ImageSrc} selected in OnShare");
+                }
+            }
+
             if(SelectedPhotos == null || SelectedPhotos.Count <= 0)
             {
                 return;
@@ -59,11 +67,11 @@ namespace Xappy.Content.Scenarios.PhotoGallery
         }
 
         private string[] _guitars = new string[] { "guitar1.jpg", "guitar2.jpg", "guitar3.jpg" };
-        private ObservableCollection<Photo> _selectedPhotos;
+        private ObservableCollection<object> _selectedPhotos;
 
         private void InitData()
         {
-            _selectedPhotos = new ObservableCollection<Photo>();
+            _selectedPhotos = new ObservableCollection<object>();
 
             Random rand = new Random();
             _photos = new ObservableCollection<Photo>();
