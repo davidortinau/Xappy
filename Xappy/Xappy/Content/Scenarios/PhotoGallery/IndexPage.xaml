@@ -69,12 +69,14 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid
-                            xct:TouchEffect.HoveredScale="1.2"
-                            xct:TouchEffect.NativeAnimation="True"
-                            xct:TouchEffect.LongPressDuration="200"
-                            xct:TouchEffect.LongPressCommand="{Binding LongPressCommand, 
-                            Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
                             >
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    NumberOfTapsRequired="1"
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding ViewDetailsCommand,
+                                    Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"/>
+                            </Grid.GestureRecognizers>
                             <Image
                             Source="{Binding ImageSrc}"
                             Aspect="AspectFill"/>

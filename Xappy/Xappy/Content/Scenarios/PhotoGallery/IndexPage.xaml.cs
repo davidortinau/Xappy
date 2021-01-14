@@ -109,5 +109,10 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             var asdfasdfasdf = PhotosCV.SelectedItems;
             //_vm.SelectedPhotos = new ObservableCollection<Photo>(PhotosCV.SelectedItems.ToList<Photo>());
         }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

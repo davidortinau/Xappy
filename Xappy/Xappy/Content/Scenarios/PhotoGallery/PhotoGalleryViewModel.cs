@@ -35,6 +35,8 @@ namespace Xappy.Content.Scenarios.PhotoGallery
 
         public Command ClearCommand { get; private set; }
 
+        public Command<Photo> ViewDetailsCommand { get; private set; }
+
         public PhotoGalleryViewModel()
         {
             InitData();
@@ -43,6 +45,13 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             SelectionChangedCommand = new Command<object>(OnSelectionChanged);
             LongPressCommand = new Command(OnLongPress);
             ClearCommand = new Command(OnClear);
+            ViewDetailsCommand = new Command<Photo>(OnViewDetails);
+        }
+
+        private void OnViewDetails(Photo obj)
+        {
+            Debug.WriteLine("Goto details");
+            Shell.Current.GoToAsync($"photo?id={obj.Id}");
         }
 
         private void OnClear()

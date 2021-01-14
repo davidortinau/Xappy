@@ -172,6 +172,9 @@
     <EmbeddedResource Update="Content\Scenarios\PhotoGallery\IndexPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Content\Scenarios\PhotoGallery\PhotoDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Update="Content\Common\FlyoutFooterTemplate.xaml">
