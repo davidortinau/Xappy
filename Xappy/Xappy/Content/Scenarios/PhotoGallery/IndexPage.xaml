@@ -1,15 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:app="clr-namespace:Xappy"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:pg="clr-namespace:Xappy.Content.Scenarios.PhotoGallery"
              x:Class="Xappy.Content.Scenarios.PhotoGallery.IndexPage">
 
-
-
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Share"
+        <ToolbarItem Text="Actions"
+                     Order="Secondary"
                      Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem Text="Clear"
+                     Order="Secondary"
+                     Clicked="ClearItem_Clicked"
+                     Command="{Binding ClearCommand}"/>
     </ContentPage.ToolbarItems>
 
     <Grid>
@@ -17,7 +21,7 @@
                     x:Name="PhotosCV"
                     SelectionMode="Multiple"
                     SelectedItems="{Binding SelectedPhotos, Mode=TwoWay}"
-                    SelectionChanged="PhotosCV_SelectionChanged"
+                    SelectionChangedCommand="{Binding SelectionChangedCommand}"
                     ItemsSource="{Binding Photos}"
                     >
             <CollectionView.ItemsLayout>
@@ -36,6 +40,7 @@
                     BackgroundColor="{StaticResource ThemePrimary}"
                     Visual="Material"
                     HasShadow="True"
+                    
                     >
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -63,7 +68,13 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Grid>
+                        <Grid
+                            xct:TouchEffect.HoveredScale="1.2"
+                            xct:TouchEffect.NativeAnimation="True"
+                            xct:TouchEffect.LongPressDuration="200"
+                            xct:TouchEffect.LongPressCommand="{Binding LongPressCommand, 
+                            Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
+                            >
                             <Image
                             Source="{Binding ImageSrc}"
                             Aspect="AspectFill"/>
@@ -77,6 +88,7 @@
                             HorizontalOptions="Start"
                             Margin="4"/>
                         </Grid>
+                        
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

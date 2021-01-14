@@ -40,6 +40,14 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             }
         }
 
+        async void ClearItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            
+            await CloseDrawer();
+            PhotosCV.SelectedItems.Clear();
+            
+        }
+
         async void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
             if (isBackdropTapEnabled)
