@@ -3,7 +3,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:app="clr-namespace:Xappy"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:pg="clr-namespace:Xappy.Content.Scenarios.PhotoGallery"
+             xmlns:pg="clr-namespace:Xappy.Content.Scenarios.PhotoGallery" xmlns:xa="clr-namespace:Xamanimation;assembly=Xamanimation"
              x:Class="Xappy.Content.Scenarios.PhotoGallery.IndexPage">
 
     <ContentPage.ToolbarItems>
@@ -17,10 +17,10 @@
     </ContentPage.ToolbarItems>
 
     <Grid>
-        <CollectionView Margin="8,8,8,8"
+        <CollectionView Margin="8"
                     x:Name="PhotosCV"
                     SelectionMode="{Binding SelectionMode}"
-                    SelectedItems="{Binding SelectedPhotos, Mode=TwoWay}"
+                    SelectedItems="{Binding SelectedPhotos}"
                     SelectionChangedCommand="{Binding SelectionChangedCommand}"
                     ItemsSource="{Binding Photos}"
                     >
@@ -74,6 +74,8 @@
                             xct:TouchEffect.LongPressCommand="{Binding LongPressCommand,
                         Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
                             xct:TouchEffect.LongPressCommandParameter="{Binding .}"
+                            xct:TouchEffect.PressedScale="1.2"
+                             xct:TouchEffect.NativeAnimation="True"
                             >
                             <Image
                                 BackgroundColor="Black"
