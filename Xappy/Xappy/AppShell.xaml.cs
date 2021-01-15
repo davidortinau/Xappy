@@ -2,6 +2,7 @@
 using Xappy.Content.Blog;
 using Xappy.Content.Scenarios.Conversation;
 using Xappy.Content.Scenarios.Login;
+using Xappy.Content.Scenarios.PhotoGallery;
 using Xappy.Content.Scenarios.ProductDetails;
 using Xappy.Content.Scenarios.ToDo;
 using Xappy.Content.Settings;
@@ -34,6 +35,8 @@ namespace Xappy
 
             // ToDo
             Routing.RegisterRoute("add", typeof(NewItemPage));
+
+            Routing.RegisterRoute("photo", typeof(PhotoDetailsPage));
         }
     }
 }

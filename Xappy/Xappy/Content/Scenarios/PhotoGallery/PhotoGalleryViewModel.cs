@@ -31,9 +31,11 @@ namespace Xappy.Content.Scenarios.PhotoGallery
 
         public Command<object> SelectionChangedCommand { get; set; }
 
-        public Command LongPressCommand { get; private set;}
+        public Command<Photo> LongPressCommand { get; private set;}
 
         public Command ClearCommand { get; private set; }
+
+        public Command<Photo> PressedCommand { get; private set; }
 
         public PhotoGalleryViewModel()
         {
@@ -41,8 +43,25 @@ namespace Xappy.Content.Scenarios.PhotoGallery
 
             ShareCommand = new Command(OnShare);
             SelectionChangedCommand = new Command<object>(OnSelectionChanged);
-            LongPressCommand = new Command(OnLongPress);
+            LongPressCommand = new Command<Photo>(OnLongPress);
             ClearCommand = new Command(OnClear);
+            PressedCommand = new Command<Photo>(OnPressed);
+        }
+
+        private void OnPressed(Photo obj)
+        {
+            if (_selectionMode != SelectionMode.None)
+            { 
+                Debug.WriteLine($"Added {obj.ImageSrc}");
+                if(_selectedPhotos.Contains(obj))
+                    SelectedPhotos.Remove(obj);
+                else
+                    SelectedPhotos.Add(obj);
+            }
+            else
+            {
+                Shell.Current.GoToAsync($"photo?src={obj.ImageSrc}");
+            }
         }
 
         private void OnClear()
@@ -50,11 +69,13 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             SelectionMode = SelectionMode.None;
         }
 
-        private void OnLongPress()
+        private void OnLongPress(Photo obj)
         {
+            Debug.WriteLine("LongPressed");
             if(_selectionMode == SelectionMode.None)
             {
                 SelectionMode = SelectionMode.Multiple;
+                SelectedPhotos.Add(obj);
             }
         }
 

@@ -17,9 +17,9 @@
     </ContentPage.ToolbarItems>
 
     <Grid>
-        <CollectionView Margin="8"
+        <CollectionView Margin="8,8,8,8"
                     x:Name="PhotosCV"
-                    SelectionMode="Multiple"
+                    SelectionMode="{Binding SelectionMode}"
                     SelectedItems="{Binding SelectedPhotos, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectionChangedCommand}"
                     ItemsSource="{Binding Photos}"
@@ -40,7 +40,6 @@
                     BackgroundColor="{StaticResource ThemePrimary}"
                     Visual="Material"
                     HasShadow="True"
-                    
                     >
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -69,13 +68,15 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid
-                            xct:TouchEffect.HoveredScale="1.2"
-                            xct:TouchEffect.NativeAnimation="True"
-                            xct:TouchEffect.LongPressDuration="200"
-                            xct:TouchEffect.LongPressCommand="{Binding LongPressCommand, 
-                            Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
+                            xct:TouchEffect.Command="{Binding PressedCommand,
+                        Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
+                            xct:TouchEffect.CommandParameter="{Binding .}"
+                            xct:TouchEffect.LongPressCommand="{Binding LongPressCommand,
+                        Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
+                            xct:TouchEffect.LongPressCommandParameter="{Binding .}"
                             >
                             <Image
+                                BackgroundColor="Black"
                             Source="{Binding ImageSrc}"
                             Aspect="AspectFill"/>
                             <Image
@@ -87,6 +88,7 @@
                             VerticalOptions="End"
                             HorizontalOptions="Start"
                             Margin="4"/>
+                            
                         </Grid>
                         
                     </Frame>
@@ -142,6 +144,5 @@
             </StackLayout>
 
         </Frame>
-        
     </Grid>
 </ContentPage>
