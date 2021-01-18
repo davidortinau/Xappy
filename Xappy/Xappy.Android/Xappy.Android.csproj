@@ -63,9 +63,6 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.1874" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1-preview1" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.7.0.937-pre4" />
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.937-pre4" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.937-pre4" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.8" />
     <PackageReference Include="Xamarin.Forms.DualScreen">
       <Version>5.0.0.1874</Version>
@@ -89,6 +86,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+    <AndroidAsset Include="Assets\guitar1.jpg" />
+    <AndroidAsset Include="Assets\guitar2.jpg" />
+    <AndroidAsset Include="Assets\guitar3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />

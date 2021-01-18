@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:app="clr-namespace:Xappy"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pg="clr-namespace:Xappy.Content.Scenarios.PhotoGallery" xmlns:xa="clr-namespace:Xamanimation;assembly=Xamanimation"
+             x:Class="Xappy.Content.Scenarios.PhotoGallery.IndexPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Actions"
+                     Order="Secondary"
+                     Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem Text="Clear"
+                     Order="Secondary"
+                     Clicked="ClearItem_Clicked"
+                     Command="{Binding ClearCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <CollectionView Margin="8"
+                    x:Name="PhotosCV"
+                    SelectionMode="{Binding SelectionMode}"
+                    SelectedItems="{Binding SelectedPhotos}"
+                    ItemsSource="{Binding Photos}"
+                    >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                Orientation="Vertical"
+                Span="2"
+                HorizontalItemSpacing="8"
+                VerticalItemSpacing="8"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                    HeightRequest="120"
+                    CornerRadius="0"
+                    Padding="0"
+                    BackgroundColor="{StaticResource ThemePrimary}"
+                    Visual="Material"
+                    HasShadow="True"
+                    >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter
+                                        Property="Padding"
+                                        Value="0"/>
+                                        <Setter
+                                        TargetName="CheckIcon"
+                                        Property="Image.IsVisible"
+                                        Value="False"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter
+                                        Property="Padding"
+                                        Value="8"/>
+                                        <Setter
+                                        TargetName="CheckIcon"
+                                        Property="Image.IsVisible"
+                                        Value="True"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid
+                            xct:TouchEffect.Command="{Binding PressedCommand,
+                        Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
+                            xct:TouchEffect.CommandParameter="{Binding .}"
+                            xct:TouchEffect.LongPressCommand="{Binding LongPressCommand,
+                        Source={RelativeSource AncestorType={x:Type pg:PhotoGalleryViewModel}}}"
+                            xct:TouchEffect.LongPressCommandParameter="{Binding .}"
+                            xct:TouchEffect.PressedScale="1.2"
+                             xct:TouchEffect.NativeAnimation="True"
+                            >
+                            <Image
+                                BackgroundColor="Black"
+                            Source="{Binding ImageSrc}"
+                            Aspect="AspectFill"/>
+                            <Image
+                            x:Name="CheckIcon"
+                            Source="{FontImage FontFamily=FontAwesome,
+                                Glyph={x:Static app:IconFont.CheckSquare},
+                                Color={StaticResource ThemePrimary},
+                                Size=18}"
+                            VerticalOptions="End"
+                            HorizontalOptions="Start"
+                            Margin="4"/>
+                            
+                        </Grid>
+                        
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!-- Backdrop -->
+        <BoxView Color="#4B000000"
+                 Opacity="0"
+                 InputTransparent="True"
+                 x:Name="Backdrop">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+        
+        <!-- Bottom Drawer -->
+        <Frame
+            x:Name="BottomToolbar"
+            HeightRequest="200"
+            VerticalOptions="End"
+            BackgroundColor="#FFFFFF"
+            CornerRadius="20"
+            TranslationY="260"
+            Padding="15,6">
+            <Frame.GestureRecognizers>
+                <PanGestureRecognizer
+                    PanUpdated="PanGestureRecognizer_PanUpdated"
+            />
+            </Frame.GestureRecognizers>
+            <StackLayout Orientation="Vertical" Padding="0,4">
+                <BoxView CornerRadius="2" HeightRequest="4" WidthRequest="40"
+                         BackgroundColor="LightGray"
+                         HorizontalOptions="Center"/>
+                <Label Text="Actions"
+                       HorizontalOptions="Center"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+                <TableView Intent="Settings"
+                   VerticalOptions="End"
+                   BackgroundColor="White"
+                   >
+                    <TableSection>
+                        <TextCell
+                            Text="Favorite"/>
+                        <TextCell
+                            Command="{Binding ShareCommand}"
+                            Text="Share"/>
+                    </TableSection>
+                </TableView>
+            </StackLayout>
+
+        </Frame>
+    </Grid>
+</ContentPage>

@@ -53,6 +53,9 @@
       <DependentUpon>ConversationPage.xaml</DependentUpon>
     </Compile>
     <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Content\Scenarios\PhotoGallery\IndexPage.xaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Content\ControlGallery\ControlTemplates\ButtonControlTemplate.xaml">
@@ -80,14 +83,14 @@
     <EmbeddedResource Include="AppVersionInfo.json" />
     <EmbeddedResource Include="Resources\Fonts\FabMDL2.ttf" />
     <EmbeddedResource Include="Resources\Fonts\fa-solid-900.ttf" />
+    <EmbeddedResource Include="Resources\Images\guitar1.jpg" />
+    <EmbeddedResource Include="Resources\Images\guitar2.jpg" />
+    <EmbeddedResource Include="Resources\Images\guitar3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AppVersionInfo.json" />
     <None Remove="Resources\Fonts\FabMDL2.ttf" />
     <None Remove="Resources\Fonts\fa-solid-900.ttf" />
-    <None Remove="Resources\Images\guitar1.jpg" />
-    <None Remove="Resources\Images\guitar2.jpg" />
-    <None Remove="Resources\Images\guitar3.jpg" />
     <None Remove="Resources\Images\menu.png" />
     <None Remove="Resources\Images\toolbox\view-Entry.png" />
     <None Remove="Resources\Images\toolbox\view-ActivityIndicator.png" />
@@ -122,8 +125,8 @@
     <None Remove="Resources\Images\toolbox\view-Switch.png" />
   </ItemGroup>
   <ItemGroup>
-    <SharedImage Include="Resources\Images\guitar1.jpg" />
-    <SharedImage Include="Resources\Images\guitar2.jpg" />
+      <SharedImage Include="Resources\Images\guitar1.jpg" />
+      <SharedImage Include="Resources\Images\guitar2.jpg" />
     <SharedImage Include="Resources\Images\guitar3.jpg" />
     <None Remove="Resources\Images\xamarin-forms-ui.svg" />
     <SharedImage Include="Resources\Images\menu.png" />
@@ -167,6 +170,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Content\Common\FlyoutItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Content\Scenarios\PhotoGallery\IndexPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
