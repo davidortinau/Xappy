@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -14,9 +15,12 @@ namespace Xappy.Content.Scenarios.PhotoGallery
     {
         private ObservableCollection<Photo> _photos;
 
+        private ObservableCollection<object> _selectedPhotos;
+
         private string[] _guitars = new string[] { "guitar1.jpg", "guitar2.jpg", "guitar3.jpg" };
         
         private SelectionMode _selectionMode = SelectionMode.None;
+
 
         public Photo SelectedItem { get; set; }
 
@@ -24,12 +28,9 @@ namespace Xappy.Content.Scenarios.PhotoGallery
 
         public ObservableCollection<Photo> Photos { get => _photos; set => _photos = value; }
 
-        private ObservableCollection<object> _selectedPhotos;
         public ObservableCollection<object> SelectedPhotos { get => _selectedPhotos; set => _selectedPhotos = value; }
 
         public Command ShareCommand { get; set; }
-
-        public Command<object> SelectionChangedCommand { get; set; }
 
         public Command<Photo> LongPressCommand { get; private set;}
 
@@ -42,7 +43,6 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             InitData();
 
             ShareCommand = new Command(OnShare);
-            SelectionChangedCommand = new Command<object>(OnSelectionChanged);
             LongPressCommand = new Command<Photo>(OnLongPress);
             ClearCommand = new Command(OnClear);
             PressedCommand = new Command<Photo>(OnPressed);
@@ -79,11 +79,6 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             }
         }
 
-        private void OnSelectionChanged(object param)
-        {
-            Debug.WriteLine("selected");
-        }
-
         private async void OnShare()
         {
             var files = new List<ShareFile>();
@@ -91,18 +86,20 @@ namespace Xappy.Content.Scenarios.PhotoGallery
             {
                 if (obj is Photo photo)
                 {
-                    //var f = await FileSystem.OpenAppPackageFileAsync("guitar1.jpg");
+                    var path = Path.Combine(FileSystem.CacheDirectory, photo.ImageSrc);
+                    if (File.Exists(path)) { // it's a cache dir, so delete it
+                        File.Delete(path);
+                    }
+                    var newFile = File.Create(path);
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync(photo.ImageSrc))
+                    {
+                        await stream.CopyToAsync(newFile);    
+                    }
 
-                    files.Add(new ShareFile("https://picsum.photos/seed/grass/200"));
-                    System.Diagnostics.Debug.WriteLine($">>>>>>photo {photo.Id} {photo.ImageSrc} selected in OnShare");
+                    files.Add(new ShareFile(path));
+                    System.Diagnostics.Debug.WriteLine($">>>>>>photo {photo.Id} {photo.ImageSrc} selected in OnShare. Exists {File.Exists(path)} at {path}");
                 }
             }
-
-            //var files = new List<ShareFile>();
-            //foreach (var p in SelectedPhotos)
-            //{
-            //    files.Add(new ShareFile(p.ImageSrc));
-            //}
 
             await Share.RequestAsync(new ShareMultipleFilesRequest
             {

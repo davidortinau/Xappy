@@ -21,7 +21,6 @@
                     x:Name="PhotosCV"
                     SelectionMode="{Binding SelectionMode}"
                     SelectedItems="{Binding SelectedPhotos}"
-                    SelectionChangedCommand="{Binding SelectionChangedCommand}"
                     ItemsSource="{Binding Photos}"
                     >
             <CollectionView.ItemsLayout>

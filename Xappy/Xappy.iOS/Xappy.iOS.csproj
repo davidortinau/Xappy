@@ -187,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\login.json" />
+    <BundleResource Include="Resources\guitar1.jpg" />
+    <BundleResource Include="Resources\guitar2.jpg" />
+    <BundleResource Include="Resources\guitar3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\MicrosoftLogo.imageset\" />

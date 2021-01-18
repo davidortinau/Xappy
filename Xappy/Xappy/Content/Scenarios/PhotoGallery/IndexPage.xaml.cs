@@ -21,6 +21,18 @@ namespace Xappy.Content.Scenarios.PhotoGallery
         {
             BindingContext = _vm = new PhotoGalleryViewModel();
             InitializeComponent();
+
+            //CheckForFileLocation();
+        }
+
+        private void CheckForFileLocation()
+        {
+            // not in AppData, CacheDirection
+            var path = System.IO.Path.Combine(Xamarin.Essentials.FileSystem.CacheDirectory,
+                "guitar1.jpg"
+                );
+            var exists = System.IO.File.Exists(path);
+            Debug.Write($"Found Guitar 1: {exists} @ {path}");
         }
 
         uint duration = 100;
