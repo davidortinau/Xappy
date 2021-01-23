@@ -43,6 +43,7 @@
     <Folder Include="Content\Scenarios\OtherLogin\Controls\" />
     <Folder Include="Content\Scenarios\Login\" />
     <Folder Include="Resources\Fonts\" />
+    <Folder Include="Content\Scenarios\Onboarding\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ApiConstants.cs" />
@@ -55,6 +56,9 @@
     <Compile Remove="Content\ControlGallery\ProppyControls\BasePropertyControl.cs" />
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Content\Scenarios\PhotoGallery\IndexPage.xaml.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Content\Scenarios\Onboarding\IndexPage.xaml.cs">
+      <DependentUpon>IndexPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +127,9 @@
     <None Remove="Resources\Images\toolbox\view-Picker.png" />
     <None Remove="Resources\Images\toolbox\view-ListView.png" />
     <None Remove="Resources\Images\toolbox\view-Switch.png" />
+    <None Remove="Resources\Images\on02.png" />
+    <None Remove="Resources\Images\on03.png" />
+    <None Remove="Resources\Images\on01.png" />
   </ItemGroup>
   <ItemGroup>
       <SharedImage Include="Resources\Images\guitar1.jpg" />
@@ -164,6 +171,9 @@
     <SharedImage Include="Resources\Images\toolbox\view-Picker.png" />
     <SharedImage Include="Resources\Images\toolbox\view-ListView.png" />
     <SharedImage Include="Resources\Images\toolbox\view-Switch.png" />
+    <SharedImage Include="Resources\Images\on02.png" />
+    <SharedImage Include="Resources\Images\on03.png" />
+    <SharedImage Include="Resources\Images\on01.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Content\Common\FlyoutFooterTemplate.xaml">

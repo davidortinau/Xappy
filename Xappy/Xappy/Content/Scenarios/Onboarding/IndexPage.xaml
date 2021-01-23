@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="False"
+             ios:Page.PrefersHomeIndicatorAutoHidden="True"
+             Title="Onboarding"
+             x:Class="Xappy.Content.Scenarios.Onboarding.IndexPage">
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="*,30,20"
+            >
+            <CarouselView Margin="-1"
+                      Grid.RowSpan="3"
+                      HorizontalScrollBarVisibility="Never"
+                      IndicatorView="Indicators"
+                      >
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>on01.png</x:String>
+                        <x:String>on02.png</x:String>
+                        <x:String>on03.png</x:String>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Image Source="{Binding .}"
+                           Aspect="AspectFill"
+                           Margin="-1"
+                           />
+                        </ContentView>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="Indicators"
+                       Grid.Row="1"
+                       SelectedIndicatorColor="White"
+                       IndicatorColor="#b4FFFFFF"
+                       IndicatorSize="15"
+                       />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

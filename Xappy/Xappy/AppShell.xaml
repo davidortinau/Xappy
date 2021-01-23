@@ -12,11 +12,12 @@
     xmlns:working="clr-namespace:Xappy.Content.Scenarios.ProductDetails"
     xmlns:settings="clr-namespace:Xappy.Content.Settings"
     xmlns:todo="clr-namespace:Xappy.Content.Scenarios.ToDo"
+    xmlns:onboarding="clr-namespace:Xappy.Content.Scenarios.Onboarding"
     xmlns:resources="clr-namespace:Xappy.Content.Resources" 
     x:Class="Xappy.AppShell">
     
     <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
-        <ShellContent ContentTemplate="{DataTemplate photoGallery:IndexPage}" />
+        <ShellContent ContentTemplate="{DataTemplate onboarding:IndexPage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Latest News" Icon="{StaticResource IconLatestNews}">
