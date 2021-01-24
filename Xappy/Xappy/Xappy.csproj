@@ -15,10 +15,10 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1-preview1" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.1874" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.1874" />
     
     <PackageReference Include="Octokit" Version="0.48.0" />
@@ -171,9 +171,9 @@
     <SharedImage Include="Resources\Images\toolbox\view-Picker.png" />
     <SharedImage Include="Resources\Images\toolbox\view-ListView.png" />
     <SharedImage Include="Resources\Images\toolbox\view-Switch.png" />
-    <SharedImage Include="Resources\Images\on02.png" />
-    <SharedImage Include="Resources\Images\on03.png" />
-    <SharedImage Include="Resources\Images\on01.png" />
+    <SharedImage Include="Resources\Images\on02.png" BaseSize="414,896" />
+    <SharedImage Include="Resources\Images\on03.png" BaseSize="414,896" />
+    <SharedImage Include="Resources\Images\on01.png" BaseSize="414,896" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Content\Common\FlyoutFooterTemplate.xaml">
