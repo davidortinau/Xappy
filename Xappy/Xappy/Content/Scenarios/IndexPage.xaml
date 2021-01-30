@@ -3,6 +3,7 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Xappy.Scenarios"
+             xmlns:app="clr-namespace:Xappy"
              Title="Scenario"
              Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
              BackgroundColor="{DynamicResource backgroundColor}">
@@ -12,7 +13,7 @@
     </ContentPage.BindingContext>
 
     <CollectionView x:Name="ScenariosCV"
-                    Margin="15"
+                    Margin="0,5,0,0"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionChangedCommand="{Binding SelectCommand}"
                     SelectionMode="Single">
@@ -27,23 +28,34 @@
                 <x:String>Map</x:String>
                 <x:String>Conversational</x:String>
                 <x:String>Login</x:String>
+                <x:String>Onboarding</x:String>
                 <x:String>Other Login</x:String>
+                <x:String>Photo Gallery</x:String>
                 <x:String>To Do List</x:String>
             </x:Array>
         </CollectionView.ItemsSource>
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame HeightRequest="30"
-                           CornerRadius="3"
-                           BackgroundColor="{StaticResource ThemeTertiary}"
-                           Visual="Material">
+                <Grid RowDefinitions="44,1">
                     <Label VerticalOptions="Center"
                                InputTransparent="True"
-                               Style="{StaticResource TextHeadline}"
-                               FontAttributes="Bold"
+                           Margin="15,0"
+                               Style="{StaticResource TextSubHead}"
                                Text="{Binding .}" />
-                </Frame>
+                    <Label FontFamily="FontAwesome"
+                           FontSize="12"
+                           InputTransparent="True"
+                           Margin="15,0"
+                           Text="{x:Static app:IconFont.GreaterThan}"
+                           TextColor="{StaticResource TextSecondaryColor}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"/>
+                    <BoxView BackgroundColor="{StaticResource NeutralPrimaryAlt}"
+                             Grid.Row="1"
+                             Margin="10,0,0,0"
+                             />
+                </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
 

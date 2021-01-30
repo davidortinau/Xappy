@@ -41,6 +41,12 @@ namespace Xappy.Scenarios
                 case "conversational":
                     targetPage = "conversation";
                     break;
+                case "onboarding":
+                    targetPage = "onboarding";
+                    break;
+                case "photo gallery":
+                    targetPage = "photogallery";
+                    break;
                 default:
                     break;
 

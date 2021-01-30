@@ -41,6 +41,7 @@
                        IndicatorColor="#b4FFFFFF"
                        IndicatorSize="15"
                        />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

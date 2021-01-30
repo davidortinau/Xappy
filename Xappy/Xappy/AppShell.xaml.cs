@@ -37,6 +37,9 @@ namespace Xappy
             Routing.RegisterRoute("add", typeof(NewItemPage));
 
             Routing.RegisterRoute("photo", typeof(PhotoDetailsPage));
+
+            Routing.RegisterRoute("onboarding", typeof(Content.Scenarios.Onboarding.IndexPage));
+            Routing.RegisterRoute("photogallery", typeof(Content.Scenarios.PhotoGallery.IndexPage));
         }
     }
 }
