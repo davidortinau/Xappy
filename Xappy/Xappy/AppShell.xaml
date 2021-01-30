@@ -17,7 +17,7 @@
     x:Class="Xappy.AppShell">
     
     <FlyoutItem Title="Working File" Icon="{StaticResource IconWorkingFile}">
-        <ShellContent ContentTemplate="{DataTemplate onboarding:IndexPage}" />
+        <ShellContent ContentTemplate="{DataTemplate settings:StyleGuidePage}" />
     </FlyoutItem>
     
     <FlyoutItem Title="Latest News" Icon="{StaticResource IconLatestNews}">
