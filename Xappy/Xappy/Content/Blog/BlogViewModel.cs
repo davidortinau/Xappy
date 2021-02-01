@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -11,6 +12,14 @@ namespace Xappy.Content.Blog
 {
     public class BlogViewModel : BaseViewModel
     {
+        private LayoutState _mainState;
+
+        public LayoutState MainState
+        {
+            get => _mainState;
+            set => SetProperty(ref _mainState, value);
+        }
+
         private bool isRefreshing;
         public bool IsRefreshing{
             get => isRefreshing;
@@ -25,6 +34,8 @@ namespace Xappy.Content.Blog
 
         public BlogViewModel()
         {
+            MainState = LayoutState.Loading;
+
             SelectCommand = new Command(async () => await Selected());
             RefreshCommand = new Command(() => OnRefresh());
             NavigationCommand = new Command<BlogItem>((b)=>OnNavigation(b));
@@ -58,6 +69,7 @@ namespace Xappy.Content.Blog
 
         public async Task LoadData()
         {
+            MainState = LayoutState.Loading;
             Items.Clear();
             var current = Connectivity.NetworkAccess;
             if(current == NetworkAccess.Internet)
@@ -79,7 +91,7 @@ namespace Xappy.Content.Blog
                 );
             }
             IsRefreshing = false;
-            
+            MainState = LayoutState.None;
         }
     }
 }

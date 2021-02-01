@@ -12,9 +12,27 @@ namespace Xappy.Content.Common
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FlyoutFooterTemplate : Grid
     {
+        public Command DiscordCommand { get;set;}
+        public Command GithubCommand { get; set; }
+
         public FlyoutFooterTemplate()
         {
+            BindingContext = this;
+
             InitializeComponent();
+
+            DiscordCommand = new Command(OnDiscord);
+            GithubCommand = new Command(OnGithub);
+        }
+
+        async private void OnGithub()
+        {
+            var result = await Launcher.TryOpenAsync("https://github.com/davidortinau/Xappy");
+        }
+
+        async private void OnDiscord()
+        {
+            var result = await Launcher.TryOpenAsync("https://discord.gg/pN5jMhr");
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

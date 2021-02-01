@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Shell.TabBarIsVisible="{Binding AppModel.IsTabBarVisible}"
     xmlns:blog="clr-namespace:Xappy.Content.Blog"
     xmlns:dual="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
@@ -49,18 +50,31 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                         <CollectionView.EmptyView>
+                            
                             <FlexLayout Padding="30"
                                         Direction="Column"
                                         JustifyContent="Center"
                                         VerticalOptions="Fill"
-                                         >
+                                        xct:StateLayout.CurrentState="{Binding MainState}"
+                                        xct:StateLayout.AnimateStateChanges="True"
+                            >
+                                <xct:StateLayout.StateViews>
+                                    <xct:StateView StateKey="Loading">
+                                        <Label
+                                            Text="Loading..."
+                                            FontSize="48"
+                                            Margin="0,0,0,20"
+                                    />
+                                    </xct:StateView>
+                                </xct:StateLayout.StateViews>
                                 <Label
                                     Text="Oops, we don't have any blogs to show. Try refreshing."
                                     FontSize="24"
                                     Margin="0,0,0,20"
                                     />
                                 <Button Text="Refresh"
-                                        Command="{Binding RefreshCommand}"/>
+                                    Command="{Binding RefreshCommand}"/>
+                                
                             </FlexLayout>
                         </CollectionView.EmptyView>
                     </CollectionView>

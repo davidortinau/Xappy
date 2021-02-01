@@ -131,6 +131,7 @@
                 Value="{DataTemplate common:FlyoutFooterTemplate}"/>
         <Setter Property="ItemTemplate"
                 Value="{DataTemplate common:FlyoutItemTemplate}"/>
+        <Setter Property="Shell.FlyoutBehavior" Value="{OnIdiom Tablet=Locked, Desktop=Locked, Default=Flyout}"/>
     </Style>
 
     <Style BasedOn="{StaticResource BaseStyle}"
