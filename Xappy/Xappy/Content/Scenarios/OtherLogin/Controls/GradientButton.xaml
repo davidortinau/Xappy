@@ -16,7 +16,7 @@
                    IsClippedToBounds="true"
                    Padding="0">
                 <Grid
-                    Background="{StaticResource FlyoutGradient}"
+                    Background="{StaticResource PrimaryGradient}"
                     >
 
                     <Label Text="{Binding Text, Source={x:Reference This}}"

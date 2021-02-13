@@ -28,14 +28,14 @@ namespace Xappy.ControlGallery
                 new ControlType
                 {
                     Title = nameof(StackLayout), ControlTemplate = nameof(StackLayoutControlTemplate),
-                    Icon = "layoutStackLayout.png"
+                    Icon = "layout_stacklayout.png"
                 },
-                new ControlType{ Title = nameof(Frame), Icon = "layout-Frame.png"},
-                new ControlType{ Title = nameof(Grid), Icon = "layout-Grid.png"},
-                new ControlType{ Title = nameof(FlexLayout), Icon = "layout-FlexLayout.png"},
-                new ControlType{ Title = nameof(AbsoluteLayout), Icon = "layout-AbsoluteLayout.png"},
-                new ControlType{ Title = nameof(RelativeLayout), Icon = "layout-RelativeLayout.png"},
-                new ControlType{ Title = nameof(ScrollView), Icon = "layout-ScrollView.png"},
+                new ControlType{ Title = nameof(Frame), Icon = "layout_frame.png"},
+                new ControlType{ Title = nameof(Grid), Icon = "layout_grid.png"},
+                new ControlType{ Title = nameof(FlexLayout), Icon = "layout_flexlayout.png"},
+                new ControlType{ Title = nameof(AbsoluteLayout), Icon = "layout_absolutelayout.png"},
+                new ControlType{ Title = nameof(RelativeLayout), Icon = "layout_relativelayout.png"},
+                new ControlType{ Title = nameof(ScrollView), Icon = "layout_scrollview.png"},
                 
             });
 
@@ -43,7 +43,7 @@ namespace Xappy.ControlGallery
             {
                 new ControlType{ Title = nameof(ContentPage), GroupIndex = 1},
                 new ControlType{ Title = nameof(TabbedPage), GroupIndex = 1},
-                new ControlType{ Title = nameof(MasterDetailPage), GroupIndex = 1},
+                new ControlType{ Title = nameof(FlyoutPage), GroupIndex = 1},
                 new ControlType{ Title = nameof(NavigationPage), GroupIndex = 1},
                 new ControlType{ Title = nameof(CarouselPage), GroupIndex = 1}
 
@@ -51,25 +51,25 @@ namespace Xappy.ControlGallery
 
             var views = new ControlGroup("Views", new List<ControlType>
             {
-                new ControlType{ Title = nameof(ActivityIndicator), GroupIndex = 2, Icon = "view-ActivityIndicator.png"},
-                new ControlType{ Title = nameof(Button), GroupIndex = 2, Icon = "view-Button.png"},
-                new ControlType{ Title = nameof(Editor), GroupIndex = 2, Icon = "view-Editor.png"},
-                new ControlType{ Title = nameof(Entry), GroupIndex = 2, Icon = "view-Entry.png"},
-                new ControlType{ Title = nameof(ListView), GroupIndex = 2, Icon = "view-ListView.png"},
-                new ControlType{ Title = nameof(CollectionView), GroupIndex = 2, Icon = "view-ListView.png"},
-                new ControlType{ Title = nameof(DatePicker), GroupIndex = 2, Icon = "view-DatePicker.png"},
-                new ControlType{ Title = nameof(TimePicker), GroupIndex = 2, Icon = "view-TimePicker.png"},
-                new ControlType{ Title = nameof(Picker), GroupIndex = 2, Icon = "view-Picker.png"},
-                new ControlType{ Title = nameof(Stepper), GroupIndex = 2, Icon = "view-Stepper.png"},
-                new ControlType{ Title = nameof(BoxView), GroupIndex = 2, Icon = "view-BoxView.png"},
-                new ControlType{ Title = nameof(Switch), GroupIndex = 2, Icon = "view-Switch.png"},
-                new ControlType{ Title = nameof(ProgressBar), GroupIndex = 2, Icon = "view-ProgressBar.png"},
-                new ControlType{ Title = nameof(Label), GroupIndex = 2, Icon = "view-Label.png"},
-                new ControlType{ Title = nameof(Image), GroupIndex = 2, Icon = "view-Image.png"},
+                new ControlType{ Title = nameof(ActivityIndicator), GroupIndex = 2, Icon = "view_activityindicator.png"},
+                new ControlType{ Title = nameof(Button), GroupIndex = 2, Icon = "view_button.png"},
+                new ControlType{ Title = nameof(Editor), GroupIndex = 2, Icon = "view_editor.png"},
+                new ControlType{ Title = nameof(Entry), GroupIndex = 2, Icon = "view_entry.png"},
+                new ControlType{ Title = nameof(ListView), GroupIndex = 2, Icon = "view_listview.png"},
+                new ControlType{ Title = nameof(CollectionView), GroupIndex = 2, Icon = "view_listview.png"},
+                new ControlType{ Title = nameof(DatePicker), GroupIndex = 2, Icon = "view_datepicker.png"},
+                new ControlType{ Title = nameof(TimePicker), GroupIndex = 2, Icon = "view_timepicker.png"},
+                new ControlType{ Title = nameof(Picker), GroupIndex = 2, Icon = "view_picker.png"},
+                new ControlType{ Title = nameof(Stepper), GroupIndex = 2, Icon = "view_stepper.png"},
+                new ControlType{ Title = nameof(BoxView), GroupIndex = 2, Icon = "view_boxview.png"},
+                new ControlType{ Title = nameof(Switch), GroupIndex = 2, Icon = "view_switch.png"},
+                new ControlType{ Title = nameof(ProgressBar), GroupIndex = 2, Icon = "view_progressbar.png"},
+                new ControlType{ Title = nameof(Label), GroupIndex = 2, Icon = "view_label.png"},
+                new ControlType{ Title = nameof(Image), GroupIndex = 2, Icon = "view_image.png"},
                 new ControlType{ Title = nameof(ImageButton), GroupIndex = 2},
-                new ControlType{ Title = nameof(SearchBar), GroupIndex = 2, Icon = "view-SearchBar.png"},
-                new ControlType{ Title = nameof(WebView), GroupIndex = 2, Icon = "view-WebView.png"},
-                new ControlType{ Title = nameof(Map), GroupIndex = 2, Icon = "view-Map.png"},
+                new ControlType{ Title = nameof(SearchBar), GroupIndex = 2, Icon = "view_searchbar.png"},
+                new ControlType{ Title = nameof(WebView), GroupIndex = 2, Icon = "view_webview.png"},
+                new ControlType{ Title = nameof(Map), GroupIndex = 2, Icon = "view_map.png"},
                 new ControlType{ Title = nameof(RadioButton), GroupIndex = 2},
                 new ControlType{ Title = nameof(CheckBox), GroupIndex = 2},
                 new ControlType{ Title = nameof(CarouselView), GroupIndex = 2},
