@@ -28,7 +28,7 @@ namespace Xappy.ControlGallery
                 new ControlType
                 {
                     Title = nameof(StackLayout), ControlTemplate = nameof(StackLayoutControlTemplate),
-                    Icon = "layout-StackLayout.png"
+                    Icon = "layoutStackLayout.png"
                 },
                 new ControlType{ Title = nameof(Frame), Icon = "layout-Frame.png"},
                 new ControlType{ Title = nameof(Grid), Icon = "layout-Grid.png"},

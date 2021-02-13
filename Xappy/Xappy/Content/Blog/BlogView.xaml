@@ -18,9 +18,9 @@
 
                 <Image 
                     Grid.Row="0"
-                    BackgroundColor="{StaticResource ThemeDark}"
+                    BackgroundColor="{StaticResource NeutralLighterAlt}"
                     Source="{Binding ImageUri}"
-                       Aspect="AspectFill" />
+                       Aspect="AspectFit" />
                 <Label 
                     Grid.Row="1"
                     Text="{Binding Title}"

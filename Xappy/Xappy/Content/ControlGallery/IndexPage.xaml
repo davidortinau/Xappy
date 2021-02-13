@@ -29,9 +29,9 @@
                         Converter={StaticResource IndexToColorConverter},
                         ConverterParameter='ThemePrimary;ThemeSecondary;NeutralTertiary'}">
                 <Grid ColumnDefinitions="1*,5*">
-                    <Image Source="{Binding Icon}" 
-                                   HeightRequest="16"
-                                   WidthRequest="16"
+                    <Image Source="{Binding Icon}"
+                                   HeightRequest="32"
+                                   WidthRequest="32"
                                    Aspect="AspectFit"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
@@ -39,7 +39,7 @@
                     <Label
                                 Grid.Column="1"
                                 InputTransparent="true"
-                                FontSize="16"
+                                FontSize="10"
                                 TextColor="{AppThemeBinding 
                                     Dark={StaticResource TextPrimaryColor_Dark},
                                     Light={StaticResource TextPrimaryColor_Light}}"

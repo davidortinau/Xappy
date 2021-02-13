@@ -17,9 +17,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.1931" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2012" />
     
     <PackageReference Include="Octokit" Version="0.48.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -28,7 +28,7 @@
     <PackageReference Include="Xamanimation" Version="1.3.0" />
     <PackageReference Include="System.ServiceModel.Syndication" Version="5.0.0" />
     <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="5.0.2" />
-    <PackageReference Include="Xamarin.Forms.DualScreen" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms.DualScreen" Version="5.0.0.2012" />
     <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
   </ItemGroup>
   
@@ -96,6 +96,7 @@
     <None Remove="Resources\Fonts\FabMDL2.ttf" />
     <None Remove="Resources\Fonts\fa-solid-900.ttf" />
     <None Remove="Resources\Images\menu.png" />
+    <None Remove="Resources\Images\toolbox\layoutStackLayout.png" />
     <None Remove="Resources\Images\toolbox\view-Entry.png" />
     <None Remove="Resources\Images\toolbox\view-ActivityIndicator.png" />
     <None Remove="Resources\Images\toolbox\layout-FlexLayout.png" />
@@ -115,7 +116,6 @@
     <None Remove="Resources\Images\toolbox\view-DatePicker.png" />
     <None Remove="Resources\Images\toolbox\cell-TextCell.png" />
     <None Remove="Resources\Images\toolbox\layout-RelativeLayout.png" />
-    <None Remove="Resources\Images\toolbox\layout-StackLayout.png" />
     <None Remove="Resources\Images\toolbox\cell-EntryCell.png" />
     <None Remove="Resources\Images\toolbox\view-Button.png" />
     <None Remove="Resources\Images\toolbox\layout-Frame.png" />
@@ -159,7 +159,7 @@
     <SharedImage Include="Resources\Images\toolbox\view-DatePicker.png" />
     <SharedImage Include="Resources\Images\toolbox\cell-TextCell.png" />
     <SharedImage Include="Resources\Images\toolbox\layout-RelativeLayout.png" />
-    <SharedImage Include="Resources\Images\toolbox\layout-StackLayout.png" />
+    <SharedImage Include="Resources\Images\toolbox\layoutStackLayout.png" />
     <SharedImage Include="Resources\Images\toolbox\cell-EntryCell.png" />
     <SharedImage Include="Resources\Images\toolbox\view-Button.png" />
     <SharedImage Include="Resources\Images\toolbox\layout-Frame.png" />
